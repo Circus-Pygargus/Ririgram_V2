@@ -164,6 +164,18 @@ création de la vue : app/templates/views/404.hbs
 
 
 
+pour gérer les utilisateur, on va avoir besoin d'un modèle,
+et pour que mongoose puisse valider ce qu'il recevra, il nous faut le module npm validator
+    npm i validator --no-bin-links
+pour chiffre les mot de passe on va utiliser le module npm bcryptjs
+    npm i bcryptjs --no-bin-links
+et pour gérer les token on va utiliser le module npm jsonwebtoken
+    npm i jsonwebtoken --no-bin-links
+    
+création du fichier : /app/src/models/user.js
+
+
+
 
 
 
