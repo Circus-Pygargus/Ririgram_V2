@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: [true, 'Ce pseudo existe déjà.'],
         required: [true, 'Le pseudo est obligatoire !'],
-        minLength: [3, 'Ce pseudo est trop court.'],
+        minlength: [3, 'Ce pseudo est trop court.'],
         trim: true
     },
     email: {
@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Le mot de passe est obligatoire !'],
         trim: true,
-        minLength: [true, 'Ce mot de passe est trop petit !'],
+        minlength: [7, 'Ce mot de passe est trop petit !'],
         validate: {
             validator: (value) => {
                 const regex = /password/i;

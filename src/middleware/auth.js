@@ -25,7 +25,7 @@ const auth = async (req, res, next) => {
 
         // Everything is fine, call the async function given in the route
         next();
-    } catch {
+    } catch (e) {
         res.status(401).send('Erreur: Vous devez d\'abord vous identifier.');
     }
 }

@@ -177,6 +177,13 @@ on va aussi avoir besoin d'authentifier les users,
 création du fichier : app/src/middleware/auth.js
 
 
+Creation du fichier app/src/routers/user.js
+j'y colle juste la route de création d'utilisateur
+
+corrections de quelques erreurs
+tests effectués via Postman : ok ça roule
+
+
 
 
 
@@ -189,5 +196,4 @@ création du fichier : app/src/middleware/auth.js
 pour lancer mongodb :
     /home/vagrant/mongodb/bin/mongod --dbpath=/home/vagrant/mongodb-data
 pour lancer l'appli
-    cd /var/www/html/src/
-    node index.js
+    node src/index.js

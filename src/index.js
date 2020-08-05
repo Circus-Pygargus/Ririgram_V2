@@ -51,7 +51,7 @@ app.get('', (req, res) => {
 });
 
 // register our routes in express
-// app.use(userRouter);
+app.use(userRouter);
 // app.use(gridRouter);
 // app.use(optionsRouter);
 
