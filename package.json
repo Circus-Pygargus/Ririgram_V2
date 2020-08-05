@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Circus-Pygargus/Ririgram_V2#readme",
   "dependencies": {
-    "mongodb": "^3.6.0"
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.9.27"
   }
 }
