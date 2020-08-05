@@ -101,3 +101,50 @@ puis pour tester :
                 Our Current DataBase Name : ririgram
 ok 
 
+
+
+on va avoir besoin de express pour nos requêtes http et les routes, donc
+    npm i express --no-bin-links
+
+Création du fichier principal de l'appli : app/src/index.js
+j'y colle :
+    const express = require('express');
+    // call mongoose.js, it will launch the file, connect to db and create database if doesn't exist
+    require('./db/mongoose');
+    // importing routes 
+    // not created yet
+    const userRouter = require('./routers/user');
+    // const gridRouter = require('./routers/grid');
+    // const optionsRouter = require('./routers/options'):
+    const app = express();
+    // for dev in vagrant 
+    const hostname = '192.168.0.50';
+    // used port
+    const port = 3002;
+    // Tell express to parse json when we receice some (NEEDED for POST requests !)
+    app.arguments(express.json());
+    // register our routes in express
+    app.use(userRouter);
+    // app.use(gridRouter);
+    // app.use(optionsRouter);
+    // Launch server
+    app.listen(port, hostName, () => {
+        console.log(`Server is up at ${hostname}:${port}`);
+    });
+
+Création du router pour user : /app/src/routers/user.js
+
+
+
+
+
+
+
+
+
+
+pour lancer mongodb :
+    /home/vagrant/mongodb/bin/mongod --dbpath=/home/vagrant/mongodb-data
+pour lancer l'appli
+    cd /var/www/html/src/
+    node index.js
