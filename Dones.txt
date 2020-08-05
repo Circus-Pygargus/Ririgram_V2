@@ -136,6 +136,35 @@ Création du router pour user : /app/src/routers/user.js
 
 
 
+pour pouvoir utiliser des pages dynamiques, on va avoir besoin du module npm handlebars
+    npm i hbs --no-bin-links
+création du dossier /app/public/
+création du dossier /app/templates/views/
+création du dossier /app/templates/partials/
+dans index.js, j'ajoute ces lignes : (gaffe c'est pas placé n'importe où -voir index.js - )
+    const path = require('path');
+    const hbs = require('hbs');
+    const publicDirectoryPath = path.join(__dirname, '../public');
+    const viewsPath = path.join(__dirname, '../templates/views');
+    const partialPath = path.join(__dirname, '../templates/partials');
+    app.set('view engine', 'hbs');
+    app.set('views', viewsPath);
+    hbs.registerPartials(partialPath);
+
+pour tester tout ça, je vais ajouter une page 404:
+ajout dans index.js 
+    app.get('*', (req, res) => {
+        res.render('404', {
+            title: 'ririgram',
+            author: 'Richard Meuret',
+            message404: 'Page non trouvée !'
+        });
+    });
+création de la vue : app/templates/views/404.hbs
+
+
+
+
 
 
 
