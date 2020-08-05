@@ -171,8 +171,10 @@ pour chiffre les mot de passe on va utiliser le module npm bcryptjs
     npm i bcryptjs --no-bin-links
 et pour gérer les token on va utiliser le module npm jsonwebtoken
     npm i jsonwebtoken --no-bin-links
-    
+
 création du fichier : /app/src/models/user.js
+on va aussi avoir besoin d'authentifier les users, 
+création du fichier : app/src/middleware/auth.js
 
 
 
@@ -181,7 +183,7 @@ création du fichier : /app/src/models/user.js
 
 
 
-
+// !!! Ne pas oublier d'ajouter 'Bearer ' devant les tokens coté front avant de les envoyer au serveur !!!!
 
 
 pour lancer mongodb :
