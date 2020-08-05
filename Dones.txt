@@ -1,0 +1,73 @@
+en ssh :
+Mise à jour
+    sudo apt-get update
+    sudo apt-get upgrade -y
+
+installation de curl, sert en autres à charger des fichiers
+    sudo apt-get -y install curl
+
+instalaltion de git
+    sudo apt-get -y install git
+
+instalaltion de zip
+    sudo apt-get -y install zip 
+    sudo apt-get -y install unzip
+
+installation de nodejs (vu sur cette page : https://github.com/nodesource/distributions)
+    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+
+    node -v
+        |->     v14.7.0
+
+le projet Ririgram_V2 est géjà créé sur github avec readme et gitignore nodejs, donc
+    cd /var/www/html/
+    git config --global user.name "Circus-Pygargus"
+    git config --global user.email "richard.meuret@laposte.net"
+    git clone https://github.com/Circus-Pygargus/Ririgram_V2.git ./
+
+on a besoin de npm dans ce dossier, donc 
+    npm init
+je lui donne en réponse :
+    ririgram        pour le nom
+et je fais entrée pour tout le reste.
+et il me crée un chouette fichier package.json
+
+
+installation de mongodb :
+A cette page : https://www.mongodb.com/download-center/community
+on choisit la version MongoDB Community Server
+pas oublier de choisir l'OS, ici Ubuntu 18.04 Linux x64
+on choisit le package TGZ
+et on peut charger
+toujours dans windows, j'extrais le dossier du fichier tgz, le colle dans app et le renomme en mongodb.
+il faut maintenant le déplacer dans le dossier user de la VM :
+    mv /var/www/html/mongodb ~/mongodb
+
+on va faire également un dossier pour stoquer la/les base de données, on se colle dans user encore (où se situe le dossier mongodb, d'ailleurs il s'attend à trouver ce dossier à coté de lui)
+    cd ~
+    mkdir mongobd-data
+
+pour connaître le chemin vers mongodb si on ne le connait pas, il suffit de faire :
+    cd ~
+    pwd
+        |-> /home/vagrant
+
+On va démarrer mongodb en lui expliquant où se trouve le dossier à utiliser pour stocker les données :
+    /home/vagrant/mongodb/bin/mongod --dbpath=/home/vagrant/mongodb-data
+il retourne de nombreuses infos, une ligne en particulier nous intéresse; elle nous donne le port utilisé, 
+chercher dans les dernières lignes, il y en a trois relative au NETWORK, on a besoin de celle-ci :        
+        2020-05-27T00:01:11.730+0000 I  NETWORK  [listener] waiting for connections on port 27017
+on fera donc nos demandes sur le port 27017 ;)
+
+
+on va avoir besoin du driver pour accéder à la base de données selon notre langage, ici nodejs (lol un langage)
+depuis la page : https://www.mongodb.com/
+on cherche doc -> drivers et on choisit NodeJs
+
+
+j'ouvre un deuxième terminal pour pouvoir écrire d'autres commandes
+
+donc on veux pouvoir communiquer avec la bdd et il nous faut un driver pour nodejs, on va utiliser un module (driver) npm : mongodb
+dans /var/www/html :
+    npm install mongodb --save --no-bin-links

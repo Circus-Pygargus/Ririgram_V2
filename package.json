@@ -1,0 +1,22 @@
+{
+  "name": "ririgram",
+  "version": "1.0.0",
+  "description": "A picross like game where grids are randomly created",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Circus-Pygargus/Ririgram_V2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Circus-Pygargus/Ririgram_V2/issues"
+  },
+  "homepage": "https://github.com/Circus-Pygargus/Ririgram_V2#readme",
+  "dependencies": {
+    "mongodb": "^3.6.0"
+  }
+}
