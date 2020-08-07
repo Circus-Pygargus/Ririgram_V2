@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { __esModule } = require('validator/lib/isAlpha');
+// const { __esModule } = require('validator/lib/isAlpha');  //  ?????
 
 
 const userSchema = new mongoose.Schema({
@@ -51,15 +51,16 @@ const userSchema = new mongoose.Schema({
 
 
 // take off the infos we don't want to sendback to user
+// automaticaly called before sending to client =)
 // here I use function(){} instead of ()=>{} because I need to use 'this'
-userSchema.methods.ToJSON = function () {
-    const user = this;
-    const userObject = user.toObject();
+userSchema.methods.toJSON = function () {
+    const user = this
+    const userObject = user.toObject()
 
-    delete userObject.password;
+    delete userObject.password
     delete userObject.tokens
 
-    return userObject;
+    return userObject
 }
 
 
