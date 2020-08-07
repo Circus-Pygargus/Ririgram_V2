@@ -184,6 +184,19 @@ corrections de quelques erreurs
 tests effectués via Postman : ok ça roule
 
 
+création du fichier /src/models/options.js
+création du fichier /app/default_values/colors.js
+
+utilisation de ces 2 fichiers dans routers/user.js avec la mise en place de la route Login User
+
+correction dans models.user.js
+    userSchema.methods.ToJSON
+par 
+    userSchema.methods.toJSON
+
+tests via Postman, lors du login, si pas d'options enregistrées pour cet user -> on envoie les options par défaut --> nickel
+
+
 
 
 
@@ -197,3 +210,5 @@ pour lancer mongodb :
     /home/vagrant/mongodb/bin/mongod --dbpath=/home/vagrant/mongodb-data
 pour lancer l'appli
     node src/index.js
+ou 
+    npm run start
