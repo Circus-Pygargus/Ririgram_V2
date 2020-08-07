@@ -13,7 +13,7 @@ require('./db/mongoose');
 // not created yet
 const userRouter = require('./routers/user');
 // const gridRouter = require('./routers/grid');
-// const optionsRouter = require('./routers/options'):
+const optionsRouter = require('./routers/options');
 
 const app = express();
 
@@ -47,18 +47,18 @@ app.use(express.json());
 
 // home route
 app.get('', (req, res) => {
-    res.send('Ririgram !');
+    res.render('index');
 });
 
 // register our routes in express
 app.use(userRouter);
 // app.use(gridRouter);
-// app.use(optionsRouter);
+app.use(optionsRouter);
 
 
 // 404 Error page, !! this must be the very last route
 app.get('*', (req, res) => {
-    res.render('404', {
+    res.status(404).render('404', {
         title: 'ririgram',
         author: 'Richard Meuret',
         message404: 'Page non trouvée !'
