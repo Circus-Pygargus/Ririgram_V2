@@ -34,6 +34,7 @@ router.post('/users/login', async (req, res) => {
     try {
         // get user and give him a token
         const user = await User.findByCredentials(req.body.email, req.body.password);
+        console.log(user)
         const token = await user.generateAuthToken();
 
         // get user options
@@ -49,5 +50,53 @@ router.post('/users/login', async (req, res) => {
         console.log(e);
     }
 });
+
+
+// User Logout from one device
+router.post('/users/logout', auth, async (req, res) => {
+    try {
+        // Here we keep all token not equal to the req.token
+        req.user.tokens = req.user.tokens.filter((token) => {
+            return token.token !== req.token;
+        });
+
+        await req.user.save();
+
+        res.send();
+
+    } catch (e) {
+        res.status(500).send(e);
+        console.log(e);
+    }
+});
+
+
+// User Logout from all devices
+router.post('/users/logoutall', auth, async (req, res) => {
+    try {
+        req.user.tokens.splice(0, req.user.tokens.length);
+
+        await req.user.save();
+
+        res.send();
+
+    } catch (e) {
+        res.statsu(500).send(e);
+    }
+});
+
+
+// Users List
+router.get('/users/list', async (req, res) => {
+    try {
+        const users = await User.find({});
+
+        res.send(users);
+
+    } catch (e) {
+        res.send(500).send();
+    }
+});
+
 
 module.exports = router;

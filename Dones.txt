@@ -212,3 +212,23 @@ pour lancer l'appli
     node src/index.js
 ou 
     npm run start
+
+
+
+users during dev :
+{
+    "name": "Circus",
+    "email": "fauxmail@pour.test",
+    "password": "1234567"
+}
+
+{
+    "name": "Circus2",
+    "email": "fauxmail2@pour.test",
+    "password": "12345678"
+}
+
+todos :
+_ ajouter : message d'erreur : cet email est déjà enregistré (models/use.js ) déjà fait et pourtant fonctionne pas ...
+_ ajouter retour vérif création new user, qd name existe on a pas le mesage d'erreur perso mais e.code = 11000 et e.keyValue = { name: 'Circus' } je devrais pouvoir utiliser ça
+_ ajouter si login, vérif token car on ne devrait pas avoir accès au form de login une fois loggué -> avertissement pour pratique étrange ? -> ban ip, email  pour un temps -> ban ip, email pour toujours ?
