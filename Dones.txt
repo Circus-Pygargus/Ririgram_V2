@@ -196,6 +196,38 @@ par
 
 tests via Postman, lors du login, si pas d'options enregistrées pour cet user -> on envoie les options par défaut --> nickel
 
+création des routes Logout User et LogoutAll User
+vérif via postamn que les tokens sont bien effacés comme prévu
+
+création du fichier src/routers/options et ajout de la route Options List
+
+modification dans app/src/index.js de la route 404 : ajout de l'envoi du status 404 avec la page
+
+
+ci-dessous annulé:
+ajout de la route /login dans src/index.jsje sais que ça devrait être dans routers/users/ mais je veux juste faire un rendu d'un partial et c'est beacoup plus simple si pas dans un nested router, surtout qu'ici je vais envoyer le formulaire et un lien vers la route /signin
+
+nan je vais plutôt tout envoyer (les deux formulaires) avec src/index.js planquer les formulaires et faire de chouettes transitions avec les clics sur les divs de la nav, du genre :
+
+svg login     Connexion
+    caché / affichage en déroulant (ou autre si mieux ^^) :
+    formulaire de log
+svg signin    Nouveau Joueur
+    caché / affichage en déroulant (ou autre si mieux ^^) :
+    formulaire de création de compte
+svg jouer     Jouer
+    caché / affichage en déroulant (ou autre si mieux ^^) :
+    Attention jeux restrain, juste pour test, sûr ?
+svg help      Aide
+    caché / affichage en déroulant (ou autre si mieux ^^) ou lien vers /help ???
+
+et si le jeu est choisi, on affiche juste un petite roue crantée qui permettra de réafficher la nav bar avant une fin de partie
+
+mise en place d'un fullscreen toggle dans la barre de titre :
+création du template partiel header.hbs
+création du fichier /public/js/fullscreen-toggle.js
+création du fichier /public/scss/header.scss
+
 
 
 
@@ -232,3 +264,5 @@ todos :
 _ ajouter : message d'erreur : cet email est déjà enregistré (models/use.js ) déjà fait et pourtant fonctionne pas ...
 _ ajouter retour vérif création new user, qd name existe on a pas le mesage d'erreur perso mais e.code = 11000 et e.keyValue = { name: 'Circus' } je devrais pouvoir utiliser ça
 _ ajouter si login, vérif token car on ne devrait pas avoir accès au form de login une fois loggué -> avertissement pour pratique étrange ? -> ban ip, email  pour un temps -> ban ip, email pour toujours ?
+_ gràce au token, faire un se souvenir de moi ? 
+    au moins coller une date d'expiration sur les tokens

@@ -11,6 +11,26 @@ const defaultColors = require('../../defalut_values/colors');
 const router = new express.Router();
 
 
+
+
+// User would like to login
+// router.get('/users/login', (req, res) => {
+//     // app.render(`${partialPath}/login`, (err, html) => {
+//     //     if (err) {
+//     //         return res.send({
+//     //             error: 'Une erreur est survenue pendant le rendu de la page de connexion.'
+//     //         });
+//     //     }
+
+//     //     res.send({ html });
+//     // });
+//     res.render(`user`, {
+//         userLoginRequest: true
+//     });
+//     // res.partials('login')
+// });
+
+
 // Create a new user
 router.post('/users', async (req, res) => {
     const user = new User(req.body);

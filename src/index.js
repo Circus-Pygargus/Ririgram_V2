@@ -40,7 +40,12 @@ app.set('views', viewsPath);
 // Tell hbs we're gonna use some partial templates
 hbs.registerPartials(partialPath);
 
-
+/* Setup static directory to serve */
+// with this, we don't need a route for '', il will send directly to public path (so the index.html wich is inside)
+// no need either of routes for '/help' and '/about' as I've created public/about/index.html and public/help/index.html
+// Ici on voit bien que ce ne sera utiliser que par des pages statiques et non dynamiques ;)
+// it will also give access to js and css from views ! mandatory !
+app.use(express.static(publicDirectoryPath)) 
 
 // Tell express to parse json when we receice some (NEEDED for POST requests !)
 app.use(express.json());
@@ -54,6 +59,20 @@ app.get('', (req, res) => {
 app.use(userRouter);
 // app.use(gridRouter);
 app.use(optionsRouter);
+
+/* thoses are here because I need a partial view */
+// app.get('/login', (req, res) => {
+//     app.render(`${partialPath}/login`, { layout: false }, (err, html) => {
+//         if (err) {
+//             return res.send({
+//                 error: 'Une erreur est survenue pendant le rendu du formulaire de login.'
+//             });
+//         }
+
+//         res.send({ html });
+//     });
+// });
+
 
 
 // 404 Error page, !! this must be the very last route

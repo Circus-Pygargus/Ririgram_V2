@@ -1,0 +1,24 @@
+header {
+    margin-top: 7vh;
+
+    div.main-title {
+        display: flex;
+        flex-wrap: nowrap;
+
+        h1 {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        svg.fullscreen-svg {
+            justify-self: right;
+            align-self: center;
+            margin-right: 5vw;
+            font-size: x-large;
+
+            &.d-none {
+                display: none;
+            }
+        }
+    }
+}

@@ -54,14 +54,14 @@ const userSchema = new mongoose.Schema({
 // automaticaly called before sending to client =)
 // here I use function(){} instead of ()=>{} because I need to use 'this'
 userSchema.methods.toJSON = function () {
-    const user = this
-    const userObject = user.toObject()
+    const user = this;
+    const userObject = user.toObject();
 
-    delete userObject.password
-    delete userObject.tokens
+    delete userObject.password;
+    delete userObject.tokens;
 
-    return userObject
-}
+    return userObject;
+};
 
 
 // Generate an authentification token
