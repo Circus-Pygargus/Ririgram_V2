@@ -229,6 +229,11 @@ création du fichier /public/js/fullscreen-toggle.js
 création du fichier /public/scss/header.scss
 
 
+ajout nav bar pour user non loggué :
+création fichier templates/partials/navNotLogged.hbs
+création fichier public/css/user-not-logged.scss
+
+
 
 
 
