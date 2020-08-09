@@ -239,6 +239,10 @@ création fichier public/css/variables.scss
 et mise en forme avec couleurs de la page d'accueil
 
 
+Déplacement du contenu du fichier public/js/nav-not-logged.js ver le nouveau fichier public/js/navbars.js
+Ce scriptest en commun à toutes les navbars et sert uniquement à afficher leur contenus
+
+
 
 
 
@@ -276,3 +280,4 @@ _ ajouter retour vérif création new user, qd name existe on a pas le mesage d'
 _ ajouter si login, vérif token car on ne devrait pas avoir accès au form de login une fois loggué -> avertissement pour pratique étrange ? -> ban ip, email  pour un temps -> ban ip, email pour toujours ?
 _ gràce au token, faire un se souvenir de moi ? 
     au moins coller une date d'expiration sur les tokens
+_ ajouter un rôle dans la bdd User, je vais pas faire un isAdmin, mais plutôt un role='admin' ça permettra de ne pas faire tomber la base de données pour ajout d'un éventuel rôle plus tard ;)
