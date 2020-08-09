@@ -1,8 +1,8 @@
 // This is for nav bars (user logged or not)
 const watchNavButtons = () => {
 
-    const navButtons = document.querySelectorAll('.nav-header');
-    const navContents = document.querySelectorAll('.nav-body');
+    let navButtons = document.querySelectorAll('.nav-header');
+    let navContents = document.querySelectorAll('.nav-body');
 
     for (let i= 0, len = navButtons.length; i < len; i++) {
 
