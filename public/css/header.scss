@@ -19,6 +19,10 @@ header {
             &.d-none {
                 display: none;
             }
+
+            &:active {
+                color: $color-primary;
+            }
         }
     }
 }

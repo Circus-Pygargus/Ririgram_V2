@@ -234,6 +234,11 @@ création fichier templates/partials/navNotLogged.hbs
 création fichier public/css/user-not-logged.scss
 
 
+création fichier public/js/nav-not-logged.js
+création fichier public/css/variables.scss
+et mise en forme avec couleurs de la page d'accueil
+
+
 
 
 

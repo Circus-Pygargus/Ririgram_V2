@@ -31,6 +31,10 @@ header div.main-title svg.fullscreen-svg.d-none {
   display: none;
 }
 
+header div.main-title svg.fullscreen-svg:active {
+  color: #FF8800;
+}
+
 nav.user-not-logged {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -41,7 +45,7 @@ nav.user-not-logged {
           flex-direction: column;
 }
 
-nav.user-not-logged div.nav-group {
+div.nav-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,7 +55,7 @@ nav.user-not-logged div.nav-group {
           flex-direction: column;
 }
 
-nav.user-not-logged div.nav-group div.nav-header {
+div.nav-group div.nav-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -64,25 +68,103 @@ nav.user-not-logged div.nav-group div.nav-header {
   height: 10vh;
   margin-top: 5vh;
   padding: 12px 20%;
-  border: 1px solid white;
+  border: 1px solid #0F101B;
 }
 
-nav.user-not-logged div.nav-group div.nav-header svg {
+div.nav-group div.nav-header svg {
   margin-right: 15vw;
   font-size: x-large;
 }
 
-nav.user-not-logged div.nav-group div.nav-header div.nav-title {
+div.nav-group div.nav-header div.nav-title {
   font-size: larger;
 }
 
-nav.user-not-logged div.nav-group div.nav-header:hover {
+div.nav-group div.nav-header:hover {
+  color: #FF8800;
+}
+
+div.nav-group div.nav-header:active {
+  border-color: #FF8800;
+}
+
+div.nav-group div.nav-header.selected {
   color: #FF8800;
   border-color: #FF8800;
 }
 
-nav.user-not-logged div.nav-group div.nav-body {
+div.nav-group div.nav-body {
+  display: block;
+}
+
+div.nav-group div.nav-body.d-none {
   display: none;
+}
+
+div.nav-body {
+  background-color: #1f2133;
+  padding: 2.5rem 2rem;
+  border: 1px solid #FAFAFA;
+  border-top: none;
+}
+
+div.nav-body form div.form-group {
+  width: 70vw;
+  margin: 0 auto 1.5rem;
+}
+
+div.nav-body form div.form-group:nth-last-child(2) {
+  margin-bottom: 2.5rem;
+}
+
+div.nav-body form div.form-group label.form-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+div.nav-body form div.form-group input.form-input {
+  width: 100%;
+  height: 2.5rem;
+  font-size: 1rem;
+  padding: 0 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #FAFAFA;
+  border-radius: 5px;
+  background-color: #1f2133;
+  color: #FAFAFA;
+}
+
+div.nav-body form div.form-group input.form-input:focus {
+  border-color: #FF8800;
+  outline: none;
+}
+
+div.nav-body form button {
+  width: 50%;
+  height: 3rem;
+  margin: 0 auto;
+  display: block;
+  background-color: #1f2133;
+  color: #FF8800;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 1px solid #FAFAFA;
+  border-radius: 5px;
+}
+
+div.nav-body form button:hover {
+  border-color: #FF8800;
+}
+
+div.nav-body form button:active {
+  background-color: #FF8800;
+  color: #FAFAFA;
+  border-color: #FAFAFA;
+}
+
+div.nav-body form button:focus {
+  outline: none;
 }
 
 * {
@@ -90,5 +172,11 @@ nav.user-not-logged div.nav-group div.nav-body {
           box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  padding: 0 2vw;
+  background-color: #0F101B;
+  color: #FAFAFA;
 }
 /*# sourceMappingURL=style.css.map */

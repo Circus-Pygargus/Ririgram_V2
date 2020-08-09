@@ -1,41 +1,121 @@
 nav.user-not-logged {
     display: flex;
     flex-direction: column;
+}
 
-    div.nav-group {
+div.nav-group {
+    display: flex;
+    flex-direction: column;
+
+    div.nav-header {
         display: flex;
-        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        width: 100%;
+        height: 10vh;
+        // justify-content: space-between;
+        // justify-content: center;
+        margin-top: 5vh;
+        padding: 12px 20%;
+        border: 1px solid $color-dark;
 
-        div.nav-header {
-            display: flex;
-            flex-wrap: nowrap;
-            align-items: center;
-            width: 100%;
-            height: 10vh;
-            // justify-content: space-between;
-            // justify-content: center;
-            margin-top: 5vh;
-            padding: 12px 20%;
-            border: 1px solid white;
+        svg {
+            margin-right: 15vw;
+            font-size: x-large;
+        }
 
-            svg {
-                margin-right: 15vw;
-                font-size: x-large;
+        div.nav-title {
+            // align-self: flex-end;
+            font-size: larger;
+        }
+
+        &:hover {
+            color: $color-primary;
+        }
+
+        &:active {            
+            border-color: $color-primary;
+        }
+
+        &.selected {
+            color: $color-primary;
+            border-color: $color-primary;
+        }
+    }
+
+    div.nav-body {
+        display: block;
+
+        &.d-none {
+            display: none;
+        }
+    }
+}
+
+div.nav-body {
+    background-color: $color-dark-lighted;
+    padding: 2.5rem 2rem;
+    border: 1px solid $color-bright;
+    border-top: none;
+    
+    form {
+
+        div.form-group {
+            width: 70vw;
+            margin: 0 auto 1.5rem;
+
+            &:nth-last-child(2) {
+                margin-bottom: 2.5rem;
             }
 
-            div.nav-title {
-                // align-self: flex-end;
-                font-size: larger;
+            label.form-label {
+                display: block;
+                margin-bottom: 10px;
             }
 
-            &:hover {
-                color: #FF8800;
-                border-color: #FF8800;
+            input.form-input {
+                width: 100%;
+                height: 2.5rem;
+                font-size: 1rem;
+                padding: 0 20px;
+                box-sizing: border-box;
+                border: 1px solid $color-bright;
+                border-radius: 5px;
+                background-color: $color-dark-lighted;
+                color: $color-bright;
+
+                &:focus {
+                    border-color: $color-primary;
+                    outline: none;
+                }
             }
         }
 
-        div.nav-body {
-            display: none;
+        button {
+            width: 50%;
+            height: 3rem;
+            margin: 0 auto;
+            display: block;
+            background-color: $color-dark-lighted;
+            color: $color-primary;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border: 1px solid $color-bright;
+            border-radius: 5px;
+        
+            &:hover {
+                border-color: $color-primary;
+            }
+        
+            &:active {
+                background-color: $color-primary;
+                color: $color-bright;
+                border-color: $color-bright;
+            }
+        
+            &:focus {            
+                outline: none;
+            }
         }
     }
 }
