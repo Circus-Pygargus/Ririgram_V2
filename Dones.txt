@@ -240,7 +240,13 @@ et mise en forme avec couleurs de la page d'accueil
 
 
 Déplacement du contenu du fichier public/js/nav-not-logged.js ver le nouveau fichier public/js/navbars.js
-Ce scriptest en commun à toutes les navbars et sert uniquement à afficher leur contenus
+Ce script est en commun à toutes les navbars et sert uniquement à afficher leur contenus
+
+ajout dans navbars.js, desselection si reclic sur bouton de nav
+
+modif de navbars.js pour en faire une constante appelable à chaque fois que l'on change de navbar
+
+
 
 
 
