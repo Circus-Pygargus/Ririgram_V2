@@ -246,6 +246,8 @@ ajout dans navbars.js, desselection si reclic sur bouton de nav
 
 modif de navbars.js pour en faire une constante appelable à chaque fois que l'on change de navbar
 
+ajout requête post pour /user/login dans public/js/nav-not-logged.js
+
 
 
 
