@@ -5,7 +5,7 @@
         "style.scss",
         "variables.scss",
         "header.scss",
-        "user-not-logged.scss",
+        "navbars.scss",
         "main.scss"
     ],
     "names": [],

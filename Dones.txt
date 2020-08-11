@@ -256,8 +256,7 @@ modif du contenu de navLogged.hbs, de nav-not-logged.js et user-not-logged.scss
 
 modif du style de la div #welcome (accueil nouvel inscrit ou joueur juste après login)
 
-
-à faire : renommer les 2 fichiers nav-not-logged.js et user-not-logged.scss puisque pour les 2 navbars =)
+renommeé le fichier user-not-logged.scss en navbars.scss puisque pour les 2 navbars =)
 
 
 
