@@ -24,6 +24,7 @@ loginForm.addEventListener('submit', (e) => {
     .then((response) => {
         console.log(response.user)
         document.querySelector('#welcome').innerHTML = 'Bienvenue ' + response.user.name;
+        document.querySelector('#welcome').classList.remove('d-none');
         document.querySelector('#nav-div').innerHTML = response.html;
         // webToken = response.token;
         localStorage.setItem('token', JSON.stringify(response.token));

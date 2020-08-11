@@ -9,3 +9,16 @@ body {
     background-color: $color-background;
     color: $color-font;
 }
+
+main {
+    div#welcome {
+        display: block;
+        text-align: center;
+        margin-top: 8vh;
+        font-size: x-large;
+
+        &.d-none {
+            display: none;
+        }
+    }
+}

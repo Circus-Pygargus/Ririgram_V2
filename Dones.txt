@@ -252,7 +252,12 @@ Création du partial navLogged.hbs juste pour test le token
 c'est ok
 
 
-modif du contenu de navLogged.hbs
+modif du contenu de navLogged.hbs, de nav-not-logged.js et user-not-logged.scss
+
+modif du style de la div #welcome (accueil nouvel inscrit ou joueur juste après login)
+
+
+à faire : renommer les 2 fichiers nav-not-logged.js et user-not-logged.scss puisque pour les 2 navbars =)
 
 
 
@@ -295,3 +300,4 @@ _ ajouter si login, vérif token car on ne devrait pas avoir accès au form de l
 _ gràce au token, faire un se souvenir de moi ? 
     au moins coller une date d'expiration sur les tokens
 _ ajouter un rôle dans la bdd User, je vais pas faire un isAdmin, mais plutôt un role='admin' ça permettra de ne pas faire tomber la base de données pour ajout d'un éventuel rôle plus tard ;)
+_ ajouter dans nav-not- logged : mot de passe oublié avec envoi mail de confirmation
