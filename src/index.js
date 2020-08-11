@@ -1,6 +1,8 @@
 /* NodeJS code modules */
 const path = require('path');
+console.log(path)
 
+console.log(path.join(__dirname, '../templates/partials'))
 /* npm modules */
 const express = require('express');
 // hbs module so we can use partial templates
@@ -59,19 +61,6 @@ app.get('', (req, res) => {
 app.use(userRouter);
 // app.use(gridRouter);
 app.use(optionsRouter);
-
-/* thoses are here because I need a partial view */
-// app.get('/login', (req, res) => {
-//     app.render(`${partialPath}/login`, { layout: false }, (err, html) => {
-//         if (err) {
-//             return res.send({
-//                 error: 'Une erreur est survenue pendant le rendu du formulaire de login.'
-//             });
-//         }
-
-//         res.send({ html });
-//     });
-// });
 
 
 
