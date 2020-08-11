@@ -247,6 +247,12 @@ ajout dans navbars.js, desselection si reclic sur bouton de nav
 modif de navbars.js pour en faire une constante appelable à chaque fois que l'on change de navbar
 
 ajout requête post pour /user/login dans public/js/nav-not-logged.js 
+modif routers/user.js pour gestion de partial template
+Création du partial navLogged.hbs juste pour test le token
+c'est ok
+
+
+modif du contenu de navLogged.hbs
 
 
 

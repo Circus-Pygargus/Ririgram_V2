@@ -28,21 +28,22 @@ loginForm.addEventListener('submit', (e) => {
         // webToken = response.token;
         localStorage.setItem('token', JSON.stringify(response.token));
         // tryToUnlog()
-        document.querySelector('#logged-test').addEventListener('click', (e) => {
-            const token = localStorage.getItem('token');
-            fetch('/users/logout', {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${JSON.parse(token)}`
-                }
-            })
-            // .then((response) => {
-            //     return response.json();
-            // })
-            .then((response) => {
-                console.log(response)
-            })
-        });
+        // document.querySelector('#logged-test').addEventListener('click', (e) => {
+        //     const token = localStorage.getItem('token');
+        //     fetch('/users/logout', {
+        //         method: 'POST',
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //             "Authorization": `Bearer ${JSON.parse(token)}`
+        //         }
+        //     })
+        //     // .then((response) => {
+        //     //     return response.json();
+        //     // })
+        //     .then((response) => {
+        //         console.log(response)
+        //     })
+        // });
+        watchNavButtons();
     })
 });

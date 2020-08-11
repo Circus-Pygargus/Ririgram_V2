@@ -1,13 +1,16 @@
-nav.user-not-logged {
+nav.user-not-logged,
+nav.user-logged {
     display: flex;
     flex-direction: column;
 }
 
-div.nav-group {
+div.nav-group,
+div.nav-sub-group {
     display: flex;
     flex-direction: column;
 
-    div.nav-header {
+    div.nav-header,
+    div.nav-sub-header {
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
@@ -15,16 +18,15 @@ div.nav-group {
         height: 10vh;
         // justify-content: space-between;
         // justify-content: center;
-        margin-top: 5vh;
         padding: 12px 20%;
-        border: 1px solid $color-dark;
+        border: 1px solid $color-nav-header;
 
         svg {
-            margin-right: 15vw;
             font-size: x-large;
         }
 
-        div.nav-title {
+        div.nav-title,
+        div.nav-sub-title {
             // align-self: flex-end;
             font-size: larger;
         }
@@ -43,7 +45,29 @@ div.nav-group {
         }
     }
 
-    div.nav-body {
+    
+    div.nav-header {
+        margin-top: 5vh;
+        padding: 12px 17%;
+        background-color: $color-nav-header;
+
+        svg {
+            margin-right: 15vw;
+        }
+    }
+    div.nav-header.sub-header {
+        margin-top: 2.5vh;
+        padding: 12px 20% 12px 27%;
+        background-color: $color-nav-sub-header;
+
+        svg {
+            margin-right: 12vw;
+        }
+    }
+
+
+    div.nav-body,
+    div.nav-sub-body {
         display: block;
 
         &.d-none {
@@ -52,10 +76,18 @@ div.nav-group {
     }
 }
 
-div.nav-body {
-    background-color: $color-dark-lighted;
+div.nav-group {
+    background-color: $color-nav-header;
+}
+div.nav-sub-group {
+    background-color: $color-nav-sub-header;
+}
+
+
+div.nav-body:not(.has-sub-menu),
+div.nav-body.sub-body {
     padding: 2.5rem 2rem;
-    border: 1px solid $color-bright;
+    border: 1px solid $color-font;
     border-top: none;
     
     form {
@@ -79,10 +111,10 @@ div.nav-body {
                 font-size: 1rem;
                 padding: 0 20px;
                 box-sizing: border-box;
-                border: 1px solid $color-bright;
+                border: 1px solid $color-font;
                 border-radius: 5px;
-                background-color: $color-dark-lighted;
-                color: $color-bright;
+                background-color: $color-nav-header;
+                color: $color-font;
 
                 &:focus {
                     border-color: $color-primary;
@@ -96,11 +128,11 @@ div.nav-body {
             height: 3rem;
             margin: 0 auto;
             display: block;
-            background-color: $color-dark-lighted;
+            background-color: $color-nav-header;
             color: $color-primary;
             font-size: 1.5rem;
             font-weight: 700;
-            border: 1px solid $color-bright;
+            border: 1px solid $color-font;
             border-radius: 5px;
         
             &:hover {
@@ -109,8 +141,8 @@ div.nav-body {
         
             &:active {
                 background-color: $color-primary;
-                color: $color-bright;
-                border-color: $color-bright;
+                color: $color-font;
+                border-color: $color-font;
             }
         
             &:focus {            
@@ -118,4 +150,11 @@ div.nav-body {
             }
         }
     }
+}
+
+div.nav-body:not(.has-sub-menu) {
+    background-color: $color-nav-sub-header;
+}
+div.nav-body.sub-body {    
+    background-color: $color-nav-content;
 }
