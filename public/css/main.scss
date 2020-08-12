@@ -21,4 +21,11 @@ main {
             display: none;
         }
     }
+    
+    div#nav-div {
+
+        &.d-none {
+            display: none;
+        }
+    }
 }

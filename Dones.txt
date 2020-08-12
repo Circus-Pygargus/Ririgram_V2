@@ -256,7 +256,10 @@ modif du contenu de navLogged.hbs, de nav-not-logged.js et user-not-logged.scss
 
 modif du style de la div #welcome (accueil nouvel inscrit ou joueur juste après login)
 
-renommeé le fichier user-not-logged.scss en navbars.scss puisque pour les 2 navbars =)
+renommé le fichier user-not-logged.scss en navbars.scss puisque pour les 2 navbars =)
+
+
+ajout vérification de la disponibilité de sessionStorage sur le navigateur via public/js/is-storage-available.js et une petite partie dans public/js/index.js
 
 
 

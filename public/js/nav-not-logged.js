@@ -1,7 +1,14 @@
+// welcome div
+const welcomeDiv = document.querySelector('#welcome');
+// nav container
+const navDiv = document.querySelector('#nav-div');
+
+// Login form
 const loginForm = document.querySelector('#login-form');
 const loginEmailInput = document.querySelector('#log-email');
 const loginPasswordInput = document.querySelector('#log-password');
-let webToken = '';
+
+
 loginForm.addEventListener('submit', (e) => {
 
     event.preventDefault();
@@ -23,11 +30,16 @@ loginForm.addEventListener('submit', (e) => {
     })
     .then((response) => {
         console.log(response.user)
-        document.querySelector('#welcome').innerHTML = 'Bienvenue ' + response.user.name;
-        document.querySelector('#welcome').classList.remove('d-none');
-        document.querySelector('#nav-div').innerHTML = response.html;
-        // webToken = response.token;
+        welcomeDiv.innerHTML = 'Bienvenue ' + response.user.name;
+        welcomeDiv.classList.remove('d-none');
+        navDiv.innerHTML = response.html;
         localStorage.setItem('token', JSON.stringify(response.token));
+        watchNavButtons();
+    })
+});
+
+
+        
         // tryToUnlog()
         // document.querySelector('#logged-test').addEventListener('click', (e) => {
         //     const token = localStorage.getItem('token');
@@ -45,6 +57,3 @@ loginForm.addEventListener('submit', (e) => {
         //         console.log(response)
         //     })
         // });
-        watchNavButtons();
-    })
-});

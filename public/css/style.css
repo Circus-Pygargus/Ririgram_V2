@@ -267,4 +267,8 @@ main div#welcome {
 main div#welcome.d-none {
   display: none;
 }
+
+main div#nav-div.d-none {
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */
