@@ -262,6 +262,9 @@ renommé le fichier user-not-logged.scss en navbars.scss puisque pour les 2 navb
 ajout vérification de la disponibilité de sessionStorage sur le navigateur via public/js/is-storage-available.js et une petite partie dans public/js/index.js
 
 
+Ajout requêtes /users/logout et /users/logoutall dans public/js/nav-logged.js
+
+
 
 
 
@@ -303,3 +306,4 @@ _ gràce au token, faire un se souvenir de moi ?
     au moins coller une date d'expiration sur les tokens
 _ ajouter un rôle dans la bdd User, je vais pas faire un isAdmin, mais plutôt un role='admin' ça permettra de ne pas faire tomber la base de données pour ajout d'un éventuel rôle plus tard ;)
 _ ajouter dans nav-not- logged : mot de passe oublié avec envoi mail de confirmation
+_ ajouter gestion des erreurs form login (et les autres)

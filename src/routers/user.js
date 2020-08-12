@@ -55,7 +55,7 @@ router.post('/users/login', async (req, res) => {
         res.render(`${partialsPath}/navLogged`, (err, html) => {
             if (err) {
                 return res.send({
-                    error: 'Une erreur est survenue pendant le rendu de la liste des lieux possibles.'
+                    error: 'Une erreur est survenue pendant le rendu de la barre de navigation.'
                 })
             }
             
@@ -77,9 +77,17 @@ router.post('/users/logout', auth, async (req, res) => {
             return token.token !== req.token;
         });
 
-        await req.user.save();
+        await req.user.save();        
 
-        res.send();
+        res.render(`${partialsPath}/navNotLogged`, (err, html) => {
+            if (err) {
+                return res.send({
+                    error: 'Une erreur est survenue pendant le rendu de la barre de navigation.'
+                })
+            }
+            
+            res.send({ html });
+        })
 
     } catch (e) {
         res.status(500).send(e);
@@ -93,9 +101,17 @@ router.post('/users/logoutall', auth, async (req, res) => {
     try {
         req.user.tokens.splice(0, req.user.tokens.length);
 
-        await req.user.save();
+        await req.user.save();      
 
-        res.send();
+        res.render(`${partialsPath}/navNotLogged`, (err, html) => {
+            if (err) {
+                return res.send({
+                    error: 'Une erreur est survenue pendant le rendu de la barre de navigation.'
+                })
+            }
+            
+            res.send({ html });
+        })
 
     } catch (e) {
         res.statsu(500).send(e);

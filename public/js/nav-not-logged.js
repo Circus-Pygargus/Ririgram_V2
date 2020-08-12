@@ -9,7 +9,7 @@ const loginEmailInput = document.querySelector('#log-email');
 const loginPasswordInput = document.querySelector('#log-password');
 
 
-loginForm.addEventListener('submit', (e) => {
+loginForm.addEventListener('submit', (event) => {
 
     event.preventDefault();
     
@@ -33,27 +33,10 @@ loginForm.addEventListener('submit', (e) => {
         welcomeDiv.innerHTML = 'Bienvenue ' + response.user.name;
         welcomeDiv.classList.remove('d-none');
         navDiv.innerHTML = response.html;
-        localStorage.setItem('token', JSON.stringify(response.token));
+        sessionStorage.setItem('token', JSON.stringify(response.token));
+        // wait for click on new nav buttons
         watchNavButtons();
+        // wait for a user logged form submit
+        watchNavUserLoggedForms();
     })
 });
-
-
-        
-        // tryToUnlog()
-        // document.querySelector('#logged-test').addEventListener('click', (e) => {
-        //     const token = localStorage.getItem('token');
-        //     fetch('/users/logout', {
-        //         method: 'POST',
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //             "Authorization": `Bearer ${JSON.parse(token)}`
-        //         }
-        //     })
-        //     // .then((response) => {
-        //     //     return response.json();
-        //     // })
-        //     .then((response) => {
-        //         console.log(response)
-        //     })
-        // });
