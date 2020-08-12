@@ -44,4 +44,6 @@ if (!isStorageAvail) {
 else {
     // wait for click on nav buttons
     watchNavButtons();
+    // wait for a user not logged form submit
+    watchNavUserNotLogged();
 }

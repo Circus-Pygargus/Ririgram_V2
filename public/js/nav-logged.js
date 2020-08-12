@@ -1,6 +1,13 @@
 const watchNavUserLoggedForms = () => {
+    // welcome div
+    const welcomeDiv = document.querySelector('#welcome');
+    // nav container
+    const navDiv = document.querySelector('#nav-div');
+
+    // logout form
     const logoutForm = document.querySelector('#user-logout-form');
     const logoutInput = document.querySelector('#logout-all-devices');
+    
     
     // if logoutForm exists, then user is logged, so we're using these event listeners
     if (logoutForm) {
@@ -31,6 +38,10 @@ const watchNavUserLoggedForms = () => {
                         welcomeDiv.classList.remove('d-none');
                         navDiv.innerHTML = response.html;
                         sessionStorage.removeItem('token');
+                        // wait for click on nav buttons
+                        watchNavButtons();
+                        // wait for a user not logged form submit
+                        watchNavUserNotLogged();
                     }
                     // TODO : manque gestion des erreurs !
                 })
@@ -54,6 +65,10 @@ const watchNavUserLoggedForms = () => {
                         welcomeDiv.classList.remove('d-none');
                         navDiv.innerHTML = response.html;
                         sessionStorage.removeItem('token');
+                        // wait for click on nav buttons
+                        watchNavButtons();
+                        // wait for a user not logged form submit
+                        watchNavUserNotLogged();
                     }
                     // TODO : manque gestion des erreurs !
                 })
