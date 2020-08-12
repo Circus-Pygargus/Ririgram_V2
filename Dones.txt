@@ -264,6 +264,9 @@ ajout vérification de la disponibilité de sessionStorage sur le navigateur via
 
 Ajout requêtes /users/logout et /users/logoutall dans public/js/nav-logged.js
 
+Création du fichier /src/utils/compute-grid-solution.js
+Création du fichier /src/utils/compute-helpers.js
+
 
 
 
@@ -307,3 +310,59 @@ _ gràce au token, faire un se souvenir de moi ?
 _ ajouter un rôle dans la bdd User, je vais pas faire un isAdmin, mais plutôt un role='admin' ça permettra de ne pas faire tomber la base de données pour ajout d'un éventuel rôle plus tard ;)
 _ ajouter dans nav-not- logged : mot de passe oublié avec envoi mail de confirmation
 _ ajouter gestion des erreurs form login (et les autres)
+
+
+
+méthode requete grille user logged :
+router(grid, auth, (req, res) => {
+    si auth ok
+    recherche de grille en bdd non jouée par le joueur (ne pas oublier la difficulté)
+    si !grille -> création complète de grille
+        enregistrement grille en bdd
+        envoi de la grille
+    si grille -> envoi de la grille
+})
+
+
+méthode requete grille user not logged :
+router(grid, (req, res) => {
+    création grille complète en 4*4
+    envoi de la grille
+})
+
+
+Grid = {
+    _id,
+    gridSolution,
+    clicksNbsForPerfectGame,
+    rowsHelpers,
+    maxRowsHelpers,
+    colsHelpers,
+    maxRowsHelpers,
+    creator, // ref User
+    bestTimeEasy, // ref UserTimeEasy.besTime
+    bestTimeHard, // ref UserTimeEasy.besTime
+    votes: {
+        nbVote-1, // worst note
+        nbVote-2, // bad
+        nbVote-3, // neutral
+        nbVote-4, // good
+        nbVote-5, // best note
+        nbVotes,
+        average
+    },
+    timeStamps
+}
+
+UserTimeEasy = {
+    _id,
+    bestTime, // can be null
+    lastTime, // can be null
+    userGrid, // un truc genre user._id + grid._id pour ne pas avoir de doublons // nan la suite devrait suffire
+    grid, // ref Grid
+    owner, // ref User
+    vote, // can be null
+    timeStamps
+}
+
+UserTimeHard = { voir ci-dessus }

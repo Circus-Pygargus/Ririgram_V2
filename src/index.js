@@ -1,8 +1,6 @@
 /* NodeJS code modules */
 const path = require('path');
-console.log(path)
 
-console.log(path.join(__dirname, '../templates/partials'))
 /* npm modules */
 const express = require('express');
 // hbs module so we can use partial templates
