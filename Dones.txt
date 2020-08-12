@@ -267,6 +267,9 @@ Ajout requêtes /users/logout et /users/logoutall dans public/js/nav-logged.js
 Création du fichier /src/utils/compute-grid-solution.js
 Création du fichier /src/utils/compute-helpers.js
 
+Création du fichier src/routers/grid.js de la route /grid/test-play
+
+
 
 
 
