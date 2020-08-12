@@ -9,6 +9,13 @@ const buildHelpers = (colsNb, gridSolution) => {
 
 
 
+// will be uesd to have a correct array sorting    
+const compareNbs = (a, b) => {
+    return a - b;
+};
+
+
+
 const buildRowsHelpers = (colsNb, gridSolution) => {
     const rowsHelpers = [];
     rowsHelpers[0] = [];

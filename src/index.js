@@ -12,7 +12,7 @@ require('./db/mongoose');
 // importing routes 
 // not created yet
 const userRouter = require('./routers/user');
-// const gridRouter = require('./routers/grid');
+const gridRouter = require('./routers/grid');
 const optionsRouter = require('./routers/options');
 
 const app = express();
@@ -57,7 +57,7 @@ app.get('', (req, res) => {
 
 // register our routes in express
 app.use(userRouter);
-// app.use(gridRouter);
+app.use(gridRouter);
 app.use(optionsRouter);
 
 
