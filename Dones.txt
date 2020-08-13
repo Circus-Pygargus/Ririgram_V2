@@ -277,6 +277,8 @@ ajout remise en forme de la navbar lors d'un clic sur toggleNavbarBtn
 
 mise en place de la requête /grid/test-game dans public/js/nav-not-logged.js
 
+création du fichier css-variables.js et de la méthode permettant de calculer la taille de la grille en fonction de la taille de l'écran
+
 
 
 
