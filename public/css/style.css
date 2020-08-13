@@ -10,6 +10,23 @@ header div.main-title {
       flex-wrap: nowrap;
 }
 
+header div.main-title svg {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: x-large;
+}
+
+header div.main-title svg#toggle-navbar {
+  -ms-grid-column-align: left;
+      justify-self: left;
+  margin-left: 5vw;
+}
+
+header div.main-title svg#toggle-navbar.hidden {
+  opacity: 0;
+}
+
 header div.main-title h1 {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -20,11 +37,7 @@ header div.main-title h1 {
 header div.main-title svg.fullscreen-svg {
   -ms-grid-column-align: right;
       justify-self: right;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
   margin-right: 5vw;
-  font-size: x-large;
 }
 
 header div.main-title svg.fullscreen-svg.d-none {
@@ -299,6 +312,15 @@ main div#welcome {
 
 main div#welcome.d-none {
   display: none;
+}
+
+main div#nav-div {
+  overflow: auto;
+}
+
+main div#nav-div.hidden {
+  width: 0;
+  height: 0;
 }
 
 main div#nav-div.d-none {

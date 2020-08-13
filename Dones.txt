@@ -269,7 +269,14 @@ Création du fichier /src/utils/compute-helpers.js
 
 Création du fichier src/routers/grid.js de la route /grid/test-play
 
-modif div Jouer dans nav-not-loggeg (class="button" et modif scss)
+modif div Jouer dans nav-not-logged (class="button" et modif scss)
+
+Ajout d'un svg (gear) dans le header qui servira à afficher/cacher la navbar lors d'une partie ou pendant le parcours des grilles
+Création du fichier public/js/toggle-navbar.js
+
+
+
+
 
 
 

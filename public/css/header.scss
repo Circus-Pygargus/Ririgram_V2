@@ -5,6 +5,20 @@ header {
         display: flex;
         flex-wrap: nowrap;
 
+        svg {
+            align-self: center;
+            font-size: x-large;
+        }
+
+        svg#toggle-navbar {
+            justify-self: left;
+            margin-left: 5vw;
+
+            &.hidden {
+                opacity: 0;
+            }
+        }
+
         h1 {
             flex-grow: 1;
             text-align: center;
@@ -12,9 +26,7 @@ header {
 
         svg.fullscreen-svg {
             justify-self: right;
-            align-self: center;
             margin-right: 5vw;
-            font-size: x-large;
 
             &.d-none {
                 display: none;
