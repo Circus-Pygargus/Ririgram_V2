@@ -16,6 +16,9 @@ const watchNavUserNotLogged = () => {
     const registerPassword = document.querySelector('#register-password');
     const registerPasswordBis = document.querySelector('#register-password-bis');
 
+    // test game button
+    const testGameBtn = document.querySelector('#test-game');
+
 
     // loginForm exists so user not logged navbar is displayed
     if (loginForm) {
@@ -53,6 +56,7 @@ const watchNavUserNotLogged = () => {
             })
         });
 
+
         // User tries to register
         registerForm.addEventListener('submit', (event) => {
 
@@ -65,6 +69,28 @@ const watchNavUserNotLogged = () => {
                 "password-bis": registerPasswordBis.value
             }
             // TODO : ajouter verif password === passwordBis
+        });
+
+
+        // User wants to test the game
+        testGameBtn.addEventListener('click', (event) => {
+            fetch('/grid/test-game', {
+                method: 'POST',
+                headers: {
+                    "content-Type": "Application/json"
+                }
+            })
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+                console.log(response);
+                // cleanNavbar() est dans navbars.js
+                cleanNavbar();
+                // toggleNavbarBtn et navContainer proviennent de toggle-navbar.js
+                toggleNavbarBtn.classList.remove('hidden');
+                navContainer.classList.add('hidden');
+            })
         });
     }
 };
