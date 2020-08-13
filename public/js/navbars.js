@@ -57,3 +57,19 @@ const watchNavButtons = () => {
         });
     }
 };
+
+
+// This will reset the navbar as is was when received by browser
+const cleanNavbar = () => {
+    const navHeaders = document.querySelectorAll('.nav-header');
+    const navBodies = document.querySelectorAll('.nav-body');
+
+    navHeaders.forEach((navHeader) => {
+        navHeader.classList.remove('selected');
+    });
+
+    navBodies.forEach((navBody) => {
+        navBody.classList.add('d-none');
+    });
+
+}
