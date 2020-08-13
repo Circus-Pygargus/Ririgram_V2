@@ -99,6 +99,7 @@ const watchNavUserNotLogged = () => {
                 navContainer.classList.add('hidden');
                 // Compute and set some css variables
                 setCssGridSize(rowsNb, colsNb, maxRowHelpers, maxColHelpers);
+                buildGameBoardContent(rowsNb, colsNb, rowsHelpers, colsHelpers);
             })
             .catch((e) => {
                 // coller l'erreur dans une pop-up ?

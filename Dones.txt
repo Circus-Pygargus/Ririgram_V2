@@ -280,6 +280,8 @@ mise en place de la requête /grid/test-game dans public/js/nav-not-logged.js
 création du fichier css-variables.js et de la méthode permettant de calculer la taille de la grille en fonction de la taille de l'écran
 ajout gestion de non status 201 sur cette requête
 
+Création du fichier public/js/gameboard-builder.js
+
 
 
 
