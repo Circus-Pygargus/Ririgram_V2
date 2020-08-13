@@ -4,8 +4,8 @@
 
 const gameboardDiv = document.querySelector('#main-content');
 
+
 const buildGameBoardContent = (rowsNb, colsNb, rowsHelpers, colsHelpers) => {
-    console.log('building gameboard content ...');
 
     // first clean gameboard content
     gameboardDiv.innerHTML = '';

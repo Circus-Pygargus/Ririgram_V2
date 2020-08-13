@@ -97,9 +97,8 @@ const watchNavUserNotLogged = () => {
                 // toggleNavbarBtn et navContainer proviennent de toggle-navbar.js
                 toggleNavbarBtn.classList.remove('hidden');
                 navContainer.classList.add('hidden');
-                // Compute and set some css variables
-                setCssGridSize(rowsNb, colsNb, maxRowHelpers, maxColHelpers);
-                buildGameBoardContent(rowsNb, colsNb, rowsHelpers, colsHelpers);
+                // build the gameboard, launch the game and manage it (false because user is not logged)
+                gameManager(rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, false, gridSolution, clicksNbForPerfectGame);
             })
             .catch((e) => {
                 // coller l'erreur dans une pop-up ?
