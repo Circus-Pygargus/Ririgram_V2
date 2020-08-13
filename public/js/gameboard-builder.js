@@ -2,13 +2,17 @@
  * Build the gameboard
  */
 
-const gameboardDiv = document.querySelector('#main-content');
+const mainContent = document.querySelector('#main-content');
 
 
 const buildGameBoardContent = (rowsNb, colsNb, rowsHelpers, colsHelpers) => {
 
-    // first clean gameboard content
-    gameboardDiv.innerHTML = '';
+    // first clean space for gameboard
+    mainContent.innerHTML = '';
+
+    // build gameboard div
+    const gameboardDiv = document.createElement('div');
+    gameboardDiv.setAttribute('id', 'gameboard');
 
     // let's build a gameboard
     // loop through rows
@@ -72,4 +76,5 @@ const buildGameBoardContent = (rowsNb, colsNb, rowsHelpers, colsHelpers) => {
         }
         gameboardDiv.appendChild(rowDiv);
     }
+    mainContent.appendChild(gameboardDiv);
 };

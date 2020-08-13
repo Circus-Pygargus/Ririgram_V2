@@ -285,6 +285,8 @@ Création du fichier public/js/gameboard-builder.js
 Création du fichier public/js/game-manager.js
 ce dernier servira a fabriquer la grille, recalculer les variables css de taille de grille en cas de changement de la taille de l'écran (redimentionnement sur pc, changement d'orientation sur mobile/tablette), observer l'évolution de la grille pour savoir s'il faut envoyer la grille au serveur ...
 
+Modif dans création html de grille, gameboardDiv maintenant dans mainContent
+
 
 
 
