@@ -150,6 +150,35 @@ div.nav-body.sub-body {
             }
         }
     }
+
+    div.button {
+        width: 50%;
+        height: 3rem;
+        margin: 1.5rem auto 0;
+        display: block;
+        text-align: center;
+        background-color: $color-nav-header;
+        color: $color-primary;
+        line-height: 3rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        border: 1px solid $color-font;
+        border-radius: 5px;
+    
+        &:hover {
+            border-color: $color-primary;
+        }
+    
+        &:active {
+            background-color: $color-primary;
+            color: $color-font;
+            border-color: $color-font;
+        }
+    
+        &:focus {            
+            outline: none;
+        }
+    }
 }
 
 div.nav-body:not(.has-sub-menu) {

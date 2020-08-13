@@ -236,6 +236,39 @@ div.nav-body.sub-body form button:focus {
   outline: none;
 }
 
+div.nav-body:not(.has-sub-menu) div.button,
+div.nav-body.sub-body div.button {
+  width: 50%;
+  height: 3rem;
+  margin: 1.5rem auto 0;
+  display: block;
+  text-align: center;
+  background-color: #0F101B;
+  color: #FF8800;
+  line-height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 1px solid #FAFAFA;
+  border-radius: 5px;
+}
+
+div.nav-body:not(.has-sub-menu) div.button:hover,
+div.nav-body.sub-body div.button:hover {
+  border-color: #FF8800;
+}
+
+div.nav-body:not(.has-sub-menu) div.button:active,
+div.nav-body.sub-body div.button:active {
+  background-color: #FF8800;
+  color: #FAFAFA;
+  border-color: #FAFAFA;
+}
+
+div.nav-body:not(.has-sub-menu) div.button:focus,
+div.nav-body.sub-body div.button:focus {
+  outline: none;
+}
+
 div.nav-body:not(.has-sub-menu) {
   background-color: #1f202b;
 }

@@ -269,6 +269,8 @@ Création du fichier /src/utils/compute-helpers.js
 
 Création du fichier src/routers/grid.js de la route /grid/test-play
 
+modif div Jouer dans nav-not-loggeg (class="button" et modif scss)
+
 
 
 
