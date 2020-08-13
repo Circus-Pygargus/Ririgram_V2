@@ -15,8 +15,7 @@ router.post('/grid/test-game', async (req, res) => {
         const { gridSolution, clicksNbForPerfectGame } = await computeGridSolution(rowsNb * colsNb);
         // Get rows and cols helpers
         const { rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers } = await computeHelpers(colsNb, gridSolution);
-
-        res.send({ gridSolution, clicksNbForPerfectGame, rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers });
+        res.status(201).send({ gridSolution, clicksNbForPerfectGame, rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers });
     }
     catch (e) {
         console.log(e)

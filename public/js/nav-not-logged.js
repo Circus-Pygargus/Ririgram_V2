@@ -19,6 +19,9 @@ const watchNavUserNotLogged = () => {
     // test game button
     const testGameBtn = document.querySelector('#test-game');
 
+    // Main content place (gameboard, grid list ...)
+    const mainContentDiv = document.querySelector('#main-content');
+
 
     // loginForm exists so user not logged navbar is displayed
     if (loginForm) {
@@ -81,15 +84,25 @@ const watchNavUserNotLogged = () => {
                 }
             })
             .then((response) => {
+                if (response.status !== 201) {
+                    console.log(response)
+                    throw new Error('Quelque chose s\'est mal déroulé pendant la création de la grille.');
+                }
                 return response.json();
             })
             .then((response) => {
-                console.log(response);
+                const { gridSolution, clicksNbForPerfectGame, rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers } = response;
                 // cleanNavbar() est dans navbars.js
                 cleanNavbar();
                 // toggleNavbarBtn et navContainer proviennent de toggle-navbar.js
                 toggleNavbarBtn.classList.remove('hidden');
                 navContainer.classList.add('hidden');
+                // Compute and set some css variables
+                setCssGridSize(rowsNb, colsNb, maxRowHelpers, maxColHelpers);
+            })
+            .catch((e) => {
+                // coller l'erreur dans une pop-up ?
+                console.log(e)
             })
         });
     }
