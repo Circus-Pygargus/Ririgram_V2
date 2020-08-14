@@ -19,6 +19,9 @@ const watchNavUserNotLogged = () => {
     // test game button
     const testGameBtn = document.querySelector('#test-game');
 
+    // Title div
+    const titleDiv = document.querySelector('#main-title');
+
     // // Main content place (gameboard, grid list ...)
     // const mainContentDiv = document.querySelector('#main-content');
 
@@ -97,6 +100,8 @@ const watchNavUserNotLogged = () => {
                 // toggleNavbarBtn et navContainer proviennent de toggle-navbar.js
                 toggleNavbarBtn.classList.remove('hidden');
                 navContainer.classList.add('hidden');
+                // move title
+                titleDiv.classList.add('in-game');
                 // build the gameboard, launch the game and manage it (false because user is not logged)
                 gameManager(rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, false, gridSolution, clicksNbForPerfectGame);
             })

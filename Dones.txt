@@ -287,6 +287,9 @@ ce dernier servira a fabriquer la grille, recalculer les variables css de taille
 
 Modif dans création html de grille, gameboardDiv maintenant dans mainContent
 
+Création du fichier public/css/gameboard.scss
+
+
 
 
 

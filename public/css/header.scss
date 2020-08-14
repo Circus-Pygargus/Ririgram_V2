@@ -1,9 +1,9 @@
 header {
-    margin-top: 7vh;
 
-    div.main-title {
+    div#main-title {
         display: flex;
         flex-wrap: nowrap;
+        margin-top: 7vh;
 
         svg {
             align-self: center;
@@ -35,6 +35,10 @@ header {
             &:active {
                 color: $color-primary;
             }
+        }
+
+        &.in-game {
+            margin-bottom: 7vh;
         }
     }
 }
