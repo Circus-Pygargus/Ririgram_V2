@@ -10,8 +10,8 @@ const router = new express.Router();
 router.post('/grid/test-game', async (req, res) => {
     try {
         // Compute a 4 rows 4 columns grid for the user
-        const rowsNb = 4,
-            colsNb = 4;
+        const rowsNb = 11,
+            colsNb = 11;
         const { gridSolution, clicksNbForPerfectGame } = await computeGridSolution(rowsNb * colsNb);
         // Get rows and cols helpers
         const { rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers } = await computeHelpers(colsNb, gridSolution);

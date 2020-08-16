@@ -40,6 +40,10 @@ const buildGameBoardContent = (rowsNb, colsNb, rowsHelpers, colsHelpers) => {
                     tileDiv.dataset.rowid = row -1;
                     tileDiv.dataset.colid = col -1;
                     tileDiv.dataset.solution = "no";
+                    // add a bigger border every 5 tiles verticaly
+                    if (row%5 === 0 && row !== rowsNb) {
+                        tileDiv.style.borderBottomWidth = '3px';
+                    }
                 }
                 // it's a col head tile
                 else {
