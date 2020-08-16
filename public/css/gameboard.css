@@ -5,7 +5,7 @@
   --color-head-font: #dddddd;
   --color-answer-origin: #dddddd;
   --color-answer-yes: #FF8800;
-  --color-answer-maybe-no: #ffcc00;
+  --color-answer-maybe-yes: #ffcc00;
   --color-answer-maybe-no: rgb(119, 121, 153);
   --color-answer-no: #333333;
   --nb-rows: 4;
@@ -178,5 +178,63 @@
 #gameboard .row-div .tile:hover {
   -webkit-box-shadow: inset 0 0 6px 6px white;
           box-shadow: inset 0 0 6px 6px white;
+}
+
+#game-answer-buttons .answer-btn {
+  cursor: pointer;
+  width: 46px;
+  height: 46px;
+  margin: 15px 20px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+#game-answer-buttons .answer-btn.current-choice {
+  -webkit-box-shadow: inset 0 0  5px 5px white;
+          box-shadow: inset 0 0  5px 5px white;
+}
+
+#game-answer-buttons #answer-maybe-no {
+  background-color: var(--color-answer-maybe-no);
+}
+
+#game-answer-buttons #answer-maybe-no::before {
+  content: 'Maybe no';
+  position: relative;
+  top: -25px;
+  left: 10px;
+}
+
+#game-answer-buttons #answer-maybe-yes {
+  background-color: var(--color-answer-maybe-yes);
+}
+
+#game-answer-buttons #answer-maybe-yes::before {
+  content: 'Maybe yes';
+  position: relative;
+  top: -25px;
+  left: 10px;
+}
+
+#game-answer-buttons #answer-no {
+  background-color: var(--color-answer-no);
+}
+
+#game-answer-buttons #answer-no::before {
+  content: 'No';
+  position: relative;
+  top: -25px;
+  left: 10px;
+}
+
+#game-answer-buttons #answer-yes {
+  background-color: var(--color-answer-yes);
+}
+
+#game-answer-buttons #answer-yes::before {
+  content: 'Yes';
+  position: relative;
+  top: -25px;
+  left: 10px;
 }
 /*# sourceMappingURL=gameboard.css.map */
