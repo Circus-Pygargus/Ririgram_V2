@@ -1,17 +1,22 @@
 const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, isUserLogged, gridSolution = '', clicksNbForPerfectGame = 0) => {
 
+    const gameAnswerButtons = document.querySelector('#game-answer-buttons');
+
     // Compute and set some css variables
     setCssGridSize(rowsNb, colsNb, maxRowHelpers, maxColHelpers);
 
     // Build grid html
     buildGameBoardContent(rowsNb, colsNb, rowsHelpers, colsHelpers);
 
-    // watch any window rezising
-    watchWindowSize(rowsNb, colsNb, maxRowHelpers, maxColHelpers);
+    gameAnswerButtons.classList.remove('d-none');
 
     // react when user push a game button
     watchGameButtons();
+
+    // watch any window rezising
+    watchWindowSize(rowsNb, colsNb, maxRowHelpers, maxColHelpers);
 };
+
 
 
 // When screeen size change
@@ -20,6 +25,7 @@ const watchWindowSize = (rowsNb, colsNb, maxRowHelpers, maxColHelpers) => {
         setCssGridSize(rowsNb, colsNb, maxRowHelpers, maxColHelpers);
     });
 };
+
 
 
 // User is playing
@@ -40,4 +46,3 @@ const watchGameButtons = () => {
         });
     });    
 };
-

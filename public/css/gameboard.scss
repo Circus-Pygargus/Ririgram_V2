@@ -161,6 +161,10 @@
 
 #game-answer-buttons {
 
+    &.d-none {
+        display: none;
+    }
+
     .answer-btn {
         cursor: pointer;
         width: 46px;

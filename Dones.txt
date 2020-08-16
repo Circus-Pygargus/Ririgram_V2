@@ -291,6 +291,8 @@ Création du fichier public/css/gameboard.scss
 
 Ajout des boutons de choix de réponse dans index.hbs et mise en place de leur réaction au clic
 
+Cache ces boutons si pas en partie.
+
 
 
 

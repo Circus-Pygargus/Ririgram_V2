@@ -180,6 +180,10 @@
           box-shadow: inset 0 0 6px 6px white;
 }
 
+#game-answer-buttons.d-none {
+  display: none;
+}
+
 #game-answer-buttons .answer-btn {
   cursor: pointer;
   width: 46px;
