@@ -447,24 +447,19 @@ div.nav-body.sub-body {
   border-right-width: 3px;
 }
 
-#gameboard .row-div .tile:nth-last-child(1) {
-  border-right-width: 1px;
-  border-right-color: var(--color-head-font);
-}
-
-#gameboard .row-div .tile[data-answer="yes"] {
+#gameboard .row-div .tile[data-solution="yes"] {
   background-color: var(--color-answer-yes);
 }
 
-#gameboard .row-div .tile[data-answer="maybe-yes"] {
+#gameboard .row-div .tile[data-solution="maybe-yes"] {
   background-color: var(--color-answer-maybe-yes);
 }
 
-#gameboard .row-div .tile[data-answer="maybe-no"] {
+#gameboard .row-div .tile[data-solution="maybe-no"] {
   background-color: var(--color-answer-maybe-no);
 }
 
-#gameboard .row-div .tile[data-answer="no"] {
+#gameboard .row-div .tile[data-solution="no"] {
   background-color: var(--color-answer-no);
 }
 

@@ -136,20 +136,20 @@
             &:nth-child(5n+1) {
                 border-right-width: 3px;
             }
-            &:nth-last-child(1) {
-                border-right-width: 1px;
-                border-right-color: headColor(font);
-            }
-            &[data-answer="yes"] {
+            // &:nth-last-child(1) {
+            //     border-right-width: 1px;
+            //     border-right-color: headColor(font);
+            // }
+            &[data-solution="yes"] {
                 background-color: answerColor(yes);
             }
-            &[data-answer="maybe-yes"] {
+            &[data-solution="maybe-yes"] {
                 background-color: answerColor(maybe-yes);
             }
-            &[data-answer="maybe-no"] {
+            &[data-solution="maybe-no"] {
                 background-color: answerColor(maybe-no);
             }
-            &[data-answer="no"] {
+            &[data-solution="no"] {
                 background-color: answerColor(no);
             }
             &:hover {

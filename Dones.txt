@@ -295,6 +295,8 @@ Cache ces boutons si pas en partie.
 
 Ajouté: bordure plus groose toutes les 5 cases de la grille verticalement.
 
+Ajout réaction au clic de case de la grille.
+
 
 
 
