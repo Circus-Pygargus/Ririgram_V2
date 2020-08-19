@@ -567,8 +567,9 @@ div.nav-body.sub-body {
 }
 
 #victory button {
+  width: 16rem;
   margin: 1.5rem auto 0;
-  padding: 12px 24px;
+  padding: 12px 0;
   display: block;
   text-align: center;
   background-color: #0F101B;
@@ -592,6 +593,10 @@ div.nav-body.sub-body {
 
 #victory button:focus {
   outline: none;
+}
+
+#victory button.d-none {
+  display: none;
 }
 
 * {
@@ -642,6 +647,10 @@ main div#nav-div.hidden {
 }
 
 main div#nav-div.d-none {
+  display: none;
+}
+
+main div#main-content.d-none {
   display: none;
 }
 /*# sourceMappingURL=style.css.map */

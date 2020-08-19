@@ -302,6 +302,10 @@ Retiré : affichage du context menu si clic droit, sélection de texte via clic 
 
 retiré : scroll de page si clic sur bouton du milieu de la souris
 
+Ajout gestion victoire si test-game
+
+gestion des bouton de fermeture et de nouvelle grille de victoryDiv
+
 
 
 

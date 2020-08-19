@@ -44,4 +44,11 @@ main {
             display: none;
         }
     }
+
+    div#main-content {
+
+        &.d-none {
+            display: none;
+        }
+    }
 }

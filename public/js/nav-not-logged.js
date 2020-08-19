@@ -19,8 +19,8 @@ const watchNavUserNotLogged = () => {
     // test game button
     const testGameBtn = document.querySelector('#test-game');
 
-    // Title div
-    const titleDiv = document.querySelector('#main-title');
+    // // Title div
+    // const titleDiv = document.querySelector('#main-title');
 
     // // Main content place (gameboard, grid list ...)
     // const mainContentDiv = document.querySelector('#main-content');
@@ -80,35 +80,43 @@ const watchNavUserNotLogged = () => {
 
         // User wants to test the game
         testGameBtn.addEventListener('click', (event) => {
-            fetch('/grid/test-game', {
-                method: 'POST',
-                headers: {
-                    "content-Type": "Application/json"
-                }
-            })
-            .then((response) => {
-                if (response.status !== 201) {
-                    console.log(response)
-                    throw new Error('Quelque chose s\'est mal déroulé pendant la création de la grille.');
-                }
-                return response.json();
-            })
-            .then((response) => {
-                const { gridSolution, clicksNbForPerfectGame, rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers } = response;
-                // cleanNavbar() est dans navbars.js
-                cleanNavbar();
-                // toggleNavbarBtn et navContainer proviennent de toggle-navbar.js
-                toggleNavbarBtn.classList.remove('hidden');
-                navContainer.classList.add('hidden');
-                // move title
-                titleDiv.classList.add('in-game');
-                // build the gameboard, launch the game and manage it (false because user is not logged)
-                gameManager(rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, false, gridSolution, clicksNbForPerfectGame);
-            })
-            .catch((e) => {
-                // coller l'erreur dans une pop-up ?
-                console.log(e)
-            })
+            testGame();
         });
     }
 };
+
+
+
+const testGame = () => {
+    
+    fetch('/grid/test-game', {
+        method: 'POST',
+        headers: {
+            "content-Type": "Application/json"
+        }
+    })
+    .then((response) => {
+        if (response.status !== 201) {
+            console.log(response)
+            throw new Error('Quelque chose s\'est mal déroulé pendant la création de la grille.');
+        }
+        return response.json();
+    })
+    .then((response) => {
+        const { gridSolution, clicksNbForPerfectGame, rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers } = response;
+        // cleanNavbar() est dans navbars.js
+        cleanNavbar();
+        // toggleNavbarBtn et navContainer proviennent de toggle-navbar.js
+        toggleNavbarBtn.classList.remove('hidden');
+        navContainer.classList.add('hidden');
+        // move title
+        // titleDiv.classList.add('in-game');
+        document.querySelector('#main-title').classList.add('in-game');
+        // build the gameboard, launch the game and manage it (false because user is not logged)
+        gameManager(rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, false, gridSolution, clicksNbForPerfectGame);
+    })
+    .catch((e) => {
+        // coller l'erreur dans une pop-up ?
+        console.log(e)
+    })
+}

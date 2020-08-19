@@ -33,9 +33,10 @@
         }
     }
 
-    button {        
+    button {
+        width: 16rem;
         margin: 1.5rem auto 0;
-        padding: 12px 24px;
+        padding: 12px 0;
         display: block;
         text-align: center;
         background-color: $color-nav-header;
@@ -58,6 +59,10 @@
     
         &:focus {            
             outline: none;
+        }
+
+        &.d-none {
+            display: none;
         }
     }
 }

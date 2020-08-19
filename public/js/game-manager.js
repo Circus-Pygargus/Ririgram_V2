@@ -1,6 +1,9 @@
+
+const gameAnswerButtons = document.querySelector('#game-answer-buttons');
+
+
 const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, isUserLogged, gridSolution = '', clicksNbForPerfectGame = 0) => {
 
-    const gameAnswerButtons = document.querySelector('#game-answer-buttons');
 
 
     // answer given by the mouse left button
@@ -161,6 +164,9 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
 
     // Build grid html
     buildGameBoardContent(rowsNb, colsNb, rowsHelpers, colsHelpers);
+
+    // maybe user asked to play another grid from victory div
+    document.querySelector('#victory').classList.add('d-none');
 
     // get all tiles
     const tiles = document.querySelectorAll('.tile');
