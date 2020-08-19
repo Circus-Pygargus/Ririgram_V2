@@ -60,6 +60,11 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
                     tileClicked(event);
                 }
             });
+
+            // Ceci empèchera le défilement de la fenêtre sur les écrans tactiles si le doigt de l'utilisateur glisse sur les cases de la grille
+            tile.addEventListener('touchmove', (event) => {
+                event.preventDefault();
+            });
         });
     
         window.addEventListener('mouseup', () => {

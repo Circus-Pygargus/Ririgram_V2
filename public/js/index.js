@@ -47,3 +47,13 @@ else {
     // wait for a user not logged form submit
     watchNavUserNotLogged();
 }
+
+
+/* About mouse buttons */
+
+// Disable right click context menu
+document.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+});
+
+// Text selection is disabled in main.scss

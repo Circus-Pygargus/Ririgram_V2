@@ -293,9 +293,12 @@ Ajout des boutons de choix de réponse dans index.hbs et mise en place de leur r
 
 Cache ces boutons si pas en partie.
 
-Ajouté: bordure plus groose toutes les 5 cases de la grille verticalement.
+Ajouté: bordure plus grosexit
+se toutes les 5 cases de la grille verticalement.
 
 Ajout réaction au clic de case de la grille.
+
+Retiré : affichage du context menu si clic droit, sélection de texte via clic gauche déplacé et mouvement d'écran si touchmove (écrans tactiles)
 
 
 

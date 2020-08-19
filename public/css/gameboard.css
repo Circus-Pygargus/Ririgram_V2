@@ -154,11 +154,6 @@
   border-right-width: 3px;
 }
 
-#gameboard .row-div .tile:nth-last-child(1) {
-  border-right-width: 1px;
-  border-right-color: var(--color-head-font);
-}
-
 #gameboard .row-div .tile[data-solution="yes"] {
   background-color: var(--color-answer-yes);
 }

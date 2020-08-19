@@ -4,6 +4,16 @@
     padding: 0;
 }
 
+html {
+    /* Disable text select =)  */
+    // user-select: none;
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer */
+     -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+    -webkit-user-select: none; /* Chrome, Safari, and Opera */
+    -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+}
+
 body {
     padding: 0 2vw;
     background-color: $color-background;
