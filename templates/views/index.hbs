@@ -42,16 +42,32 @@
             <div id="answer-yes" class="answer-btn current-choice" data-response="yes"></div>
         </div>
 
+        {{!-- Victory message --}}
+        <div id="victory" class="d-none">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+                <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+            </svg>
+            <h2>Victoire !</h2>
+            <p>Félicitations ! Tu as fini cette grille en <span id="clicks-nb-done"></span>.</p>
+            <p id="special-congrats" class="d-none">Et c'est un sans faute !!!</p>
+            <p id="too-many-clicks" class='d-none'>Elle est réalisable en <span id="clicks-nb-min"></span>.</p>
+            <p id="you-should-register" class="d-none">Ce jeu te plait ? Tu devrais t'enregistrer pour profiter de toutes les fonctionnalités !</p>
+            <button id="play-another-test-game">Nouvelle partie</button>
+        </div>
+
     </main>
 
     <script src="/js/css-variables.js"></script>
     <script src="/js/gameboard-builder.js"></script>
-    <script src="/js/game-manager.js"></script>
     <script src="/js/fullscreen-toggle.js"></script>
     <script src="/js/toggle-navbar.js"></script>
     <script src="/js/navbars.js"></script>
     <script src="/js/nav-not-logged.js"></script>
     <script src="/js/nav-logged.js"></script>
+    <script src="/js/victory.js"></script>
+    <script src="/js/game-manager.js"></script>
     <script src="/js/is-storage-available.js"></script>
     <script src="/js/index.js"></script>
 </body>

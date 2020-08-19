@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,CAAC;EACL,QAAQ,EAAE,QAAQ;EAClB,OAAO,EAAE,CAAC;EACV,GAAG,EAAE,CAAC;EACN,KAAK,EAAE,CAAC;EACR,MAAM,EAAE,CAAC;EACT,IAAI,EAAE,CAAC;EACP,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,MAAM;EAClB,SAAS,EAAE,MAAM;CAapB;;AAtBD,AAWI,QAXI,AAWH,OAAO,CAAC;EACL,OAAO,EAAE,IAAI;CAChB",
+    "sources": [
+        "victory.scss"
+    ],
+    "names": [],
+    "file": "victory.css"
+}

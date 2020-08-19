@@ -2,6 +2,7 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
 
     const gameAnswerButtons = document.querySelector('#game-answer-buttons');
 
+
     // answer given by the mouse left button
     let leftBtnCurChoice = 'yes';
 
@@ -41,7 +42,7 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
     
     // When user plays directly on the grid
     const watchGridActions = () => {
-        const tiles = document.querySelectorAll('.tile');
+        // const tiles = document.querySelectorAll('.tile');
         let isClicking = false;
     
         tiles.forEach((tile) => {
@@ -115,6 +116,41 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
 
             tile.dataset.solution = currentChoice;
         }
+
+        // Check if user found grid solution (only if user is not logged)
+        if (!isUserLogged) {
+            checkcompleteGrid();
+        }
+    };
+
+
+    // check if user found grid solution (only is user is not logged)
+    const checkcompleteGrid = () => {
+        let userSolution = '';
+
+        tiles.forEach((tile) => {
+            switch (tile.dataset.solution) {
+                case 'no':
+                    userSolution += '0';
+                    break;
+                case 'maybe-no':
+                    userSolution += '0';
+                    break;
+                case 'maybe-yes':
+                    userSolution += '1';
+                    break;
+                case 'yes':
+                    userSolution += '1';
+                    break;
+                // tile solution is 'default' ( tile never clicked or default value given by user)
+                default:
+                    userSolution += '0';
+            }
+        });
+
+        if (userSolution === gridSolution) {
+            victory(isUserLogged, tilesCliksNb, clicksNbForPerfectGame);
+        }
     };
 
 
@@ -125,6 +161,9 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
 
     // Build grid html
     buildGameBoardContent(rowsNb, colsNb, rowsHelpers, colsHelpers);
+
+    // get all tiles
+    const tiles = document.querySelectorAll('.tile');
 
     gameAnswerButtons.classList.remove('d-none');
 
