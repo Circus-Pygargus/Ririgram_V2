@@ -21,8 +21,6 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
     const watchGameButtons = () => {
         const answerBtns = document.querySelectorAll('.answer-btn');
     
-        console.log(answerBtns)
-    
         answerBtns.forEach((answerBtn) => {
     
             answerBtn.addEventListener('click', (event) => {
@@ -88,6 +86,8 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
                 break;
             // mouse middle button
             case 2:
+                // remove default page scroll on mouse middle btn
+                event.preventDefault();
                 currentChoice = 'maybe-yes';
                 break;
             // should be mouse left button
@@ -97,10 +97,10 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
 
         // user wants to remove current choice
         if (tile.dataset.solution === currentChoice) {
-            if (isClicking) {
+            // if (isClicking) {
                 tile.dataset.solution = 'default';
                 tilesCliksNb++;
-            }
+            // }
         }
         // user wants to change tile solution
         else {
