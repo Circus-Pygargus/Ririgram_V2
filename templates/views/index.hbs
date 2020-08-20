@@ -35,6 +35,24 @@
         <div id="main-content"></div>
 
         {{!-- Game buttons --}}
+        <div id="game-cross" class="d-none">
+            <svg id="game-cross-top" class="game-cross-btn" height="74px" width="50px">
+                <polygon points="0,0 50,0 50,49 25,74 0,49" style=" stroke: grey; stroke-width: 1"/>
+                <polyline points="15 35, 25 20, 35 35" stroke-width="3px" stroke="white"/>
+            </svg>
+            <svg id="game-cross-right" class="game-cross-btn" height="50px" width="74px">
+                <polygon points="74,0 74,50 25,50 0,25 25,0" style=" stroke: grey; stroke-width: 1"/>
+                <polyline points="39 15, 54 25, 39 35" stroke-width="3px" stroke="white"/>
+            </svg>
+            <svg id="game-cross-bottom" class="game-cross-btn" height="74px" width="50px">
+                <polygon points="0,74 0,25 25,0 50,25 50,74" style=" stroke: grey; stroke-width: 1"/>
+                <polyline points="15 39, 25 54, 35 39" stroke-width="3px" stroke="white"/>
+            </svg>
+            <svg id="game-cross-left" class="game-cross-btn" height="50px" width="74px">
+                <polygon points="0 0, 49 0, 74 25, 49 50, 0 50" style=" stroke: grey; stroke-width: 1"/>
+                <polyline points="35 15, 20 25, 35 35" stroke-width="3px" stroke="white"/>
+            </svg>
+        </div>
         <div id="game-answer-buttons" class="d-none">
             <div id="answer-maybe-no" class="answer-btn" data-response="maybe-no"></div>
             <div id="answer-maybe-yes" class="answer-btn" data-response="maybe-yes"></div>

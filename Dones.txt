@@ -308,6 +308,8 @@ gestion des bouton de fermeture et de nouvelle grille de victoryDiv
 
 ajout éclairage des headers de la grille au survol de case par la souris, dans public/js/gamemanager.js
 
+création de la croix de navigation pour la grille
+
 
 
 

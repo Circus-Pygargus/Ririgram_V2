@@ -468,6 +468,45 @@ div.nav-body.sub-body {
           box-shadow: inset 0 0 6px 6px white;
 }
 
+#game-cross {
+  width: 150px;
+  height: 150px;
+  position: relative;
+}
+
+#game-cross.d-none {
+  display: none;
+}
+
+#game-cross .game-cross-btn {
+  position: absolute;
+  fill: #FF8800;
+}
+
+#game-cross .game-cross-btn:hover {
+  fill: var(--color-answer-maybe-yes);
+}
+
+#game-cross #game-cross-top {
+  left: 50px;
+  top: 0;
+}
+
+#game-cross #game-cross-right {
+  left: 76px;
+  top: 50px;
+}
+
+#game-cross #game-cross-bottom {
+  left: 50px;
+  top: 76px;
+}
+
+#game-cross #game-cross-left {
+  left: 0;
+  top: 50px;
+}
+
 #game-answer-buttons.d-none {
   display: none;
 }

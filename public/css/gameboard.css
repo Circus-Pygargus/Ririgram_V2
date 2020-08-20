@@ -175,6 +175,41 @@
           box-shadow: inset 0 0 6px 6px white;
 }
 
+#game-cross {
+  width: 150px;
+  height: 150px;
+  background-color: antiquewhite;
+  position: relative;
+}
+
+#game-cross.d-none {
+  display: none;
+}
+
+#game-cross #game-cross-top {
+  position: absolute;
+  left: 50px;
+  top: 0;
+}
+
+#game-cross #game-cross-right {
+  position: absolute;
+  left: 76px;
+  top: 50px;
+}
+
+#game-cross #game-cross-bottom {
+  position: absolute;
+  left: 50px;
+  top: 76px;
+}
+
+#game-cross #game-cross-left {
+  position: absolute;
+  left: 0;
+  top: 50px;
+}
+
 #game-answer-buttons.d-none {
   display: none;
 }

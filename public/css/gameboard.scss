@@ -159,6 +159,47 @@
     }
 }
 
+#game-cross {  
+    width: 150px;
+    height: 150px;
+    // background-color: antiquewhite;
+    position: relative;
+
+    &.d-none {
+        display: none;
+    }
+
+    .game-cross-btn {
+        position: absolute;
+        fill: $color-primary;
+
+        &:hover {
+            fill: var(--color-answer-maybe-yes);
+        }
+    }
+
+    #game-cross-top {    
+        left: 50px;
+        top: 0;
+    }
+
+    #game-cross-right {    
+        left: 76px;
+        top: 50px;
+    }
+
+    #game-cross-bottom {    
+        left: 50px;
+        top: 76px;
+    }
+
+    #game-cross-left {    
+        left: 0;
+        top: 50px;
+    }
+
+}
+
 #game-answer-buttons {
 
     &.d-none {
