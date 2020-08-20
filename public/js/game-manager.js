@@ -4,14 +4,11 @@ const gameAnswerButtons = document.querySelector('#game-answer-buttons');
 
 const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, isUserLogged, gridSolution = '', clicksNbForPerfectGame = 0) => {
 
-
-
     // answer given by the mouse left button
     let leftBtnCurChoice = 'yes';
 
     // User Number of clicks on tiles
-    let tilesCliksNb = 0;
-    
+    let tilesCliksNb = 0;    
     
     // When screeen size change
     const watchWindowSize = (rowsNb, colsNb, maxRowHelpers, maxColHelpers) => {
@@ -49,6 +46,32 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
         let isClicking = false;
     
         tiles.forEach((tile) => {
+
+            tile.addEventListener('mouseover', (event) => {
+                // clean previously enlighted headers
+                colHeaders.forEach((colHeader) => {
+                    colHeader.classList.remove('enlighted');
+                });
+                rowHeaders.forEach((rowHeader) => {
+                    rowHeader.classList.remove('enlighted');
+                });
+
+                // get tile rowId an colId
+                const colId = event.target.dataset.colid;
+                const rowId = event.target.dataset.rowid;
+
+                // Enlight corresponding headers
+                colHeaders.forEach((colHeader) => {
+                    if (colHeader.dataset.colid === colId) {
+                        colHeader.classList.add('enlighted');
+                    }
+                });
+                rowHeaders.forEach((rowHeader) => {
+                    if (rowHeader.dataset.rowid === rowId) {
+                        rowHeader.classList.add('enlighted');
+                    } 
+                });
+            });
     
             tile.addEventListener('mousedown', (event) => {
                 // We need to know which button is used
@@ -170,6 +193,9 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
 
     // get all tiles
     const tiles = document.querySelectorAll('.tile');
+    // get grid headers
+    const colHeaders = document.querySelectorAll('.col-head-div');
+    const rowHeaders = document.querySelectorAll('.row-head-div');
 
     gameAnswerButtons.classList.remove('d-none');
 
