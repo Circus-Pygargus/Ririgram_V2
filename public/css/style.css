@@ -469,6 +469,7 @@ div.nav-body.sub-body {
 }
 
 #game-cross {
+  display: inline-block;
   width: 150px;
   height: 150px;
   position: relative;
@@ -507,66 +508,76 @@ div.nav-body.sub-body {
   top: 50px;
 }
 
+#game-answer-buttons {
+  float: right;
+}
+
 #game-answer-buttons.d-none {
   display: none;
 }
 
-#game-answer-buttons .answer-btn {
+#game-answer-buttons .answer-btns-line {
+  margin-top: 12px;
+}
+
+#game-answer-buttons .answer-btns-line .answer-btn {
+  display: inline-block;
   cursor: pointer;
   width: 46px;
   height: 46px;
-  margin: 15px 20px;
+  margin-right: 12px;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
-#game-answer-buttons .answer-btn.current-choice {
+#game-answer-buttons .answer-btns-line .answer-btn.current-choice {
   -webkit-box-shadow: inset 0 0  5px 5px white;
           box-shadow: inset 0 0  5px 5px white;
 }
 
-#game-answer-buttons #answer-maybe-no {
+#game-answer-buttons .answer-btns-line .answer-btn::before {
+  position: relative;
+  font-size: 10px;
+}
+
+#game-answer-buttons .answer-btns-line #answer-maybe-no {
   background-color: var(--color-answer-maybe-no);
 }
 
-#game-answer-buttons #answer-maybe-no::before {
+#game-answer-buttons .answer-btns-line #answer-maybe-no::before {
   content: 'Maybe no';
-  position: relative;
-  top: -25px;
-  left: 10px;
+  top: -17px;
+  left: 3px;
 }
 
-#game-answer-buttons #answer-maybe-yes {
+#game-answer-buttons .answer-btns-line #answer-maybe-yes {
   background-color: var(--color-answer-maybe-yes);
 }
 
-#game-answer-buttons #answer-maybe-yes::before {
+#game-answer-buttons .answer-btns-line #answer-maybe-yes::before {
   content: 'Maybe yes';
-  position: relative;
-  top: -25px;
-  left: 10px;
+  top: -17px;
+  left: 3px;
 }
 
-#game-answer-buttons #answer-no {
+#game-answer-buttons .answer-btns-line #answer-no {
   background-color: var(--color-answer-no);
 }
 
-#game-answer-buttons #answer-no::before {
+#game-answer-buttons .answer-btns-line #answer-no::before {
   content: 'No';
-  position: relative;
-  top: -25px;
-  left: 10px;
+  top: -17px;
+  left: 17px;
 }
 
-#game-answer-buttons #answer-yes {
+#game-answer-buttons .answer-btns-line #answer-yes {
   background-color: var(--color-answer-yes);
 }
 
-#game-answer-buttons #answer-yes::before {
+#game-answer-buttons .answer-btns-line #answer-yes::before {
   content: 'Yes';
-  position: relative;
-  top: -25px;
-  left: 10px;
+  top: -17px;
+  left: 17px;
 }
 
 #victory {

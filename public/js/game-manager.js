@@ -1,4 +1,4 @@
-
+const gameCrossButton = document.querySelector('#game-cross');
 const gameAnswerButtons = document.querySelector('#game-answer-buttons');
 
 
@@ -197,6 +197,7 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
     const colHeaders = document.querySelectorAll('.col-head-div');
     const rowHeaders = document.querySelectorAll('.row-head-div');
 
+    gameCrossButton.classList.remove('d-none');
     gameAnswerButtons.classList.remove('d-none');
 
     // react when user push a game button
