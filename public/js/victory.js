@@ -49,6 +49,7 @@ const watchVictoryBtns = (isUserLogged) => {
 victoryCloseBtn.addEventListener('click', (event) => {
     
     mainContent.innerHTML = '';
+    gameCrossButton.classList.add('d-none');
     gameAnswerButtons.classList.add('d-none');
     navContainer.classList.remove('hidden');
     victoryDiv.classList.add('d-none');

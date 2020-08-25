@@ -316,6 +316,8 @@ retiré le bug qui enlevait la couleur d'une tuile lors d'une sélection multipl
 
 ajout déselection multiple sans modif des autres choix que celui en cours
 
+cache la croix pour la grille si clic sur bouton fermer de Victory
+
 
 
 
