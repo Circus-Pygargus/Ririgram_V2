@@ -479,6 +479,10 @@ div.nav-body.sub-body {
   display: none;
 }
 
+#game-cross.not-in-use .game-cross-btn {
+  fill: #323232;
+}
+
 #game-cross .game-cross-btn {
   position: absolute;
   fill: #FF8800;

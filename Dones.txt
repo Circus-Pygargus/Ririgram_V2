@@ -319,6 +319,28 @@ ajout déselection multiple sans modif des autres choix que celui en cours
 cache la croix pour la grille si clic sur bouton fermer de Victory
 
 
+en train de faire : ajout gestion de isUsingCross (game manager)
+
+
+a faire : 
+    _ retirer l'incrémetation du nbr de clic si isRemovingChoice
+    _ modif les svgs de cross pour n'en faire qu'un, permettant ainsi de le schrink si not-in-use
+    _ dans  
+         tiles.forEach((tile) => {
+
+            tile.addEventListener('mouseover', (event) => {
+                console.log(isUsingCross)
+                if (isUsingCross) return;
+                // clean previously enlighted headers
+                colHeaders.forEach((colHeader) => {
+                    colHeader.classList.remove('enlighted');
+                });
+                rowHeaders.forEach((rowHeader) => {
+                    rowHeader.classList.remove('enlighted');
+                });
+        ->  faire un clean des highlighted avant le if isUsingCross ?
+
+
 
 
 

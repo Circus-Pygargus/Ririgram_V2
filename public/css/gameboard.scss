@@ -170,6 +170,10 @@
         display: none;
     }
 
+    &.not-in-use .game-cross-btn {
+        fill: rgb(50, 50, 50);
+    }
+
     .game-cross-btn {
         position: absolute;
         fill: $color-primary;

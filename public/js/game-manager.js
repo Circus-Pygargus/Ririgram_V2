@@ -8,7 +8,13 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
     let leftBtnCurChoice = 'yes';
 
     // User Number of clicks on tiles
-    let tilesCliksNb = 0;    
+    let tilesCliksNb = 0;
+    
+    // user is using the cross while playing
+    let isUsingCross = false;
+    
+    // user is removing his choice color on several tiles
+    let isRemovingChoice = false;
     
     // When screeen size change
     const watchWindowSize = (rowsNb, colsNb, maxRowHelpers, maxColHelpers) => {
@@ -18,24 +24,48 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
     };
 
     
-    // User is playing
+    // User is playing without the cross
     const watchGameButtons = () => {
         const answerBtns = document.querySelectorAll('.answer-btn');
-    
-        answerBtns.forEach((answerBtn) => {
-    
-            answerBtn.addEventListener('click', (event) => {
-    
-                // Show we've chosen a color for next tile
-                answerBtns.forEach((elem) => {
-                    elem.classList.remove('current-choice');
-                });
-                event.target.classList.add('current-choice');
 
-                // associate this anwser to mouse left button
-                leftBtnCurChoice = event.target.dataset.response;
+        if (!isUsingCross) {
+
+            gameCrossButton.classList.add('not-in-use');
+            gameCrossButton.addEventListener('click', () => {
+                isUsingCross = true;
+                watchGameBtnsWithCross();
             });
-        });    
+    
+            answerBtns.forEach((answerBtn) => {
+        
+                answerBtn.addEventListener('click', (event) => {
+        
+                    // Show we've chosen a color for next tile
+                    answerBtns.forEach((elem) => {
+                        elem.classList.remove('current-choice');
+                    });
+                    event.target.classList.add('current-choice');
+
+                    // associate this anwser to mouse left button
+                    leftBtnCurChoice = event.target.dataset.response;
+                });
+            });
+        }  
+    };
+
+
+    // User is playing with the cross and color choice btns
+    const watchGameBtnsWithCross = () => {
+        gameCrossButton.classList.remove('not-in-use');
+        // tiles.forEach((tile) => {
+        //     while (isUsingCross) {
+        //     tile.addEventListener('click', () => {
+        //         console.log('lol');
+        //         isUsingCross = false;
+        //         return;
+        //     });
+        //     }
+        // });
     };
     
     
@@ -48,6 +78,8 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
         tiles.forEach((tile) => {
 
             tile.addEventListener('mouseover', (event) => {
+                console.log(isUsingCross)
+                if (isUsingCross) return;
                 // clean previously enlighted headers
                 colHeaders.forEach((colHeader) => {
                     colHeader.classList.remove('enlighted');
@@ -74,6 +106,11 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
             });
     
             tile.addEventListener('mousedown', (event) => {
+                if (isUsingCross) {
+                    gameCrossButton.classList.add('not-in-use');
+                    isUsingCross = false;
+                    return;
+                }
                 // We need to know which button is used
                 window.btnClicked = event.which;
                 tileClicked(event, isClicking);
@@ -82,6 +119,11 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
     
             tile.addEventListener('mouseenter', (event) => {
                 if (isClicking) {
+                    if (isUsingCross) {
+                        isUsingCross = false;
+                        gameCrossButton.classList.add('not-in-use');
+                        return;
+                    }
                     tileClicked(event, isClicking);
                 }
             });
@@ -99,7 +141,6 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
         });
     };
     
-    let isRemovingChoice = false;
     
     // A tile has been choosen (mouse down or mouse enter while clicking)
     const tileClicked = (event, isClicking) => {
