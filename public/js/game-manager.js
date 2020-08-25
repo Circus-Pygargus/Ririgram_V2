@@ -95,10 +95,11 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
         window.addEventListener('mouseup', () => {
             window.btnClicked = undefined;
             isClicking = false;
+            isRemovingChoice = false;
         });
     };
     
-    
+    let isRemovingChoice = false;
     
     // A tile has been choosen (mouse down or mouse enter while clicking)
     const tileClicked = (event, isClicking) => {
@@ -125,13 +126,20 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
         // user is actually adding color to several tiles
         // as he's comming on one tile of same color
         // do nothing
-        if (isClicking && tile.dataset.solution === currentChoice) return;
+        if (isClicking && !isRemovingChoice && tile.dataset.solution === currentChoice) return;
 
+        if (isRemovingChoice && tile.dataset.solution !== currentChoice) return;
+        // user is removing his choice on several tiles
+        if (isRemovingChoice && tile.dataset.solution === currentChoice) {
+            tile.dataset.solution = 'default';
+            tilesCliksNb++;
+        }
         // user wants to remove current choice
-        if (tile.dataset.solution === currentChoice) {
+        else if (tile.dataset.solution === currentChoice) {
             // if (isClicking) {
                 tile.dataset.solution = 'default';
                 tilesCliksNb++;
+                isRemovingChoice = true;
             // }
         }
         // user wants to change tile solution

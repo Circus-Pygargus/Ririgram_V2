@@ -314,6 +314,8 @@ repositionnement des boutons de jeu pour mobile
 
 retiré le bug qui enlevait la couleur d'une tuile lors d'une sélection multiple 
 
+ajout déselection multiple sans modif des autres choix que celui en cours
+
 
 
 
