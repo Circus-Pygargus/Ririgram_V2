@@ -76,13 +76,13 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
             tile.addEventListener('mousedown', (event) => {
                 // We need to know which button is used
                 window.btnClicked = event.which;
+                tileClicked(event, isClicking);
                 isClicking = true;
-                tileClicked(event);
             });
     
             tile.addEventListener('mouseenter', (event) => {
                 if (isClicking) {
-                    tileClicked(event);
+                    tileClicked(event, isClicking);
                 }
             });
 
@@ -101,7 +101,7 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
     
     
     // A tile has been choosen (mouse down or mouse enter while clicking)
-    const tileClicked = (event) => {
+    const tileClicked = (event, isClicking) => {
         const tile = event.target;
         const mouseBtnUsed = window.btnClicked;
         let currentChoice = 'yes';    // always bby default ;)
@@ -121,6 +121,11 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
             default:
                 currentChoice = leftBtnCurChoice;
         }
+
+        // user is actually adding color to several tiles
+        // as he's comming on one tile of same color
+        // do nothing
+        if (isClicking && tile.dataset.solution === currentChoice) return;
 
         // user wants to remove current choice
         if (tile.dataset.solution === currentChoice) {

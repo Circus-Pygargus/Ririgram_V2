@@ -312,6 +312,8 @@ création de la croix de navigation pour la grille
 
 repositionnement des boutons de jeu pour mobile
 
+retiré le bug qui enlevait la couleur d'une tuile lors d'une sélection multiple 
+
 
 
 
