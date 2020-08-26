@@ -470,13 +470,18 @@ div.nav-body.sub-body {
 
 #game-cross {
   display: inline-block;
-  width: 150px;
-  height: 150px;
+  width: 300px;
   position: relative;
+  -webkit-transition: width 0.7s ease-in-out;
+  transition: width 0.7s ease-in-out;
 }
 
 #game-cross.d-none {
   display: none;
+}
+
+#game-cross.not-in-use {
+  width: 150px;
 }
 
 #game-cross.not-in-use .game-cross-btn {
@@ -486,6 +491,8 @@ div.nav-body.sub-body {
 #game-cross .game-cross-btn {
   position: absolute;
   fill: #FF8800;
+  -webkit-transition: fill 0.7s ease-in-out;
+  transition: fill 0.7s ease-in-out;
 }
 
 #game-cross .game-cross-btn:hover {

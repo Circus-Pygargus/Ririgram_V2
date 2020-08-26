@@ -164,13 +164,18 @@
 
 #game-cross {
     display: inline-block;
-    width: 150px;
-    height: 150px;
+    width: 300px;
+    // height: 150px;
     // background-color: antiquewhite;
     position: relative;
+    transition: width 0.7s ease-in-out;
 
     &.d-none {
         display: none;
+    }
+
+    &.not-in-use {
+        width: 150px;
     }
 
     &.not-in-use .game-cross-btn {
@@ -180,6 +185,7 @@
     .game-cross-btn {
         position: absolute;
         fill: $color-primary;
+        transition: fill 0.7s ease-in-out;
 
         &:hover {
             fill: var(--color-answer-maybe-yes);
