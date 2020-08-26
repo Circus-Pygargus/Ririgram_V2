@@ -184,13 +184,13 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
         // user is removing his choice on several tiles
         if (isRemovingChoice && tile.dataset.solution === currentChoice) {
             tile.dataset.solution = 'default';
-            tilesCliksNb++;
+            // tilesCliksNb++;
         }
         // user wants to remove current choice
         else if (tile.dataset.solution === currentChoice) {
             // if (isClicking) {
                 tile.dataset.solution = 'default';
-                tilesCliksNb++;
+                // tilesCliksNb++;
                 isRemovingChoice = true;
             // }
         }
@@ -201,9 +201,10 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
             if (currentChoice !== 'no' && currentChoice !== 'maybe-no') {
                 tilesCliksNb++;
             }
-            else if (tile.dataset.solution !== 'default' && (currentChoice === 'no' || currentChoice === 'maybe-no')) {
-                tilesCliksNb++;
-            }
+            // commented because no more clicks counted if no or maybe-no chosen
+            // else if (tile.dataset.solution !== 'default' && (currentChoice === 'no' || currentChoice === 'maybe-no')) {
+            //     tilesCliksNb++;
+            // }
 
             tile.dataset.solution = currentChoice;
         }

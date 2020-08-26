@@ -326,9 +326,9 @@ De plus refactorisation du code en virant le tile.addEventListener('mouseover') 
 
 réécriture de la croix de nav de la grille en un seul svg au lieu de 4, permettant ainsi son redimentionnement si .not-in-use
 
+retiré : l'incrémentation du nbr de clic si isRemovingChoice ou si old choice != default et changement pour no ou maybe-no
 
-à faire : 
-    _ retirer l'incrémentation du nbr de clic si isRemovingChoice
+
 
 
 
