@@ -76,21 +76,35 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
         let isClicking = false;
     
         tiles.forEach((tile) => {
+    
+            tile.addEventListener('mousedown', (event) => {
+                // User wants to play with his mouse or finger
+                if (isUsingCross) {
+                    gameCrossButton.classList.add('not-in-use');
+                    isUsingCross = false;
+                    return;
+                }
+                // We need to know which button is used
+                window.btnClicked = event.which;
+                tileClicked(event, isClicking);
+                isClicking = true;
+            });
+    
 
-            tile.addEventListener('mouseover', (event) => {
-                console.log(isUsingCross)
+            tile.addEventListener('mouseenter', (event) => {
                 if (isUsingCross) return;
-                // clean previously enlighted headers
-                colHeaders.forEach((colHeader) => {
-                    colHeader.classList.remove('enlighted');
-                });
-                rowHeaders.forEach((rowHeader) => {
-                    rowHeader.classList.remove('enlighted');
-                });
+
+                // tile choice is changing
+                if (isClicking) {
+                    tileClicked(event, isClicking);
+                }
 
                 // get tile rowId an colId
                 const colId = event.target.dataset.colid;
                 const rowId = event.target.dataset.rowid;
+
+                // enlight the tile
+                tile.classList.add('selected');
 
                 // Enlight corresponding headers
                 colHeaders.forEach((colHeader) => {
@@ -104,29 +118,25 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
                     } 
                 });
             });
-    
-            tile.addEventListener('mousedown', (event) => {
-                if (isUsingCross) {
-                    gameCrossButton.classList.add('not-in-use');
-                    isUsingCross = false;
-                    return;
-                }
-                // We need to know which button is used
-                window.btnClicked = event.which;
-                tileClicked(event, isClicking);
-                isClicking = true;
-            });
-    
-            tile.addEventListener('mouseenter', (event) => {
-                if (isClicking) {
-                    if (isUsingCross) {
-                        isUsingCross = false;
-                        gameCrossButton.classList.add('not-in-use');
-                        return;
+
+            // remove the enlight
+            tile.addEventListener('mouseout', (event) => {
+                const colId = event.target.dataset.colid;
+                const rowId = event.target.dataset.rowid;
+
+                event.target.classList.remove('selected');
+
+                colHeaders.forEach((colHeader) => {
+                    if (colHeader.dataset.colid === colId) {
+                        colHeader.classList.remove('enlighted');
                     }
-                    tileClicked(event, isClicking);
-                }
-            });
+                });
+                rowHeaders.forEach((rowHeader) => {
+                    if (rowHeader.dataset.rowid === rowId) {
+                        rowHeader.classList.remove('enlighted');
+                    } 
+                });
+            })
 
             // Ceci empèchera le défilement de la fenêtre sur les écrans tactiles si le doigt de l'utilisateur glisse sur les cases de la grille
             tile.addEventListener('touchmove', (event) => {
@@ -134,6 +144,7 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
             });
         });
     
+        // user has just stop clicking
         window.addEventListener('mouseup', () => {
             window.btnClicked = undefined;
             isClicking = false;

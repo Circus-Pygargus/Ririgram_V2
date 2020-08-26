@@ -318,12 +318,16 @@ ajout déselection multiple sans modif des autres choix que celui en cours
 
 cache la croix pour la grille si clic sur bouton fermer de Victory
 
+ajout gestion de isUsingCross (game manager)
 
-en train de faire : ajout gestion de isUsingCross (game manager)
+gestion du onhover sur les cases de la grille en js en ajoutant un classe, plutôt qu'un css tile:hover, pour ne pas modifier l'affichage de la case en cours lors d'un survol de souris si utilisation de la croix ( ou du peut-être un jour du gamepad ;) )
+j'en ai profité pour modifier la gestion du nettoyage du css cols ou rowheaders.enlight coté js
+De plus refactorisation du code en virant le tile.addEventListener('mouseover') et en utilisant son code dans tile.addEventListener('mouseenter')
 
 
-a faire : 
-    _ retirer l'incrémetation du nbr de clic si isRemovingChoice
+à faire : 
+    _ gérer le onhover sur les cases de la grille en js en ajoutant un classe, plutôt qu'un css tile:hover, pour ne pas modifier l'affichage de la case en courslors d'un survol de souris si utilisation de la croix ( ou du peut-être un jour du gamepad ;) )
+    _ retirer l'incrémentation du nbr de clic si isRemovingChoice
     _ modif les svgs de cross pour n'en faire qu'un, permettant ainsi de le schrink si not-in-use
     _ dans  
          tiles.forEach((tile) => {
@@ -375,6 +379,7 @@ users during dev :
 }
 
 todos :
+_ ajouter la gestion d'un gamepad pour faire comme la croix mais sur pc ? ce serait top !
 _ ajouter : message d'erreur : cet email est déjà enregistré (models/use.js ) déjà fait et pourtant fonctionne pas ...
 _ ajouter retour vérif création new user, qd name existe on a pas le mesage d'erreur perso mais e.code = 11000 et e.keyValue = { name: 'Circus' } je devrais pouvoir utiliser ça
 _ ajouter si login, vérif token car on ne devrait pas avoir accès au form de login une fois loggué -> avertissement pour pratique étrange ? -> ban ip, email  pour un temps -> ban ip, email pour toujours ?

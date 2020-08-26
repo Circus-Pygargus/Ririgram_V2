@@ -463,7 +463,7 @@ div.nav-body.sub-body {
   background-color: var(--color-answer-no);
 }
 
-#gameboard .row-div .tile:hover {
+#gameboard .row-div .tile.selected {
   -webkit-box-shadow: inset 0 0 6px 6px white;
           box-shadow: inset 0 0 6px 6px white;
 }
