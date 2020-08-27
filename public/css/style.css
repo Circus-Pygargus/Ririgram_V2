@@ -470,7 +470,7 @@ div.nav-body.sub-body {
 
 #game-cross {
   display: inline-block;
-  width: 300px;
+  width: 150px;
   position: relative;
   -webkit-transition: width 0.7s ease-in-out;
   transition: width 0.7s ease-in-out;
@@ -481,7 +481,7 @@ div.nav-body.sub-body {
 }
 
 #game-cross.not-in-use {
-  width: 150px;
+  width: 100px;
 }
 
 #game-cross.not-in-use .game-cross-btn {
@@ -497,26 +497,6 @@ div.nav-body.sub-body {
 
 #game-cross .game-cross-btn:hover {
   fill: var(--color-answer-maybe-yes);
-}
-
-#game-cross #game-cross-top {
-  left: 50px;
-  top: 0;
-}
-
-#game-cross #game-cross-right {
-  left: 76px;
-  top: 50px;
-}
-
-#game-cross #game-cross-bottom {
-  left: 50px;
-  top: 76px;
-}
-
-#game-cross #game-cross-left {
-  left: 0;
-  top: 50px;
 }
 
 #game-answer-buttons {

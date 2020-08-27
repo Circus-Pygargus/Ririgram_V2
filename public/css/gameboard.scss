@@ -164,7 +164,7 @@
 
 #game-cross {
     display: inline-block;
-    width: 300px;
+    width: 150px;
     // height: 150px;
     // background-color: antiquewhite;
     position: relative;
@@ -175,7 +175,7 @@
     }
 
     &.not-in-use {
-        width: 150px;
+        width: 100px;
     }
 
     &.not-in-use .game-cross-btn {
@@ -192,25 +192,25 @@
         }
     }
 
-    #game-cross-top {    
-        left: 50px;
-        top: 0;
-    }
+    // #game-cross-top {    
+    //     left: 50px;
+    //     top: 0;
+    // }
 
-    #game-cross-right {    
-        left: 76px;
-        top: 50px;
-    }
+    // #game-cross-right {    
+    //     left: 76px;
+    //     top: 50px;
+    // }
 
-    #game-cross-bottom {    
-        left: 50px;
-        top: 76px;
-    }
+    // #game-cross-bottom {    
+    //     left: 50px;
+    //     top: 76px;
+    // }
 
-    #game-cross-left {    
-        left: 0;
-        top: 50px;
-    }
+    // #game-cross-left {    
+    //     left: 0;
+    //     top: 50px;
+    // }
 
 }
 
