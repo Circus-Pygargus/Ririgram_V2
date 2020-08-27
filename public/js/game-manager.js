@@ -1,4 +1,5 @@
 const gameCrossButton = document.querySelector('#game-cross');
+const crossBtns = document.querySelectorAll('.game-cross-btn');
 const gameAnswerButtons = document.querySelector('#game-answer-buttons');
 
 
@@ -15,6 +16,12 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
     
     // user is removing his choice color on several tiles
     let isRemovingChoice = false;
+
+    // used to know which tile is selected with game cross 
+    let selectedRow = 0;
+    let lastSelectedRow = 0;
+    let selectedCol = 0;
+    let lastSelectedCol = 0;
     
     // When screeen size change
     const watchWindowSize = (rowsNb, colsNb, maxRowHelpers, maxColHelpers) => {
@@ -31,10 +38,10 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
         if (!isUsingCross) {
 
             gameCrossButton.classList.add('not-in-use');
-            gameCrossButton.addEventListener('click', () => {
-                isUsingCross = true;
-                watchGameBtnsWithCross();
-            });
+            // gameCrossButton.addEventListener('click', () => {
+            //     isUsingCross = true;
+            //     watchCrossButtons();
+            // });
     
             answerBtns.forEach((answerBtn) => {
         
@@ -55,17 +62,73 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
 
 
     // User is playing with the cross and color choice btns
-    const watchGameBtnsWithCross = () => {
-        gameCrossButton.classList.remove('not-in-use');
-        // tiles.forEach((tile) => {
-        //     while (isUsingCross) {
-        //     tile.addEventListener('click', () => {
-        //         console.log('lol');
-        //         isUsingCross = false;
-        //         return;
-        //     });
-        //     }
-        // });
+    const watchCrossButtons = () => {
+
+        crossBtns.forEach((crossBtn) => {
+            crossBtn.addEventListener('click', (event) => {
+                if (!isUsingCross) {
+                    isUsingCross = true;
+                    gameCrossButton.classList.remove('not-in-use');
+                    // select the first tile of the grid and enlight it
+                    document.querySelector('.tile[data-rowid="0"][data-colid="0"').classList.add('selected');
+                    // Enlight corresponding headers
+                    document.querySelector('.col-head-div[data-colid="0"').classList.add('enlighted');
+                    document.querySelector('.row-head-div[data-rowid="0"').classList.add('enlighted');
+                    selectedRow = 0;
+                    lastSelectedRow = 0;
+                    selectedCol = 0;
+                    lastSelectedCol = 0;
+                    return;
+                }
+                switch (crossBtn.id) {
+                    case 'game-cross-top':
+                        selectNextTile('col', 'backward');
+                        break;
+                    case 'game-cross-bottom':
+                        selectNextTile('col', 'forward');
+                        break;
+                    case 'game-cross-left':
+                        selectNextTile('row', 'backward');
+                        break;
+                    case 'game-cross-right':
+                        selectNextTile('row', 'forward');
+                        break;
+                }
+            });
+        });
+
+        const selectNextTile = (line, direction) => {
+            console.log('yes select next tile')
+            switch (line) {
+                case 'col': 
+                    if (direction === 'backward') {
+                        (selectedRow === 0) ? selectedRow = rowsNb - 1:  selectedRow--;
+                    }
+                    else {
+                        (selectedRow === rowsNb -1) ? selectedRow = 0 : selectedRow++;
+                    }
+                    break;
+                case 'row':
+                    if (direction === 'backward') {
+                        (selectedCol === 0) ? selectedCol = colsNb - 1 : selectedCol--;
+                    }
+                    else {
+                        (selectedCol === colsNb -1) ? selectedCol = 0: selectedCol++;
+                    }
+            }
+
+            // remove selected and enlighted classes
+            document.querySelector(`.tile[data-rowid="${lastSelectedRow}"][data-colid="${lastSelectedCol}"]`).classList.remove('selected');
+            document.querySelector(`.col-head-div[data-colid="${lastSelectedCol}"]`).classList.remove('enlighted');
+            document.querySelector(`.row-head-div[data-rowid="${lastSelectedRow}"]`).classList.remove('enlighted');
+            // add selected and enlighted classes
+            document.querySelector(`.tile[data-rowid="${selectedRow}"][data-colid="${selectedCol}"]`).classList.add('selected');
+            document.querySelector(`.col-head-div[data-colid="${selectedCol}"]`).classList.add('enlighted');
+            document.querySelector(`.row-head-div[data-rowid="${selectedRow}"]`).classList.add('enlighted');
+
+            lastSelectedRow = selectedRow;
+            lastSelectedCol = selectedCol;
+        };
     };
     
     
@@ -82,6 +145,9 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
                 if (isUsingCross) {
                     gameCrossButton.classList.add('not-in-use');
                     isUsingCross = false;
+                    document.querySelector(`.tile[data-rowid="${lastSelectedRow}"][data-colid="${lastSelectedCol}"]`).classList.remove('selected');
+                    document.querySelector(`.col-head-div[data-colid="${lastSelectedCol}"]`).classList.remove('enlighted');
+                    document.querySelector(`.row-head-div[data-rowid="${lastSelectedRow}"]`).classList.remove('enlighted');
                     return;
                 }
                 // We need to know which button is used
@@ -268,6 +334,7 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
 
     // react when user push a game button
     watchGameButtons();
+    watchCrossButtons();
 
     // react when user directly act on a tile
     watchGridActions();

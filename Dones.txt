@@ -328,6 +328,8 @@ réécriture de la croix de nav de la grille en un seul svg au lieu de 4, permet
 
 retiré : l'incrémentation du nbr de clic si isRemovingChoice ou si old choice != default et changement pour no ou maybe-no
 
+Ajout selection de case avec la game cross
+
 
 
 
