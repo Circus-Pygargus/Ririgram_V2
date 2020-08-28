@@ -336,10 +336,13 @@ résolu bug qui empéchait la sélection d'un bouton de couleur sur écran tacti
 
 modification game cross : maintenant la case sélectionnée change régulièrement lors d'un appui long
 
+amélioration game cross : changement de choix sur les cases si appui long sur un choiceButton et sur la croix
 
 
 
 
+manque: 
+    _ comptage nombre de coups sur tactile
 
 bug: 
     _ deux cases selected lors d'un rappel de partie en test depuis le menu principal après victory (que sur phone ?)

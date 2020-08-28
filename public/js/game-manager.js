@@ -14,6 +14,8 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
     
     // user is using the cross while playing
     let isUsingCross = false;
+    // while using cross, need to know if a color choice btn is being clicked
+    let isClickingChoiceBtn = false;
     
     // user is removing his choice color on several tiles
     let isRemovingChoice = false;
@@ -48,7 +50,7 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
         answerBtns.forEach((answerBtn) => {
         
             answerBtn.addEventListener('click', (event) => {
-                event.preventDefault();
+                event.preventDefault(); // needed ???
             // answerBtn.addEventListener('mousemove', (event) => {
                 if (!isUsingCross) {
                     selectChoiceBtn(event.target);
@@ -70,6 +72,8 @@ let isAnwserBtnActive = false;
                         console.log('oups')
                         let tile = document.querySelector(`.tile[data-rowid="${lastSelectedRow}"][data-colid="${lastSelectedCol}"]`);
                         tile.dataset.solution = event.target.dataset.response;
+                        leftBtnCurChoice = event.target.dataset.response;
+                        isClickingChoiceBtn = true;
                     }
                 }
             });
@@ -81,6 +85,7 @@ let isAnwserBtnActive = false;
                     // document.querySelector('h1').style.color = 'red';
                     isAnwserBtnActive = false;
                     event.target.classList.remove('current-choice');
+                    isClickingChoiceBtn = false;
                 }
             });
         });
@@ -146,7 +151,7 @@ let isAnwserBtnActive = false;
                         crossDirection = 'forward';
                         break;
                 }
-                
+
                 selectNextTile();
                 crossAction = setInterval(selectNextTile, 500);
             });
@@ -185,6 +190,10 @@ let isAnwserBtnActive = false;
             document.querySelector(`.tile[data-rowid="${selectedRow}"][data-colid="${selectedCol}"]`).classList.add('selected');
             document.querySelector(`.col-head-div[data-colid="${selectedCol}"]`).classList.add('enlighted');
             document.querySelector(`.row-head-div[data-rowid="${selectedRow}"]`).classList.add('enlighted');
+            // add user choice if one game answer button is being clicked
+            if (isClickingChoiceBtn) {
+                document.querySelector(`.tile[data-rowid="${selectedRow}"][data-colid="${selectedCol}"]`).dataset.solution = leftBtnCurChoice; // !! redondance ;)
+            }
 
             lastSelectedRow = selectedRow;
             lastSelectedCol = selectedCol;
