@@ -103,8 +103,12 @@ let isAnwserBtnActive = false;
     // User is playing with the cross and color choice btns
     const watchCrossButtons = () => {
 
+        let crossLine, crossDirection;
+
         crossBtns.forEach((crossBtn) => {
-            crossBtn.addEventListener('click', (event) => {
+            // crossBtn.addEventListener('click', (event) => {
+            crossBtn.addEventListener('touchstart', (event) => {
+                event.preventDefault();
                 if (!isUsingCross) {
                     isUsingCross = true;
                     gameCrossButton.classList.remove('not-in-use');
@@ -123,28 +127,41 @@ let isAnwserBtnActive = false;
                     lastSelectedCol = 0;
                     return;
                 }
+                
                 switch (crossBtn.id) {
                     case 'game-cross-top':
-                        selectNextTile('col', 'backward');
+                        crossLine = 'col';
+                        crossDirection = 'backward';
                         break;
                     case 'game-cross-bottom':
-                        selectNextTile('col', 'forward');
+                        crossLine = 'col';
+                        crossDirection = 'forward';
                         break;
                     case 'game-cross-left':
-                        selectNextTile('row', 'backward');
+                        crossLine = 'row';
+                        crossDirection = 'backward';
                         break;
                     case 'game-cross-right':
-                        selectNextTile('row', 'forward');
+                        crossLine = 'row';
+                        crossDirection = 'forward';
                         break;
                 }
+                
+                selectNextTile();
+                crossAction = setInterval(selectNextTile, 500);
+            });
+
+            crossBtn.addEventListener('touchend', (event) => {
+                event.preventDefault();
+                clearInterval(crossAction);
             });
         });
 
-        const selectNextTile = (line, direction) => {
+        const selectNextTile = () => {
             console.log('yes select next tile')
-            switch (line) {
+            switch (crossLine) {
                 case 'col': 
-                    if (direction === 'backward') {
+                    if (crossDirection === 'backward') {
                         (selectedRow === 0) ? selectedRow = rowsNb - 1:  selectedRow--;
                     }
                     else {
@@ -152,7 +169,7 @@ let isAnwserBtnActive = false;
                     }
                     break;
                 case 'row':
-                    if (direction === 'backward') {
+                    if (crossDirection === 'backward') {
                         (selectedCol === 0) ? selectedCol = colsNb - 1 : selectedCol--;
                     }
                     else {
