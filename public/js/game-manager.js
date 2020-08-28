@@ -48,15 +48,10 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
         answerBtns.forEach((answerBtn) => {
         
             answerBtn.addEventListener('click', (event) => {
+                event.preventDefault();
+            // answerBtn.addEventListener('mousemove', (event) => {
                 if (!isUsingCross) {
-                    // Show we've chosen a color for next tile
-                    answerBtns.forEach((elem) => {
-                        elem.classList.remove('current-choice');
-                    });
-                    event.target.classList.add('current-choice');
-
-                    // associate this anwser to mouse left button
-                    leftBtnCurChoice = event.target.dataset.response;
+                    selectChoiceBtn(event.target);
                 }
             });
 let isAnwserBtnActive = false;
@@ -64,10 +59,14 @@ let isAnwserBtnActive = false;
             // answerBtn.addEventListener('mousedown', (event) => {
                 event.preventDefault();
                 // document.querySelector('h1').style.color = 'yellow';
+                if (!isUsingCross) {
+                    selectChoiceBtn(event.target);
+                }
+
                 if (isUsingCross) {
                     event.target.classList.add('current-choice');
                     isAnwserBtnActive = true;
-                    while (isAnwserBtnActive) {
+                    if (isAnwserBtnActive) {
                         console.log('oups')
                         let tile = document.querySelector(`.tile[data-rowid="${lastSelectedRow}"][data-colid="${lastSelectedCol}"]`);
                         tile.dataset.solution = event.target.dataset.response;
@@ -75,8 +74,8 @@ let isAnwserBtnActive = false;
                 }
             });
             answerBtn.addEventListener('touchend', (event) => {
-                event.preventDefault();
             // answerBtn.addEventListener('mouseup', (event) => {
+                event.preventDefault();
                 if (isUsingCross) {
                     console.log('touch end')
                     // document.querySelector('h1').style.color = 'red';
@@ -86,6 +85,17 @@ let isAnwserBtnActive = false;
             });
         });
         // }  
+
+        const selectChoiceBtn = (btn) => {
+            // Show we've chosen a color for next tile
+            answerBtns.forEach((elem) => {
+                elem.classList.remove('current-choice');
+            });
+            btn.classList.add('current-choice');
+
+            // associate this anwser to mouse left button
+            leftBtnCurChoice = btn.dataset.response;
+        };
     };
 
 

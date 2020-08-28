@@ -332,6 +332,8 @@ Ajout selection de case avec la game cross
 
 début utilisation game cross, pas convainquant, une seule case à la fois ...
 
+résolu bug qui empéchait la sélection d'un bouton de couleur sur écran tactile (du au event.preventDefault() sur un touchstart qui empéchait l'event click d'être lancé)
+
 
 
 bug: 
