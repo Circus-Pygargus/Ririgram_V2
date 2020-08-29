@@ -63,8 +63,14 @@ tilesCliksNb = 0;
         let isClicking = false;
     
         tiles.forEach((tile) => {
-    
-            tile.addEventListener('mousedown', (event) => {
+            tile.addEventListener('mousedown', tileEventMouseDown);
+            // tile.addEventListener('pointerdown', (event) => {
+            //     // event.preventDefault();
+            //     console.log('pointer down event');
+            //     tileEventMouseDown(event);
+            // });
+
+            function tileEventMouseDown () {
                 // User wants to play with his mouse or finger
                 if (isUsingCross) {
                     gameCrossButton.classList.add('not-in-use');
@@ -80,10 +86,16 @@ tilesCliksNb = 0;
                 window.btnClicked = event.which;
                 tileClicked(event.target, isClicking);
                 isClicking = true;
-            });
-    
+            }
 
-            tile.addEventListener('mouseenter', (event) => {
+            tile.addEventListener('mouseenter', tileEventMouseEnter);
+            // tile.addEventListener('pointerover', (event) => {
+            //     // event.preventDefault();
+            //     console.log('pointer enter event')
+            //     tileEventMouseEnter(event);
+            // });
+
+            function tileEventMouseEnter (event) {                
                 if (isUsingCross) return;
 
                 // tile choice is changing
@@ -109,10 +121,16 @@ tilesCliksNb = 0;
                         rowHeader.classList.add('enlighted');
                     } 
                 });
-            });
+            }
 
             // remove the enlight
-            tile.addEventListener('mouseout', (event) => {
+            tile.addEventListener('mouseout', tileEventMouseOut);
+            // tile.addEventListener('pointerleave', (event) => {
+            //     // event.preventDefault();
+            //     tileEventMouseOut(event);
+            // });
+
+            function tileEventMouseOut (event) {
                 const colId = event.target.dataset.colid;
                 const rowId = event.target.dataset.rowid;
 
@@ -128,11 +146,11 @@ tilesCliksNb = 0;
                         rowHeader.classList.remove('enlighted');
                     } 
                 });
-            })
+            }
 
             // Ceci empèchera le défilement de la fenêtre sur les écrans tactiles si le doigt de l'utilisateur glisse sur les cases de la grille
             tile.addEventListener('touchmove', (event) => {
-                event.preventDefault();
+                // event.preventDefault();
             });
         });
     

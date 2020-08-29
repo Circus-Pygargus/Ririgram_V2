@@ -355,6 +355,9 @@ bascule sur la branche dev
 bug réglé ! maintenant il semble qu'on peut utiliser la croix correctement =)
 pb, je trouve le code super moche !! faudra voir à regarder ça à nouveau ...
 
+tentative sur dev d'ajouter la selection de plusieurs case avec un seul mouvement de doigt ... marche pas ...
+je crois bien que la soluce va être de calculer le point d'arrivée du doigt puis la longueur de déplacement, et calculer quelles sont les cases touchées en cours de route ...
+
 
 
 
