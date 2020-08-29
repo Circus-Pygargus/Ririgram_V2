@@ -19,6 +19,8 @@ const gameManager = (rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, ma
     
     // user is removing his choice color on several tiles
     let isRemovingChoice = false;
+    // same but using the cross
+    let isRemovingChoiceUsingCross = false;
 
     // used to know which tile is selected with game cross 
     let selectedRow = 0;
@@ -70,10 +72,20 @@ let isAnwserBtnActive = false;
                     isAnwserBtnActive = true;
                     if (isAnwserBtnActive) {
                         console.log('oups')
-                        let tile = document.querySelector(`.tile[data-rowid="${lastSelectedRow}"][data-colid="${lastSelectedCol}"]`);
-                        tile.dataset.solution = event.target.dataset.response;
-                        leftBtnCurChoice = event.target.dataset.response;
                         isClickingChoiceBtn = true;
+                        leftBtnCurChoice = event.target.dataset.response;
+                        let tile = document.querySelector(`.tile[data-rowid="${lastSelectedRow}"][data-colid="${lastSelectedCol}"]`);
+                        
+                
+                    // if (tile.dataset.solution === leftBtnCurChoice) {   
+                        if (tile.dataset.solution === leftBtnCurChoice) {
+                            isRemovingChoiceUsingCross = true;
+                        }
+
+                        tileSolutionChangeUsingCross(tile);
+                        // tile.dataset.solution = event.target.dataset.response;
+                        // tilesCliksNb++;
+                        // checkCompleteGrid();
                     }
                 }
             });
@@ -86,6 +98,7 @@ let isAnwserBtnActive = false;
                     isAnwserBtnActive = false;
                     event.target.classList.remove('current-choice');
                     isClickingChoiceBtn = false;
+                    isRemovingChoiceUsingCross = false;
                 }
             });
         });
@@ -104,6 +117,7 @@ let isAnwserBtnActive = false;
     };
 
 
+    // let sameMoveTilesCounter = 0;
 
     // User is playing with the cross and color choice btns
     const watchCrossButtons = () => {
@@ -132,6 +146,8 @@ let isAnwserBtnActive = false;
                     lastSelectedCol = 0;
                     return;
                 }
+
+                // let sameMoveTilesCounter = 0;
                 
                 switch (crossBtn.id) {
                     case 'game-cross-top':
@@ -158,12 +174,12 @@ let isAnwserBtnActive = false;
 
             crossBtn.addEventListener('touchend', (event) => {
                 event.preventDefault();
+                // sameMoveTilesCounter = 0;
                 clearInterval(crossAction);
             });
         });
 
         const selectNextTile = () => {
-            console.log('yes select next tile')
             switch (crossLine) {
                 case 'col': 
                     if (crossDirection === 'backward') {
@@ -187,17 +203,63 @@ let isAnwserBtnActive = false;
             document.querySelector(`.col-head-div[data-colid="${lastSelectedCol}"]`).classList.remove('enlighted');
             document.querySelector(`.row-head-div[data-rowid="${lastSelectedRow}"]`).classList.remove('enlighted');
             // add selected and enlighted classes
-            document.querySelector(`.tile[data-rowid="${selectedRow}"][data-colid="${selectedCol}"]`).classList.add('selected');
+            const tile = document.querySelector(`.tile[data-rowid="${selectedRow}"][data-colid="${selectedCol}"]`);
+            tile.classList.add('selected');
             document.querySelector(`.col-head-div[data-colid="${selectedCol}"]`).classList.add('enlighted');
             document.querySelector(`.row-head-div[data-rowid="${selectedRow}"]`).classList.add('enlighted');
-            // add user choice if one game answer button is being clicked
-            if (isClickingChoiceBtn) {
-                document.querySelector(`.tile[data-rowid="${selectedRow}"][data-colid="${selectedCol}"]`).dataset.solution = leftBtnCurChoice; // !! redondance ;)
-            }
 
             lastSelectedRow = selectedRow;
             lastSelectedCol = selectedCol;
+
+            // add user choice if one game answer button is being clicked
+            if (isClickingChoiceBtn) {
+                // sameMoveTilesCounter++;
+                // if (crossLine === 'col' && sameMoveTilesCounter >= colsNb) return;
+                // if (crossLine === 'row' && sameMoveTilesCounter >= rowsNb) return;
+
+
+                tileSolutionChangeUsingCross(tile)
+                
+                // document.querySelector(`.tile[data-rowid="${selectedRow}"][data-colid="${selectedCol}"]`).dataset.solution = leftBtnCurChoice; // !! redondance ;)
+                // tilesCliksNb++;
+                // checkCompleteGrid();
+            }
         };
+    };
+
+
+    // player is changing tile solution while using game cross
+    const tileSolutionChangeUsingCross = (tile) => {
+
+                
+                        // tile.dataset.solution = event.target.dataset.response;
+                        // leftBtnCurChoice = event.target.dataset.response;
+                        // isClickingChoiceBtn = true;
+                        // tilesCliksNb++;
+                        // checkCompleteGrid();
+                // document.querySelector(`.tile[data-rowid="${selectedRow}"][data-colid="${selectedCol}"]`).dataset.solution = leftBtnCurChoice; // !! redondance ;)
+
+        if (tile.dataset.solution === leftBtnCurChoice && isRemovingChoiceUsingCross) {
+            tile.dataset.solution = 'default';
+            return;
+        }
+        if (tile.dataset.solution !== leftBtnCurChoice && isRemovingChoiceUsingCross) return;
+
+        if (tile.dataset.solution === leftBtnCurChoice && !isRemovingChoiceUsingCross) return;
+
+        tile.dataset.solution = leftBtnCurChoice;
+        
+        if (leftBtnCurChoice !== 'no' && leftBtnCurChoice !== 'maybe-no') {
+            tilesCliksNb++;
+        }
+
+
+        // Check if user found grid solution (only if user is not logged)
+        if (!isUserLogged) {
+            checkCompleteGrid();
+        }
+
+        // ?? isCrossClicking ???
     };
     
     
@@ -348,13 +410,13 @@ let isAnwserBtnActive = false;
 
         // Check if user found grid solution (only if user is not logged)
         if (!isUserLogged) {
-            checkcompleteGrid();
+            checkCompleteGrid();
         }
     };
 
 
     // check if user found grid solution (only is user is not logged)
-    const checkcompleteGrid = () => {
+    const checkCompleteGrid = () => {
         let userSolution = '';
 
         tiles.forEach((tile) => {

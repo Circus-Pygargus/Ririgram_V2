@@ -338,14 +338,15 @@ modification game cross : maintenant la case sélectionnée change régulièreme
 
 amélioration game cross : changement de choix sur les cases si appui long sur un choiceButton et sur la croix
 
+ajout : comptage du nombre de 'clic' en utilisant la game cross
 
 
 
-manque: 
-    _ comptage nombre de coups sur tactile
+
 
 bug: 
     _ deux cases selected lors d'un rappel de partie en test depuis le menu principal après victory (que sur phone ?)
+    _ pire la deuxième bouge toute seule apres appui long ...
 
 
 
