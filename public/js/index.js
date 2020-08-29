@@ -57,3 +57,8 @@ document.addEventListener('contextmenu', (event) => {
 });
 
 // Text selection is disabled in main.scss
+
+
+    // react when user push a game button (game cross or color answer)
+    watchGameButtons();
+    watchCrossButtons();

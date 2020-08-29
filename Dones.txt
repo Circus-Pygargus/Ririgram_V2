@@ -339,14 +339,25 @@ modification game cross : maintenant la case sélectionnée change régulièreme
 amélioration game cross : changement de choix sur les cases si appui long sur un choiceButton et sur la croix
 
 ajout : comptage du nombre de 'clic' en utilisant la game cross
-
-
-
-
-
 bug: 
     _ deux cases selected lors d'un rappel de partie en test depuis le menu principal après victory (que sur phone ?)
     _ pire la deuxième bouge toute seule apres appui long ...
+
+
+Création branche dev
+
+création branche testeventfunctions
+j'y ai testé l'utilisation de function pour le addEventListener pour pouvoir utiliser des removeEventListener, 
+ça fonctionnait mais juste une fois ...
+
+
+bascule sur la branche dev
+bug réglé ! maintenant il semble qu'on peut utiliser la croix correctement =)
+pb, je trouve le code super moche !! faudra voir à regarder ça à nouveau ...
+
+
+
+
 
 
 
