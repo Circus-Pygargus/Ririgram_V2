@@ -1,3 +1,5 @@
+// const { response } = require("express");
+
 const watchNavUserNotLogged = () => {
     // welcome div
     const welcomeDiv = document.querySelector('#welcome');
@@ -74,7 +76,32 @@ const watchNavUserNotLogged = () => {
                 "password": registerPassword.value,
                 "password-bis": registerPasswordBis.value
             }
-            // TODO : ajouter verif password === passwordBis
+
+            if (data.password !== data['password-bis']) {
+                console.log('raté');
+                return;
+            }
+            fetch('/users', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+                console.log(response.user);
+                welcomeDiv.innerHTML = 'Bienvenue ' + response.user.name;
+                welcomeDiv.classList.remove('d-none');
+                navDiv.innerHTML = response.html;
+                sessionStorage.setItem('token', JSON.stringify(response.token));
+                // wait for click on new nav buttons
+                watchNavButtons();
+                // wait for a user logged form submit
+                watchNavUserLoggedForms();
+            })
         });
 
 

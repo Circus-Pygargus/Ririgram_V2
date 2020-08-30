@@ -27,7 +27,16 @@ router.post('/users', async (req, res) => {
         // no caught error, generate a token and save user again
         const token = await user.generateAuthToken();
 
-        res.status(201).send({ user, token });
+        res.render(`${partialsPath}/navLogged`, (err, html) => {
+            if (err) {
+                return res.send({
+                    error: 'Une erreur est survenue pendant le rendu de la barre de navigation'
+                })
+            }
+
+            res.status(201).send({ user, token, html });
+        });
+
     } catch (e) {
         res.status(400).send(e);
         console.log(e);
