@@ -52,7 +52,6 @@ app.use(express.json());
 
 // home route
 app.get('', (req, res) => {
-    console.log(req)
     res.render('index');
 });
 

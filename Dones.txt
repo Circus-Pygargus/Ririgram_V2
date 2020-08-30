@@ -358,7 +358,9 @@ pb, je trouve le code super moche !! faudra voir à regarder ça à nouveau ...
 tentative sur dev d'ajouter la selection de plusieurs case avec un seul mouvement de doigt ... marche pas ...
 je crois bien que la soluce va être de calculer le point d'arrivée du doigt puis la longueur de déplacement, et calculer quelles sont les cases touchées en cours de route ...
 
-gestion de la route post /users (register user) coté front
+gestion de la route post /users (register user) coté front (sauf gestion retour des erreurs)
+
+Création des modèles grid, userTimeEasy et userTimeHard
 
 
 
@@ -400,6 +402,12 @@ users during dev :
     "password": "12345678"
 }
 
+{
+    "name": "Circus3",
+    "email": "fauxmail3@pour.test",
+    "password": "1234567"
+}
+
 todos :
 _ ajouter la gestion d'un gamepad pour faire comme la croix mais sur pc ? ce serait top !
 _ ajouter : message d'erreur : cet email est déjà enregistré (models/use.js ) déjà fait et pourtant fonctionne pas ...
@@ -431,38 +439,3 @@ router(grid, (req, res) => {
 })
 
 
-Grid = {
-    _id,
-    gridSolution,
-    clicksNbsForPerfectGame,
-    rowsHelpers,
-    maxRowsHelpers,
-    colsHelpers,
-    maxRowsHelpers,
-    creator, // ref User
-    bestTimeEasy, // ref UserTimeEasy.besTime
-    bestTimeHard, // ref UserTimeEasy.besTime
-    votes: {
-        nbVote-1, // worst note
-        nbVote-2, // bad
-        nbVote-3, // neutral
-        nbVote-4, // good
-        nbVote-5, // best note
-        nbVotes,
-        average
-    },
-    timeStamps
-}
-
-UserTimeEasy = {
-    _id,
-    bestTime, // can be null
-    lastTime, // can be null
-    userGrid, // un truc genre user._id + grid._id pour ne pas avoir de doublons // nan la suite devrait suffire
-    grid, // ref Grid
-    owner, // ref User
-    vote, // can be null
-    timeStamps
-}
-
-UserTimeHard = { voir ci-dessus }

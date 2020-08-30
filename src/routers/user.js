@@ -46,13 +46,9 @@ router.post('/users', async (req, res) => {
 
 // User login
 router.post('/users/login', async (req, res) => {
-    console.log('req.body : ');
-    console.log(req);
-    console.log(req.body)
     try {
         // get user and give him a token
         const user = await User.findByCredentials(req.body.email, req.body.password);
-        console.log(user)
         const token = await user.generateAuthToken();
 
         // get user options

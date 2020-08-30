@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-// const { __esModule } = require('validator/lib/isAlpha');  //  ?????
+
+// const Grid = require('./grid');
 
 
 const userSchema = new mongoose.Schema({
@@ -48,6 +49,27 @@ const userSchema = new mongoose.Schema({
 },{
     timestamps: true
 });
+
+// Here nothing will be stored, we're just giving the relationship between User and Grid to mongoose
+userSchema.virtual('grids', {
+    ref: 'Grid',
+    localField: '_id',
+    foreignField: 'creator'
+    // Here we have to understand that Grid.creator is related to user id (they are the same) 
+});
+
+userSchema.virtual('userTimeEasys', {
+    ref: 'UserTimeEasy',
+    localField: '_id',
+    foreignField: 'owner'
+});
+
+userSchema.virtual('userTimeHards', {
+    ref: 'UserTimeHard',
+    localField: '_id',
+    foreignField: 'owner'
+});
+
 
 
 // take off the infos we don't want to sendback to user
