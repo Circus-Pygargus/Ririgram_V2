@@ -362,6 +362,8 @@ gestion de la route post /users (register user) coté front (sauf gestion retour
 
 Création des modèles grid, userTimeEasy et userTimeHard
 
+Ajout de la route /grid/new  EN COURS
+
 
 
 
