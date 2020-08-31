@@ -26,8 +26,10 @@ let isUserLogged = false;
 let clicksNbForPerfectGame = 0;
 let tiles = [];
 
+let gridId;
 
-const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newColsHelpers, maxColHelpers, isUserLoggedToPlay, newGridSolution = '', NewClicksNbForPerfectGame = 0) => {
+
+const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newColsHelpers, maxColHelpers, isUserLoggedToPlay, newGridSolution = '', NewClicksNbForPerfectGame = 0, newGridId) => {
 
     console.log('game manager')
 rowsNb = newRowsNb;
@@ -37,6 +39,7 @@ colsHelpers = newColsHelpers;
 gridSolution = newGridSolution;
 isUserLogged = isUserLoggedToPlay;
 clicksNbForPerfectGame = NewClicksNbForPerfectGame;
+gridId = newGridId;
 
     isUsingCross = false;
 isClickingChoiceBtn = false;
@@ -547,5 +550,5 @@ const quicklyCheckAllHelpers = () => {
 
 const sendSolutionToServer = () => {
     const userSolution = getCompleteGrid();
-    console.log('La grille est finie, envoi au serveur pourr vérification !');
+    console.log('La grille est finie, envoi au serveur pour vérification !');
 };

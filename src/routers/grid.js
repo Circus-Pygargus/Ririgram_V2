@@ -52,16 +52,18 @@ router.post('/grid/new', auth, async (req, res) => {
         if (gridsFound.length > 0) {
             console.log('grille non jouée trouvée !');
             const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame } = gridsFound[0];
-            let startTime = await StartTime.findOne({grid: gridsFound[0]._id, owner: req.user._id});
+            const gridId = gridsFound[0]._id;
+            console.log(gridId)
+            let startTime = await StartTime.findOne({grid: gridId, owner: req.user._id});
             if (!startTime) {
-                startTime = new StartTime({time: Date.now(), grid: gridsFound[0]._id, owner: req.user._id})
+                startTime = new StartTime({time: Date.now(), grid: gridId, owner: req.user._id})
             }
             else {
                 startTime.time = Date.now();
             }
 
             await startTime.save();
-            res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame});
+            res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId });
 
         } 
         else {
@@ -73,9 +75,10 @@ router.post('/grid/new', auth, async (req, res) => {
             console.log(maxColHelpers)
             let grid = new Grid({rowsNb, colsNb, gridSolution, clicksNbForPerfectGame, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, creator: req.user._id});
             grid = await grid.save();
-            const startTime = new StartTime({time: Date.now(), grid: grid._id, owner: req.user._id});
+            const gridId = grid._id;
+            const startTime = new StartTime({time: Date.now(), grid: gridId, owner: req.user._id});
             await startTime.save();
-            res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame});
+            res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId });
         }
 
     } catch (e) {

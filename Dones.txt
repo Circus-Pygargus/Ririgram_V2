@@ -376,6 +376,8 @@ gestion de la requête /grid/new dans user-logged.js
 ajout vérif de grille pour si user logged, on va vérifier que les nombres de cases par ligne/colonne correspondent avec les totaux des headers. mais ça devrait pas être définitif, il faudra l'echanger par un contrôle des correspondances entre les helpers et la réalité de la grille, pas juste le nombre total correspondant. 
 Pour faire plus simple encore, j'ai utilisé le nombre de clics pour une partie sans faute (clicksNbForPerfectGame)
 
+modif : ajout l'envoi de grid._id depuis la route /grid/new et réception dans nav-logged.js muis game-manager.js
+
 
 
 

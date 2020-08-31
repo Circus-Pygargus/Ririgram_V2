@@ -102,7 +102,7 @@ const watchNavUserLoggedForms = () => {
                 return response.json();
             })
             .then((response) => {
-                const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame } = response;
+                const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId } = response;
                 // cleanNavbar() est dans navbars.js
                 cleanNavbar();
                 // toggleNavbarBtn et navContainer proviennent de toggle-navbar.js
@@ -112,7 +112,7 @@ const watchNavUserLoggedForms = () => {
                 // titleDiv.classList.add('in-game');
                 document.querySelector('#main-title').classList.add('in-game');
                 // build the gameboard, launch the game and manage it (true because user is logged, and '' because we don't know the grid solution)
-                gameManager(rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, true, '', clicksNbForPerfectGame);
+                gameManager(rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, true, '', clicksNbForPerfectGame, gridId);
             })
             .catch((e)=> {
                 console.log(e);
