@@ -251,6 +251,11 @@ div.nav-body.sub-body form button:focus {
   outline: none;
 }
 
+div.nav-body:not(.has-sub-menu) form button.invalid,
+div.nav-body.sub-body form button.invalid {
+  color: #2f303b;
+}
+
 div.nav-body:not(.has-sub-menu) div.button,
 div.nav-body.sub-body div.button {
   width: 50%;

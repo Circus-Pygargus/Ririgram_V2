@@ -367,6 +367,11 @@ création du modèle startTime pour enregistrer l'heure de début de jeu sur une
 
 modification formulaire nouvelle partie dans user-loggued.js
 
+pour l'instant je vais forcer à jouer uniquement sur des grilles carrées ...
+mise en place rowsNb = colsNb coté front avec le formulaire nouvelle partie de user-logged.js
+idem coté back avec ajout de forceSquareGrid dans routers/grid.js
+
+
 
 
 

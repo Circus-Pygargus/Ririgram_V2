@@ -148,6 +148,10 @@ div.nav-body.sub-body {
             &:focus {            
                 outline: none;
             }
+
+            &.invalid {
+                color: $color-nav-content;
+            }
         }
     }
 
@@ -190,11 +194,11 @@ div.nav-body.sub-body {
 
 
 input:invalid+span:after {
-    content: '✖';
-    padding-left: 5px;
-  }
-  
-  input:valid+span:after {
-    content: '✓';
-    padding-left: 5px;
-  }
+content: '✖';
+padding-left: 5px;
+}
+
+input:valid+span:after {
+content: '✓';
+padding-left: 5px;
+}

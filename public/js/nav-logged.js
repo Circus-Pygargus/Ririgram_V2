@@ -7,6 +7,12 @@ const watchNavUserLoggedForms = () => {
     // logout form
     const logoutForm = document.querySelector('#user-logout-form');
     const logoutInput = document.querySelector('#logout-all-devices');
+
+    // new grid form
+    const newGridForm = document.querySelector('#new-grid-form');
+    const rowsNbInput = document.querySelector('#rows-nb-input');
+    const colsNbInput = document.querySelector('#cols-nb-input');
+    const newGridFormBtn = document.querySelector('#new-grid-form-btn');
     
     
     // if logoutForm exists, then user is logged, so we're using these event listeners
@@ -74,5 +80,38 @@ const watchNavUserLoggedForms = () => {
                 })
             }
         });
+
+
+        newGridForm.addEventListener('submit' , (event) => {
+            event.preventDefault();
+        });
+
+
+        /* Force to play with square grids */
+        // user is entering a number
+        rowsNbInput.addEventListener('keyup', (event) => {
+            event.preventDefault();
+            colsNbInput.value = rowsNbInput.value;
+            checkValidity(event.target);
+        });
+        colsNbInput.addEventListener('keyup', (event) => {
+            event.preventDefault();
+            rowsNbInput.value = colsNbInput.value;
+            checkValidity(event.target);
+        });
+        // user is using input arrows
+        rowsNbInput.addEventListener('change', (event) => {
+            event.preventDefault();
+            colsNbInput.value = rowsNbInput.value;
+            checkValidity(event.target);
+        });
+        colsNbInput.addEventListener('change', (event) => {
+            event.preventDefault();
+            rowsNbInput.value = colsNbInput.value;
+            checkValidity(event.target);
+        });
+        const checkValidity = (input) => {
+            input.validity.valid ? newGridFormBtn.classList.remove('invalid') : newGridFormBtn.classList.add('invalid');
+        };
     }
 };

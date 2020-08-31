@@ -15,8 +15,8 @@ const router = new express.Router();
 router.post('/grid/test-game', async (req, res) => {
     try {
         // Compute a 4 rows 4 columns grid for the user
-        const rowsNb = 4,
-            colsNb = 4;
+        const rowsNb = 15,
+            colsNb = 15;
         const { gridSolution, clicksNbForPerfectGame } = await computeGridSolution(rowsNb * colsNb);
         // Get rows and cols helpers
         const { rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers } = await computeHelpers(colsNb, gridSolution);
@@ -34,6 +34,7 @@ router.post('/grid/new', auth, async (req, res) => {
     try {
         const {rowsNb, colsNb} = req.body;
         console.log(rowsNb, colsNb)
+        await forceSquareGrid(rowsNb, colsNb);
         let gridsFound = await Grid.find({ rowsNb, colsNb });
         console.log('gridsFound');
         console.log(gridsFound);
@@ -82,6 +83,11 @@ router.post('/grid/new', auth, async (req, res) => {
         res.status(500).send('Un problème est survenu pendant la création de la grille.');
     }
 });
+
+
+const forceSquareGrid = (rowsNb, colsNb) => {
+    if (rowsNb !== colsNb) throw new Error('Les nombre de lignes et de colonnes doivent être identiques !');
+}
 
 
 module.exports = router;
