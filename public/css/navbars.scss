@@ -187,3 +187,14 @@ div.nav-body:not(.has-sub-menu) {
 div.nav-body.sub-body {    
     background-color: $color-nav-content;
 }
+
+
+input:invalid+span:after {
+    content: '✖';
+    padding-left: 5px;
+  }
+  
+  input:valid+span:after {
+    content: '✓';
+    padding-left: 5px;
+  }

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 header div#main-title {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -289,6 +290,16 @@ div.nav-body:not(.has-sub-menu) {
 
 div.nav-body.sub-body {
   background-color: #2f303b;
+}
+
+input:invalid + span:after {
+  content: '✖';
+  padding-left: 5px;
+}
+
+input:valid + span:after {
+  content: '✓';
+  padding-left: 5px;
 }
 
 /* variables */

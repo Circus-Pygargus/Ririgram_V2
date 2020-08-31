@@ -89,14 +89,16 @@
                     <div class="nav-sub-title">Partie rapide</div>
                 </div>
                 <div class="nav-body sub-body d-none" id="nav-quick-play-body">
-                    <form>
+                    <form id="new-grid-form">
                         <div class="form-group">
-                            <label for="rows-nb" class="form-label">Nombre de lignes</label>
-                            <input type="number" class="form-input" name="rowsNb" id="rows-nb">
+                            <label for="rows-nb-input" class="form-label">Nombre de lignes</label>
+                            <input type="number" class="form-input" name="rowsNb" id="rows-nb-input" min="2" max="15" value="4" required>
+                            <span class="validity"></span>
                         </div>
                         <div class="form-group">
-                            <label for="cols-nb" class="form-label">Nombre de lignes</label>
-                            <input type="number" class="form-input" name="colsNb" id="cols-nb">
+                            <label for="cols-nb-input" class="form-label">Nombre de colonnes</label>
+                            <input type="number" class="form-input" name="colsNb" id="cols-nb-input" min="2" max="15" value="4" required>
+                            <span class="validity"></span>
                         </div>
                         <button type="submit">Jouer</button>
                     </form>
