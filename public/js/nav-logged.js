@@ -82,9 +82,43 @@ const watchNavUserLoggedForms = () => {
         });
 
 
+
         newGridForm.addEventListener('submit' , (event) => {
             event.preventDefault();
+            const token = sessionStorage.getItem('token');
+            const data = {
+                "rowsNb": rowsNbInput.value,
+                "colsNb": colsNbInput.value
+            }
+            fetch('/grid/new', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${JSON.parse(token)}`
+                }
+            })
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+                const { gridSolution, clicksNbForPerfectGame, rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers } = response;
+                // cleanNavbar() est dans navbars.js
+                cleanNavbar();
+                // toggleNavbarBtn et navContainer proviennent de toggle-navbar.js
+                toggleNavbarBtn.classList.remove('hidden');
+                navContainer.classList.add('hidden');
+                // move title
+                // titleDiv.classList.add('in-game');
+                document.querySelector('#main-title').classList.add('in-game');
+                // build the gameboard, launch the game and manage it (true because user is logged)
+                gameManager(rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, true, gridSolution, clicksNbForPerfectGame);
+            })
+            .catch((e)=> {
+                console.log(e);
+            })
         });
+
 
 
         /* Force to play with square grids */

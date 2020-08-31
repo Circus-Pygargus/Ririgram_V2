@@ -372,6 +372,9 @@ mise en place rowsNb = colsNb coté front avec le formulaire nouvelle partie de 
 idem coté back avec ajout de forceSquareGrid dans routers/grid.js
 
 
+gestion de la requête /grid/new dans user-logged.js
+
+
 
 
 
