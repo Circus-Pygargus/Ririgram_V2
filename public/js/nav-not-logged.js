@@ -53,6 +53,7 @@ const watchNavUserNotLogged = () => {
             })
             .then((response) => {
                 console.log(response.user)
+                // !! manque gestion des erreurs !!
                 welcomeDiv.innerHTML = 'Bienvenue ' + response.user.name;
                 welcomeDiv.classList.remove('d-none');
                 navDiv.innerHTML = response.html;

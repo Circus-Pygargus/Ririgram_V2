@@ -18,6 +18,8 @@ let isRemovingChoiceUsingCross = false;
 // User Number of clicks on tiles
 let tilesCliksNb = 0;
 let rowsNb, colsNb;
+let rowsHelpers;
+let colsHelpers;
 
 let gridSolution = '';
 let isUserLogged = false;
@@ -25,10 +27,13 @@ let clicksNbForPerfectGame = 0;
 let tiles = [];
 
 
-const gameManager = (newRowsNb, newColsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, isUserLoggedToPlay, newGridSolution = '', NewClicksNbForPerfectGame = 0) => {
+const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newColsHelpers, maxColHelpers, isUserLoggedToPlay, newGridSolution = '', NewClicksNbForPerfectGame = 0) => {
 
+    console.log('game manager')
 rowsNb = newRowsNb;
 colsNb = newColsNb;
+rowsHelpers = newRowsHelpers;
+colsHelpers = newColsHelpers;
 gridSolution = newGridSolution;
 isUserLogged = isUserLoggedToPlay;
 clicksNbForPerfectGame = NewClicksNbForPerfectGame;
@@ -219,9 +224,15 @@ tilesCliksNb = 0;
             tile.dataset.solution = currentChoice;
         }
 
+
+        // checkTileHeaders(tile); // A faire !! vérif des helpers pour changer la couleur si fait
+
         // Check if user found grid solution (only if user is not logged)
         if (!isUserLogged) {
             checkCompleteGrid();
+        }
+        else {
+            quicklyCheckAllHelpers();
         }
     };
 
@@ -261,8 +272,15 @@ tilesCliksNb = 0;
 
 // check if user found grid solution (only is user is not logged)
 const checkCompleteGrid = () => {
-    let userSolution = '';
+    let userSolution = getCompleteGrid();   
 
+    if (userSolution === gridSolution) {
+        victory(isUserLogged, tilesCliksNb, clicksNbForPerfectGame);
+    }
+};
+
+const getCompleteGrid = () => {
+    let userSolution = '';
     tiles.forEach((tile) => {
         switch (tile.dataset.solution) {
             case 'no':
@@ -282,11 +300,8 @@ const checkCompleteGrid = () => {
                 userSolution += '0';
         }
     });
-
-    if (userSolution === gridSolution) {
-        victory(isUserLogged, tilesCliksNb, clicksNbForPerfectGame);
-    }
-};
+    return userSolution;
+}
 
 
 // User is playing without the cross
@@ -506,12 +521,31 @@ const tileSolutionChangeUsingCross = (tile) => {
         tilesCliksNb++;
     }
 
-
+    // checkTileHeaders(tile); // A faire !! vérif des helpers pour changer la couleur si fait
+    
     // Check if user found grid solution (only if user is not logged)
     if (!isUserLogged) {
         checkCompleteGrid();
     }
+    else {
+        quicklyCheckAllHelpers();
+    }
 
     // ?? isCrossClicking ???
 };
-    
+
+
+const quicklyCheckAllHelpers = () => {
+    // clicksNbForPerfectGame et cases de la grille
+    // j'ai failli faire un colHelpers.flat(Infinity) pour les compter ...
+    let tilesClicked = 0;
+    tiles.forEach((tile) => {
+        if (tile.dataset.solution === 'yes' || tile.dataset.solution === 'maybe-yes') tilesClicked++;
+    })
+    if (clicksNbForPerfectGame === tilesClicked) sendSolutionToServer();
+};
+
+const sendSolutionToServer = () => {
+    const userSolution = getCompleteGrid();
+    console.log('La grille est finie, envoi au serveur pourr vérification !');
+};

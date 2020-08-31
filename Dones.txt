@@ -371,8 +371,10 @@ pour l'instant je vais forcer à jouer uniquement sur des grilles carrées ...
 mise en place rowsNb = colsNb coté front avec le formulaire nouvelle partie de user-logged.js
 idem coté back avec ajout de forceSquareGrid dans routers/grid.js
 
-
 gestion de la requête /grid/new dans user-logged.js
+
+ajout vérif de grille pour si user logged, on va vérifier que les nombres de cases par ligne/colonne correspondent avec les totaux des headers. mais ça devrait pas être définitif, il faudra l'echanger par un contrôle des correspondances entre les helpers et la réalité de la grille, pas juste le nombre total correspondant. 
+Pour faire plus simple encore, j'ai utilisé le nombre de clics pour une partie sans faute (clicksNbForPerfectGame)
 
 
 
@@ -422,6 +424,8 @@ users during dev :
 }
 
 todos :
+_ écrire la méthode checkTileHeaders() dans public/js/game-manager.js pour modif la couleur des helpers qd correspodant à la grille et utiliser une correspondance complète pour envoi de la grille au serveur pour vérif.
+    une fois fait, retirer clicksNbForPerfectGame de l'envoi en res du serveur dans la route /grid/new, plus besoin de lui ;); le retirer aussi dans nav-logged.js, dans newGdridForm -> submit. --attention-- ne pas le virer en réception coté front dans gamemanager ... on s'en sert avec test-game.
 _ ajouter la gestion d'un gamepad pour faire comme la croix mais sur pc ? ce serait top !
 _ ajouter : message d'erreur : cet email est déjà enregistré (models/use.js ) déjà fait et pourtant fonctionne pas ...
 _ ajouter retour vérif création new user, qd name existe on a pas le mesage d'erreur perso mais e.code = 11000 et e.keyValue = { name: 'Circus' } je devrais pouvoir utiliser ça
