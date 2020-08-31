@@ -93,6 +93,38 @@ const forceSquareGrid = (rowsNb, colsNb) => {
 }
 
 
+// User is logged and has just finished a grid
+router.post('/grid/check', auth, async (req, res) => {
+    try {
+        receivedTime = Date.now();
+        let isExactGrid = false;
+        const { gridId, userSolution, tilesClicked } = req.body;
+        console.log('Vérif de grille')
+        const grid = await Grid.findById(gridId);
+        if (!grid) throw new Error(`La grille demandée pour vérification par ${req.user.name} n\'existe pas !`);
+        if (userSolution !== grid.gridSolution) isExactGrid = true;
+        if (!isExactGrid) {
+            res.send({ userWins: false, message: 'Cette solution n\'est pas la bonne.' });
+        }
+        else {
+            const startTime = await StartTime.findOne({ grid: gridId, owner: req.user._id });
+            if (!startTime) throw new Error(`Le temps de départ pour la grille ${gridId} et le joueur ${req.user.name} n'existe pas !`);
+            const gridTime = receivedTime - startTime.time;
+            
+            // let recordedResults = UserTimeHard.findOne 
+            // if recordedResults isFirstTime false
+
+            // effacer le startTime !! à la fin ??
+
+            res.send({ userWins: true, isFirstTry, userBestBeaten, IsGridBestTime,  });
+        }
+    } catch (e) {
+        console.log(e);
+        res.status(500).send('Un problème est survenu pendant la vérification de la grille.');
+    }
+});
+
+
 module.exports = router;
 
 /*
