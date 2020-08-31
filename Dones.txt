@@ -362,7 +362,8 @@ gestion de la route post /users (register user) coté front (sauf gestion retour
 
 Création des modèles grid, userTimeEasy et userTimeHard
 
-Ajout de la route /grid/new  EN COURS
+Ajout de la route /grid/new
+création du modèle startTime pour enregistrer l'heure de début de jeu sur une grille pour un joueur
 
 
 

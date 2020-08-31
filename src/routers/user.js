@@ -7,7 +7,6 @@ const User = require('../models/user');
 const Options = require('../models/options');
 
 const auth = require('../middleware/auth');
-// const { __esModule } = require('validator/lib/isAlpha');   // ?????
 
 const defaultColors = require('../../defalut_values/colors');
 

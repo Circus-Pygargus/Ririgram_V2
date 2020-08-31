@@ -25,7 +25,7 @@ const gridSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    clicksNbsForPerfectGame: {
+    clicksNbForPerfectGame: {
         type: Number,
         required: true
     },
@@ -33,7 +33,7 @@ const gridSchema = new mongoose.Schema({
         type: Array,
         required: true,
     },
-    maxRowsHelpers: {
+    maxRowHelpers: {
         type: Number,
         required: true
     },
@@ -41,7 +41,7 @@ const gridSchema = new mongoose.Schema({
         type: Array,
         required: true
     },
-    maxRowsHelpers: {
+    maxColHelpers: {
         type: Number,
         required: true
     },
@@ -88,6 +88,12 @@ gridSchema.virtual('userTimeEasys', {
 
 gridSchema.virtual('userTimeHards', {
     ref: 'UserTimeHard',
+    localField: '_id',
+    foreignField: 'grid'
+});
+
+gridSchema.virtual('startTimes', {
+    ref: 'StartTime',
     localField: '_id',
     foreignField: 'grid'
 });
