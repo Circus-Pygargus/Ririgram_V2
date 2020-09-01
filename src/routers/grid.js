@@ -48,6 +48,8 @@ router.post('/grid/new', auth, async (req, res) => {
             if (!userTimeHard) return true;
             else return false;
         });
+        console.log('founded grids')
+        console.log(gridsFound)
         // at least one grid not played by this user found in DB
         if (gridsFound.length > 0) {
             console.log('grille non jouée trouvée !');
@@ -96,27 +98,72 @@ const forceSquareGrid = (rowsNb, colsNb) => {
 // User is logged and has just finished a grid
 router.post('/grid/check', auth, async (req, res) => {
     try {
+        console.log('Vérif de grille')
         receivedTime = Date.now();
         let isExactGrid = false;
+        // let isFirstTry = false;
+        let isPerfectGame = false;
+        let IsGridBestTime = false;
+        let userBestBeaten = false;
+        let isBrandNewGrid = false;
         const { gridId, userSolution, tilesClicked } = req.body;
-        console.log('Vérif de grille')
         const grid = await Grid.findById(gridId);
         if (!grid) throw new Error(`La grille demandée pour vérification par ${req.user.name} n\'existe pas !`);
-        if (userSolution !== grid.gridSolution) isExactGrid = true;
+        console.log('userSolution')
+        console.log(userSolution)
+        console.log('gridSolution')
+        console.log(grid.gridSolution)
+        if (userSolution === grid.gridSolution) isExactGrid = true;
         if (!isExactGrid) {
             res.send({ userWins: false, message: 'Cette solution n\'est pas la bonne.' });
         }
         else {
+            if (tilesClicked < grid.clicksNbForPerfectGame) throw new Error(`Le joueur ${req.user.name} a fini la grille avec un nombre coups trop petit !`);
+            else if (tilesClicked === grid.clicksNbForPerfectGame) isPerfectGame = true;
+
             const startTime = await StartTime.findOne({ grid: gridId, owner: req.user._id });
+            console.log(startTime)
             if (!startTime) throw new Error(`Le temps de départ pour la grille ${gridId} et le joueur ${req.user.name} n'existe pas !`);
             const gridTime = receivedTime - startTime.time;
+            console.log('grid best time')
+            console.log(grid.bestTimeHard)
+            if (!grid.bestTimeHard) {
+                isBrandNewGrid = true;
+                grid.bestTimeHard = gridTime;
+                IsGridBestTime = true;
+            }
+            else if (gridTime < grid.bestTimeHard) {
+                grid.bestTimeHard = gridTime;
+                IsGridBestTime = true;
+            }
+            await grid.save();
             
-            // let recordedResults = UserTimeHard.findOne 
-            // if recordedResults isFirstTime false
+            let recordedResults = await UserTimeHard.findOne({ grid: gridId, owner: req.user._id });
+            console.log('recorded result 1')
+            console.log(recordedResults)
+            if (!recordedResults) {
+                // isFirstTry = true;
+                console.log('recorded result not found')
+                recordedResults = new UserTimeHard({ bestTime: gridTime, lastTime: gridTime, userClicksNb: tilesClicked, grid: gridId, owner: req.user._id });
+            }
+            else {
+                if (gridTime < recordedResults.bestTime) {
+                    recordedResults.bestTime = gridTime;
+                    recordedResults.userClicksNb = tilesClicked;
+                    userBestBeaten = true;
+                }
+                recordedResults.lastTime = gridTime;
+                recordedResults.grid = gridId;
+                recordedResults.owner = req.user._id;
+            }
+            console.log('recorded result 2')
+            console.log(recordedResults.lastTime)
+            await recordedResults.save();
+            await StartTime.findByIdAndDelete(startTime._id);
 
             // effacer le startTime !! à la fin ??
 
-            res.send({ userWins: true, isFirstTry, userBestBeaten, IsGridBestTime,  });
+            res.send({ userWins: true, isBrandNewGrid, isPerfectGame, userBestBeaten, IsGridBestTime });
         }
     } catch (e) {
         console.log(e);

@@ -379,7 +379,6 @@ Pour faire plus simple encore, j'ai utilisé le nombre de clics pour une partie 
 modif : ajout l'envoi de grid._id depuis la route /grid/new et réception dans nav-logged.js puis game-manager.js
 
 Ajout : route /grid/check pour vérifier les grilles finies par les joueurs 
-    EN COURS
 
 
 
@@ -429,6 +428,7 @@ users during dev :
 }
 
 todos :
+_ faire une requête après réception du résultat positif de test de grille et envoyer le vote pour la grille
 _ écrire la méthode checkTileHeaders() dans public/js/game-manager.js pour modif la couleur des helpers qd correspodant à la grille et utiliser une correspondance complète pour envoi de la grille au serveur pour vérif.
     une fois fait, retirer clicksNbForPerfectGame de l'envoi en res du serveur dans la route /grid/new, plus besoin de lui ;); le retirer aussi dans nav-logged.js, dans newGdridForm -> submit. --attention-- ne pas le virer en réception coté front dans gamemanager ... on s'en sert avec test-game.
 _ ajouter la gestion d'un gamepad pour faire comme la croix mais sur pc ? ce serait top !
