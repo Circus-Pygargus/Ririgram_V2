@@ -85,38 +85,9 @@ const watchNavUserLoggedForms = () => {
 
         newGridForm.addEventListener('submit' , (event) => {
             event.preventDefault();
-            const token = sessionStorage.getItem('token');
-            const data = {
-                "rowsNb": rowsNbInput.value,
-                "colsNb": colsNbInput.value
-            }
-            fetch('/grid/new', {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${JSON.parse(token)}`
-                }
-            })
-            .then((response) => {
-                return response.json();
-            })
-            .then((response) => {
-                const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId } = response;
-                // cleanNavbar() est dans navbars.js
-                cleanNavbar();
-                // toggleNavbarBtn et navContainer proviennent de toggle-navbar.js
-                toggleNavbarBtn.classList.remove('hidden');
-                navContainer.classList.add('hidden');
-                // move title
-                // titleDiv.classList.add('in-game');
-                document.querySelector('#main-title').classList.add('in-game');
-                // build the gameboard, launch the game and manage it (true because user is logged, and '' because we don't know the grid solution)
-                gameManager(rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, true, '', clicksNbForPerfectGame, gridId);
-            })
-            .catch((e)=> {
-                console.log(e);
-            })
+            const rowsNb = rowsNbInput.value, 
+                colsNb = colsNbInput.value;
+            newGrid(rowsNb, colsNb);
         });
 
 
@@ -148,4 +119,39 @@ const watchNavUserLoggedForms = () => {
             input.validity.valid ? newGridFormBtn.classList.remove('invalid') : newGridFormBtn.classList.add('invalid');
         };
     }
+};
+
+const newGrid = (rowsNb, colsNb) => {
+    const token = sessionStorage.getItem('token');
+    const data = {
+        "rowsNb": rowsNb,
+        "colsNb": colsNb
+    }
+    fetch('/grid/new', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${JSON.parse(token)}`
+        }
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((response) => {
+        const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId } = response;
+        // cleanNavbar() est dans navbars.js
+        cleanNavbar();
+        // toggleNavbarBtn et navContainer proviennent de toggle-navbar.js
+        toggleNavbarBtn.classList.remove('hidden');
+        navContainer.classList.add('hidden');
+        // move title
+        // titleDiv.classList.add('in-game');
+        document.querySelector('#main-title').classList.add('in-game');
+        // build the gameboard, launch the game and manage it (true because user is logged, and '' because we don't know the grid solution)
+        gameManager(rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, true, '', clicksNbForPerfectGame, gridId);
+    })
+    .catch((e)=> {
+        console.log(e);
+    })
 };

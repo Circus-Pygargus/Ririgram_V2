@@ -390,7 +390,8 @@ Ajout gestion fetch pour /grid/check
 correction bug : si user not logged et redemande test-game depuis victory, il fait autant d'appel que de fois où l'on a appuyé sur 'encore' ... : 
     retiré victoryPlayAnother.addEventListener('click'..  de la méthode watchVictoryBtns()
 
-
+Déplacememnt du fetch /grid/new de nav-logged.js dans une constante à part pour pouvoir l'appeler depuis victory.
+Ajout gestion bouton nouvelle partie si isUserLogged avec appel de cette constante nouvellement crée.
 
 
 

@@ -54,6 +54,9 @@ victoryPlayAnother.addEventListener('click', (event) => {
     if (!isUserLogged) {
         testGame();
     }
+    else {
+        newGrid(rowsNb, colsNb);
+    }
 });
 
 victoryCloseBtn.addEventListener('click', (event) => {
