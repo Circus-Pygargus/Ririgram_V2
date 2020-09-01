@@ -128,12 +128,18 @@ router.post('/grid/check', auth, async (req, res) => {
         receivedTime = Date.now();
         let isExactGrid = false;
         // let isFirstTry = false;
-        let isPerfectGame = false;
+        // let isPerfectGame = false;
         let IsGridBestTime = false;
         let userBestBeaten = false;
         let isBrandNewGrid = false;
         const { gridId, userSolution, tilesClicked } = req.body;
+        console.log('req.body')
+        console.log(req.body)
+        console.log('grid id received')
+        console.log(gridId)
         const grid = await Grid.findById(gridId);
+        console.log('grid id found')
+        console.log(grid._id)
         if (!grid) throw new Error(`La grille demandée pour vérification par ${req.user.name} n\'existe pas !`);
         console.log('userSolution')
         console.log(userSolution)
@@ -145,7 +151,7 @@ router.post('/grid/check', auth, async (req, res) => {
         }
         else {
             if (tilesClicked < grid.clicksNbForPerfectGame) throw new Error(`Le joueur ${req.user.name} a fini la grille avec un nombre coups trop petit !`);
-            else if (tilesClicked === grid.clicksNbForPerfectGame) isPerfectGame = true;
+            // else if (tilesClicked === grid.clicksNbForPerfectGame) isPerfectGame = true;
 
             const startTime = await StartTime.findOne({ grid: gridId, owner: req.user._id });
             console.log(startTime)
@@ -189,9 +195,10 @@ router.post('/grid/check', auth, async (req, res) => {
 
             // effacer le startTime !! à la fin ??
 
-            res.send({ userWins: true, isBrandNewGrid, isPerfectGame, userBestBeaten, IsGridBestTime });
+            res.send({ userWins: true, isBrandNewGrid, clicksNbForPerfectGame: grid.clicksNbForPerfectGame, userBestBeaten, gridTime, IsGridBestTime });
         }
     } catch (e) {
+        console.log('catched error !')
         console.log(e);
         res.status(500).send('Un problème est survenu pendant la vérification de la grille.');
     }

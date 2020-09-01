@@ -10,7 +10,7 @@ const victoryPlayAnother = document.querySelector('#victory-play-another');
 const victoryChooseGridBtn = document.querySelector('#victory-choose-grid');
 
 // User just won a grid
-const victory = (isUserLogged, tilesCliksNb, clicksNbForPerfectGame) => {
+const victory = (isUserLogged, tilesCliksNb, clicksNbForPerfectGame, isBrandNewGrid=false, userBestBeaten=false,  gridTime=0, IsGridBestTime=false) => {
 
     cleanVictoryDiv();
 
@@ -32,6 +32,19 @@ const victory = (isUserLogged, tilesCliksNb, clicksNbForPerfectGame) => {
         victoryChooseGridBtn.classList.add('d-none');
     
     }
+    else {
+        console.log('partie gagnée !!');
+        (tilesCliksNb > 1) ? clicksNbSpan.innerHTML = tilesCliksNb + ' coups' : clicksNbSpan.innerHTML = tilesCliksNb + ' coup';
+
+        if (tilesCliksNb === clicksNbForPerfectGame) {
+            specialCongrats.classList.remove('d-none');
+        }
+        else {
+            (tilesCliksNb > 1) ? clicksMinSpan.innerHTML = clicksNbForPerfectGame + ' coups' : clicksMinSpan.innerHTML = clicksNbForPerfectGame + ' coup';
+            tooManyClicks.classList.remove('d-none');
+        }
+    }
+
     watchVictoryBtns(isUserLogged);
     victoryDiv.classList.remove('d-none');
 };

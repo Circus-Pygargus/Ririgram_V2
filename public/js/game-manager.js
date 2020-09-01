@@ -541,14 +541,47 @@ const tileSolutionChangeUsingCross = (tile) => {
 const quicklyCheckAllHelpers = () => {
     // clicksNbForPerfectGame et cases de la grille
     // j'ai failli faire un colHelpers.flat(Infinity) pour les compter ...
-    let tilesClicked = 0;
+    let tileschecked = 0;
     tiles.forEach((tile) => {
-        if (tile.dataset.solution === 'yes' || tile.dataset.solution === 'maybe-yes') tilesClicked++;
+        if (tile.dataset.solution === 'yes' || tile.dataset.solution === 'maybe-yes') tileschecked++;
     })
-    if (clicksNbForPerfectGame === tilesClicked) sendSolutionToServer();
+    if (clicksNbForPerfectGame === tileschecked) sendSolutionToServer();
 };
 
 const sendSolutionToServer = () => {
     const userSolution = getCompleteGrid();
     console.log('La grille est finie, envoi au serveur pour vérification !');
+    const data = {
+        "gridId": gridId,
+        "userSolution": userSolution,
+        "tilesClicked": tilesCliksNb
+    };
+    console.log('data')
+    console.log(data)
+    const token = sessionStorage.getItem('token');
+    fetch('/grid/check', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${JSON.parse(token)}`
+        }
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((response) => {
+        // TODO manque gestion des erreurs
+        if (!response.userWins) {
+            failed(response.message);
+        }
+        else {
+            console.log(response)
+            const { isBrandNewGrid, clicksNbForPerfectGame, userBestBeaten, gridTime, IsGridBestTime } = response
+            victory(isUserLogged, tilesCliksNb, clicksNbForPerfectGame, isBrandNewGrid, userBestBeaten, gridTime, IsGridBestTime);
+        }
+    })
+    .catch((e) => {
+        console.log(e)
+    })
 };

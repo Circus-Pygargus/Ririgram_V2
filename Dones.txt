@@ -385,6 +385,8 @@ Correction bug : dans la route /grid/new on récupérait une grille déjà joué
 Ajout public/js/failed.js
     pour les partie envoyée au serveur mais fausse
 
+Ajout gestion fetch pour /grid/check
+
 
 
 
