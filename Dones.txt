@@ -393,6 +393,10 @@ correction bug : si user not logged et redemande test-game depuis victory, il fa
 Déplacememnt du fetch /grid/new de nav-logged.js dans une constante à part pour pouvoir l'appeler depuis victory.
 Ajout gestion bouton nouvelle partie si isUserLogged avec appel de cette constante nouvellement crée.
 
+Création d'un partials : rules.hbs
+    j'y afficherai les règles du jeu et les infos via des onglets séparés,
+    pour l'instant juste quelques infos
+
 
 
 
