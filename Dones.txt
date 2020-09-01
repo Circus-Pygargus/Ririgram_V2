@@ -382,12 +382,17 @@ Ajout : route /grid/check pour vérifier les grilles finies par les joueurs
 
 Correction bug : dans la route /grid/new on récupérait une grille déjà jouée
 
+Ajout public/js/failed.js
+    pour les partie envoyée au serveur mais fausse
 
 
 
 
 
 
+bug :
+_ si user not logged et redemande test-game depuis victory, il fait autant d'appel que de fois où l'on a appuyé sur 'encore' ... : 
+    retirer victoryPlayAnother.addEventListener('click'..  de la méthode watchVictoryBtns()
 
 
 
@@ -444,22 +449,19 @@ _ ajouter dans nav-not- logged : mot de passe oublié avec envoi mail de confirm
 _ ajouter gestion des erreurs form login (et les autres)
 
 
+idées: 
+_ Victory : 
+    au lieu de faire des phrases, faire quelque chose comme ça ? :
 
-méthode requete grille user logged :
-router(grid, auth, (req, res) => {
-    si auth ok
-    recherche de grille en bdd non jouée par le joueur (ne pas oublier la difficulté)
-    si !grille -> création complète de grille
-        enregistrement grille en bdd
-        envoi de la grille
-    si grille -> envoi de la grille
-})
+    Nbr de coups : 19
+    |
+    |-> Sans faute : Check    (ou perfect game ?)
+    ou  Nbr coups mini : 17
 
-
-méthode requete grille user not logged :
-router(grid, (req, res) => {
-    création grille complète en 4*4
-    envoi de la grille
-})
-
+    Chrono : 1:25:365
+    |
+    |-> Record du monde : Check
+    ou  Record du monde : 1:22:654
+        par Duchnock
+    ou  rien si premier chrono pour cette grille
 

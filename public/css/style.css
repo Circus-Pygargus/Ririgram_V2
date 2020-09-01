@@ -587,7 +587,7 @@ input:valid + span:after {
   left: 17px;
 }
 
-#victory {
+#victory, #failed {
   position: absolute;
   z-index: 1;
   top: 0;
@@ -600,30 +600,30 @@ input:valid + span:after {
   background-color: #0F101B;
 }
 
-#victory.d-none {
+#victory.d-none, #failed.d-none {
   display: none;
 }
 
-#victory svg {
+#victory svg, #failed svg {
   position: absolute;
   font-size: x-large;
   right: 32px;
 }
 
-#victory h2 {
+#victory h2, #failed h2 {
   margin-top: 12px;
   margin-bottom: 48px;
 }
 
-#victory p {
+#victory p, #failed p {
   margin-bottom: 32px;
 }
 
-#victory p.d-none {
+#victory p.d-none, #failed p.d-none {
   display: none;
 }
 
-#victory button {
+#victory button, #failed button {
   width: 16rem;
   margin: 1.5rem auto 0;
   padding: 12px 0;
@@ -638,21 +638,21 @@ input:valid + span:after {
   border-radius: 5px;
 }
 
-#victory button:hover {
+#victory button:hover, #failed button:hover {
   border-color: #FF8800;
 }
 
-#victory button:active {
+#victory button:active, #failed button:active {
   background-color: #FF8800;
   color: #FAFAFA;
   border-color: #FAFAFA;
 }
 
-#victory button:focus {
+#victory button:focus, #failed button:focus {
   outline: none;
 }
 
-#victory button.d-none {
+#victory button.d-none, #failed button.d-none {
   display: none;
 }
 
