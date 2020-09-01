@@ -378,7 +378,9 @@ Pour faire plus simple encore, j'ai utilisé le nombre de clics pour une partie 
 
 modif : ajout l'envoi de grid._id depuis la route /grid/new et réception dans nav-logged.js puis game-manager.js
 
-Ajout : route /grid/check pour vérifier les grilles finies par les joueurs 
+Ajout : route /grid/check pour vérifier les grilles finies par les joueurs
+
+Correction bug : dans la route /grid/new on récupérait une grille déjà jouée
 
 
 

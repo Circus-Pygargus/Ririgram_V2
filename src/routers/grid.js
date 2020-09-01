@@ -35,26 +35,31 @@ router.post('/grid/new', auth, async (req, res) => {
         const {rowsNb, colsNb} = req.body;
         console.log(rowsNb, colsNb)
         await forceSquareGrid(rowsNb, colsNb);
-        let gridsFound = await Grid.find({ rowsNb, colsNb });
-        console.log('gridsFound');
-        console.log(gridsFound);
+        // let gridsFound = await Grid.find({ rowsNb, colsNb });
+        // console.log('gridsFound');
+        // console.log(gridsFound);
 
-        gridsFound = await gridsFound.filter( async (gridFound) => {
-            console.log('gridFound');
-            console.log(gridFound);
-            const userTimeHard = await UserTimeHard.findOne({ owner: req.user._id, grid: gridFound._id});
-            console.log('userTimeHard')
-            console.log(userTimeHard)
-            if (!userTimeHard) return true;
-            else return false;
-        });
+        // gridsFound = await gridsFound.filter( async (gridFound) => {
+        //     console.log('gridFound');
+        //     console.log(gridFound);
+        //     const userTimeHard = await UserTimeHard.findOne({ owner: req.user._id, grid: gridFound._id});
+        //     console.log('userTimeHard')
+        //     console.log(userTimeHard)
+        //     if (!userTimeHard) return true;
+        //     else return false;
+        // });
+        console.log('ask for a recorded grid')
+        let foundedGrid = await findUnplayedGrid(rowsNb, colsNb, req.user._id);
         console.log('founded grids')
-        console.log(gridsFound)
+        console.log(foundedGrid)
         // at least one grid not played by this user found in DB
-        if (gridsFound.length > 0) {
+        // if (gridsFound.length > 0) {
+        if (foundedGrid) {
             console.log('grille non jouée trouvée !');
-            const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame } = gridsFound[0];
-            const gridId = gridsFound[0]._id;
+            // const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame } = gridsFound[0];
+            // const gridId = gridsFound[0]._id;
+            const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame } = foundedGrid;
+            const gridId = foundedGrid._id;
             console.log(gridId)
             let startTime = await StartTime.findOne({grid: gridId, owner: req.user._id});
             if (!startTime) {
@@ -88,6 +93,27 @@ router.post('/grid/new', auth, async (req, res) => {
         res.status(500).send('Un problème est survenu pendant la création de la grille.');
     }
 });
+
+const findUnplayedGrid = async (rowsNb, colsNb, userId) => {
+    console.log('searching a recorded grid')
+    let hasFoundGrid = false;
+    let gridsFound = await Grid.find({ rowsNb, colsNb });
+    for (let i = 0, max = gridsFound.length; i < max; i++) {
+        const userTimeHard = await UserTimeHard.findOne({ owner: userId, grid: gridsFound[i]._id});
+        if (userTimeHard) continue;
+        else return gridsFound[i];
+    }
+    if (!hasFoundGrid) return null;
+    // gridsFound = await gridsFound.filter( async (gridFound) => {
+    //     console.log('gridFound');
+    //     console.log(gridFound);
+    //     const userTimeHard = await UserTimeHard.findOne({ owner: req.user._id, grid: gridFound._id});
+    //     console.log('userTimeHard')
+    //     console.log(userTimeHard)
+    //     if (!userTimeHard) return true;
+    //     else return false;
+    // });
+};
 
 
 const forceSquareGrid = (rowsNb, colsNb) => {
