@@ -1,1 +1,28 @@
 <p>Ici vous pouvez écrire un message : bug, idée, encouragements (ou pas) ...</p>
+<div id="want-give-feedback">Ecrire un message</div>
+<form id="feedback-form">
+    <div class="form-group">
+        <label for="feedback-type" class="form-label">Type de message</label>
+        <select class="form-select" name="type" id="feedback-type" required>
+            <option value="">Choisis un type</option>
+            <option value="bug">Bug</option>
+            <option value="idea">Idée</option>
+            <option value="other">Autre</option>
+        </select>
+    </div>
+    <div class="form-group">  <!-- Required if type = bug -->
+        <label for="feedback-device" class="form-label">Matériel utilisé</label>
+        <input type="text" class="form-input" name="device" id="feedback-device" placeholder="PC, Iphone 26, Nokia 3210 ...">
+    </div>
+    <div class="form-group">  <!-- Required if type = bug -->
+        <label for="feedback-browser" class="form-label">Navigateur utilisé</label>
+        <input type="text" class="form-input" name="browser" id="feedback-browser" placeholder="Chrome, Safari, Epic, Netscape ...">
+    </div>
+    <div class="form-group">
+        <label for="feedback-message" class="form-label">Message</label>
+        <textarea name="message" id="feedback-message" placeholder="300 caractères maximum" required></textarea>
+    </div>
+    <button type="submit">Envoyer</button>
+</form>
+
+{{>messages}}

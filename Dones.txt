@@ -401,6 +401,10 @@ Reconstruction complète de l'ancienne partie 'Règles':
 Création des partial views : social, rules, infos et feedback
     maintenant l'onglet global 'Infos et +' laisse apparaître 3 sous-menus : Règles, Infos et Messages
 
+Ajout contenu à partials/feedback
+
+A FAIRE créer messages.hbs
+
 
 
 

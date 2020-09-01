@@ -201,7 +201,11 @@ div.nav-body.sub-body form div.form-group label.form-label {
 }
 
 div.nav-body:not(.has-sub-menu) form div.form-group input.form-input,
-div.nav-body.sub-body form div.form-group input.form-input {
+div.nav-body:not(.has-sub-menu) form div.form-group select.form-select,
+div.nav-body:not(.has-sub-menu) form div.form-group textarea,
+div.nav-body.sub-body form div.form-group input.form-input,
+div.nav-body.sub-body form div.form-group select.form-select,
+div.nav-body.sub-body form div.form-group textarea {
   width: 100%;
   height: 2.5rem;
   font-size: 1rem;
@@ -215,9 +219,18 @@ div.nav-body.sub-body form div.form-group input.form-input {
 }
 
 div.nav-body:not(.has-sub-menu) form div.form-group input.form-input:focus,
-div.nav-body.sub-body form div.form-group input.form-input:focus {
+div.nav-body:not(.has-sub-menu) form div.form-group select.form-select:focus,
+div.nav-body:not(.has-sub-menu) form div.form-group textarea:focus,
+div.nav-body.sub-body form div.form-group input.form-input:focus,
+div.nav-body.sub-body form div.form-group select.form-select:focus,
+div.nav-body.sub-body form div.form-group textarea:focus {
   border-color: #FF8800;
   outline: none;
+}
+
+div.nav-body:not(.has-sub-menu) form div.form-group textarea,
+div.nav-body.sub-body form div.form-group textarea {
+  height: 7.5rem;
 }
 
 div.nav-body:not(.has-sub-menu) form button,
