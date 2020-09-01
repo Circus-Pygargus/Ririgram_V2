@@ -45,19 +45,16 @@ const victory = (isUserLogged, tilesCliksNb, clicksNbForPerfectGame, isBrandNewG
         }
     }
 
-    watchVictoryBtns(isUserLogged);
     victoryDiv.classList.remove('d-none');
 };
 
 
-const watchVictoryBtns = (isUserLogged) => {
 
+victoryPlayAnother.addEventListener('click', (event) => {
     if (!isUserLogged) {
-        victoryPlayAnother.addEventListener('click', (event) => {
-            testGame();
-        });
+        testGame();
     }
-};
+});
 
 victoryCloseBtn.addEventListener('click', (event) => {
     

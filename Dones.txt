@@ -387,14 +387,14 @@ Ajout public/js/failed.js
 
 Ajout gestion fetch pour /grid/check
 
+correction bug : si user not logged et redemande test-game depuis victory, il fait autant d'appel que de fois où l'on a appuyé sur 'encore' ... : 
+    retiré victoryPlayAnother.addEventListener('click'..  de la méthode watchVictoryBtns()
 
 
 
 
 
-bug :
-_ si user not logged et redemande test-game depuis victory, il fait autant d'appel que de fois où l'on a appuyé sur 'encore' ... : 
-    retirer victoryPlayAnother.addEventListener('click'..  de la méthode watchVictoryBtns()
+
 
 
 
