@@ -25,10 +25,17 @@ const watchNavButtons = () => {
     
                         if (isSelected) {
                             navButtons[i].classList.remove('selected');
+                            // ?? A remettre après ajout en scss d'une anim ?
+                            // navButtons[i].scrollIntoView({
+                            //     behavior: 'smooth'
+                            // });
                         }
                         else {
                             navButtons[i].classList.add('selected');
                             navSubContents[j].classList.remove('d-none');
+                            navButtons[i].scrollIntoView({
+                                behavior: 'smooth'
+                            });
                         }
                     }
                 }
@@ -46,10 +53,16 @@ const watchNavButtons = () => {
     
                         if (isSelected) {
                         navButtons[i].classList.remove('selected');
+                        // navButtons[i].scrollIntoView({
+                        //     behavior: 'smooth'
+                        // });
                         }
                         else {
                             navButtons[i].classList.add('selected');
                             navContents[j].classList.remove('d-none');
+                            navButtons[i].scrollIntoView({
+                                behavior: 'smooth'
+                            });
                         }
                     }
                 }

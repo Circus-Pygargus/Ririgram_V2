@@ -426,7 +426,8 @@ exemple : {{#ifEquals ../user.role "admin"}}
 export du scss des formulaire dans un fichier à part : forms.scss
 
 Création de public/js/feedback.js pour afficher/cacher le formulaire d'envoi de feedback
-                        EN COURS
+
+réécriture du html des 2 navbars : mise en place Règles pour les de 2 et Entre nous pour user loggué, ce dernier contient Infos, Nouveau message et Vos messages. reformulation des hbs correspondants
 
 
 

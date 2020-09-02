@@ -1,6 +1,8 @@
 <p>Ici vous pouvez écrire un message : bug, idée, encouragements (ou pas) ...</p>
+
 <div id="want-give-feedback">Ecrire un message</div>
-<form id="feedback-form">
+
+<form id="feedback-form" class="d-none">
     <div class="form-group">
         <label for="feedback-type" class="form-label">Type de message</label>
         <select class="form-select" name="type" id="feedback-type" required>
@@ -24,4 +26,5 @@
     </div>
     <button type="submit">Envoyer</button>
 </form>
+
 {{>messages}}

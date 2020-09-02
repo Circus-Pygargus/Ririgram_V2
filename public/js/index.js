@@ -62,3 +62,6 @@ document.addEventListener('contextmenu', (event) => {
     // react when user push a game button (game cross or color answer)
     watchGameButtons();
     watchCrossButtons();
+
+
+    watchFeedback();

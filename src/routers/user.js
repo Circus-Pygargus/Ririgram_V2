@@ -55,7 +55,7 @@ router.post('/users/login', async (req, res) => {
         if (!options) {
             options = defaultColors;
         }
-
+console.log(user)
         res.render(`${partialsPath}/navLogged`, (err, html) => {
             if (err) {
                 return res.send({
