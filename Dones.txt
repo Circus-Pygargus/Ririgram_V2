@@ -407,6 +407,8 @@ Création du partial messages.hbs : il servira à afficher les feedback envoyés
 
 Création du modèle Feedback, qui permettra d'enregistrer les messages des joueurs en BDD
 
+Création du router feedback.js
+
 
 
 
