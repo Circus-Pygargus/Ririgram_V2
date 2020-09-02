@@ -40,8 +40,16 @@ const userSchema = new mongoose.Schema({
             message: 'Vous ne pouvez pas utiliser \'password\' dans le mot de passe !'
         }
     },
+    // c
     role: {
-        type: String
+        type: String,
+        validate: {
+            validator: (value) => {
+                const regex = /admin/i;
+                return regex.test(value);
+            },
+            message: 'Le rôle devrait être \'admin\' !'
+        }
     },
     tokens: [{
         token: {

@@ -16,7 +16,7 @@ const startTimeSchema = new mongoose.Schema({
         ref: 'User'
     }
 }, {
-    timeStamps: true
+    timestamps: true
 });
 
 const StartTime = mongoose.model('StartTime', startTimeSchema);

@@ -77,7 +77,7 @@ const gridSchema = new mongoose.Schema({
         type: Number
     }
 },{
-    timeStamps: true
+    timestamps: true
 });
 
 gridSchema.virtual('userTimeEasys', {

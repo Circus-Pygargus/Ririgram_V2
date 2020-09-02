@@ -30,7 +30,7 @@ const feedbackSchema = new mongoose.Schema({
        ref: 'User'
    },
 },{
-    timeStamps: true
+    timestamps: true
 });
 
 const Feedback = mongoose.model('Feedback', feedbackSchema);

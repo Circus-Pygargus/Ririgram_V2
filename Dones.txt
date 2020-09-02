@@ -416,7 +416,7 @@ implémenté : seul le créateur d'un message peut voir le bouton de suppression
 modification du modèle User pour y inclure le field role non obligatoire qui permettra de faire des vérif si admin dans un premier temps (d'autres peut-être plus tard si besoin).
 
 
-
+correction coquille : timestamps au lieu de timeStamps: true dans les modèles
 
 
 
@@ -446,21 +446,18 @@ ou
 users during dev :
 {
     "name": "Circus",
-    "email": "fauxmail@pour.test",
-    "password": "1234567"
+    "email": "test@test.fr",
+    "password": "1234567",
+    "role": "admin"
 }
 
 {
     "name": "Circus2",
-    "email": "fauxmail2@pour.test",
-    "password": "12345678"
-}
-
-{
-    "name": "Circus3",
-    "email": "fauxmail3@pour.test",
+    "email": "test2@test.fr",
     "password": "1234567"
 }
+
+
 
 todos :
 _ faire une requête après réception du résultat positif de test de grille et envoyer le vote pour la grille
