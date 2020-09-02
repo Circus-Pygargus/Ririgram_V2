@@ -413,6 +413,8 @@ modif : ajout possibilité de réponse aux feedbacks
 
 implémenté : seul le créateur d'un message peut voir le bouton de suppression de message
 
+modification du modèle User pour y inclure le field role non obligatoire qui permettra de faire des vérif si admin dans un premier temps (d'autres peut-être plus tard si besoin).
+
 
 
 
@@ -421,6 +423,9 @@ implémenté : seul le créateur d'un message peut voir le bouton de suppression
 A FAIRE : 
 _ le bouton répondre au feedback devrait n'être visible que par l'admin !
 _ le bouton effacer un feedback ne devrait être visible que par le créateur !
+
+
+
 
 
 

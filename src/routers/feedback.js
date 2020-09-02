@@ -20,6 +20,8 @@ router.post('/feedback/new', auth, async (req, res) => {
         await feedback.save();
 
         const messages = await Feedback.find({});
+        console.log('messages')
+        console.log(messages)
 
         res.render(`${partialsPath}/messages`, { userName, messages }, (err, html) => {
             if (err) {

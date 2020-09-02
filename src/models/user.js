@@ -40,6 +40,9 @@ const userSchema = new mongoose.Schema({
             message: 'Vous ne pouvez pas utiliser \'password\' dans le mot de passe !'
         }
     },
+    role: {
+        type: String
+    },
     tokens: [{
         token: {
             type: String,
