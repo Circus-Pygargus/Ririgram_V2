@@ -405,6 +405,8 @@ Ajout contenu à partials/feedback
 
 Création du partial messages.hbs : il servira à afficher les feedback envoyés par les joueurs.
 
+Création du modèle Feedback, qui permettra d'enregistrer les messages des joueurs en BDD
+
 
 
 
@@ -480,3 +482,10 @@ _ Victory :
         par Duchnock
     ou  rien si premier chrono pour cette grille
 
+
+
+DB feedback :
+    type
+    device
+    browser
+    message

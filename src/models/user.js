@@ -76,6 +76,12 @@ userSchema.virtual('startTimes', {
     foreignField: 'owner'
 });
 
+userSchema.virtual('feedbacks', {
+    ref: 'Feedback',
+    localField: '_id',
+    foreignField: 'owner'
+})
+
 
 
 // take off the infos we don't want to sendback to user
