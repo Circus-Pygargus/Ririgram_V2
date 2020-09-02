@@ -1,13 +1,13 @@
 <div id="messages">
-    {{#if messages}}
+    {{!-- {{#if messages}} --}}
         {{#each messages}}
         <div class="message">
-            {{#ifEquals user.name this.owner}}
+            {{#ifEquals ../user.name this.owner}}
                 <div class="message-close" data-id="{{this._id}}">Effacer</div>
             {{/ifEquals}}
-            {{#if user.role}}
-                <div>{{user.role}}</div>
-                {{#ifEquals user.role 'admin'}}
+                <div>{{../user.role}}</div>
+            {{#if ../user.role}}
+                {{#ifEquals ../user.role "admin"}}
                     <div class="message-answer-btn" data-id="{{this._id}}">Répondre</div>
                 {{/ifEquals}}
             {{/if}}
@@ -20,7 +20,8 @@
             <div class="message-answer">{{this.answer}}</div>
             <div class="anwser-date">{{this.updatedAt}}</div>
             <div class="answer-owner">{{this.answerOner}}</div>
+
         </div>
         {{/each}}
-    {{/if}}
+    {{!-- {{/if}} --}}
 </div>

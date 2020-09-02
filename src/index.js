@@ -41,6 +41,9 @@ app.set('views', viewsPath);
 // Tell hbs we're gonna use some partial templates
 hbs.registerPartials(partialPath);
 // Tell hbs that we need to use ifEquals to compare 2 values in hbs files
+// hbs.registerHelper('ifEquals', (arg1, arg2) => {
+//     return arg1 === arg2;
+// });
 hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
     return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });

@@ -1,4 +1,6 @@
 const express = require('express');
+            
+                        const hbs = require('hbs');
 
 const path = require('path');
 
@@ -9,6 +11,10 @@ const auth = require('../middleware/auth');
 const router = new express.Router();
 
 const partialsPath = path.join(__dirname, '../../templates/partials');
+
+                hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+                    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+                });
 
 
 // user wants to send a feedback
@@ -41,14 +47,13 @@ router.post('/feedback/list', auth, async (req, res) => {
     try {
         const user = req.user;
         const messages = await Feedback.find({});
-        console.log(user)
         res.render(`${partialsPath}/messages`, { user, messages }, (err, html) => {
             if (err) {
                 return res.send({
                     error: 'Une erreur est survenue pendant le rendu des messages.'
                 });
             }
-            res.status(201).send({ html });
+            res.send({ html });
         });
     } catch(e) {
         console.log(e);
