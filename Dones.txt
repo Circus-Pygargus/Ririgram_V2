@@ -411,7 +411,7 @@ Création du router feedback.js
 
 modif : ajout possibilité de réponse aux feedbacks
 
-
+implémenté : seul le créateur d'un message peut voir le bouton de suppression de message
 
 
 

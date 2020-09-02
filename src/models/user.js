@@ -78,13 +78,13 @@ userSchema.virtual('startTimes', {
 
 userSchema.virtual('feedbacks', {
     ref: 'Feedback',
-    localField: '_id',
+    localField: 'name',
     foreignField: 'owner'
 });
 
 userSchema.virtual('feedbacks', {
     ref: 'Feedback',
-    localField: '_id',
+    localField: 'name',
     foreignField: 'answerOwner'
 });
 

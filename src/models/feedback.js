@@ -16,18 +16,17 @@ const feedbackSchema = new mongoose.Schema({
        required: true,
        maxlength: 300
    },
+   owner: {
+       type: String,
+       required: true,
+       ref: 'User'
+   },
    answer: {
        type: String,
        maxlength: 300
    },
-   owner: {
-       type: mongoose.Schema.Types.ObjectId,
-       required: true,
-       ref: 'User'
-   },
    answerOwner: {
-       type: mongoose.Schema.Types.ObjectId,
-       required: true,
+       type: String,
        ref: 'User'
    },
 },{

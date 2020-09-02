@@ -40,6 +40,55 @@ app.set('view engine', 'hbs');
 app.set('views', viewsPath);
 // Tell hbs we're gonna use some partial templates
 hbs.registerPartials(partialPath);
+// Tell hbs that we need to use ifEquals to compare 2 values in hbs files
+hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+// hbs.registerHelper("when", (operand_1, operator, operand_2, options) => {
+//     let operators = {                     //  {{#when <operand1> 'eq' <operand2>}}
+//       'eq': (l,r) => l == r,              //  {{/when}}
+//       'noteq': (l,r) => l != r,
+//       'gt': (l,r) => (+l) > (+r),                        // {{#when var1 'eq' var2}}
+//       'gteq': (l,r) => ((+l) > (+r)) || (l == r),        //               eq
+//       'lt': (l,r) => (+l) < (+r),                        // {{else when var1 'gt' var2}}
+//       'lteq': (l,r) => ((+l) < (+r)) || (l == r),        //               gt
+//       'or': (l,r) => l || r,                             // {{else}}
+//       'and': (l,r) => l && r,                            //               lt
+//       '%': (l,r) => (l % r) === 0                        // {{/when}}
+//     }
+//     let result = operators[operator](operand_1,operand_2);
+//     if(result) return options.fn(this); 
+//     return options.inverse(this);       
+//   });
+// hbs.registerHelper('compare', function(lvalue, rvalue, options) {
+
+// 	if (arguments.length < 3)
+// 	    throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
+
+// 	operator = options.hash.operator || "==";
+
+// 	var operators = {
+// 	    '==':       function(l,r) { return l == r; },
+// 	    '===':      function(l,r) { return l === r; },
+// 	    '!=':       function(l,r) { return l != r; },
+// 	    '<':        function(l,r) { return l < r; },
+// 	    '>':        function(l,r) { return l > r; },
+// 	    '<=':       function(l,r) { return l <= r; },
+// 	    '>=':       function(l,r) { return l >= r; },
+// 	    'typeof':   function(l,r) { return typeof l == r; }
+// 	}
+
+// 	if (!operators[operator])
+// 	    throw new Error("Handlerbars Helper 'compare' doesn't know the operator "+operator);
+
+// 	var result = operators[operator](lvalue,rvalue);
+
+// 	if( result ) {
+// 	    return options.fn(this);
+// 	} else {
+// 	    return options.inverse(this);
+// 	}
+// });
 
 /* Setup static directory to serve */
 // with this, we don't need a route for '', il will send directly to public path (so the index.html wich is inside)

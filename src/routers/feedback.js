@@ -15,10 +15,13 @@ const partialsPath = path.join(__dirname, '../../templates/partials');
 router.post('/feedback/new', auth, async (req, res) => {
     try {
         const { type, device, browser, message } = req.body;
-        const feedback = new Feedback({ type, device, browser, message, owner: req.user._id});
+        const userName = req.user.name;
+        const feedback = new Feedback({ type, device, browser, message, owner: userName});
         await feedback.save();
 
-        res.render(`${partialsPath}/messages`, (err, html) => {
+        const messages = await Feedback.find({});
+
+        res.render(`${partialsPath}/messages`, { userName, messages }, (err, html) => {
             if (err) {
                 return res.send({
                     error: 'Une erreur est survenue pendant le rendu des messages.'
