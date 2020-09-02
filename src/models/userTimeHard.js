@@ -27,7 +27,7 @@ const userTimeHard = new mongoose.Schema({
         type: String
     }
 },{
-    timeStamps: true
+    timestamps: true
 });
 
 userTimeHard.virtual('grids', {

@@ -15,15 +15,13 @@ const partialsPath = path.join(__dirname, '../../templates/partials');
 router.post('/feedback/new', auth, async (req, res) => {
     try {
         const { type, device, browser, message } = req.body;
-        const userName = req.user.name;
-        const feedback = new Feedback({ type, device, browser, message, owner: userName});
+        const user = req.user;
+        const feedback = new Feedback({ type, device, browser, message, owner: user.name});
         await feedback.save();
 
         const messages = await Feedback.find({});
-        console.log('messages')
-        console.log(messages)
 
-        res.render(`${partialsPath}/messages`, { userName, messages }, (err, html) => {
+        res.render(`${partialsPath}/messages`, { user, messages }, (err, html) => {
             if (err) {
                 return res.send({
                     error: 'Une erreur est survenue pendant le rendu des messages.'
@@ -31,10 +29,30 @@ router.post('/feedback/new', auth, async (req, res) => {
             }
             res.status(201).send({ html });
         });
-        console.log(feedback)
     } catch(e) {
         console.log(e);
         res.status(500).send('Quelque chose s\'est mal déroulé pendant l\'enregistrement du message !');
+    }
+});
+
+
+// user wants to see feedbacks
+router.post('/feedback/list', auth, async (req, res) => {
+    try {
+        const user = req.user;
+        const messages = await Feedback.find({});
+        console.log(user)
+        res.render(`${partialsPath}/messages`, { user, messages }, (err, html) => {
+            if (err) {
+                return res.send({
+                    error: 'Une erreur est survenue pendant le rendu des messages.'
+                });
+            }
+            res.status(201).send({ html });
+        });
+    } catch(e) {
+        console.log(e);
+        res.status(500).send('Quelque chose s\'est mal déroulé pendant l\'affichage des messages !');
     }
 });
 

@@ -415,8 +415,9 @@ implémenté : seul le créateur d'un message peut voir le bouton de suppression
 
 modification du modèle User pour y inclure le field role non obligatoire qui permettra de faire des vérif si admin dans un premier temps (d'autres peut-être plus tard si besoin).
 
-
 correction coquille : timestamps au lieu de timeStamps: true dans les modèles
+
+Ajout route /feedback/list
 
 
 

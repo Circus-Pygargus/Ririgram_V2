@@ -12,7 +12,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/ririgram');
 // used during development when need to delete the database
 
 // const connection = mongoose.connection;
-
 // connection.once("open", () => {
 //     console.log('*** MongoDB got connected ! ***')
 //     console.log(`Our Current DataBase Name : ${connection.db.databaseName}`)
