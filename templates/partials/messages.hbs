@@ -1,0 +1,10 @@
+<div id="messages">
+    {{#each messages}}
+    <div class="message">
+        <div class="message-type">{{this.type}}</div>
+        <div class="message-device">{{this.device}}</div>
+        <div class="message-browser">{{this.browser}}</div>
+        <div class="message-text">{{this.message}}</div>
+    </div>
+    {{/each}}
+</div>

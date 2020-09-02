@@ -403,7 +403,7 @@ Création des partial views : social, rules, infos et feedback
 
 Ajout contenu à partials/feedback
 
-A FAIRE créer messages.hbs
+Création du partial messages.hbs : il servira à afficher les feedback envoyés par les joueurs.
 
 
 
