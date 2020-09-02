@@ -419,14 +419,12 @@ correction coquille : timestamps au lieu de timeStamps: true dans les modèles
 
 Ajout route /feedback/list
 
-Résolution d'un bug : lorsque l'on envoye une variable à une vue hbs, si on veut accéder à cette variable dans une boucle il faut précéder la variable avecd ../
+Résolution d'un bug : lorsque l'on envoye une variable à une vue hbs, si on veut accéder à cette variable dans une boucle il faut précéder la variable avec ../
 ça expliquera à handelbars que le scope privé dans lequel se trouve la variable est dans le scope parent
+exemple : {{#ifEquals ../user.role "admin"}}
 
+export du scss des formulaire dans un fichier à part : forms.scss
 
-
-A FAIRE : 
-_ le bouton répondre au feedback devrait n'être visible que par l'admin !
-_ le bouton effacer un feedback ne devrait être visible que par le créateur !
 
 
 

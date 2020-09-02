@@ -1,0 +1,70 @@
+form {
+
+    div.form-group {
+        width: 70vw;
+        margin: 0 auto 1.5rem;
+
+        &:nth-last-child(2) {
+            margin-bottom: 2.5rem;
+        }
+
+        label.form-label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input.form-input,
+        select.form-select,
+        textarea {
+            width: 100%;
+            height: 2.5rem;
+            font-size: 1rem;
+            padding: 0 20px;
+            box-sizing: border-box;
+            border: 1px solid $color-font;
+            border-radius: 5px;
+            background-color: $color-nav-header;
+            color: $color-font;
+
+            &:focus {
+                border-color: $color-primary;
+                outline: none;
+            }
+        }
+
+        textarea {
+            height: 7.5rem;
+        }
+    }
+
+    button {
+        width: 50%;
+        height: 3rem;
+        margin: 0 auto;
+        display: block;
+        background-color: $color-nav-header;
+        color: $color-primary;
+        font-size: 1.5rem;
+        font-weight: 700;
+        border: 1px solid $color-font;
+        border-radius: 5px;
+    
+        &:hover {
+            border-color: $color-primary;
+        }
+    
+        &:active {
+            background-color: $color-primary;
+            color: $color-font;
+            border-color: $color-font;
+        }
+    
+        &:focus {            
+            outline: none;
+        }
+
+        &.invalid {
+            color: $color-nav-content;
+        }
+    }
+}

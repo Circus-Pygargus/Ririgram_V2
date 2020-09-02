@@ -183,92 +183,6 @@ div.nav-body.sub-body {
   border-top: none;
 }
 
-div.nav-body:not(.has-sub-menu) form div.form-group,
-div.nav-body.sub-body form div.form-group {
-  width: 70vw;
-  margin: 0 auto 1.5rem;
-}
-
-div.nav-body:not(.has-sub-menu) form div.form-group:nth-last-child(2),
-div.nav-body.sub-body form div.form-group:nth-last-child(2) {
-  margin-bottom: 2.5rem;
-}
-
-div.nav-body:not(.has-sub-menu) form div.form-group label.form-label,
-div.nav-body.sub-body form div.form-group label.form-label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-div.nav-body:not(.has-sub-menu) form div.form-group input.form-input,
-div.nav-body:not(.has-sub-menu) form div.form-group select.form-select,
-div.nav-body:not(.has-sub-menu) form div.form-group textarea,
-div.nav-body.sub-body form div.form-group input.form-input,
-div.nav-body.sub-body form div.form-group select.form-select,
-div.nav-body.sub-body form div.form-group textarea {
-  width: 100%;
-  height: 2.5rem;
-  font-size: 1rem;
-  padding: 0 20px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border: 1px solid #FAFAFA;
-  border-radius: 5px;
-  background-color: #0F101B;
-  color: #FAFAFA;
-}
-
-div.nav-body:not(.has-sub-menu) form div.form-group input.form-input:focus,
-div.nav-body:not(.has-sub-menu) form div.form-group select.form-select:focus,
-div.nav-body:not(.has-sub-menu) form div.form-group textarea:focus,
-div.nav-body.sub-body form div.form-group input.form-input:focus,
-div.nav-body.sub-body form div.form-group select.form-select:focus,
-div.nav-body.sub-body form div.form-group textarea:focus {
-  border-color: #FF8800;
-  outline: none;
-}
-
-div.nav-body:not(.has-sub-menu) form div.form-group textarea,
-div.nav-body.sub-body form div.form-group textarea {
-  height: 7.5rem;
-}
-
-div.nav-body:not(.has-sub-menu) form button,
-div.nav-body.sub-body form button {
-  width: 50%;
-  height: 3rem;
-  margin: 0 auto;
-  display: block;
-  background-color: #0F101B;
-  color: #FF8800;
-  font-size: 1.5rem;
-  font-weight: 700;
-  border: 1px solid #FAFAFA;
-  border-radius: 5px;
-}
-
-div.nav-body:not(.has-sub-menu) form button:hover,
-div.nav-body.sub-body form button:hover {
-  border-color: #FF8800;
-}
-
-div.nav-body:not(.has-sub-menu) form button:active,
-div.nav-body.sub-body form button:active {
-  background-color: #FF8800;
-  color: #FAFAFA;
-  border-color: #FAFAFA;
-}
-
-div.nav-body:not(.has-sub-menu) form button:focus,
-div.nav-body.sub-body form button:focus {
-  outline: none;
-}
-
-div.nav-body:not(.has-sub-menu) form button.invalid,
-div.nav-body.sub-body form button.invalid {
-  color: #2f303b;
-}
-
 div.nav-body:not(.has-sub-menu) div.button,
 div.nav-body.sub-body div.button {
   width: 50%;
@@ -318,6 +232,77 @@ input:invalid + span:after {
 input:valid + span:after {
   content: '✓';
   padding-left: 5px;
+}
+
+form div.form-group {
+  width: 70vw;
+  margin: 0 auto 1.5rem;
+}
+
+form div.form-group:nth-last-child(2) {
+  margin-bottom: 2.5rem;
+}
+
+form div.form-group label.form-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+form div.form-group input.form-input,
+form div.form-group select.form-select,
+form div.form-group textarea {
+  width: 100%;
+  height: 2.5rem;
+  font-size: 1rem;
+  padding: 0 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #FAFAFA;
+  border-radius: 5px;
+  background-color: #0F101B;
+  color: #FAFAFA;
+}
+
+form div.form-group input.form-input:focus,
+form div.form-group select.form-select:focus,
+form div.form-group textarea:focus {
+  border-color: #FF8800;
+  outline: none;
+}
+
+form div.form-group textarea {
+  height: 7.5rem;
+}
+
+form button {
+  width: 50%;
+  height: 3rem;
+  margin: 0 auto;
+  display: block;
+  background-color: #0F101B;
+  color: #FF8800;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 1px solid #FAFAFA;
+  border-radius: 5px;
+}
+
+form button:hover {
+  border-color: #FF8800;
+}
+
+form button:active {
+  background-color: #FF8800;
+  color: #FAFAFA;
+  border-color: #FAFAFA;
+}
+
+form button:focus {
+  outline: none;
+}
+
+form button.invalid {
+  color: #2f303b;
 }
 
 /* variables */
