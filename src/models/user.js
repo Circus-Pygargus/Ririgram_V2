@@ -80,7 +80,13 @@ userSchema.virtual('feedbacks', {
     ref: 'Feedback',
     localField: '_id',
     foreignField: 'owner'
-})
+});
+
+userSchema.virtual('feedbacks', {
+    ref: 'Feedback',
+    localField: '_id',
+    foreignField: 'answerOwner'
+});
 
 
 

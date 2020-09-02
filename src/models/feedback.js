@@ -13,13 +13,23 @@ const feedbackSchema = new mongoose.Schema({
    },
    message: {
        type: String,
-       required: true
+       required: true,
+       maxlength: 300
+   },
+   answer: {
+       type: String,
+       maxlength: 300
    },
    owner: {
        type: mongoose.Schema.Types.ObjectId,
        required: true,
        ref: 'User'
-   }
+   },
+   answerOwner: {
+       type: mongoose.Schema.Types.ObjectId,
+       required: true,
+       ref: 'User'
+   },
 },{
     timeStamps: true
 });

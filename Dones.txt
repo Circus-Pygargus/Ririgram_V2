@@ -409,6 +409,7 @@ Création du modèle Feedback, qui permettra d'enregistrer les messages des joue
 
 Création du router feedback.js
 
+modif : ajout possibilité de réponse aux feedbacks
 
 
 
@@ -417,6 +418,9 @@ Création du router feedback.js
 
 
 
+A FAIRE : 
+_ le bouton répondre au feedback devrait n'être visible que par l'admin !
+_ le bouton effacer un feedback ne devrait être visible que par le créateur !
 
 
 
