@@ -425,6 +425,9 @@ exemple : {{#ifEquals ../user.role "admin"}}
 
 export du scss des formulaire dans un fichier à part : forms.scss
 
+Création de public/js/feedback.js pour afficher/cacher le formulaire d'envoi de feedback
+                        EN COURS
+
 
 
 
