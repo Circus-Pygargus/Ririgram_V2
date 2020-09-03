@@ -878,14 +878,14 @@ body {
   color: #FAFAFA;
 }
 
-main div#welcome {
+main div#no-js {
   display: block;
   text-align: center;
   margin-top: 8vh;
   font-size: x-large;
 }
 
-main div#welcome.d-none {
+main div#no-js.d-none {
   display: none;
 }
 
