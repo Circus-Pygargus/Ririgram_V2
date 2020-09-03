@@ -431,7 +431,11 @@ réécriture du html des 2 navbars : mise en place Règles pour les 2 et Entre n
 
 Création d'une pop-up pour les notifications, sera appelée à chaque fois que j'aurai besoin d'envoyer une notif à un joueur
 
-Création de la section tutos, et changement de quelques svg
+Création de la section tutos (tutos.hbs), et changement de quelques svg
+
+Création de la section options (options.hbs)
+    il me semble que je l'avais déjà créée puis effacée ...
++ quelques corrections de texte dans rules et tutos
 
 
 
