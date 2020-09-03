@@ -427,10 +427,21 @@ export du scss des formulaire dans un fichier à part : forms.scss
 
 Création de public/js/feedback.js pour afficher/cacher le formulaire d'envoi de feedback
 
-réécriture du html des 2 navbars : mise en place Règles pour les de 2 et Entre nous pour user loggué, ce dernier contient Infos, Nouveau message et Vos messages. reformulation des hbs correspondants
+réécriture du html des 2 navbars : mise en place Règles pour les 2 et Entre nous pour user loggué, ce dernier contient Infos, Nouveau message et Vos messages. reformulation des hbs correspondants
+
+Création d'une pop-up pour les notifications, sera appelée à chaque fois que j'aurai besoin d'envoyer une notif à un joueur
 
 
 
+
+
+
+
+A faire : 
+_ Ajouter une pop-up pour les notifications (connexion, erreurs ...)
+_ bouger la croix et les boutons de jeu
+_ Ajouter un bouton reload la grille (qui juste efface les choix du joueurs)
+_ ajouter un bouton retire les maybe
 
 
 
@@ -466,6 +477,7 @@ users during dev :
 
 
 todos :
+_ dans les options, coller un curseur pour choisir la vitesse de défilement des cases si utilisation de la game cross
 _ faire une requête après réception du résultat positif de test de grille et envoyer le vote pour la grille
 _ écrire la méthode checkTileHeaders() dans public/js/game-manager.js pour modif la couleur des helpers qd correspodant à la grille et utiliser une correspondance complète pour envoi de la grille au serveur pour vérif.
     une fois fait, retirer clicksNbForPerfectGame de l'envoi en res du serveur dans la route /grid/new, plus besoin de lui ;); le retirer aussi dans nav-logged.js, dans newGdridForm -> submit. --attention-- ne pas le virer en réception coté front dans gamemanager ... on s'en sert avec test-game.

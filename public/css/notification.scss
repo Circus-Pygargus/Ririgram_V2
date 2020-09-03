@@ -1,0 +1,121 @@
+// Variables
+:root {
+    --notif-duration: 7s;
+    --color-notif-error: #B30000;
+    --color-notif-info: #0000FF;
+    --color-notif-success: #008A00;
+}
+
+// Animations
+
+// Display, wait a little and hide 
+@keyframes showNotification {
+    from {
+        left: -3000px;
+        opacity: 0;
+    }
+    8% {
+        left: 25px;
+    }
+    11% {
+        opacity: 1;
+        left: -10px;
+    }
+    13% {
+        left: 5px,
+    }
+    15% {
+        left: 0;
+    }
+    95% {
+        left: 0;
+    }
+    94% {
+        left: -5px;
+    }
+    96% {
+        left: 20px;
+    }
+    98% {
+        left: 2px;
+    }
+    99% {
+        opacity: 1;
+        left: -50px;
+    }
+    to {
+        opacity: 0;
+        left: -3000px;
+    }
+}
+
+// Hide
+@keyframes hideNotification {
+    from {
+        opacity: 1;
+        left: 0;
+    }
+    25% {
+        left: -5px;
+    }
+    50% {
+        left: 20px;
+    }
+    75% {
+        left: 2px;
+    }
+    90% {
+        opacity: 1;
+        left: -50px;
+    }
+    to {
+        opacity: 0;
+        left: -3000px;
+    }
+}
+
+// The notification box
+.notification {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    left: -3000px;
+    z-index: 50;
+    max-width: 85vw;
+    min-height: 5rem;
+    padding: 1rem;
+    background-color: cornflowerblue;
+    font-size: larger;
+    animation-name: showNotification;
+    animation-duration: var(--notif-duration);
+
+    // Pause animation
+    &.paused {
+        animation-play-state: paused;
+    }
+
+    // hide notification 
+    &.hide {
+        animation-name: hideNotification;
+        animation-duration: 1s;
+    }
+
+    // Change color according to status
+    &.success {
+        background-color: var(--color-notif-success);
+    }
+
+    &.info {
+        background-color: var(--color-notif-info);
+    }
+
+    &.error {
+        background-color: var(--color-notif-error);
+    }
+
+    // Center message
+    p.notif-text {
+        text-align: center;
+    }    
+}

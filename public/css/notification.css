@@ -1,0 +1,185 @@
+:root {
+  --notif-duration: 7s;
+  --color-notif-error: #B30000;
+  --color-notif-info: #0000FF;
+  --color-notif-success: #008A00;
+}
+
+@-webkit-keyframes showNotification {
+  from {
+    left: -3000px;
+    opacity: 0;
+  }
+  8% {
+    left: 25px;
+  }
+  11% {
+    opacity: 1;
+    left: -10px;
+  }
+  13% {
+    left: 5px;
+  }
+  15% {
+    left: 0;
+  }
+  95% {
+    left: 0;
+  }
+  94% {
+    left: -5px;
+  }
+  96% {
+    left: 20px;
+  }
+  98% {
+    left: 2px;
+  }
+  99% {
+    opacity: 1;
+    left: -50px;
+  }
+  to {
+    opacity: 0;
+    left: -3000px;
+  }
+}
+
+@keyframes showNotification {
+  from {
+    left: -3000px;
+    opacity: 0;
+  }
+  8% {
+    left: 25px;
+  }
+  11% {
+    opacity: 1;
+    left: -10px;
+  }
+  13% {
+    left: 5px;
+  }
+  15% {
+    left: 0;
+  }
+  95% {
+    left: 0;
+  }
+  94% {
+    left: -5px;
+  }
+  96% {
+    left: 20px;
+  }
+  98% {
+    left: 2px;
+  }
+  99% {
+    opacity: 1;
+    left: -50px;
+  }
+  to {
+    opacity: 0;
+    left: -3000px;
+  }
+}
+
+@-webkit-keyframes hideNotification {
+  from {
+    opacity: 1;
+    left: 0;
+  }
+  25% {
+    left: -5px;
+  }
+  50% {
+    left: 20px;
+  }
+  75% {
+    left: 2px;
+  }
+  90% {
+    opacity: 1;
+    left: -50px;
+  }
+  to {
+    opacity: 0;
+    left: -3000px;
+  }
+}
+
+@keyframes hideNotification {
+  from {
+    opacity: 1;
+    left: 0;
+  }
+  25% {
+    left: -5px;
+  }
+  50% {
+    left: 20px;
+  }
+  75% {
+    left: 2px;
+  }
+  90% {
+    opacity: 1;
+    left: -50px;
+  }
+  to {
+    opacity: 0;
+    left: -3000px;
+  }
+}
+
+.notification {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  top: 20px;
+  left: -3000px;
+  z-index: 50;
+  max-width: 85vw;
+  min-height: 5rem;
+  padding: 1rem;
+  background-color: cornflowerblue;
+  font-size: larger;
+  -webkit-animation-name: showNotification;
+          animation-name: showNotification;
+  -webkit-animation-duration: var(--notif-duration);
+          animation-duration: var(--notif-duration);
+}
+
+.notification.paused {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+.notification.hide {
+  -webkit-animation-name: hideNotification;
+          animation-name: hideNotification;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+.notification.success {
+  background-color: var(--color-notif-success);
+}
+
+.notification.info {
+  background-color: var(--color-notif-info);
+}
+
+.notification.error {
+  background-color: var(--color-notif-error);
+}
+
+.notification p.notif-text {
+  text-align: center;
+}
+/*# sourceMappingURL=notification.css.map */
