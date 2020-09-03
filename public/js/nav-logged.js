@@ -1,6 +1,4 @@
 const watchNavUserLoggedForms = () => {
-    // welcome div
-    const welcomeDiv = document.querySelector('#welcome');
     // nav container
     const navDiv = document.querySelector('#nav-div');
 
@@ -39,11 +37,11 @@ const watchNavUserLoggedForms = () => {
                 })
                 .then((response) => {
                     // user is disconnected, display user not logged navbar
-                    if (response.html) {                        
-                        welcomeDiv.innerHTML = 'Déconnexion de tous vos appareils effectuée avec succès.';
-                        welcomeDiv.classList.remove('d-none');
+                    if (response.html) {
                         navDiv.innerHTML = response.html;
                         sessionStorage.removeItem('token');
+                        // 'Déconnexion de tous vos appareils effectuée avec succès.'
+                        sendNotification('info', 'Tous tes apareils sont déconnectés.');
                         // wait for click on nav buttons
                         watchNavButtons();
                         // wait for a user not logged form submit
@@ -66,11 +64,11 @@ const watchNavUserLoggedForms = () => {
                 })
                 .then((response) => {
                     // user is disconnected, display user not logged navbar
-                    if (response.html) {                        
-                        welcomeDiv.innerHTML = 'Déconnexion de cet appareil effectuée avec succès.';
-                        welcomeDiv.classList.remove('d-none');
+                    if (response.html) {
                         navDiv.innerHTML = response.html;
                         sessionStorage.removeItem('token');
+                        //'Déconnexion de cet appareil effectuée avec succès.'
+                        sendNotification('info', 'Tu es déconnecté.'); 
                         // wait for click on nav buttons
                         watchNavButtons();
                         // wait for a user not logged form submit

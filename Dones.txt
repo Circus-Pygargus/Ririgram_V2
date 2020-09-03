@@ -437,6 +437,10 @@ Création de la section options (options.hbs)
     il me semble que je l'avais déjà créée puis effacée ...
 + quelques corrections de texte dans rules et tutos
 
+Modifs : des gestions de retours de fetchs qui utilisaient la div welcome pour les messages, remplacement par des notifications avec un sendNotification()
+    pour users/login  /users (register)  /users/logout  /users/logoutall
+
+
 
 
 
@@ -477,6 +481,12 @@ users during dev :
 {
     "name": "Circus2",
     "email": "test2@test.fr",
+    "password": "1234567"
+}
+
+{
+    "name": "Circus3",
+    "email": "test3@test.fr",
     "password": "1234567"
 }
 

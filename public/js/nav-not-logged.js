@@ -1,8 +1,6 @@
 // const { response } = require("express");
 
 const watchNavUserNotLogged = () => {
-    // welcome div
-    const welcomeDiv = document.querySelector('#welcome');
     // nav container
     const navDiv = document.querySelector('#nav-div');
 
@@ -54,10 +52,10 @@ const watchNavUserNotLogged = () => {
             .then((response) => {
                 console.log(response.user)
                 // !! manque gestion des erreurs !!
-                welcomeDiv.innerHTML = 'Bienvenue ' + response.user.name;
-                welcomeDiv.classList.remove('d-none');
                 navDiv.innerHTML = response.html;
                 sessionStorage.setItem('token', JSON.stringify(response.token));
+                // message d'accueil
+                sendNotification('info', `Super ${response.user.name}, t'es de retour ;)`);
                 // wait for click on new nav buttons
                 watchNavButtons();
                 // wait for a user logged form submit
@@ -94,10 +92,10 @@ const watchNavUserNotLogged = () => {
             })
             .then((response) => {
                 console.log(response.user);
-                welcomeDiv.innerHTML = 'Bienvenue ' + response.user.name;
-                welcomeDiv.classList.remove('d-none');
                 navDiv.innerHTML = response.html;
                 sessionStorage.setItem('token', JSON.stringify(response.token));
+                // Welcome message for this new user
+                sendNotification('info', `Bienvenue ${response.user.name}`);
                 // wait for click on new nav buttons
                 watchNavButtons();
                 // wait for a user logged form submit
