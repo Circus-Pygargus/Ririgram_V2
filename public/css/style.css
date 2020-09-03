@@ -275,6 +275,13 @@ div.nav-sub-group div.nav-sub-header {
   border: 1px solid #0F101B;
 }
 
+div.nav-group div.nav-header.not-implemented,
+div.nav-group div.nav-sub-header.not-implemented,
+div.nav-sub-group div.nav-header.not-implemented,
+div.nav-sub-group div.nav-sub-header.not-implemented {
+  color: grey;
+}
+
 div.nav-group div.nav-header svg,
 div.nav-group div.nav-sub-header svg,
 div.nav-sub-group div.nav-header svg,

@@ -21,6 +21,11 @@ div.nav-sub-group {
         padding: 12px 20%;
         border: 1px solid $color-nav-header;
 
+        // !! juste pendant le développement
+        &.not-implemented {
+            color: grey;
+        }
+
         svg {
             font-size: x-large;
         }

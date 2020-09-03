@@ -431,6 +431,8 @@ réécriture du html des 2 navbars : mise en place Règles pour les 2 et Entre n
 
 Création d'une pop-up pour les notifications, sera appelée à chaque fois que j'aurai besoin d'envoyer une notif à un joueur
 
+Création de la section tutos, et changement de quelques svg
+
 
 
 
