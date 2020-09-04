@@ -285,3 +285,20 @@
         }
     }
 }
+
+.erase-btns {
+
+    &.d-none {
+        display: none;
+    }
+
+    div.erase-btn {
+        
+        svg {
+            font-size: x-large;
+            margin-right: 15vw;
+        }
+    }
+
+
+}

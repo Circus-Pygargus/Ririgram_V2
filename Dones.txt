@@ -445,6 +445,8 @@ modif: utilisation de la div #no-js si JavaScript désactivé
 Modif model user : ajout des propriétés visits, playedGrids et finishedGrids
 modif également des route qui amènent des changements à ces valeurs
 
+Ajout des boutons erase-all et erase-maybes 
+
 
 
 

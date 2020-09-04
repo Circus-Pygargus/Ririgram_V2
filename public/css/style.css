@@ -681,7 +681,8 @@ form#feedback-form svg#form-close {
 
 #game-cross {
   display: inline-block;
-  width: 150px;
+  width: 350px;
+  max-width: 35%;
   position: relative;
   -webkit-transition: width 0.7s ease-in-out;
   transition: width 0.7s ease-in-out;
@@ -780,6 +781,15 @@ form#feedback-form svg#form-close {
   content: 'Yes';
   top: -17px;
   left: 17px;
+}
+
+.erase-btns.d-none {
+  display: none;
+}
+
+.erase-btns div.erase-btn svg {
+  font-size: x-large;
+  margin-right: 15vw;
 }
 
 #victory, #failed {

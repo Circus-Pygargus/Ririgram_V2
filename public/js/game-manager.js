@@ -2,6 +2,7 @@ const gameCrossButton = document.querySelector('#game-cross');
 const crossBtns = document.querySelectorAll('.game-cross-btn');
 const gameAnswerButtons = document.querySelector('#game-answer-buttons');
 const answerBtns = document.querySelectorAll('.answer-btn');
+const eraseBtnsDiv = document.querySelector('.erase-btns');
 // user is using the cross while playing
 let isUsingCross = false;
 // while using cross, need to know if a color choice btn is being clicked
@@ -261,6 +262,7 @@ tilesCliksNb = 0;
 
     gameCrossButton.classList.remove('d-none');
     gameAnswerButtons.classList.remove('d-none');
+    // eraseBtnsDiv.classList.remove('d-none'); // plus tard
 
     // // react when user push a game button
     // watchGameButtons();
