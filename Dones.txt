@@ -447,6 +447,8 @@ modif également des route qui amènent des changements à ces valeurs
 
 Ajout des boutons erase-all et erase-maybes 
 
+Ajout gestion de formulaire d'envoi de feedback, si le type de feedback choisi est bug, alors l'utilisateur doit également renseigner son matériel et le navigateur utilisé
+
 
 
 

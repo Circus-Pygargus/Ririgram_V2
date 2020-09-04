@@ -2,7 +2,7 @@
 
 <form id="feedback-form">
     <div class="form-group">
-        <label for="feedback-type" class="form-label">Type de message</label>
+        <label for="feedback-type" class="form-label required">Type de message</label>
         <select class="form-select" name="type" id="feedback-type" required>
             <option value="">Choisis un type</option>
             <option value="Bug">Bug</option>
@@ -19,10 +19,8 @@
         <input type="text" class="form-input" name="browser" id="feedback-browser" placeholder="Chrome, Safari, Epic, Netscape ...">
     </div>
     <div class="form-group">
-        <label for="feedback-message" class="form-label">Message</label>
+        <label for="feedback-message" class="form-label required">Message</label>
         <textarea name="message" id="feedback-message" placeholder="300 caractères maximum" required></textarea>
     </div>
     <button type="submit">Envoyer</button>
 </form>
-
-{{>messages}}

@@ -426,6 +426,10 @@ input:valid + span:after {
   padding-left: 5px;
 }
 
+form#feedback-form {
+  margin-top: 1.5rem;
+}
+
 form div.form-group {
   width: 70vw;
   margin: 0 auto 1.5rem;
@@ -440,9 +444,16 @@ form div.form-group label.form-label {
   margin-bottom: 10px;
 }
 
+form div.form-group label.form-label.required::after {
+  color: #e32;
+  content: '   *';
+  display: inline;
+}
+
 form div.form-group input.form-input,
 form div.form-group select.form-select,
 form div.form-group textarea {
+  position: relative;
   width: 100%;
   height: 2.5rem;
   font-size: 1rem;
@@ -460,6 +471,17 @@ form div.form-group select.form-select:focus,
 form div.form-group textarea:focus {
   border-color: #FF8800;
   outline: none;
+}
+
+form div.form-group input.form-input:required::after,
+form div.form-group select.form-select:required::after,
+form div.form-group textarea:required::after {
+  content: '*';
+  font-size: larger;
+  color: red;
+  position: absolute;
+  top: -16px;
+  right: 20px;
 }
 
 form div.form-group textarea {
@@ -681,8 +703,7 @@ form#feedback-form svg#form-close {
 
 #game-cross {
   display: inline-block;
-  width: 350px;
-  max-width: 35%;
+  width: 150px;
   position: relative;
   -webkit-transition: width 0.7s ease-in-out;
   transition: width 0.7s ease-in-out;

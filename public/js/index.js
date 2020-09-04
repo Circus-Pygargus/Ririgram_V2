@@ -64,5 +64,3 @@ document.addEventListener('contextmenu', (event) => {
     watchGameButtons();
     watchCrossButtons();
 
-
-    watchFeedback();

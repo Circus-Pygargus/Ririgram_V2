@@ -1,13 +1,83 @@
 const watchFeedback = () => {
     
-    // const wantGiveFeedbackBtn = document.querySelector('#want-give-feedback');
-    // const feedbackForm = document.querySelector('#feedback-form');
+    const fbForm = document.querySelector('#feedback-form');
+    const fbTypeSelect = document.querySelector('#feedback-type');
+    const fbDeviceLabel = document.querySelector('label[for="feedback-device"]');
+    const fbDeviceInput = document.querySelector('#feedback-device');
+    const fbBrowserLabel = document.querySelector('label[for="feedback-browser"]');
+    const fbBrowserInput = document.querySelector('#feedback-browser');
+    const fbMessageInput = document.querySelector('#feedback-message');
+
+    const messagesDestination = document.querySelector('#messages');
+    
+
+    /**
+     * Set or remove require attribute to some inputs
+     * 
+     * @param {boolean} isrequired true means message type is Bug
+     */
+    const setRequired = (isrequired) => {
+        if (!isrequired) {
+            fbDeviceInput.removeAttribute('required');
+            fbBrowserInput.removeAttribute('required');
+            fbDeviceLabel.classList.remove('required');
+            fbBrowserLabel.classList.remove('required');
+        }
+        else {
+            fbDeviceInput.setAttribute('required', '');
+            fbBrowserInput.setAttribute('required', '');
+            fbDeviceLabel.classList.add('required');
+            fbBrowserLabel.classList.add('required');
+        }
+    };
 
 
-    // wantGiveFeedbackBtn.addEventListener('click', (event) => {
-    //     feedbackForm.classList.remove('d-none');
-    //     feedbackForm.scrollIntoView({
-    //         behavior: 'smooth'
-    //     });
-    // });
+
+
+    // if user wants to report a bug, then he must tell about his device and browser
+    fbTypeSelect.addEventListener('change', (e) => {
+        e.target.value === 'Bug' ? setRequired(true) : setRequired(false);
+    });
+
+    // User tries to send a feedback
+    fbForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const data = {
+            "type": fbTypeSelect.value,
+            "device": fbDeviceInput.value,
+            "browser": fbBrowserInput.value,
+            "message": fbMessageInput.value
+        }
+        const token = sessionStorage.getItem('token');
+
+        fetch('/feedback/new', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${JSON.parse(token)}`
+            }
+        })
+        .then((response) => response.json())
+        .then((response) => {
+            if (!response.html) {
+                // !! manque gestion des erreurs
+            }
+            else {
+                // insert messages received by server in DOM
+                messagesDestination.innerHTML = response.html;
+                // inform user
+                sendNotification('success', 'Ton message a été enregistré.');
+                // give back the form his default state
+                fbTypeSelect.selectedIndex = 0;
+                fbDeviceInput.value = '';
+                fbBrowserInput.value = '';
+                fbMessageInput.value = '';
+                // show message to user
+                // here we simulate a click action on the nav button
+                document.querySelector('#feedbacks').click();
+            }
+        })
+    });
 };
