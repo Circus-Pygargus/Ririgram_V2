@@ -19,6 +19,9 @@ const partialsPath = path.join(__dirname, '../../templates/partials');
 // Create a new user
 router.post('/users', async (req, res) => {
     const user = new User(req.body);
+    user.visits = 1;
+    user.playedGrids = 0;
+    user.finishedGrids = 0;
 
     try {
         // first try to save user (will check before saving)
@@ -48,6 +51,7 @@ router.post('/users/login', async (req, res) => {
     try {
         // get user and give him a token
         const user = await User.findByCredentials(req.body.email, req.body.password);
+        user.visits++;
         const token = await user.generateAuthToken();
 
         // get user options

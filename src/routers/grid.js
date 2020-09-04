@@ -33,6 +33,7 @@ router.post('/grid/test-game', async (req, res) => {
 router.post('/grid/new', auth, async (req, res) => {
     try {
         const {rowsNb, colsNb} = req.body;
+        const user = req.user;
         console.log(rowsNb, colsNb)
         await forceSquareGrid(rowsNb, colsNb);
         // let gridsFound = await Grid.find({ rowsNb, colsNb });
@@ -49,7 +50,7 @@ router.post('/grid/new', auth, async (req, res) => {
         //     else return false;
         // });
         console.log('ask for a recorded grid')
-        let foundedGrid = await findUnplayedGrid(rowsNb, colsNb, req.user._id);
+        let foundedGrid = await findUnplayedGrid(rowsNb, colsNb, user._id);
         console.log('founded grids')
         console.log(foundedGrid)
         // at least one grid not played by this user found in DB
@@ -61,9 +62,11 @@ router.post('/grid/new', auth, async (req, res) => {
             const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame } = foundedGrid;
             const gridId = foundedGrid._id;
             console.log(gridId)
-            let startTime = await StartTime.findOne({grid: gridId, owner: req.user._id});
+            let startTime = await StartTime.findOne({grid: gridId, owner: user._id});
+            user.playedGrids++;
+            await user.save();
             if (!startTime) {
-                startTime = new StartTime({time: Date.now(), grid: gridId, owner: req.user._id})
+                startTime = new StartTime({time: Date.now(), grid: gridId, owner: user._id})
             }
             else {
                 startTime.time = Date.now();
@@ -80,10 +83,12 @@ router.post('/grid/new', auth, async (req, res) => {
             // Get rows and cols helpers
             const { rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers } = await computeHelpers(colsNb, gridSolution);
             console.log(maxColHelpers)
-            let grid = new Grid({rowsNb, colsNb, gridSolution, clicksNbForPerfectGame, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, creator: req.user._id});
+            let grid = new Grid({rowsNb, colsNb, gridSolution, clicksNbForPerfectGame, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, creator: user._id});
             grid = await grid.save();
             const gridId = grid._id;
-            const startTime = new StartTime({time: Date.now(), grid: gridId, owner: req.user._id});
+            user.playedGrids++;
+            await user.save();
+            const startTime = new StartTime({time: Date.now(), grid: gridId, owner: user._id});
             await startTime.save();
             res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId });
         }
@@ -94,6 +99,7 @@ router.post('/grid/new', auth, async (req, res) => {
     }
 });
 
+// understand unplayed as never recorded as finished ;)
 const findUnplayedGrid = async (rowsNb, colsNb, userId) => {
     console.log('searching a recorded grid')
     let hasFoundGrid = false;
@@ -124,6 +130,7 @@ const forceSquareGrid = (rowsNb, colsNb) => {
 // User is logged and has just finished a grid
 router.post('/grid/check', auth, async (req, res) => {
     try {
+        const user = req.user;
         console.log('Vérif de grille')
         receivedTime = Date.now();
         let isExactGrid = false;
@@ -140,7 +147,7 @@ router.post('/grid/check', auth, async (req, res) => {
         const grid = await Grid.findById(gridId);
         console.log('grid id found')
         console.log(grid._id)
-        if (!grid) throw new Error(`La grille demandée pour vérification par ${req.user.name} n\'existe pas !`);
+        if (!grid) throw new Error(`La grille demandée pour vérification par ${user.name} n\'existe pas !`);
         console.log('userSolution')
         console.log(userSolution)
         console.log('gridSolution')
@@ -150,12 +157,12 @@ router.post('/grid/check', auth, async (req, res) => {
             res.send({ userWins: false, message: 'Cette solution n\'est pas la bonne.' });
         }
         else {
-            if (tilesClicked < grid.clicksNbForPerfectGame) throw new Error(`Le joueur ${req.user.name} a fini la grille avec un nombre coups trop petit !`);
+            if (tilesClicked < grid.clicksNbForPerfectGame) throw new Error(`Le joueur ${user.name} a fini la grille avec un nombre coups trop petit !`);
             // else if (tilesClicked === grid.clicksNbForPerfectGame) isPerfectGame = true;
 
-            const startTime = await StartTime.findOne({ grid: gridId, owner: req.user._id });
+            const startTime = await StartTime.findOne({ grid: gridId, owner: user._id });
             console.log(startTime)
-            if (!startTime) throw new Error(`Le temps de départ pour la grille ${gridId} et le joueur ${req.user.name} n'existe pas !`);
+            if (!startTime) throw new Error(`Le temps de départ pour la grille ${gridId} et le joueur ${user.name} n'existe pas !`);
             const gridTime = receivedTime - startTime.time;
             console.log('grid best time')
             console.log(grid.bestTimeHard)
@@ -170,13 +177,13 @@ router.post('/grid/check', auth, async (req, res) => {
             }
             await grid.save();
             
-            let recordedResults = await UserTimeHard.findOne({ grid: gridId, owner: req.user._id });
+            let recordedResults = await UserTimeHard.findOne({ grid: gridId, owner: user._id });
             console.log('recorded result 1')
             console.log(recordedResults)
             if (!recordedResults) {
                 // isFirstTry = true;
                 console.log('recorded result not found')
-                recordedResults = new UserTimeHard({ bestTime: gridTime, lastTime: gridTime, userClicksNb: tilesClicked, grid: gridId, owner: req.user._id });
+                recordedResults = new UserTimeHard({ bestTime: gridTime, lastTime: gridTime, userClicksNb: tilesClicked, grid: gridId, owner: user._id });
             }
             else {
                 if (gridTime < recordedResults.bestTime) {
@@ -186,12 +193,15 @@ router.post('/grid/check', auth, async (req, res) => {
                 }
                 recordedResults.lastTime = gridTime;
                 recordedResults.grid = gridId;
-                recordedResults.owner = req.user._id;
+                recordedResults.owner = user._id;
             }
             console.log('recorded result 2')
             console.log(recordedResults.lastTime)
             await recordedResults.save();
             await StartTime.findByIdAndDelete(startTime._id);
+            user.finishedGrids++;
+            await user.save();
+            console.log(user)
 
             // effacer le startTime !! à la fin ??
 

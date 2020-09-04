@@ -442,6 +442,9 @@ Modifs : des gestions de retours de fetchs qui utilisaient la div welcome pour l
 
 modif: utilisation de la div #no-js si JavaScript désactivé
 
+Modif model user : ajout des propriétés visits, playedGrids et finishedGrids
+modif également des route qui amènent des changements à ces valeurs
+
 
 
 
@@ -450,7 +453,6 @@ modif: utilisation de la div #no-js si JavaScript désactivé
 
 
 A faire : 
-_ Ajouter une pop-up pour les notifications (connexion, erreurs ...)
 _ bouger la croix et les boutons de jeu
 _ Ajouter un bouton reload la grille (qui juste efface les choix du joueurs)
 _ ajouter un bouton retire les maybe
@@ -495,6 +497,7 @@ users during dev :
 
 
 todos :
+_ un joueur ne devrait pas avoir 2 fois la même grille en moins de 24 heures, que ce soit avec le choix de grille ou avec une nouvelle (nouvelle veut dire pas de chrono enregistré)
 _ dans les options, coller un curseur pour choisir la vitesse de défilement des cases si utilisation de la game cross
 _ faire une requête après réception du résultat positif de test de grille et envoyer le vote pour la grille
 _ écrire la méthode checkTileHeaders() dans public/js/game-manager.js pour modif la couleur des helpers qd correspodant à la grille et utiliser une correspondance complète pour envoi de la grille au serveur pour vérif.

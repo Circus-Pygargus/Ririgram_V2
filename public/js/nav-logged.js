@@ -137,6 +137,7 @@ const newGrid = (rowsNb, colsNb) => {
         return response.json();
     })
     .then((response) => {
+        // ! manque qestion des erreurs
         const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId } = response;
         // cleanNavbar() est dans navbars.js
         cleanNavbar();

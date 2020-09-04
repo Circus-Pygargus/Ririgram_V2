@@ -129,6 +129,7 @@ const testGame = () => {
         return response.json();
     })
     .then((response) => {
+        // ! manque gestion des erreurs
         const { gridSolution, clicksNbForPerfectGame, rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers } = response;
         // cleanNavbar() est dans navbars.js
         cleanNavbar();

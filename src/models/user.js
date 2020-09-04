@@ -51,10 +51,19 @@ const userSchema = new mongoose.Schema({
             message: 'Le rôle devrait être \'admin\' !'
         }
     },
+    visits: {
+        type: Number
+    },
+    playedGrids: {
+        type: Number
+    },
+    finishedGrids: {
+        type: Number
+    },
     tokens: [{
         token: {
             type: String,
-            require: true
+            required: true
         }
     }]
 },{
