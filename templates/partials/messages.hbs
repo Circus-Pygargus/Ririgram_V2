@@ -2,6 +2,42 @@
     {{!-- {{#if messages}} --}}
         {{#each messages}}
         <div class="message">
+            <div class="header">
+                <div class="message-date">{{this.createdAt}}</div>
+                <div class="answer-owner">{{this.owner}}</div>
+            {{#ifEquals ../user.name this.owner}}
+                <div class="close" data-id="{{this._id}}">X</div>
+            {{/ifEquals}}
+            {{#if ../user.role}}
+                {{#ifEquals ../user.role "admin"}}
+                <div class="message-answer-btn" data-id="{{this._id}}">Répondre</div>
+                {{/ifEquals}}
+            {{/if}}
+            </div>
+            <div class="content">
+                <div class="infos">
+                    <div class="message-type {{this.type}}">{{this.type}}</div>
+                    <div class="message-device">{{this.device}}</div>
+                    <div class="message-browser">{{this.browser}}</div>
+                </div>
+                <div class="message-text">{{this.message}}</div>
+            </div>
+            {{#if this.answer}}
+            <div class="answer">
+                <div class="header">
+                    <div class="anwser-date">{{this.updatedAt}}</div>
+                    <div class="answer-owner">{{this.answerOner}}</div>
+                </div>
+                <div class="message-answer">{{this.answer}}</div>
+            </div>
+            {{/if}}
+        </div>
+        {{/each}}
+
+
+
+        {{!-- {{#each messages}}
+        <div class="message">
             {{#ifEquals ../user.name this.owner}}
                 <div class="message-close" data-id="{{this._id}}">Effacer</div>
             {{/ifEquals}}
@@ -22,6 +58,9 @@
             <div class="answer-owner">{{this.answerOner}}</div>
 
         </div>
-        {{/each}}
+        {{/each}} --}}
+
+
+
     {{!-- {{/if}} --}}
 </div>

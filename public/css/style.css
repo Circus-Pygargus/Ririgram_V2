@@ -445,9 +445,9 @@ form div.form-group label.form-label {
 }
 
 form div.form-group label.form-label.required::after {
-  color: #e32;
   content: '   *';
   display: inline;
+  color: #e32;
 }
 
 form div.form-group input.form-input,
@@ -471,17 +471,6 @@ form div.form-group select.form-select:focus,
 form div.form-group textarea:focus {
   border-color: #FF8800;
   outline: none;
-}
-
-form div.form-group input.form-input:required::after,
-form div.form-group select.form-select:required::after,
-form div.form-group textarea:required::after {
-  content: '*';
-  font-size: larger;
-  color: red;
-  position: absolute;
-  top: -16px;
-  right: 20px;
 }
 
 form div.form-group textarea {
@@ -522,6 +511,45 @@ form button.invalid {
 form#feedback-form svg#form-close {
   font-size: x-large;
   margin-right: 15vw;
+}
+
+#messages .message {
+  margin-top: 5px;
+  padding: 5px 5px;
+  border: 1px solid coral;
+}
+
+#messages .message .header div {
+  display: inline-block;
+}
+
+#messages .message .header .close {
+  float: right;
+  color: #b30000;
+}
+
+#messages .message .content .infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  float: left;
+  margin: 1rem;
+}
+
+#messages .message .content .infos .Bug {
+  background-color: #B30000;
+}
+
+#messages .message .content .infos .Idée {
+  background-color: #ff8800;
+}
+
+#messages .message .content .infos .Commentaire {
+  background-color: #0000FF;
 }
 
 /* variables */
