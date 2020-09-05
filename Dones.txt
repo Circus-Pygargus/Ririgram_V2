@@ -453,10 +453,8 @@ gestion des erreurs des formulaires de login et register
 
 Ajout requête /feedback/list coté front
 
-
-
- todo :Ebauche Mise en page des messages envoyés par les joueurs
-
+Mise en page des messages envoyés par les joueurs
+                    En cOURS
 
                                 
 

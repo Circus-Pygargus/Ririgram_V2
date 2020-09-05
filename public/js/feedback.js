@@ -102,6 +102,11 @@ const watchFeedback = () => {
             else {
                 // insert messages received by server in DOM
                 messagesDestination.innerHTML = response.html;
+                // const dates = messagesDestination.querySelectorAll('.date');
+                // dates.forEach((elem) => {
+                //     const date = new Date(elem)
+                //     console.log(date.toLocaleString('en-GB', { timeZone: 'UTC' }))
+                // });
                 seeFeedbacksBtn.scrollIntoView({ behavior: 'smooth' });
             }
         })

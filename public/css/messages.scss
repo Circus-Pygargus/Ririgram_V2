@@ -1,47 +1,53 @@
 #messages {
 
     .message {
-        margin-top: 5px;
-        padding: 5px 5px;
-        border: 1px solid coral;
+        margin-top: 12px;
 
-        .header {
-
-            div {
-                display: inline-block;
-            }
-
-            .close {
-                float: right;
-                color: #b30000;
-            }
-        }
-
-        .content {
-            
-            // div {
-            //     display: inline-block;
-            // }
-
-            .infos {
-                display: flex;
-                flex-direction: column;
-                float: left;
-                margin: 1rem;
-
-                .Bug {
-                    background-color: #B30000;
-                }
-
-                .Idée {
-                    background-color: #ff8800;
-                }
-
-                .Commentaire {
-                    background-color: #0000FF;
-                }
-            }
-
-        }
+        
     }
+
+    // .message {
+    //     margin-top: 5px;
+    //     padding: 5px 5px;
+    //     border: 1px solid coral;
+
+    //     .header {
+
+    //         div {
+    //             display: inline-block;
+    //         }
+
+    //         .close {
+    //             float: right;
+    //             color: #b30000;
+    //         }
+    //     }
+
+    //     .content {
+            
+    //         // div {
+    //         //     display: inline-block;
+    //         // }
+
+    //         .infos {
+    //             display: flex;
+    //             flex-direction: column;
+    //             float: left;
+    //             margin: 1rem;
+
+    //             .Bug {
+    //                 background-color: #B30000;
+    //             }
+
+    //             .Idée {
+    //                 background-color: #ff8800;
+    //             }
+
+    //             .Commentaire {
+    //                 background-color: #0000FF;
+    //             }
+    //         }
+
+    //     }
+    // }
 }
