@@ -8,6 +8,10 @@ const watchFeedback = () => {
     const fbBrowserInput = document.querySelector('#feedback-browser');
     const fbMessageInput = document.querySelector('#feedback-message');
 
+    // btn to ask for messages
+    const seeFeedbacksBtn = document.querySelector('#feedbacks');
+
+    // messages are displayed here
     const messagesDestination = document.querySelector('#messages');
     
 
@@ -77,6 +81,28 @@ const watchFeedback = () => {
                 // show message to user
                 // here we simulate a click action on the nav button
                 document.querySelector('#feedbacks').click();
+            }
+        })
+    });
+
+
+    // User wants to see messages
+    seeFeedbacksBtn.addEventListener('click', (e) => {
+        const token = sessionStorage.getItem('token');
+        fetch('/feedback/list', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application:json",
+                "Authorization": `Bearer ${JSON.parse(token)}`
+            }
+        })
+        .then((response) => response.json())
+        .then((response) => {
+            if (!response.html) sendNotification('error', response.error);
+            else {
+                // insert messages received by server in DOM
+                messagesDestination.innerHTML = response.html;
+                seeFeedbacksBtn.scrollIntoView({ behavior: 'smooth' });
             }
         })
     });

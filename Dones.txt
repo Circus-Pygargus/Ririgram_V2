@@ -449,7 +449,15 @@ Ajout des boutons erase-all et erase-maybes
 
 Ajout gestion de formulaire d'envoi de feedback, si le type de feedback choisi est bug, alors l'utilisateur doit également renseigner son matériel et le navigateur utilisé
 
-Ebauche Mise en page des messages envoyés par les joueurs
+gestion des erreurs des formulaires de login et register
+
+Ajout requête /feedback/list coté front
+
+
+
+ todo :Ebauche Mise en page des messages envoyés par les joueurs
+
+
                                 
 
 
@@ -458,6 +466,9 @@ Ebauche Mise en page des messages envoyés par les joueurs
 
 
 A faire : 
+_ MODIF BDD : 
+    - User : ajouter propriété blocked (boquer tous les messages -abus extrêmement grave-)
+    - Feedback :  ajouter propriété blocked (boquer ce message -abus grave-)
 _ bouger la croix et les boutons de jeu
 _ Ajouter un bouton reload la grille (qui juste efface les choix du joueurs)
 _ ajouter un bouton retire les maybe
