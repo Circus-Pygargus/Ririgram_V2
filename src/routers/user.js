@@ -40,7 +40,8 @@ router.post('/users', async (req, res) => {
         });
 
     } catch (e) {
-        res.status(400).send(e);
+        // res.status(400).send(e);
+        res.status(400).send({ error: e.message });
         console.log(e);
     }
 });
@@ -71,8 +72,8 @@ console.log(user)
         })
 
     } catch (e) {
-        res.status(400).send(e);
-        console.log(e);
+        res.status(400).send({ error: e.message });
+        console.log(e.message);
     }
 });
 

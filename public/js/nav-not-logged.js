@@ -50,17 +50,19 @@ const watchNavUserNotLogged = () => {
                 return response.json();
             })
             .then((response) => {
-                console.log(response.user)
-                // !! manque gestion des erreurs !!
-                navDiv.innerHTML = response.html;
-                sessionStorage.setItem('token', JSON.stringify(response.token));
-                // message d'accueil
-                sendNotification('info', `Super ${response.user.name}, t'es de retour ;)`);
-                // wait for click on new nav buttons
-                watchNavButtons();
-                // wait for a user logged form submit
-                watchNavUserLoggedForms();
-                watchFeedback();
+                if (!response.html) sendNotification('error', response.error);
+                else {
+                    // !! manque gestion des erreurs !!
+                    navDiv.innerHTML = response.html;
+                    sessionStorage.setItem('token', JSON.stringify(response.token));
+                    // message d'accueil
+                    sendNotification('info', `Super ${response.user.name}, t'es de retour ;)`);
+                    // wait for click on new nav buttons
+                    watchNavButtons();
+                    // wait for a user logged form submit
+                    watchNavUserLoggedForms();
+                    watchFeedback();
+                }
             })
         });
 
@@ -79,6 +81,7 @@ const watchNavUserNotLogged = () => {
 
             if (data.password !== data['password-bis']) {
                 console.log('raté');
+                sendNotification('error', 'Les mots de passe doivent être identiques !');
                 return;
             }
             fetch('/users', {
@@ -92,16 +95,22 @@ const watchNavUserNotLogged = () => {
                 return response.json();
             })
             .then((response) => {
-                console.log(response.user);
-                navDiv.innerHTML = response.html;
-                sessionStorage.setItem('token', JSON.stringify(response.token));
-                // Welcome message for this new user
-                sendNotification('info', `Bienvenue ${response.user.name}`);
-                // wait for click on new nav buttons
-                watchNavButtons();
-                // wait for a user logged form submit
-                watchNavUserLoggedForms();
-                watchFeedback();
+                if (!response.html) {
+                    console.log(JSON.stringify(response))
+                    sendNotification('error', response.error);
+                }
+                else {
+                    console.log(response.user);
+                    navDiv.innerHTML = response.html;
+                    sessionStorage.setItem('token', JSON.stringify(response.token));
+                    // Welcome message for this new user
+                    sendNotification('info', `Bienvenue ${response.user.name}`);
+                    // wait for click on new nav buttons
+                    watchNavButtons();
+                    // wait for a user logged form submit
+                    watchNavUserLoggedForms();
+                    watchFeedback();
+                }
             })
         });
 

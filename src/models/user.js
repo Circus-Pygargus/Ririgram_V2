@@ -10,14 +10,14 @@ const jwt = require('jsonwebtoken');
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        unique: [true, 'Ce pseudo existe déjà.'],
+        unique: true,
         required: [true, 'Le pseudo est obligatoire !'],
         minlength: [3, 'Ce pseudo est trop court.'],
         trim: true
     },
     email: {
         type: String,
-        unique: [true, 'Cet email existe déjà.'],
+        unique: true,
         required: [true, 'L\'email est obligatoire !'],
         lowercase: true,
         trim: true,
@@ -171,6 +171,27 @@ userSchema.pre('save', async function (next) {
 
     // we need to call the function next() provided by mongoose, so mongoose know that we have done all what we had to do
     next();
+})
+
+
+// Search for a unique property error
+userSchema.post('save', (error, doc, next) => {
+    if (error.code === 11000) {
+        /* error message is something like : MongoError: E11000 duplicate key error collection: ririgram.users index: email_1 dup key: { email: "test@test.fr" }
+        so here we get the incriminated property */
+        const property = error.message.split('{ ').pop().split(':')[0];
+        switch (property) {
+            case 'name': {
+                next(new Error('Ce pseudo existe déjà !'));
+                break;
+            }
+            case 'email': {
+                next(new Error('Cet email est déjà enregistré !'));
+                break;
+            }
+        }
+    }
+    next()
 })
 
 const User = mongoose.model('User', userSchema);

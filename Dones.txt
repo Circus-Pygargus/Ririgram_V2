@@ -502,6 +502,7 @@ users during dev :
 
 
 todos :
+_ dans user register : gérer le message d'erreur si plusieurs pb ? genre pseudo et email invalide en même temps
 _ un joueur ne devrait pas avoir 2 fois la même grille en moins de 24 heures, que ce soit avec le choix de grille ou avec une nouvelle (nouvelle veut dire pas de chrono enregistré)
 _ dans les options, coller un curseur pour choisir la vitesse de défilement des cases si utilisation de la game cross
 _ faire une requête après réception du résultat positif de test de grille et envoyer le vote pour la grille
