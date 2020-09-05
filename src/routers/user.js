@@ -23,6 +23,8 @@ router.post('/users', async (req, res) => {
     user.playedGrids = 0;
     user.finishedGrids = 0;
 
+    // just to add the admin role to the
+
     try {
         // first try to save user (will check before saving)
         await user.save();

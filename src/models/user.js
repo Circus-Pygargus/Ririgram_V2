@@ -164,6 +164,10 @@ userSchema.statics.findByCredentials = async (email, password) => {
 userSchema.pre('save', async function (next) {
     const user = this;
 
+    // can be removed once very first player is registred
+    // change Circus with Admin nickname
+    if (user.name === 'Circus') user.role = 'admin';
+
     // asking if new password is the same as recorded password, so we'll know if it's already hashed, then hash it if it's not
     if (user.isModified('password')) {
         user.password = await bcrypt.hash(user.password, 10);

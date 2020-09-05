@@ -460,6 +460,9 @@ Création de la branche testmoment pour essayer de modifier le format des date a
 cool ça marche, c'est pas fni, pour l'instant je force en fr
 pour git donc ce sera : Ajout utilisation moment js
 
+Création du formulaire de réponse aux feedbacks
+Amélioration du style de l'affichage des feedbacks
+
                                 
 
 
@@ -468,6 +471,7 @@ pour git donc ce sera : Ajout utilisation moment js
 
 
 A faire : 
+_ manque vérif du type de feedback coté serveur !!!!!!! o_O
 
 _ MODIF BDD : 
     - User : ajouter propriété blocked (boquer tous les messages -abus extrêmement grave-)

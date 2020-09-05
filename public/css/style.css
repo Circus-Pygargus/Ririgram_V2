@@ -514,42 +514,71 @@ form#feedback-form svg#form-close {
 }
 
 #messages .message {
-  margin-top: 5px;
-  padding: 5px 5px;
-  border: 1px solid coral;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+#messages .message .header {
+  margin-bottom: 0.5rem;
 }
 
 #messages .message .header div {
   display: inline-block;
 }
 
-#messages .message .header .close {
+#messages .message .header .date {
+  margin-left: 0.6rem;
+}
+
+#messages .message .header .delete {
   float: right;
-  color: #b30000;
 }
 
-#messages .message .content .infos {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  float: left;
-  margin: 1rem;
+#messages .message .content {
+  position: relative;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #FAFAFA;
+  border-radius: 6px;
 }
 
-#messages .message .content .infos .Bug {
+#messages .message .content .infos div {
+  display: inline-block;
+}
+
+#messages .message .content .infos .type {
+  margin-right: 0.6rem;
+  padding: 0.1rem 0.5rem;
+}
+
+#messages .message .content .infos .type.Bug {
   background-color: #B30000;
 }
 
-#messages .message .content .infos .Idée {
+#messages .message .content .infos .type.Idée {
   background-color: #ff8800;
 }
 
-#messages .message .content .infos .Commentaire {
+#messages .message .content .infos .type.Avis {
   background-color: #0000FF;
+}
+
+#messages .message .content .infos .device {
+  margin-right: 0.6rem;
+}
+
+#messages .message .content .msg-text {
+  margin: 1rem 0.5rem;
+}
+
+#messages .message .content #msg-answer-btn {
+  position: absolute;
+  bottom: 0.1rem;
+  right: 0.5rem;
+}
+
+#messages .message .answer {
+  width: 90%;
+  margin: auto;
 }
 
 /* variables */

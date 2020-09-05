@@ -1,40 +1,25 @@
-@charset "UTF-8";
 #messages .message {
-  margin-top: 5px;
-  padding: 5px 5px;
-  border: 1px solid coral;
+  margin-top: 12px;
 }
 
 #messages .message .header div {
   display: inline-block;
 }
 
-#messages .message .header .close {
+#messages .message .header .delete {
   float: right;
-  color: #b30000;
 }
 
-#messages .message .content .infos {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  float: left;
-  margin: 1rem;
+#messages .message .header .delete svg {
+  font-size: larger;
 }
 
-#messages .message .content .infos .Bug {
-  background-color: #B30000;
+#messages .message .content {
+  border: 1px solid white;
 }
 
-#messages .message .content .infos .Idée {
-  background-color: #ff8800;
-}
-
-#messages .message .content .infos .Commentaire {
-  background-color: #0000FF;
+#messages .message .answer {
+  width: 90%;
+  margin: auto;
 }
 /*# sourceMappingURL=messages.css.map */

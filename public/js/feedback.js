@@ -1,4 +1,4 @@
-const watchFeedback = () => {
+const watchForFeedback = () => {
     
     const fbForm = document.querySelector('#feedback-form');
     const fbTypeSelect = document.querySelector('#feedback-type');
@@ -13,6 +13,11 @@ const watchFeedback = () => {
 
     // messages are displayed here
     const messagesDestination = document.querySelector('#messages');
+
+    // Admin wants to answer to a feedback
+    const responseBtn = document.querySelector('msg-answer-btn');
+
+
     
 
     /**
@@ -111,4 +116,14 @@ const watchFeedback = () => {
             }
         })
     });
+};
+
+
+
+const watchActionsOnFeedbacks = () => {
+    
+};
+
+const removeWatchActionsOnFeedbacksListeners = () => {
+
 };

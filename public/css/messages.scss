@@ -1,9 +1,78 @@
 #messages {
 
     .message {
-        margin-top: 12px;
+        font-size: 1.2rem;
+        margin-top: 2rem;
 
-        
+        .header {
+            margin-bottom: 0.5rem;
+
+            div {
+                display: inline-block;
+            }
+
+            .date {
+                margin-left: 0.6rem;
+            }
+
+            .delete {
+                float: right;
+
+                // svg {
+                //     font-size: larger;
+                // }
+            }
+        }
+
+        .content {
+            position: relative;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid $color-font;
+            border-radius: 6px;
+
+            .infos {
+
+                div {
+                    display: inline-block;
+                }
+
+                .type {
+                    margin-right: 0.6rem;
+                    padding: 0.1rem 0.5rem;
+                }
+
+                .type.Bug {
+                    background-color: #B30000;
+                }
+
+                .type.Idée {
+                    background-color: #ff8800;
+                }
+
+                .type.Avis { // remplacé par Avis
+                    background-color: #0000FF;
+                }
+
+                .device {
+                    margin-right: 0.6rem;
+                }
+            }
+
+            .msg-text {
+                margin: 1rem 0.5rem;
+            }
+
+            #msg-answer-btn {
+                position: absolute;
+                bottom: 0.1rem;
+                right: 0.5rem;
+            }
+        }
+
+        .answer {
+            width: 90%;
+            margin: auto;
+        }
     }
 
     // .message {
@@ -43,7 +112,7 @@
     //                 background-color: #ff8800;
     //             }
 
-    //             .Commentaire {
+    //             .Commentaire { // remplacé par Avis
     //                 background-color: #0000FF;
     //             }
     //         }
