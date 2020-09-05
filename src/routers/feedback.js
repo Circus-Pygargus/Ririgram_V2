@@ -47,6 +47,15 @@ router.post('/feedback/list', auth, async (req, res) => {
     try {
         const user = req.user;
         const messages = await Feedback.find({});
+        
+        for (let i = 0, max = messages.length; i < max; i++) {
+            messages[i] = messages[i].changeTimeFormat();
+        }
+        // messages.forEach(feedback => {
+        //     messages.feedback = feedback.changeTimeFormat();
+        // });
+        console.log(messages)
+        // const formatedMessages = await Feedback.changeTimeFormat(messages)
         res.render(`${partialsPath}/messages`, { user, messages }, (err, html) => {
             if (err) {
                 return res.send({

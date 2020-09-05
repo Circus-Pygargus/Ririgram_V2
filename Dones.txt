@@ -453,8 +453,12 @@ gestion des erreurs des formulaires de login et register
 
 Ajout requête /feedback/list coté front
 
-Mise en page des messages envoyés par les joueurs
-                    En cOURS
+Début mise en page des messages envoyés par les joueurs
+
+
+Création de la branche testmoment pour essayer de modifier le format des date avant envoi vers navigateur
+cool ça marche, c'est pas fni, pour l'instant je force en fr
+pour git donc ce sera : Ajout utilisation moment js
 
                                 
 
@@ -464,8 +468,10 @@ Mise en page des messages envoyés par les joueurs
 
 
 A faire : 
+
 _ MODIF BDD : 
     - User : ajouter propriété blocked (boquer tous les messages -abus extrêmement grave-)
+    mieux on ajoute status =) on pourra gérer plein de trucs cools avec une seule propriété
     - Feedback :  ajouter propriété blocked (boquer ce message -abus grave-)
 _ bouger la croix et les boutons de jeu
 _ Ajouter un bouton reload la grille (qui juste efface les choix du joueurs)
@@ -511,6 +517,7 @@ users during dev :
 
 
 todos :
+_ récupérer les deux letttres de la locale du joueur pour lui afficher les dates dans sa langue
 _ dans user register : gérer le message d'erreur si plusieurs pb ? genre pseudo et email invalide en même temps
 _ un joueur ne devrait pas avoir 2 fois la même grille en moins de 24 heures, que ce soit avec le choix de grille ou avec une nouvelle (nouvelle veut dire pas de chrono enregistré)
 _ dans les options, coller un curseur pour choisir la vitesse de défilement des cases si utilisation de la game cross
