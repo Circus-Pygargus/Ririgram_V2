@@ -469,7 +469,7 @@ modif: gestion des erreurs d'envoi de formulaires
 
 modif: ajout propriété status aux modèles User et Feedback
 
-
+modif des partials views tutos et rules, afin d'avoir une petite base avant mise en ligne de la version alpha.
                                 
 
 
