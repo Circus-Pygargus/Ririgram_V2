@@ -2,7 +2,7 @@
  * Build the gameboard
  */
 
-const mainContent = document.querySelector('#main-content');
+const mainContent = document.querySelector('#gameboard-div');
 
 
 const buildGameBoardContent = (rowsNb, colsNb, rowsHelpers, colsHelpers) => {

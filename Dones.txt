@@ -471,8 +471,9 @@ modif: ajout propriété status aux modèles User et Feedback
 
 modif des partials views tutos et rules, afin d'avoir une petite base avant mise en ligne de la version alpha.
                                 
-
-
+multiples modifs :
+utilisation plus grande de la classe in-game avec #main-title
+ajout d'une div : #game-zone contenant la grille et les boutons de jeu
 
 
 

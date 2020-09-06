@@ -23,7 +23,7 @@ const watchNavUserNotLogged = () => {
     // const titleDiv = document.querySelector('#main-title');
 
     // // Main content place (gameboard, grid list ...)
-    // const mainContentDiv = document.querySelector('#main-content');
+    // const mainContentDiv = document.querySelector('#gameboard-div');
 
 
     // loginForm exists so user not logged navbar is displayed

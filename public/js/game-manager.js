@@ -260,8 +260,10 @@ tilesCliksNb = 0;
     const colHeaders = document.querySelectorAll('.col-head-div');
     const rowHeaders = document.querySelectorAll('.row-head-div');
 
-    gameCrossButton.classList.remove('d-none');
-    gameAnswerButtons.classList.remove('d-none');
+    // gameCrossButton.classList.remove('d-none');
+    // gameAnswerButtons.classList.remove('d-none');
+    gameZone.classList.remove('d-none');
+
     // eraseBtnsDiv.classList.remove('d-none'); // plus tard
 
     // // react when user push a game button

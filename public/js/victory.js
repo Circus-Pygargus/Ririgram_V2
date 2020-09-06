@@ -12,6 +12,9 @@ const victoryChooseGridBtn = document.querySelector('#victory-choose-grid');
 // User just won a grid
 const victory = (isUserLogged, tilesCliksNb, clicksNbForPerfectGame, isBrandNewGrid=false, userBestBeaten=false,  gridTime=0, IsGridBestTime=false) => {
 
+    
+    document.querySelector('#main-title').classList.remove('in-game');
+
     cleanVictoryDiv();
 
     if (!isUserLogged) {
@@ -62,8 +65,9 @@ victoryPlayAnother.addEventListener('click', (event) => {
 victoryCloseBtn.addEventListener('click', (event) => {
     
     mainContent.innerHTML = '';
-    gameCrossButton.classList.add('d-none');
-    gameAnswerButtons.classList.add('d-none');
+    // gameCrossButton.classList.add('d-none');
+    // gameAnswerButtons.classList.add('d-none');
+    gameZone.classList.add('d-none');
     navContainer.classList.remove('hidden');
     victoryDiv.classList.add('d-none');
 });

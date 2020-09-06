@@ -30,66 +30,69 @@
             {{/if}}
         </div>        
 
-        {{!-- for gameboard or grid list --}}
-        <div id="main-content"></div>
+        <div id="game-zone" class="d-none">
+            {{!-- for gameboard or grid list --}}
+            <div id="gameboard-div"></div>
 
-        {{!-- Game buttons --}}
-        <div id="game-cross" class="d-none not-in-use">
-            
-            <svg version="1.1" x="0px" y="0px" viewBox="0 0 150 150" width="100%">
-                <g id="game-cross-top" class="game-cross-btn">
-                    <polygon points="50,0 100,0 100,49 75,74 50,49" style=" stroke: grey; stroke-width: 1"/>
-                    <polyline points="65 35, 75 20, 85 35" stroke-width="3px" stroke="white" fill="none"/>
-                </g>
-                <g id="game-cross-right" class="game-cross-btn">
-                    <polygon points="150,50 150,100 101,100 76,75 101,50" style=" stroke: grey; stroke-width: 1"/>
-                    <polyline points="115 65, 130 75, 115 85" stroke-width="3px" stroke="white" fill="none"/>
-                </g>
-                <g id="game-cross-bottom" class="game-cross-btn">
-                    <polygon points="50,150 50,101 75,76 100,101 100,150" style=" stroke: grey; stroke-width: 1"/>
-                    <polyline points="65 115, 75 130, 85 115" stroke-width="3px" stroke="white" fill="none"/>
-                </g>
-                <g id="game-cross-left" class="game-cross-btn">
-                    <polygon points="0 50, 49 50, 74 75, 49 100, 0 100" style=" stroke: grey; stroke-width: 1"/>
-                    <polyline points="35 65, 20 75, 35 85" stroke-width="3px" stroke="white" fill="none"/>
-                </g>
-            </svg>
-        </div>
-
-
-        <div id="game-answer-buttons" class="d-none">
-            <div class="answer-btns-line">
-                <div id="maybe-rubber">
-                </div>
-            </div>
-            <div class="answer-btns-line">
-                <div id="answer-maybe-no" class="answer-btn" data-response="maybe-no"></div>
-                <div id="answer-maybe-yes" class="answer-btn" data-response="maybe-yes"></div>
-            </div>
-            <div class="answer-btns-line">
-                <div id="answer-no" class="answer-btn" data-response="no"></div>
-                <div id="answer-yes" class="answer-btn current-choice" data-response="yes"></div>
-            </div>
-        </div>
-
-
-        <div class="erase-btns d-none">
-            <div class="erase-btn">
-                <svg id="erase-all" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-counterclockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                </svg>
-            </div>
-            <div class="erase-btn">
-                <svg id="erase-maybes" version="1.1" width="1em" height="1em" viewBox="0 0 1000 1000" fill="currentColor">
-                    <g transform="translate(0.000000,511.000000) scale(0.100000,-0.100000)">
-                        <path d="M6753.9,4380.8c-21.1-9.6-1133.5-1112.4-2471.9-2454.6C1955.7-402.1,1844.6-517,1779.5-649.1c-90-181.9-116.8-319.8-103.4-532.3c9.6-199.1,57.4-338.9,166.6-501.7c40.2-61.3,384.9-421.2,769.7-802.3c742.9-737.1,788.8-775.4,1039.7-840.5c164.7-42.1,1309.6-42.1,1474.3,0c273.8,72.8,170.4-23,2550.4,2353.2c1514.5,1512.6,2209.5,2221,2219.1,2257.4c5.8,28.7,5.8,74.7-1.9,105.3c-13.4,57.4-2870.1,2933.3-2962,2983.1C6874.5,4403.7,6811.3,4405.6,6753.9,4380.8z M8132.5,2619.2l1282.8-1282.9L7925.7-153.2L6438-1640.9L5151.3-352.4L3862.7,934.3l1483.9,1483.9c815.7,815.7,1487.7,1483.9,1493.5,1483.9C6845.8,3902.1,7427.9,3323.8,8132.5,2619.2z M4858.3-654.9l1282.8-1282.8l-459.5-455.7c-335.1-333.2-486.3-469.1-555.3-503.6c-95.7-46-97.7-46-737.2-46c-637.6,0-641.4,0-737.2,46c-72.8,34.5-256.6,206.8-786.9,737.1C2076.3-1371,2082-1380.6,2082-1114.4c0,264.2-5.7,256.6,783.1,1049.2c379.1,381,695,693.1,700.8,693.1S4153.7,49.7,4858.3-654.9z"/>
+            {{!-- Game buttons --}}
+            {{!-- The Game Cross  --}}
+            <div id="game-cross" class="not-in-use">
+                
+                <svg version="1.1" x="0px" y="0px" viewBox="0 0 150 150" width="100%">
+                    <g id="game-cross-top" class="game-cross-btn">
+                        <polygon points="50,0 100,0 100,49 75,74 50,49" style=" stroke: grey; stroke-width: 1"/>
+                        <polyline points="65 35, 75 20, 85 35" stroke-width="3px" stroke="white" fill="none"/>
+                    </g>
+                    <g id="game-cross-right" class="game-cross-btn">
+                        <polygon points="150,50 150,100 101,100 76,75 101,50" style=" stroke: grey; stroke-width: 1"/>
+                        <polyline points="115 65, 130 75, 115 85" stroke-width="3px" stroke="white" fill="none"/>
+                    </g>
+                    <g id="game-cross-bottom" class="game-cross-btn">
+                        <polygon points="50,150 50,101 75,76 100,101 100,150" style=" stroke: grey; stroke-width: 1"/>
+                        <polyline points="65 115, 75 130, 85 115" stroke-width="3px" stroke="white" fill="none"/>
+                    </g>
+                    <g id="game-cross-left" class="game-cross-btn">
+                        <polygon points="0 50, 49 50, 74 75, 49 100, 0 100" style=" stroke: grey; stroke-width: 1"/>
+                        <polyline points="35 65, 20 75, 35 85" stroke-width="3px" stroke="white" fill="none"/>
                     </g>
                 </svg>
             </div>
-            <div class="erase-btn history">
-                {{!-- ici un btn backward --}}
-                {{!-- ici un bouton fordward --}}
+
+            {{!-- Solution Choice Buttons --}}
+            <div id="game-answer-buttons">
+                <div class="answer-btns-line">
+                    <div id="maybe-rubber">
+                    </div>
+                </div>
+                <div class="answer-btns-line">
+                    <div id="answer-maybe-no" class="answer-btn" data-response="maybe-no"></div>
+                    <div id="answer-maybe-yes" class="answer-btn" data-response="maybe-yes"></div>
+                </div>
+                <div class="answer-btns-line">
+                    <div id="answer-no" class="answer-btn" data-response="no"></div>
+                    <div id="answer-yes" class="answer-btn current-choice" data-response="yes"></div>
+                </div>
+            </div>
+
+
+            <div class="erase-btns d-none">
+                <div class="erase-btn">
+                    <svg id="erase-all" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-counterclockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                        <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                    </svg>
+                </div>
+                <div class="erase-btn">
+                    <svg id="erase-maybes" version="1.1" width="1em" height="1em" viewBox="0 0 1000 1000" fill="currentColor">
+                        <g transform="translate(0.000000,511.000000) scale(0.100000,-0.100000)">
+                            <path d="M6753.9,4380.8c-21.1-9.6-1133.5-1112.4-2471.9-2454.6C1955.7-402.1,1844.6-517,1779.5-649.1c-90-181.9-116.8-319.8-103.4-532.3c9.6-199.1,57.4-338.9,166.6-501.7c40.2-61.3,384.9-421.2,769.7-802.3c742.9-737.1,788.8-775.4,1039.7-840.5c164.7-42.1,1309.6-42.1,1474.3,0c273.8,72.8,170.4-23,2550.4,2353.2c1514.5,1512.6,2209.5,2221,2219.1,2257.4c5.8,28.7,5.8,74.7-1.9,105.3c-13.4,57.4-2870.1,2933.3-2962,2983.1C6874.5,4403.7,6811.3,4405.6,6753.9,4380.8z M8132.5,2619.2l1282.8-1282.9L7925.7-153.2L6438-1640.9L5151.3-352.4L3862.7,934.3l1483.9,1483.9c815.7,815.7,1487.7,1483.9,1493.5,1483.9C6845.8,3902.1,7427.9,3323.8,8132.5,2619.2z M4858.3-654.9l1282.8-1282.8l-459.5-455.7c-335.1-333.2-486.3-469.1-555.3-503.6c-95.7-46-97.7-46-737.2-46c-637.6,0-641.4,0-737.2,46c-72.8,34.5-256.6,206.8-786.9,737.1C2076.3-1371,2082-1380.6,2082-1114.4c0,264.2-5.7,256.6,783.1,1049.2c379.1,381,695,693.1,700.8,693.1S4153.7,49.7,4858.3-654.9z"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="erase-btn history">
+                    {{!-- ici un btn backward --}}
+                    {{!-- ici un bouton fordward --}}
+                </div>
             </div>
         </div>
 

@@ -8,7 +8,7 @@ const setCssGridSize = (rowsNb, colsNb, maxRowHelpers, maxColHelpers) => {
     root.style.setProperty('--max-row-helpers', maxRowHelpers);
     root.style.setProperty('--max-col-helpers', maxColHelpers);
 
-    const gameboardDiv = document.querySelector('#main-content');
+    const gameboardDiv = document.querySelector('#gameboard-div');
     const gameboardPos = gameboardDiv.offsetTop;
 
     const spaceX =  window.innerWidth;
