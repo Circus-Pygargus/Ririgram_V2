@@ -62,6 +62,7 @@ const watchNavUserNotLogged = () => {
                     // wait for a user logged form submit
                     watchNavUserLoggedForms();
                     watchForFeedback();
+                    watchForAdminAnswer();
                 }
             })
         });
@@ -110,6 +111,7 @@ const watchNavUserNotLogged = () => {
                     // wait for a user logged form submit
                     watchNavUserLoggedForms();
                     watchForFeedback();
+                    watchForAdminAnswer();
                 }
             })
         });

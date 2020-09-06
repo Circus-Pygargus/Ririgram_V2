@@ -4,18 +4,22 @@ const moment = require('moment');
 const feedbackSchema = new mongoose.Schema({
    type: {
        type: String,
-       required: true
+       required: true,
+       trim: true
    },
    device: {
-       type: String
+       type: String,
+       trim: true
    },
    browser: {
        type: String,
+       trim: true
    },
    message: {
        type: String,
        required: true,
-       maxlength: 300
+       maxlength: 300,
+       trim: true
    },
    owner: {
        type: String,
@@ -24,7 +28,8 @@ const feedbackSchema = new mongoose.Schema({
    },
    answer: {
        type: String,
-       maxlength: 300
+       maxlength: 300,
+       trim: true
    },
    answerOwner: {
        type: String,

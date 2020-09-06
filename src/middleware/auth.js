@@ -27,7 +27,7 @@ const auth = async (req, res, next) => {
         next();
     } catch (e) {
         console.log(e)
-        res.status(401).send('Erreur: Vous devez d\'abord vous identifier.');
+        res.status(401).send({error: 'Vous devez d\'abord vous identifier.'});
     }
 }
 

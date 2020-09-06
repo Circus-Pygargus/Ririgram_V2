@@ -513,6 +513,31 @@ form#feedback-form svg#form-close {
   margin-right: 15vw;
 }
 
+#answer-feedback-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0F101B;
+}
+
+#answer-feedback-container form {
+  position: relative;
+  padding-top: 30vh;
+}
+
+#answer-feedback-container form .close {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+}
+
+#answer-feedback-container form .close svg {
+  font-size: x-large;
+}
+
 #messages .message {
   font-size: 1.2rem;
   margin-top: 2rem;
@@ -570,7 +595,7 @@ form#feedback-form svg#form-close {
   margin: 1rem 0.5rem;
 }
 
-#messages .message .content #msg-answer-btn {
+#messages .message .content .msg-answer-btn {
   position: absolute;
   bottom: 0.1rem;
   right: 0.5rem;
@@ -579,6 +604,19 @@ form#feedback-form svg#form-close {
 #messages .message .answer {
   width: 90%;
   margin: auto;
+  border: 1px solid #FAFAFA;
+  border-top: none;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+#messages .message .answer .header {
+  padding: 0.5rem 0.6rem 0.5rem 0;
+  text-align: right;
+}
+
+#messages .message .answer .msg-answer {
+  margin: 1rem 1.5rem;
 }
 
 /* variables */
@@ -991,6 +1029,10 @@ main div#nav-div.d-none {
 }
 
 main div#main-content.d-none {
+  display: none;
+}
+
+.d-none {
   display: none;
 }
 /*# sourceMappingURL=style.css.map */

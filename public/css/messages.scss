@@ -62,7 +62,7 @@
                 margin: 1rem 0.5rem;
             }
 
-            #msg-answer-btn {
+            .msg-answer-btn {
                 position: absolute;
                 bottom: 0.1rem;
                 right: 0.5rem;
@@ -72,6 +72,19 @@
         .answer {
             width: 90%;
             margin: auto;
+            border: 1px solid $color-font;
+            border-top: none;
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+
+            .header {
+                padding: 0.5rem 0.6rem 0.5rem 0;
+                text-align: right;
+            }
+
+            .msg-answer {
+                margin: 1rem 1.5rem;
+            }
         }
     }
 

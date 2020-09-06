@@ -463,6 +463,8 @@ pour git donc ce sera : Ajout utilisation moment js
 Création du formulaire de réponse aux feedbacks
 Amélioration du style de l'affichage des feedbacks
 
+Gestion complète des réponses aux feedbacks par un admin : route, requête et style
+
                                 
 
 

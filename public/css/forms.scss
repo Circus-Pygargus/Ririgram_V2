@@ -80,12 +80,45 @@ form {
         }
     }
 
-    // for feedback
+    // for feedback and answer forms
     &#feedback-form {
         
         svg#form-close {
             font-size: x-large;
             margin-right: 15vw;
         }
+    }
+
+}
+
+
+
+// for answer to feedback
+#answer-feedback-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 40;
+    width: 100vw;
+    height: 100vh;
+    background-color: $color-background;
+
+    form {
+        position: relative;
+        padding-top: 30vh;
+
+        .close {
+            position: absolute;
+            top: 2rem;
+            right: 3rem;
+
+            svg {        
+                font-size: x-large;
+            }
+        }
+
+        // .form-group {
+        //     margin-top: 30vh;
+        // }
     }
 }
