@@ -467,6 +467,9 @@ Gestion complète des réponses aux feedbacks par un admin : route, requête et 
 
 modif: gestion des erreurs d'envoi de formulaires
 
+modif: ajout propriété status aux modèles User et Feedback
+
+
                                 
 
 
@@ -477,10 +480,9 @@ modif: gestion des erreurs d'envoi de formulaires
 A faire : 
 _ manque vérif du type de feedback coté serveur !!!!!!! o_O
 
-_ MODIF BDD : 
-    - User : ajouter propriété blocked (boquer tous les messages -abus extrêmement grave-)
-    mieux on ajoute status =) on pourra gérer plein de trucs cools avec une seule propriété
-    - Feedback :  ajouter propriété blocked (boquer ce message -abus grave-)
+_  BDD : 
+    - User : utiliser la propriété  status (par ex pour bloquer si faute extrèmement grave)
+    - Feedback :  utiliser propriété status (boquer ce message -abus grave-) 
 _ bouger la croix et les boutons de jeu
 _ Ajouter un bouton reload la grille (qui juste efface les choix du joueurs)
 _ ajouter un bouton retire les maybe

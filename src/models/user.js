@@ -51,6 +51,10 @@ const userSchema = new mongoose.Schema({
             message: 'Seul un admin peut faire ça !'
         }
     },
+    // used for ex to know if user is blocked
+    status: {
+        type: String
+    },
     visits: {
         type: Number
     },

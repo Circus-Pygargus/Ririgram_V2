@@ -35,6 +35,10 @@ const feedbackSchema = new mongoose.Schema({
        type: String,
        ref: 'User'
    },
+   // used to for ex if this feedback is blocked
+   status: {
+       type: String
+   }
 },{
     timestamps: true
 });
