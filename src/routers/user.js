@@ -18,14 +18,16 @@ const partialsPath = path.join(__dirname, '../../templates/partials');
 
 // Create a new user
 router.post('/users', async (req, res) => {
-    const user = new User(req.body);
-    user.visits = 1;
-    user.playedGrids = 0;
-    user.finishedGrids = 0;
 
     // just to add the admin role to the
 
     try {
+        // compare the 2 passwords
+        if (req.body.password !== req.body['password-bis']) throw new Error('Les mots de passe doivent être identiques ...');
+        const user = new User(req.body);
+        user.visits = 1;
+        user.playedGrids = 0;
+        user.finishedGrids = 0;
         // first try to save user (will check before saving)
         await user.save();
         // no caught error, generate a token and save user again
@@ -101,7 +103,7 @@ router.post('/users/logout', auth, async (req, res) => {
         })
 
     } catch (e) {
-        res.status(500).send(e);
+        res.status(500).send({ error: e});
         console.log(e);
     }
 });
@@ -125,12 +127,14 @@ router.post('/users/logoutall', auth, async (req, res) => {
         })
 
     } catch (e) {
-        res.statsu(500).send(e);
+        console.log(e);
+        res.statsu(500).send({ error: e });
     }
 });
 
 
 // Users List
+// !! A FINIR (rien de fait coté front)
 router.get('/users/list', async (req, res) => {
     try {
         const users = await User.find({});

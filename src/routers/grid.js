@@ -24,7 +24,7 @@ router.post('/grid/test-game', async (req, res) => {
     }
     catch (e) {
         console.log(e)
-        res.status(500).send('Quelque chose s\'est mal déroulé pendant la création de la grille.');
+        res.status(500).send({error: 'Quelque chose s\'est mal déroulé pendant la création de la grille.'});
     }
 });
 
@@ -95,7 +95,7 @@ router.post('/grid/new', auth, async (req, res) => {
 
     } catch (e) {
         console.log(e);
-        res.status(500).send('Un problème est survenu pendant la création de la grille.');
+        res.status(500).send({ error: 'Un problème est survenu pendant la création de la grille.' });
     }
 });
 
@@ -210,7 +210,7 @@ router.post('/grid/check', auth, async (req, res) => {
     } catch (e) {
         console.log('catched error !')
         console.log(e);
-        res.status(500).send('Un problème est survenu pendant la vérification de la grille.');
+        res.status(500).send({ error: 'Un problème est survenu pendant la vérification de la grille.' });
     }
 });
 

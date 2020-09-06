@@ -48,7 +48,7 @@ const userSchema = new mongoose.Schema({
                 const regex = /admin/i;
                 return regex.test(value);
             },
-            message: 'Le rôle devrait être \'admin\' !'
+            message: 'Seul un admin peut faire ça !'
         }
     },
     visits: {

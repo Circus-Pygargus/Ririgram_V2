@@ -465,6 +465,8 @@ Amélioration du style de l'affichage des feedbacks
 
 Gestion complète des réponses aux feedbacks par un admin : route, requête et style
 
+modif: gestion des erreurs d'envoi de formulaires
+
                                 
 
 
@@ -523,6 +525,8 @@ users during dev :
 
 
 todos :
+_ vérifier la gestion des erreurs, il reste dans les routers dans les catch des erreurs réécrites avant d'être envoyées ... 
+_ lors d'une erreur de validation de form par le model, il ajoute une pharse du genre 'User validation failled: Email: et ma phrase..." faut voir pour virer ce début ...faire un test de présence de User et virer ce ui est en trop, voir aussi les autres models
 _ récupérer les deux letttres de la locale du joueur pour lui afficher les dates dans sa langue
 _ dans user register : gérer le message d'erreur si plusieurs pb ? genre pseudo et email invalide en même temps
 _ un joueur ne devrait pas avoir 2 fois la même grille en moins de 24 heures, que ce soit avec le choix de grille ou avec une nouvelle (nouvelle veut dire pas de chrono enregistré)

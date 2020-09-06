@@ -573,7 +573,7 @@ const sendSolutionToServer = () => {
         return response.json();
     })
     .then((response) => {
-        // TODO manque gestion des erreurs
+        if (response.error) return sendSolutionToServer('error', response.error);
         if (!response.userWins) {
             failed(response.message);
         }
@@ -584,6 +584,7 @@ const sendSolutionToServer = () => {
         }
     })
     .catch((e) => {
-        console.log(e)
+        console.log(e);
+        sendSolutionToServer('error', response.error);
     })
 };

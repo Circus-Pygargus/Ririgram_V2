@@ -2,6 +2,9 @@ const watchNavUserLoggedForms = () => {
     // nav container
     const navDiv = document.querySelector('#nav-div');
 
+    // account modification form
+    const accountModifForm = document.querySelector('#change-account-form');
+
     // logout form
     const logoutForm = document.querySelector('#user-logout-form');
     const logoutInput = document.querySelector('#logout-all-devices');
@@ -15,6 +18,14 @@ const watchNavUserLoggedForms = () => {
     
     // if logoutForm exists, then user is logged, so we're using these event listeners
     if (logoutForm) {
+
+        // User wants to change his account
+        accountModifForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            sendNotification('info', 'Ce formulaire ne fonctionne pas pour l\'instant.');
+        });
+
+
 
         // logout user
         logoutForm.addEventListener('submit', (event) => {
@@ -37,17 +48,16 @@ const watchNavUserLoggedForms = () => {
                 })
                 .then((response) => {
                     // user is disconnected, display user not logged navbar
-                    if (response.html) {
-                        navDiv.innerHTML = response.html;
-                        sessionStorage.removeItem('token');
-                        // 'Déconnexion de tous vos appareils effectuée avec succès.'
-                        sendNotification('info', 'Tous tes apareils sont déconnectés.');
-                        // wait for click on nav buttons
-                        watchNavButtons();
-                        // wait for a user not logged form submit
-                        watchNavUserNotLogged();
-                    }
-                    // TODO : manque gestion des erreurs !
+                    if (!response.html) return sendNotification('error', response.error);
+
+                    navDiv.innerHTML = response.html;
+                    sessionStorage.removeItem('token');
+                    // 'Déconnexion de tous vos appareils effectuée avec succès.'
+                    sendNotification('info', 'Tous tes appareils sont déconnectés.');
+                    // wait for click on nav buttons
+                    watchNavButtons();
+                    // wait for a user not logged form submit
+                    watchNavUserNotLogged();
                 })
             }
             // User wants to disconnect from one device
@@ -64,17 +74,16 @@ const watchNavUserLoggedForms = () => {
                 })
                 .then((response) => {
                     // user is disconnected, display user not logged navbar
-                    if (response.html) {
-                        navDiv.innerHTML = response.html;
-                        sessionStorage.removeItem('token');
-                        //'Déconnexion de cet appareil effectuée avec succès.'
-                        sendNotification('info', 'Tu es déconnecté.'); 
-                        // wait for click on nav buttons
-                        watchNavButtons();
-                        // wait for a user not logged form submit
-                        watchNavUserNotLogged();
-                    }
-                    // TODO : manque gestion des erreurs !
+                    if (!response.html) return sendNotification('error', response.error);
+                    
+                    navDiv.innerHTML = response.html;
+                    sessionStorage.removeItem('token');
+                    //'Déconnexion de cet appareil effectuée avec succès.'
+                    sendNotification('info', 'Tu es déconnecté.'); 
+                    // wait for click on nav buttons
+                    watchNavButtons();
+                    // wait for a user not logged form submit
+                    watchNavUserNotLogged();
                 })
             }
         });
@@ -137,7 +146,8 @@ const newGrid = (rowsNb, colsNb) => {
         return response.json();
     })
     .then((response) => {
-        // ! manque qestion des erreurs
+        if (response.error) sendNotification('error', response.error);
+        
         const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId } = response;
         // cleanNavbar() est dans navbars.js
         cleanNavbar();
@@ -152,5 +162,6 @@ const newGrid = (rowsNb, colsNb) => {
     })
     .catch((e)=> {
         console.log(e);
+        sendNotification('error', e);
     })
 };

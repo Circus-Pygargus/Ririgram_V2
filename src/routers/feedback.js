@@ -37,7 +37,7 @@ router.post('/feedback/new', auth, async (req, res) => {
         });
     } catch(e) {
         console.log(e);
-        res.status(500).send('Quelque chose s\'est mal déroulé pendant l\'enregistrement du message !');
+        res.status(500).send({ error: 'Quelque chose s\'est mal déroulé pendant l\'enregistrement du message !' });
     }
 });
 
@@ -66,7 +66,7 @@ router.post('/feedback/list', auth, async (req, res) => {
         });
     } catch(e) {
         console.log(e);
-        res.status(500).send('Quelque chose s\'est mal déroulé pendant l\'affichage des messages !');
+        res.status(500).send({ error: 'Quelque chose s\'est mal déroulé pendant l\'affichage des messages !' });
     }
 });
 
@@ -105,7 +105,7 @@ console.log(req.body.message)
 
     } catch (e) {
         console.log(e);
-        res.status(500).send('Un problème a eu lieu pendant l\'enregistrement du message');
+        res.status(500).send({ error: 'Un problème a eu lieu pendant l\'enregistrement du message' });
     }
 });
 

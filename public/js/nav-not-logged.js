@@ -52,7 +52,6 @@ const watchNavUserNotLogged = () => {
             .then((response) => {
                 if (!response.html) sendNotification('error', response.error);
                 else {
-                    // !! manque gestion des erreurs !!
                     navDiv.innerHTML = response.html;
                     sessionStorage.setItem('token', JSON.stringify(response.token));
                     // message d'accueil
@@ -80,11 +79,11 @@ const watchNavUserNotLogged = () => {
                 "password-bis": registerPasswordBis.value
             }
 
-            if (data.password !== data['password-bis']) {
-                console.log('raté');
-                sendNotification('error', 'Les mots de passe doivent être identiques !');
-                return;
-            }
+            // if (data.password !== data['password-bis']) {
+            //     console.log('raté');
+            //     sendNotification('error', 'Les mots de passe doivent être identiques !');
+            //     return;
+            // }
             fetch('/users', {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -142,7 +141,8 @@ const testGame = () => {
         return response.json();
     })
     .then((response) => {
-        // ! manque gestion des erreurs
+        // y en a besoin avec le catch plus bas ??? surtout qu'il y a déjà une verif dans le then précédent !!
+        if (response.error) sendNotification('error', response.error);
         const { gridSolution, clicksNbForPerfectGame, rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers } = response;
         // cleanNavbar() est dans navbars.js
         cleanNavbar();
@@ -158,5 +158,6 @@ const testGame = () => {
     .catch((e) => {
         // coller l'erreur dans une pop-up ?
         console.log(e)
+        sendNotification('error', e);
     })
 }
