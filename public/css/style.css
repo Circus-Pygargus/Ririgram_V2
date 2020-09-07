@@ -800,9 +800,24 @@ form#feedback-form svg#form-close {
           box-shadow: inset 0 0 6px 6px white;
 }
 
+#game-zone {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+}
+
+#game-zone.d-none {
+  display: none;
+}
+
 #game-cross {
   display: inline-block;
   width: 150px;
+  max-width: 50%;
   position: relative;
   -webkit-transition: width 0.7s ease-in-out;
   transition: width 0.7s ease-in-out;
@@ -829,10 +844,6 @@ form#feedback-form svg#form-close {
 
 #game-cross .game-cross-btn:hover {
   fill: var(--color-answer-maybe-yes);
-}
-
-#game-answer-buttons {
-  float: right;
 }
 
 #game-answer-buttons.d-none {
@@ -950,6 +961,7 @@ form#feedback-form svg#form-close {
 
 #victory button, #failed button {
   width: 16rem;
+  max-width: 100%;
   margin: 1.5rem auto 0;
   padding: 12px 0;
   display: block;

@@ -475,18 +475,20 @@ multiples modifs :
 utilisation plus grande de la classe in-game avec #main-title
 ajout d'une div : #game-zone contenant la grille et les boutons de jeu
 
+quelques correction du css
+
 
 
 
 A faire : 
 _ manque vérif du type de feedback coté serveur !!!!!!! o_O
 
-_  BDD : 
-    - User : utiliser la propriété  status (par ex pour bloquer si faute extrèmement grave)
-    - Feedback :  utiliser propriété status (boquer ce message -abus grave-) 
 _ bouger la croix et les boutons de jeu
 _ Ajouter un bouton reload la grille (qui juste efface les choix du joueurs)
 _ ajouter un bouton retire les maybe
+
+
+
 
 
 
@@ -528,8 +530,13 @@ users during dev :
 
 
 todos :
+_ ajouter un bouton : je ne veux plus voir cette grille !
+_  BDD : 
+    - User : utiliser la propriété  status (par ex pour bloquer si faute extrèmement grave)
+    - Feedback :  utiliser propriété status (boquer ce message -abus grave-) 
+    -> ajouter les boutons nécessaires
 _ vérifier la gestion des erreurs, il reste dans les routers dans les catch des erreurs réécrites avant d'être envoyées ... 
-_ lors d'une erreur de validation de form par le model, il ajoute une pharse du genre 'User validation failled: Email: et ma phrase..." faut voir pour virer ce début ...faire un test de présence de User et virer ce ui est en trop, voir aussi les autres models
+_ lors d'une erreur de validation de form par le model, il ajoute une phrase du genre 'User validation failled: Email: et ma phrase..." faut voir pour virer ce début ...faire un test de présence de User et virer ce ui est en trop, voir aussi les autres models
 _ récupérer les deux letttres de la locale du joueur pour lui afficher les dates dans sa langue
 _ dans user register : gérer le message d'erreur si plusieurs pb ? genre pseudo et email invalide en même temps
 _ un joueur ne devrait pas avoir 2 fois la même grille en moins de 24 heures, que ce soit avec le choix de grille ou avec une nouvelle (nouvelle veut dire pas de chrono enregistré)

@@ -161,10 +161,23 @@
         }
     }
 }
-
+// #game-cross-container {
+//     display: flex;
+//     align-items: center;
+//     width: 50%;
+// }
+#game-zone {
+    display:flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    &.d-none {
+        display: none;
+    }
+}
 #game-cross {
     display: inline-block;
     width: 150px;
+    max-width: 50%;
     // height: 150px;
     // background-color: antiquewhite;
     position: relative;
@@ -216,7 +229,7 @@
 
 #game-answer-buttons {
     // display: inline-block;
-    float: right;
+    // float: right;
 
     &.d-none {
         display: none;
