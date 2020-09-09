@@ -155,7 +155,6 @@ const newGrid = (rowsNb, colsNb) => {
         toggleNavbarBtn.classList.remove('hidden');
         navContainer.classList.add('hidden');
         // move title
-        // titleDiv.classList.add('in-game');
         document.querySelector('#main-title').classList.add('in-game');
         // build the gameboard, launch the game and manage it (true because user is logged, and '' because we don't know the grid solution)
         gameManager(rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, true, '', clicksNbForPerfectGame, gridId);

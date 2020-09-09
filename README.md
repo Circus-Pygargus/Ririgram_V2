@@ -18,13 +18,12 @@ Create the dir ~/mongodb-data to store db
 # Installation
 clone the repo
 
-in /var/www/html, run :
+in the project folder, run :
 ```bash
-composer install
 sudo npm install
 ```
 
 
 # Pay Attention
 this is still under construction,
-please don't try it now ;) 
+a lot of things will be added

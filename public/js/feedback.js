@@ -102,11 +102,6 @@ const watchForFeedback = () => {
                 // insert messages received by server in DOM
                 messagesDestination.innerHTML = response.html;
                 watchActionsOnFeedbacks();
-                // const dates = messagesDestination.querySelectorAll('.date');
-                // dates.forEach((elem) => {
-                //     const date = new Date(elem)
-                //     console.log(date.toLocaleString('en-GB', { timeZone: 'UTC' }))
-                // });
                 seeFeedbacksBtn.scrollIntoView({ behavior: 'smooth' });
             }
         })
@@ -176,7 +171,6 @@ const watchForAdminAnswer = () => {
             messagesDestination.innerHTML = response.html;
             answerFbMsgTextarea.value = '';
             answerFbFormContainer.classList.add('d-none');
-            console.log(document.querySelector(`.delete[data-id="${feedbackId}"`))
             document.querySelector(`.delete[data-id="${feedbackId}"`).scrollIntoView({ behavior: 'smooth' });
         })
     });

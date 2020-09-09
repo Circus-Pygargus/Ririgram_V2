@@ -477,6 +477,8 @@ ajout d'une div : #game-zone contenant la grille et les boutons de jeu
 
 quelques correction du css
 
+netoyage du code pour mise en ligne de la version alpha 1.0.0
+
 
 
 
@@ -530,6 +532,7 @@ users during dev :
 
 
 todos :
+_ créer un modèle supplementaire : refusedGrids : devrait contenir userId, gridId, difficulty (easy ou hard). permettra à l'utilisateur de ne plus voir cette grille qu'il trouve impossible (ne pas oublier d'effacer le document si le joueur appelle cette grille depuis la liste des grilles)
 _ ajouter un bouton : je ne veux plus voir cette grille !
 _  BDD : 
     - User : utiliser la propriété  status (par ex pour bloquer si faute extrèmement grave)

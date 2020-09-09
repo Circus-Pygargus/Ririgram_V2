@@ -41,12 +41,10 @@ app.set('views', viewsPath);
 // Tell hbs we're gonna use some partial templates
 hbs.registerPartials(partialPath);
 // Tell hbs that we need to use ifEquals to compare 2 values in hbs files
-// hbs.registerHelper('ifEquals', (arg1, arg2) => {
-//     return arg1 === arg2;
-// });
 hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
     return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
+// Could be usefull
 // hbs.registerHelper("when", (operand_1, operator, operand_2, options) => {
 //     let operators = {                     //  {{#when <operand1> 'eq' <operand2>}}
 //       'eq': (l,r) => l == r,              //  {{/when}}
@@ -92,6 +90,8 @@ hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
 // 	    return options.inverse(this);
 // 	}
 // });
+
+
 
 /* Setup static directory to serve */
 // with this, we don't need a route for '', il will send directly to public path (so the index.html wich is inside)

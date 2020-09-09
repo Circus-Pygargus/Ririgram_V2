@@ -54,11 +54,6 @@ feedbackSchema.methods.changeTimeFormat = function () {
     return fbObject;
 }
 
-// feedbackSchema.pre('save', async function (next) {
-//     const feedback = this;
-
-// })
-
 const Feedback = mongoose.model('Feedback', feedbackSchema);
 
 module.exports = Feedback;

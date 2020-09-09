@@ -1,11 +1,6 @@
 // npm modules
 const mongoose = require('mongoose');
 
-// app files
-// const User = require('./user');
-// const UserTimeEasy = require('./userTimeEasy');
-// const UserTimeHard = require('./userTimeHard');
-
 
 const gridSchema = new mongoose.Schema({
     rowsNb: {

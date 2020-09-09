@@ -1,3 +1,4 @@
+// When the user have completed the grid but solution given is not good
 const failedDiv = document.querySelector('#failed');
 const failedCloseBtns = document.querySelectorAll('.failed-close');
 const failedMessagePlace = document.querySelector('#failed-message');

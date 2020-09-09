@@ -53,6 +53,7 @@ const watchNavButtons = () => {
     
                         if (isSelected) {
                         navButtons[i].classList.remove('selected');
+                        // ?? A remettre après ajout en scss d'une anim ?
                         // navButtons[i].scrollIntoView({
                         //     behavior: 'smooth'
                         // });

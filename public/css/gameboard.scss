@@ -5,7 +5,6 @@
     --color-head-bg-enlighted: #333333;
     --color-head-font: #dddddd;
     --color-answer-origin: #dddddd;
-    // --color-answer-yes: rgb(29, 207, 23);
     --color-answer-yes: #FF8800;
     --color-answer-maybe-yes: #ffcc00;
     --color-answer-maybe-no: rgb(119, 121, 153);
@@ -15,7 +14,6 @@
     --max-row-helpers: 2;
     --max-col-helpers: 2;
     --gameboard-width: 90vw;
-    // --gameboard-heigth: 90vw;
     --head-size: 15vw;
     --row-head-font-size: 32px;
     --col-head-font-size: 32px;
@@ -136,10 +134,6 @@
             &:nth-child(5n+1) {
                 border-right-width: 3px;
             }
-            // &:nth-last-child(1) {
-            //     border-right-width: 1px;
-            //     border-right-color: headColor(font);
-            // }
             &[data-solution="yes"] {
                 background-color: answerColor(yes);
             }
@@ -152,20 +146,14 @@
             &[data-solution="no"] {
                 background-color: answerColor(no);
             }
-            // &:hover {
-            //     box-shadow: inset 0 0 6px 6px white;
-            // }
             &.selected {
                 box-shadow: inset 0 0 6px 6px white;
             }
         }
     }
 }
-// #game-cross-container {
-//     display: flex;
-//     align-items: center;
-//     width: 50%;
-// }
+
+
 #game-zone {
     display:flex;
     flex-wrap: wrap;
@@ -178,8 +166,6 @@
     display: inline-block;
     width: 150px;
     max-width: 50%;
-    // height: 150px;
-    // background-color: antiquewhite;
     position: relative;
     transition: width 0.7s ease-in-out;
 
@@ -204,32 +190,9 @@
             fill: var(--color-answer-maybe-yes);
         }
     }
-
-    // #game-cross-top {    
-    //     left: 50px;
-    //     top: 0;
-    // }
-
-    // #game-cross-right {    
-    //     left: 76px;
-    //     top: 50px;
-    // }
-
-    // #game-cross-bottom {    
-    //     left: 50px;
-    //     top: 76px;
-    // }
-
-    // #game-cross-left {    
-    //     left: 0;
-    //     top: 50px;
-    // }
-
 }
 
 #game-answer-buttons {
-    // display: inline-block;
-    // float: right;
 
     &.d-none {
         display: none;
@@ -243,7 +206,6 @@
             cursor: pointer;
             width: 46px;
             height: 46px;
-            // margin: 15px 20px;
             margin-right: 12px;
             box-shadow: none;
     

@@ -19,13 +19,6 @@ const watchNavUserNotLogged = () => {
     // test game button
     const testGameBtn = document.querySelector('#test-game');
 
-    // // Title div
-    // const titleDiv = document.querySelector('#main-title');
-
-    // // Main content place (gameboard, grid list ...)
-    // const mainContentDiv = document.querySelector('#gameboard-div');
-
-
     // loginForm exists so user not logged navbar is displayed
     if (loginForm) {
 
@@ -78,12 +71,7 @@ const watchNavUserNotLogged = () => {
                 "password": registerPassword.value,
                 "password-bis": registerPasswordBis.value
             }
-
-            // if (data.password !== data['password-bis']) {
-            //     console.log('raté');
-            //     sendNotification('error', 'Les mots de passe doivent être identiques !');
-            //     return;
-            // }
+            
             fetch('/users', {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -96,11 +84,9 @@ const watchNavUserNotLogged = () => {
             })
             .then((response) => {
                 if (!response.html) {
-                    console.log(JSON.stringify(response))
                     sendNotification('error', response.error);
                 }
                 else {
-                    console.log(response.user);
                     navDiv.innerHTML = response.html;
                     sessionStorage.setItem('token', JSON.stringify(response.token));
                     // Welcome message for this new user
@@ -135,7 +121,6 @@ const testGame = () => {
     })
     .then((response) => {
         if (response.status !== 201) {
-            console.log(response)
             throw new Error('Quelque chose s\'est mal déroulé pendant la création de la grille.');
         }
         return response.json();
@@ -156,7 +141,6 @@ const testGame = () => {
         gameManager(rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, false, gridSolution, clicksNbForPerfectGame);
     })
     .catch((e) => {
-        // coller l'erreur dans une pop-up ?
         console.log(e)
         sendNotification('error', e);
     })

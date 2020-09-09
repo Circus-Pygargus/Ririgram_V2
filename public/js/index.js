@@ -1,39 +1,3 @@
-// // wait for click on nav buttons
-// watchNavButtons();
-
-// function storageAvailable(type) {
-//     try {
-//         var storage = window[type],
-//             x = '__storage_test__';
-//         storage.setItem(x, x);
-//         storage.removeItem(x);
-//         return true;
-//     }
-//     catch(e) {
-//         return e instanceof DOMException && (
-//             // everything except Firefox
-//             e.code === 22 ||
-//             // Firefox
-//             e.code === 1014 ||
-//             // test name field too, because code might not be present
-//             // everything except Firefox
-//             e.name === 'QuotaExceededError' ||
-//             // Firefox
-//             e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
-//             // acknowledge QuotaExceededError only if there's something already stored
-//             storage.length !== 0;
-//     }
-// }
-
-// if (storageAvailable('sessionStorage')) {
-//     // Nous pouvons utiliser localStorage
-//     console.log('le stockage de type sessionStorage est fonctionnel !');
-// }
-// else {
-//     // Malheureusement, localStorage n'est pas disponible
-//     console.log('no no');
-// }
-
 const isStorageAvail = isStorageAvailable();
 
 if (!isStorageAvail) {
@@ -61,7 +25,6 @@ document.addEventListener('contextmenu', (event) => {
 // Text selection is disabled in main.scss
 
 
-    // react when user push a game button (game cross or color answer)
-    watchGameButtons();
-    watchCrossButtons();
-
+// react when user push a game button (game cross or color answer)
+watchGameButtons();
+watchCrossButtons();

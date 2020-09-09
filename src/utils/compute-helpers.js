@@ -58,13 +58,12 @@ const buildRowsHelpers = (colsNb, gridSolution) => {
     // let's find the maximum number of helpers found for 1 row
     let maxRowHelpers = 0;
     const helpersNb = [];
-    // console.log(colsHelpers)
+    
     for (let i = 0, len = rowsHelpers.length; i < len; i++) {
         helpersNb[i] = 0;
-        // console.log(helpersNb);
+        
         for (let j = 0, max = rowsHelpers[i].length; j < max; j++) {
             helpersNb[i] = helpersNb[i] + 1;
-            // console.log(helpersNb[i]);
         }
     }
     helpersNb.sort(compareNbs).reverse();
@@ -108,13 +107,10 @@ const buildColsHelpers = (colsNb, gridSolution) => {
     // let's find the maximum number of helpers found for 1 col
     let maxColHelpers = 0;
     const helpersNb = [];
-    // console.log(colsHelpers)
     for (let i = 0, len = colsHelpers.length; i < len; i++) {
         helpersNb[i] = 0;
-        // console.log(helpersNb);
         for (let j = 0, max = colsHelpers[i].length; j < max; j++) {
             helpersNb[i] = helpersNb[i] + 1;
-            // console.log(helpersNb[i]);
         }
     }
     helpersNb.sort(compareNbs).reverse();

@@ -64,7 +64,7 @@ router.post('/users/login', async (req, res) => {
         if (!options) {
             options = defaultColors;
         }
-console.log(user)
+
         res.render(`${partialsPath}/navLogged`, (err, html) => {
             if (err) {
                 return res.send({
@@ -76,8 +76,8 @@ console.log(user)
         })
 
     } catch (e) {
+        console.log(e);
         res.status(400).send({ error: e.message });
-        console.log(e.message);
     }
 });
 
@@ -103,8 +103,8 @@ router.post('/users/logout', auth, async (req, res) => {
         })
 
     } catch (e) {
-        res.status(500).send({ error: e});
         console.log(e);
+        res.status(500).send({ error: e});
     }
 });
 

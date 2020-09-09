@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-// const User = require('./user');
 
 const regex = /^#[a-fA-F0-9]{6}/;
 
