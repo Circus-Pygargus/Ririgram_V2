@@ -242,6 +242,12 @@ const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newCol
     // react when user directly act on a tile
     watchGridActions();
 
+    // display the trash can button if user is logged so he can refuse this grid
+    if (isUserLogged) {
+        // already declared in trash-can.js
+        trashCanBtn.classList.remove('d-none'); 
+    }
+
     // watch any window rezising
     watchWindowSize(rowsNb, colsNb, maxRowHelpers, maxColHelpers);
 };

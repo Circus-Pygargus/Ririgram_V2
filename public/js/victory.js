@@ -33,6 +33,7 @@ const victory = (isUserLogged, tilesCliksNb, clicksNbForPerfectGame, isBrandNewG
         youShouldRegister.classList.remove('d-none');
         // and hide that
         victoryChooseGridBtn.classList.add('d-none');
+        trashCanBtn.classList.remove('d-none'); 
     
     }
     else {

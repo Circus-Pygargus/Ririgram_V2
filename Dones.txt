@@ -495,6 +495,10 @@ correction erreur dans routers/grid
 
 Création de la route '/grid/trashcan'
 
+Création et gestion de la requête pour '/grid/trashcan'
+
+
+
 
 
 

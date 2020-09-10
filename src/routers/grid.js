@@ -69,9 +69,21 @@ router.post('/grid/new', auth, async (req, res) => {
             const gridId = grid._id;
             user.playedGrids++;
             await user.save();
-            let startTime = StartTime.findOne({ grid: gridId, onwer: user._id });
-            if (startTime) startTime.time = Date.now();
-            else startTime = new StartTime({time: Date.now(), grid: gridId, owner: user._id});
+            let startTime = await StartTime.findOne({ grid: gridId, onwer: user._id });
+            if (startTime) {
+                startTime.time = Date.now();
+            }
+            else {
+                startTime = new StartTime({time: Date.now(), grid: gridId, owner: user._id});
+            }
+        // let startTime = await StartTime.findOne({grid: gridId, owner: user._id});
+
+        // if (!startTime) {
+        //     startTime = new StartTime({time: Date.now(), grid: gridId, owner: user._id})
+        // }
+        // else {
+        //     startTime.time = Date.now();
+        // }
             await startTime.save();
             res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId });
         }
@@ -183,7 +195,7 @@ router.post('/grid/check', auth, async (req, res) => {
 router.post('/grid/trashcan', auth, async (req, res) => {
     try {
         const userId = req.user._id;
-        const gridId = req.body.gridId;
+        const { gridId } = req.body;
         let refusedGrid =   await RefusedGrid.findOne({ gridId, userId });
         if (refusedGrid) {
             refusedGrid.hardStatus === 'once' ? refusedGrid.hardStatus = 'confirmed'
@@ -192,18 +204,18 @@ router.post('/grid/trashcan', auth, async (req, res) => {
                 : refusedGrid.hardStatus === 'forever';
         }
         else {
-            refusedGrid = { gridId, userId, easy: false, hard: true, hardStatus: 'once', hardUpdatedAt: Date.now() };
+            refusedGrid = new RefusedGrid({gridId, userId, easy: false, hard: true, hardStatus: 'once', hardUpdatedAt: Date.now()});
         }
 
         await refusedGrid.save();
 
-        await StartTime.findOneAndDelete({ grid: gridId, onwer: user._id });
+        await StartTime.findOneAndDelete({ grid: gridId, onwer: userId });
 
         res.send({message: 'Vous ne verrez plus cette grille.'});
 
     } catch(e) {
         console.log(e);
-        res.status(500).send('Quelque chose s\'est mal déroulé pendant l\'exclusion de cette grille.');
+        res.status(500).send({ error: 'Quelque chose s\'est mal déroulé pendant l\'exclusion de cette grille.' });
     }
 });
 

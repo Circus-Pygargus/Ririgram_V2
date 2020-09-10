@@ -993,6 +993,67 @@ form#feedback-form svg#form-close {
   display: none;
 }
 
+#trash-can-div {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  padding: 32px;
+  text-align: center;
+  font-size: 1.5rem;
+  background-color: #0F101B;
+}
+
+#trash-can-div h2 {
+  margin-top: 12px;
+  margin-bottom: 48px;
+}
+
+#trash-can-div p {
+  margin-bottom: 32px;
+}
+
+#trash-can-div p.d-none {
+  display: none;
+}
+
+#trash-can-div button {
+  width: 16rem;
+  max-width: 100%;
+  margin: 1.5rem auto 0;
+  padding: 12px 0;
+  display: block;
+  text-align: center;
+  background-color: #0F101B;
+  color: #FF8800;
+  line-height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 1px solid #FAFAFA;
+  border-radius: 5px;
+}
+
+#trash-can-div button:hover {
+  border-color: #FF8800;
+}
+
+#trash-can-div button:active {
+  background-color: #FF8800;
+  color: #FAFAFA;
+  border-color: #FAFAFA;
+}
+
+#trash-can-div button:focus {
+  outline: none;
+}
+
+#trash-can-div button.d-none {
+  display: none;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
