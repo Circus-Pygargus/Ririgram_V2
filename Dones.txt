@@ -491,6 +491,8 @@ modif des models Grid et User pour les ref dans refusedGrid
 
 modification de routers/grid.js pour y inclure la gestion du model RefusedGrid
 
+correction erreur dans routers/grid 
+
 
 
 

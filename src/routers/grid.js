@@ -140,7 +140,10 @@ router.post('/grid/check', auth, async (req, res) => {
             await grid.save();
 
             const refusedGrid = await RefusedGrid.findOne({ gridId, userId: user._id, hard: true });
-            if (refusedGrid && refusedGrid.easy === false) await refusedGrid.findByIdAndDelete({ refusedGrid._id });
+            if (refusedGrid && refusedGrid.easy === false) {
+                const refusedGridId = refusedGrid._id
+                await refusedGrid.findByIdAndDelete({ refusedGridId });
+            }
             else if (refusedGrid) {
                 refusedGrid.hard = false;
                 await refusedGrid.save();
