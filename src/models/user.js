@@ -112,6 +112,12 @@ userSchema.virtual('feedbacks', {
     foreignField: 'answerOwner'
 });
 
+userSchema.virtual('refusedGrid', {
+    ref: 'RefusedGrid',
+    localField: '_id',
+    foreignField: 'userId'
+});
+
 
 
 // take off the infos we don't want to sendback to user

@@ -486,6 +486,9 @@ modif du modèle Grid: ajout propriétés nbTimesPlayed et nbTimesFinished
 
 remodif du model Grid, les prop créent juste avant sont dédoublées pour inclure easy ou hard
 
+Ajout du modèle RefusedGrid, servira à vérifier que le joueur n'a pas déjà refusé cette grille, avec comme propriété easy et hardStatus ('once', 'confirmed', 'definitive' ou 'forever') pour permettre un affichage spécifique dans la liste des grilles si déjà refusée par le joueur
+modif des models Grid et User pour les ref dans refusedGrid
+
 
 
 
@@ -497,10 +500,8 @@ _ manque vérif du type de feedback coté serveur !!!!!!! o_O
 _ pour donner une idée de la difficulté d'une grille: 
     modif du model grid : ajout des propriétés nbTimesPlayed (nombre de fois présentée aux joueurs), nbTimesFinished
 
-_ Ajouter deux models :
-    - refusedGrids : les grilles refusées par le joueur :
-        _id, gridId, userID, easy (booléen), easyStatus ('once', 'confirmed', 'definitive' ou 'forever'), easyUpdatedAt (Date), hard (booléen), easyStatus ('once', 'confirmed', 'definitive' ou 'forever'), hardUpdatedAt (Date), timestamps (le chrono pour laisser une chance au retour de la grille si augmentation du niveau du joueur ?)
-    - bannedGrids : les grilles refusées par un grand nombre ET pourcentage de joueurs (donc pas super urgent ^^)
+_ Ajouter  models :
+    - bannedGrid : les grilles refusées par un grand nombre ET pourcentage de joueurs (donc pas super urgent ^^)
         _id, gridId
 
 _ bouger la croix et les boutons de jeu

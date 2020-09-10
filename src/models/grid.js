@@ -107,6 +107,13 @@ gridSchema.virtual('startTimes', {
     foreignField: 'grid'
 });
 
+gridSchema.virtual('refusedGrid', {
+    ref: 'RefusedGrid',
+    localField: '_id',
+    foreignField: 'gridId'
+});
+
+
 const Grid = mongoose.model('Grid', gridSchema);
 
 module.exports = Grid;
