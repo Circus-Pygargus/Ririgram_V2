@@ -53,6 +53,13 @@ const gridSchema = new mongoose.Schema({
         type: Number,
         ref: 'UserTimeHard'
     }, // ref UserTimeEasy.besTime
+    nbTimesPlayed: {
+        type: Number,
+        required: true
+    },
+    nbTimesFinished: {
+        type: Number
+    },
     nbVotesWorst: {
         type: Number
     },

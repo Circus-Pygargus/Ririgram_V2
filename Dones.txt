@@ -482,7 +482,7 @@ netoyage du code pour mise en ligne de la version alpha 1.0.0
 Ajout du partial trash can.hbs, correspond au pop up qui apparaît lors du clic sur la poubelle visible pendant une partie.
 prob pour l'instant , je ne sais pas comment faire avec cette poubelle ...
 
-
+modif du modèle Grid: ajout propriétés nbTimesPlayed et nbTimesFinished
 
 
 
