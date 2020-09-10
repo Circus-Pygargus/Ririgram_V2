@@ -49,15 +49,22 @@ const gridSchema = new mongoose.Schema({
         type: Number,
         ref: 'UserTimeEasy'
     }, // ref UserTimeEasy.besTime
+    easyNbTimesPlayed: {
+        type: Number,
+        required: true
+    },
+    easyNbTimesFinished: {
+        type: Number
+    },
     bestTimeHard: {
         type: Number,
         ref: 'UserTimeHard'
     }, // ref UserTimeEasy.besTime
-    nbTimesPlayed: {
+    hardNbTimesPlayed: {
         type: Number,
         required: true
     },
-    nbTimesFinished: {
+    hardNbTimesFinished: {
         type: Number
     },
     nbVotesWorst: {

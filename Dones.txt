@@ -484,6 +484,8 @@ prob pour l'instant , je ne sais pas comment faire avec cette poubelle ...
 
 modif du modèle Grid: ajout propriétés nbTimesPlayed et nbTimesFinished
 
+remodif du model Grid, les prop créent juste avant sont dédoublées pour inclure easy ou hard
+
 
 
 
