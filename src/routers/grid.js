@@ -69,7 +69,9 @@ router.post('/grid/new', auth, async (req, res) => {
             const gridId = grid._id;
             user.playedGrids++;
             await user.save();
-            const startTime = new StartTime({time: Date.now(), grid: gridId, owner: user._id});
+            let startTime = StartTime.findOne({ grid: gridId, onwer: user._id });
+            if (startTime) startTime.time = Date.now();
+            else startTime = new StartTime({time: Date.now(), grid: gridId, owner: user._id});
             await startTime.save();
             res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId });
         }
@@ -175,6 +177,33 @@ router.post('/grid/check', auth, async (req, res) => {
     } catch (e) {
         console.log(e);
         res.status(500).send({ error: 'Un problème est survenu pendant la vérification de la grille.' });
+    }
+});
+
+router.post('/grid/trashcan', auth, async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const gridId = req.body.gridId;
+        let refusedGrid =   await RefusedGrid.findOne({ gridId, userId });
+        if (refusedGrid) {
+            refusedGrid.hardStatus === 'once' ? refusedGrid.hardStatus = 'confirmed'
+                : refusedGrid.hardStatus === 'confirmed' ? refusedGrid.hardStatus = 'definitive'
+                : refusedGrid.hardStatus === 'definitive' ? refusedGrid.hardStatus = 'forever'
+                : refusedGrid.hardStatus === 'forever';
+        }
+        else {
+            refusedGrid = { gridId, userId, easy: false, hard: true, hardStatus: 'once', hardUpdatedAt: Date.now() };
+        }
+
+        await refusedGrid.save();
+
+        await StartTime.findOneAndDelete({ grid: gridId, onwer: user._id });
+
+        res.send({message: 'Vous ne verrez plus cette grille.'});
+
+    } catch(e) {
+        console.log(e);
+        res.status(500).send('Quelque chose s\'est mal déroulé pendant l\'exclusion de cette grille.');
     }
 });
 
