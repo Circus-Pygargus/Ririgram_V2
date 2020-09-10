@@ -479,14 +479,30 @@ quelques correction du css
 
 netoyage du code pour mise en ligne de la version alpha 1.0.0
 
+Ajout du partial trash can.hbs, correspond au pop up qui apparaît lors du clic sur la poubelle visible pendant une partie.
+prob pour l'instant , je ne sais pas comment faire avec cette poubelle ...
+
+
+
+
+
 
 
 
 A faire : 
 _ manque vérif du type de feedback coté serveur !!!!!!! o_O
 
+_ pour donner une idée de la difficulté d'une grille: 
+    modif du model grid : ajout des propriétés nbTimesPlayed (nombre de fois présentée aux joueurs), nbTimesFinished
+
+_ Ajouter deux models :
+    - refusedGrids : les grilles refusées par le joueur :
+        _id, gridId, userID, easy (booléen), easyStatus ('once', 'confirmed', 'definitive' ou 'forever'), easyUpdatedAt (Date), hard (booléen), easyStatus ('once', 'confirmed', 'definitive' ou 'forever'), hardUpdatedAt (Date), timestamps (le chrono pour laisser une chance au retour de la grille si augmentation du niveau du joueur ?)
+    - bannedGrids : les grilles refusées par un grand nombre ET pourcentage de joueurs (donc pas super urgent ^^)
+        _id, gridId
+
 _ bouger la croix et les boutons de jeu
-_ Ajouter un bouton reload la grille (qui juste efface les choix du joueurs)
+_ Ajouter un bouton reload la grille (qui juste efface les choix du joueur mais garde le nombre de coups effectué)
 _ ajouter un bouton retire les maybe
 
 
@@ -532,6 +548,7 @@ users during dev :
 
 
 todos :
+_ dans le liste des grilles, coller une croix dans le colonne déjà jouée par  le joueur si mise à la poubelle (la croix pourrait être jaune, orange, rouge (noir pour forever ?) selon le nombre d'essais refaits en passant par cette page)
 _ créer un modèle supplementaire : refusedGrids : devrait contenir userId, gridId, difficulty (easy ou hard). permettra à l'utilisateur de ne plus voir cette grille qu'il trouve impossible (ne pas oublier d'effacer le document si le joueur appelle cette grille depuis la liste des grilles)
 _ ajouter un bouton : je ne veux plus voir cette grille !
 _  BDD : 
