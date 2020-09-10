@@ -3,6 +3,7 @@ const express = require('express');
 const Grid = require('../models/grid');
 const UserTimeHard = require('../models/userTimeHard');
 const StartTime = require('../models/startTime');
+const RefusedGrid = require('../models/refusedGrid');
 
 const auth = require('../middleware/auth');
 const computeGridSolution = require('../utils/compute-grid-solution');
@@ -63,7 +64,7 @@ router.post('/grid/new', auth, async (req, res) => {
             const { gridSolution, clicksNbForPerfectGame } = await computeGridSolution(rowsNb * colsNb);
             // Get rows and cols helpers
             const { rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers } = await computeHelpers(colsNb, gridSolution);
-            let grid = new Grid({rowsNb, colsNb, gridSolution, clicksNbForPerfectGame, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, creator: user._id});
+            let grid = new Grid({rowsNb, colsNb, gridSolution, clicksNbForPerfectGame, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, creator: user._id, easyNbTimesPlayed: 0, easyNbTimesFinished: 0, hardNbTimesPlayed: 1, hardNbTimesFinished: 0 });
             grid = await grid.save();
             const gridId = grid._id;
             user.playedGrids++;
@@ -87,7 +88,12 @@ const findUnplayedGrid = async (rowsNb, colsNb, userId) => {
     for (let i = 0, max = gridsFound.length; i < max; i++) {
         const userTimeHard = await UserTimeHard.findOne({ owner: userId, grid: gridsFound[i]._id});
         if (userTimeHard) continue;
-        else return gridsFound[i];
+        else {
+            // check if user already played this but refused it at least once
+            const refusedGrid = await RefusedGrid.findOne({ gridId:gridsFound[i]._id, userId, hard: true });
+            if (refusedGrid) continue;
+            else return gridsFound[i];
+        }
     }
     if (!hasFoundGrid) return null;
 };
@@ -130,7 +136,15 @@ router.post('/grid/check', auth, async (req, res) => {
                 grid.bestTimeHard = gridTime;
                 IsGridBestTime = true;
             }
+            grid.hardNbTimesFinished++;
             await grid.save();
+
+            const refusedGrid = await RefusedGrid.findOne({ gridId, userId: user._id, hard: true });
+            if (refusedGrid && refusedGrid.easy === false) await refusedGrid.findByIdAndDelete({ refusedGrid._id });
+            else if (refusedGrid) {
+                refusedGrid.hard = false;
+                await refusedGrid.save();
+            }
             
             let recordedResults = await UserTimeHard.findOne({ grid: gridId, owner: user._id });
             if (!recordedResults) {

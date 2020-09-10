@@ -489,6 +489,9 @@ remodif du model Grid, les prop créent juste avant sont dédoublées pour inclu
 Ajout du modèle RefusedGrid, servira à vérifier que le joueur n'a pas déjà refusé cette grille, avec comme propriété easy et hardStatus ('once', 'confirmed', 'definitive' ou 'forever') pour permettre un affichage spécifique dans la liste des grilles si déjà refusée par le joueur
 modif des models Grid et User pour les ref dans refusedGrid
 
+modification de routers/grid.js pour y inclure la gestion du model RefusedGrid
+
+
 
 
 
