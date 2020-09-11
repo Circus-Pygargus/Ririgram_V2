@@ -210,6 +210,12 @@ header div#main-title svg#toggle-navbar.hidden {
   opacity: 0;
 }
 
+header div#main-title svg#trash-can-btn {
+  position: relative;
+  top: 2.5rem;
+  right: 1.5rem;
+}
+
 header div#main-title h1 {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
