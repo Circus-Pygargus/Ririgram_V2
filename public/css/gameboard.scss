@@ -158,6 +158,8 @@
     display:flex;
     flex-wrap: wrap;
     align-content: space-around;
+    height: 100%;
+
     &.d-none {
         display: none;
     }
@@ -168,6 +170,7 @@
     max-width: 50%;
     position: relative;
     transition: width 0.7s ease-in-out;
+    margin: auto;
 
     &.d-none {
         display: none;
@@ -193,6 +196,7 @@
 }
 
 #game-answer-buttons {
+    margin: auto;
 
     &.d-none {
         display: none;

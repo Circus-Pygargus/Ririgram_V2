@@ -823,6 +823,7 @@ form#feedback-form svg#form-close {
       flex-wrap: wrap;
   -ms-flex-line-pack: distribute;
       align-content: space-around;
+  height: 100%;
 }
 
 #game-zone.d-none {
@@ -836,6 +837,7 @@ form#feedback-form svg#form-close {
   position: relative;
   -webkit-transition: width 0.7s ease-in-out;
   transition: width 0.7s ease-in-out;
+  margin: auto;
 }
 
 #game-cross.d-none {
@@ -859,6 +861,10 @@ form#feedback-form svg#form-close {
 
 #game-cross .game-cross-btn:hover {
   fill: var(--color-answer-maybe-yes);
+}
+
+#game-answer-buttons {
+  margin: auto;
 }
 
 #game-answer-buttons.d-none {
@@ -1094,6 +1100,27 @@ body {
   padding: 0 2vw;
   background-color: #0F101B;
   color: #FAFAFA;
+}
+
+@media screen and (max-width: 450px) {
+  body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100vh;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  main {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
 }
 
 main div#no-js {

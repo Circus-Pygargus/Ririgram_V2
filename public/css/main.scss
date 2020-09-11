@@ -15,12 +15,23 @@ html {
 }
 
 body {
+    // juste en attendant de refaire le responsive
+    @media screen and (max-width: 450px) {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
     padding: 0 2vw;
     background-color: $color-background;
     color: $color-font;
 }
 
 main {
+    // juste en attendant de refaire le responsive
+    @media screen and (max-width: 450px) {
+        flex-grow: 1;
+    }
+
     div#no-js {
         display: block;
         text-align: center;

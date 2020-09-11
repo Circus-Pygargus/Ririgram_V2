@@ -516,10 +516,9 @@ Correction de bug : Uncaught ReferenceError: crossAction is not defined
 (tactile) : si on appuye sur la croix alors que la croix n'est pas activée, l'erreur se lance qd on relache.
 Coller une variable genre isActivatingGamecross ? non, pas fait come ça, pas envied 'ajouter une variable alors que isUsingCross existe déjà ... du coup, j'ai déplacé une partie de gameCross -> touchstart vers gamecross -> touchend + ajout d'un preventDefault() sur tile -> touchmove (on ne scroll pas depuis la grille)
 
-
 modif: déplacement de la poubelle de refus de grille
 
-
+modif: meilleur placement de la gamecross et des boutons de jeu 
 
 
 PRIORITAIRE :
@@ -538,6 +537,9 @@ _ si partie gagnée en jouant avec la croix, à la partie suivante, la croix res
 
 
 A faire : 
+_ pour les infos : ! bien réfléchir au model pour ne pas modif le bdd en prod !
+le model : _id, title(String), info(string)
+l'idée c'est de n'envoyer que les titres et dates des infos, et d'appeller le contenu uniquement si clic sur un bouton
 _ dans les fetch, coller un catch avec sendNotification -> 'il y a un problem pour joindre le serveur ou autre chose du genre
 _ manque vérif du type de feedback coté serveur !!!!!!! o_O
 
