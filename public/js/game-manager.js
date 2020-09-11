@@ -222,8 +222,6 @@ const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newCol
 
     /* Everything is declared, let's go */
 
-    // Compute and set some css variables
-    setCssGridSize(rowsNb, colsNb, maxRowHelpers, maxColHelpers);
 
     // Build grid html
     buildGameBoardContent(rowsNb, colsNb, rowsHelpers, colsHelpers);
@@ -238,6 +236,9 @@ const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newCol
     const rowHeaders = document.querySelectorAll('.row-head-div');
 
     gameZone.classList.remove('d-none');
+    
+    // Compute and set some css variables
+    setCssGridSize(rowsNb, colsNb, maxRowHelpers, maxColHelpers);
 
     // react when user directly act on a tile
     watchGridActions();

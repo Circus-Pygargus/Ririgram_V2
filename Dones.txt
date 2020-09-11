@@ -509,6 +509,8 @@ Modif du chemin d'utilisation de .env
 
 correction coquille 'graille' au lieu de 'grille' dans tuto.hbs
 
+Corection de bug : sur grand écran, lorsque l'on lance une partie, la grille est trop grande et force à  scroller ... : déplacement de l'appel de setCssGridSize() dans game-manager.js juste après gameZone.classList.remove('d-none');
+
 
 
 
@@ -532,9 +534,6 @@ _ Uncaught ReferenceError: crossAction is not defined
     at SVGGElement.<anonymous> (game-manager.js:405)
 (tactile) : si on appuye sur la croix alors que la croix n'est pas activée, l'erreur se lance qd on relache.
 Coller une variable genre isActivatingGamecross ?
-_ sur grand écran, lorsque l'on lance une partie, la grille est trop grande et force à  scroller ... au retour du fetch faire un setCssGridSize ?
-_ j'ai vu un graille au lieu de grille
-
 
 
 
