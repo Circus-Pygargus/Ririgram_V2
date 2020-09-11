@@ -503,6 +503,8 @@ Ajout d'un gif animé dans la section Règles, en espérant que ce sera assez cl
 
 Ajout de DotEnv pour gérer les variables critiques, permettra aussi de ne pls être ennuyé avec l'adresse de hostname différente entre mon poste de dev et la prod
 
+Ajout dans Readme.md le process pour lancer l'appli
+
 
 
 

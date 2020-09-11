@@ -25,6 +25,13 @@ sudo npm install
 
 Fill the file .sample.env with your needed values and rename the file .env
 
+# Launch the app
+Place yourself in /src/ and run :
+```bash
+node index.js
+```
+or use PM2 ;)
+
 
 # Pay Attention
 this is still under construction,
