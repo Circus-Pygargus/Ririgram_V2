@@ -144,7 +144,7 @@ const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newCol
 
             // Ceci empèchera le défilement de la fenêtre sur les écrans tactiles si le doigt de l'utilisateur glisse sur les cases de la grille
             tile.addEventListener('touchmove', (event) => {
-                // event.preventDefault();
+                event.preventDefault();
             });
         });
     
@@ -357,23 +357,23 @@ const watchCrossButtons = () => {
 
     crossBtns.forEach((crossBtn) => {
         crossBtn.addEventListener('touchstart', (event) => {
-            event.preventDefault();
+            // event.preventDefault();
             if (!isUsingCross) {
-                isUsingCross = true;
-                gameCrossButton.classList.remove('not-in-use');
+                // isUsingCross = true;
+                // gameCrossButton.classList.remove('not-in-use');
 
-                answerBtns.forEach((answerBtn) => {
-                    answerBtn.classList.remove('current-choice');
-                });
-                // select the first tile of the grid and enlight it
-                document.querySelector('.tile[data-rowid="0"][data-colid="0"').classList.add('selected');
-                // Enlight corresponding headers
-                document.querySelector('.col-head-div[data-colid="0"').classList.add('enlighted');
-                document.querySelector('.row-head-div[data-rowid="0"').classList.add('enlighted');
-                selectedRow = 0;
-                lastSelectedRow = 0;
-                selectedCol = 0;
-                lastSelectedCol = 0;
+                // answerBtns.forEach((answerBtn) => {
+                //     answerBtn.classList.remove('current-choice');
+                // });
+                // // select the first tile of the grid and enlight it
+                // document.querySelector('.tile[data-rowid="0"][data-colid="0"').classList.add('selected');
+                // // Enlight corresponding headers
+                // document.querySelector('.col-head-div[data-colid="0"').classList.add('enlighted');
+                // document.querySelector('.row-head-div[data-rowid="0"').classList.add('enlighted');
+                // selectedRow = 0;
+                // lastSelectedRow = 0;
+                // selectedCol = 0;
+                // lastSelectedCol = 0;
                 return;
             }
 
@@ -402,7 +402,25 @@ const watchCrossButtons = () => {
         });
 
         crossBtn.addEventListener('touchend', (event) => {
-            event.preventDefault();
+            // event.preventDefault();
+            if (!isUsingCross) {
+                isUsingCross = true;
+                gameCrossButton.classList.remove('not-in-use');
+
+                answerBtns.forEach((answerBtn) => {
+                    answerBtn.classList.remove('current-choice');
+                });
+                // select the first tile of the grid and enlight it
+                document.querySelector('.tile[data-rowid="0"][data-colid="0"').classList.add('selected');
+                // Enlight corresponding headers
+                document.querySelector('.col-head-div[data-colid="0"').classList.add('enlighted');
+                document.querySelector('.row-head-div[data-rowid="0"').classList.add('enlighted');
+                selectedRow = 0;
+                lastSelectedRow = 0;
+                selectedCol = 0;
+                lastSelectedCol = 0;
+                return;
+            }
             clearInterval(crossAction);
         });
     });

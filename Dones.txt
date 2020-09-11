@@ -509,9 +509,12 @@ Modif du chemin d'utilisation de .env
 
 correction coquille 'graille' au lieu de 'grille' dans tuto.hbs
 
-Corection de bug : sur grand écran, lorsque l'on lance une partie, la grille est trop grande et force à  scroller ... : déplacement de l'appel de setCssGridSize() dans game-manager.js juste après gameZone.classList.remove('d-none');
+Correction de bug : sur grand écran, lorsque l'on lance une partie, la grille est trop grande et force à  scroller ... : déplacement de l'appel de setCssGridSize() dans game-manager.js juste après gameZone.classList.remove('d-none');
 
-
+Correction de bug : Uncaught ReferenceError: crossAction is not defined
+    at SVGGElement.<anonymous> (game-manager.js:405)
+(tactile) : si on appuye sur la croix alors que la croix n'est pas activée, l'erreur se lance qd on relache.
+Coller une variable genre isActivatingGamecross ? non, pas fait come ça, pas envied 'ajouter une variable alors que isUsingCross existe déjà ... du coup, j'ai déplacé une partie de gameCross -> touchstart vers gamecross -> touchend + ajout d'un preventDefault() sur tile -> touchmove (on ne scroll pas depuis la grille)
 
 
 
@@ -520,20 +523,16 @@ Corection de bug : sur grand écran, lorsque l'on lance une partie, la grille es
 PRIORITAIRE :
 _  AJOUTER RIRIGRAM SUR LE PORTFOLIO EN ZONE Projet en cours.
 Et renommer Ririgram en Ririgram v1
-_ les bugs !!!
 _ remplir la zone Tutos
 _ bouger la poubelle !
 _ le cheat ?
 _ position des boutons de couleur
+_ les bugs
 
 
 
-
-bugs :
-_ Uncaught ReferenceError: crossAction is not defined
-    at SVGGElement.<anonymous> (game-manager.js:405)
-(tactile) : si on appuye sur la croix alors que la croix n'est pas activée, l'erreur se lance qd on relache.
-Coller une variable genre isActivatingGamecross ?
+bug: 
+_ si partie gagnée en jouant avec la croix, à la partie suivante, la croix reste en allumée mais n'est pas prise en compte ... faire un reset de isUsingCross ou garder la croix et recoller les enlignt de helper sur la première case de la grile
 
 
 
