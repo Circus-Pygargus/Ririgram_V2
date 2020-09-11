@@ -41,4 +41,7 @@ trashCanConfirmedBtn.addEventListener('click', (e) => {
         gameZone.classList.add('d-none');
         document.querySelector('#nav-div').classList.remove('hidden');
     })
+    .catch(e => {
+        console.log(e);
+    })
 });

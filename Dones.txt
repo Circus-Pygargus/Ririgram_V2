@@ -497,15 +497,43 @@ Création de la route '/grid/trashcan'
 
 Création et gestion de la requête pour '/grid/trashcan'
 
+Ajout d'un favicon grid svg de bootstrap avec léger chagement dans son code pour qu'il puisse changer de couleur selon si le navigateur est en mode sombre ou non, voir public/favicon.svg
 
 
 
 
+
+
+
+
+
+
+
+
+PRIORITAIRE :
+_  AJOUTER RIRIGRAM SUR LE PORTFOLIO EN ZONE Projet en cours.
+Et renommer Ririgram en Ririgram v1
+_ les bugs !!!
+_ remplir la zone Tutos
+_ bouger la poubelle !
+_ le cheat ?
+
+
+
+
+bugs :
+_ Uncaught ReferenceError: crossAction is not defined
+    at SVGGElement.<anonymous> (game-manager.js:405)
+(tactile) : si on appuye sur la croix alors que la croix n'est pas activée, l'erreur se lance qd on relache.
+Coller une variable genre isActivatingGamecross ?
+_ sur grand écran, lorsque l'on lance une partie, la grille est trop grande et force à  scroller ... au retour du fetch faire un setCssGridSize ?
+_ j'ai vu un graille au lieu de grille
 
 
 
 
 A faire : 
+_ dans les fetch, coller un catch avec sendNotification -> 'il y a un problem pour joindre le serveur ou autre chose du genre
 _ manque vérif du type de feedback coté serveur !!!!!!! o_O
 
 _ pour donner une idée de la difficulté d'une grille: 
@@ -521,6 +549,14 @@ _ ajouter un bouton retire les maybe
 
 
 
+
+
+Cheat:
+_ loggué: on charge une grille, puis via navbar demade de nouvelle grille, il prend la dernière enregistrée non finie, donc la même.
+ça c'était prévu, il manque la vérif de l'envoi de cette grille au joueur dans les dernières 24h.
+oups, je crois que j'ai effacer des startTime dans un autre cas que grille réussie
+A vérifier
+Mais du coup, c'est pas un cheat mais une feature non finie ;)
 
 
 
@@ -605,11 +641,12 @@ _ Victory :
     ou  Record du monde : 1:22:654
         par Duchnock
     ou  rien si premier chrono pour cette grille
+_ Améliorer la recherche de nouvelle grille, car l'array contenant les grilles exsistantes peut vite devenir beaucoup trop grosse.
+Lorsque ce sera le cas ne rechercher que les grilles ayant une date postérieure à la dernière jouée. pb : pas envie de tuer la bdd parce que je modifie une nouvelle fois une collection en ajoutant des fields non prévus ... soluce : capter comment on fait ça sans effacer la bddet surtout sur un serveur en prod ! lol je sens que ça va être fun ça !
+On pourrait aussi lancer la récup des grilles existantes par pacquets
 
 
 
-DB feedback :
-    type
-    device
-    browser
-    message
+Pourquoi MongoDB et pas du sql ?
+Pour voir comment ça tient le coup une fois un grand nombre de grilles finies avec cette méthode de création de grille (voir /src/routers/grid.js route '/grid/new').
+Il serait d'ailleurs super intéressant de comparer avec du sql et un symfony par exemple.
