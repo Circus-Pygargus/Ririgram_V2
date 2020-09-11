@@ -360,6 +360,15 @@ div.nav-sub-group div.nav-sub-body.d-none {
   display: none;
 }
 
+div.nav-group div.nav-body img,
+div.nav-group div.nav-sub-body img,
+div.nav-sub-group div.nav-body img,
+div.nav-sub-group div.nav-sub-body img {
+  width: 90%;
+  max-width: 500px;
+  margin: 2rem auto 0;
+}
+
 div.nav-group {
   background-color: #0F101B;
 }

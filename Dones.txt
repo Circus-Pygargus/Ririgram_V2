@@ -499,6 +499,7 @@ Création et gestion de la requête pour '/grid/trashcan'
 
 Ajout d'un favicon grid svg de bootstrap avec léger chagement dans son code pour qu'il puisse changer de couleur selon si le navigateur est en mode sombre ou non, voir public/favicon.svg
 
+Ajout d'un gif animé dans la section Règles, en espérant que ce sera assez clair ...
 
 
 
@@ -517,6 +518,7 @@ _ les bugs !!!
 _ remplir la zone Tutos
 _ bouger la poubelle !
 _ le cheat ?
+_ position des boutons de couleur
 
 
 

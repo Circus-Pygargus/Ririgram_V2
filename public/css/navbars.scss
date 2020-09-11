@@ -75,6 +75,12 @@ div.nav-sub-group {
         &.d-none {
             display: none;
         }
+
+        img {
+            width: 90%;
+            max-width: 500px;
+            margin: 2rem auto 0;
+        }
     }
 }
 
