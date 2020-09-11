@@ -6,7 +6,7 @@ const express = require('express');
 // hbs module so we can use partial templates
 const hbs = require('hbs');
 // Dot env for security variables
-require('dotenv').config();
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 // call mongoose.js, it will launch the file, connect to db and create database if doesn't exist
 require('./db/mongoose');

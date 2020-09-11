@@ -505,6 +505,8 @@ Ajout de DotEnv pour g√©rer les variables critiques, permettra aussi de ne pls √
 
 Ajout dans Readme.md le process pour lancer l'appli
 
+Modif du chemin d'utilisation de .env
+
 
 
 
