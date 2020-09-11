@@ -23,6 +23,8 @@ in the project folder, run :
 sudo npm install
 ```
 
+Fill the file .sample.env with your needed values and rename the file .env
+
 
 # Pay Attention
 this is still under construction,
