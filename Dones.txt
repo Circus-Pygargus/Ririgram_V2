@@ -507,7 +507,7 @@ Ajout dans Readme.md le process pour lancer l'appli
 
 Modif du chemin d'utilisation de .env
 
-
+correction coquille 'graille' au lieu de 'grille' dans tuto.hbs
 
 
 
