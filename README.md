@@ -20,7 +20,7 @@ clone the repo
 
 in the project folder, run :
 ```bash
-sudo npm install
+npm install
 ```
 
 Fill the file .sample.env with your needed values and rename the file .env

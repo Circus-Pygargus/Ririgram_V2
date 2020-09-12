@@ -520,23 +520,36 @@ modif: déplacement de la poubelle de refus de grille
 
 modif: meilleur placement de la gamecross et des boutons de jeu 
 
+modif : compression du fichier tuto-grille.gif
+
+
+
+
+
+
+
+
+
 
 PRIORITAIRE :
 _  AJOUTER RIRIGRAM SUR LE PORTFOLIO EN ZONE Projet en cours.
 Et renommer Ririgram en Ririgram v1
 _ remplir la zone Tutos
 _ le cheat ?
-_ position des boutons de couleur
 _ les bugs
 
 
 
 bug: 
+_ user loggué, victoire, sortie par la croix -> la poubelle reste visible
+vérifier avec toutes les façons de quitter une grille
 _ si partie gagnée en jouant avec la croix, à la partie suivante, la croix reste en allumée mais n'est pas prise en compte ... faire un reset de isUsingCross ou garder la croix et recoller les enlignt de helper sur la première case de la grile
 
 
 
 A faire : 
+_ dans dotenv, coller un FIRST_ADMIN_NAME ou ADMIN_NAME pour faire la vérif pour le premier admin et du coup modif du readme pour y coller l'infos après #Launch
+_ Renommer tout ce qui est trash-can... en trash-grid... avant de gérer l'effacement des messages pour pouvoir faire des trash-feedback... (ycompris en nom de fichier)
 _ pour les infos : ! bien réfléchir au model pour ne pas modif le bdd en prod !
 le model : _id, title(String), info(string)
 l'idée c'est de n'envoyer que les titres et dates des infos, et d'appeller le contenu uniquement si clic sur un bouton
@@ -607,8 +620,6 @@ users during dev :
 todos :
 _ ! dans le retour de route/grid/check, si grille réussie ajouter hardNbTimesPlayed et hardNbTimesFinished en plus de record du monde oui/non
 _ dans le liste des grilles, coller une croix dans le colonne déjà jouée par  le joueur si mise à la poubelle (la croix pourrait être jaune, orange, rouge (noir pour forever ?) selon le nombre d'essais refaits en passant par cette page)
-_ créer un modèle supplementaire : refusedGrids : devrait contenir userId, gridId, difficulty (easy ou hard). permettra à l'utilisateur de ne plus voir cette grille qu'il trouve impossible (ne pas oublier d'effacer le document si le joueur appelle cette grille depuis la liste des grilles)
-_ ajouter un bouton : je ne veux plus voir cette grille !
 _  BDD : 
     - User : utiliser la propriété  status (par ex pour bloquer si faute extrèmement grave)
     - Feedback :  utiliser propriété status (boquer ce message -abus grave-) 
@@ -647,7 +658,14 @@ _ Victory :
     |-> Record du monde : Check
     ou  Record du monde : 1:22:654
         par Duchnock
+        position : 5/16
     ou  rien si premier chrono pour cette grille
+
+    nbXjouées
+    nbXfinies
+
+    un bouton pour avoir toutes les données relatives à cette grille :
+        Joueur chrono nbCoups nbXjouées nbXfinies
 _ Améliorer la recherche de nouvelle grille, car l'array contenant les grilles exsistantes peut vite devenir beaucoup trop grosse.
 Lorsque ce sera le cas ne rechercher que les grilles ayant une date postérieure à la dernière jouée. pb : pas envie de tuer la bdd parce que je modifie une nouvelle fois une collection en ajoutant des fields non prévus ... soluce : capter comment on fait ça sans effacer la bddet surtout sur un serveur en prod ! lol je sens que ça va être fun ça !
 On pourrait aussi lancer la récup des grilles existantes par pacquets
