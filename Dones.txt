@@ -537,6 +537,11 @@ Création du modèle Info
 Création fichier src/routers/info.js et de la route /infos/new
 et ajout de message d'erreur dans le model pour les propriétés required
 
+Création du fichier public/js/infos.js
+ajout gestion afficher/cacher le formulaire de nouvelle version (ou info comme on veut)
+ajout d'un bouton d'annulation du formulaire
+
+
 
 
 

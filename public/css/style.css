@@ -612,6 +612,10 @@ form#new-info-form label {
   margin-bottom: 3rem;
 }
 
+#new-info-div button:last-of-type {
+  margin-top: 1.5rem;
+}
+
 #messages .message {
   font-size: 1.2rem;
   margin-top: 2rem;
