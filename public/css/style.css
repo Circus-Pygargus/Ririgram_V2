@@ -532,6 +532,10 @@ form#feedback-form svg#form-close {
   margin-right: 15vw;
 }
 
+form#new-info-form label {
+  text-align: left;
+}
+
 #answer-feedback-container {
   position: fixed;
   top: 0;
@@ -555,6 +559,57 @@ form#feedback-form svg#form-close {
 
 #answer-feedback-container form .close svg {
   font-size: x-large;
+}
+
+#infos-body button.add {
+  width: 50%;
+  height: 3rem;
+  margin: -1rem auto 1.5rem;
+  display: block;
+  text-align: center;
+  background-color: #0F101B;
+  color: #FF8800;
+  line-height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 1px solid #FAFAFA;
+  border-radius: 5px;
+}
+
+#infos-body button.add:hover {
+  border-color: #FF8800;
+}
+
+#infos-body button.add:active {
+  background-color: #FF8800;
+  color: #FAFAFA;
+  border-color: #FAFAFA;
+}
+
+#infos-body button.add:focus {
+  outline: none;
+}
+
+#new-info-div {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 32px;
+  text-align: center;
+  font-size: 1.5rem;
+  background-color: #0F101B;
+  overflow: auto;
+}
+
+#new-info-div.d-none {
+  display: none;
+}
+
+#new-info-div h2 {
+  margin-bottom: 3rem;
 }
 
 #messages .message {

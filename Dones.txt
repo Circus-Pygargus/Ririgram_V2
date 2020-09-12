@@ -530,9 +530,26 @@ modif : léger changement des règles en ajoutant la description du jeu (1er lig
 
 modif de l'introduction dans infos.hbs
 
+Création du partiel 'new info.hbs' qui contient le formulaire d'ajout d'information de nouvelle version et de son style avec nouveau scss : infos et dans forms.scss
 
 
 
+
+
+
+
+
+pour les infos : EN COURS
+_ le hbs avec la var hasNewContent
+_ la route 
+    calcul de hasNewContent en comparant la date de dernière visite avec les dates des contenus
+    pour savoir à quelle date un user s'est connecté, il suffit de regarder user.updatedAt ;)
+_ les requêtes :
+    - /infos/new            pour ajouter une nouvelle info
+    - /infos                pour lister toutes les infos (enfin on chope pas tout ... seulement _ids, titres et dates)
+    - infos/one             pour avoir la totalité de l'info demandée par _id
+    - infos/update-one      pour en modifier une (ici la requête n'est pas post mais patch)
+    - infos/delete-one      pour en effacer une (ici la requête n'est pas post mais delete)
 
 
 
@@ -559,7 +576,7 @@ A faire :
 _ dans dotenv, coller un FIRST_ADMIN_NAME ou ADMIN_NAME pour faire la vérif pour le premier admin et du coup modif du readme pour y coller l'infos après #Launch
 _ Renommer tout ce qui est trash-can... en trash-grid... avant de gérer l'effacement des messages pour pouvoir faire des trash-feedback... (y compris en nom de fichier)
 _ pour les infos : ! bien réfléchir au model pour ne pas modif le bdd en prod !
-le model : _id, title(String), info(string)
+le model : _id, version(String), title(String), info(string)
 l'idée c'est de n'envoyer que les titres et dates des infos, et d'appeller le contenu uniquement si clic sur un bouton
 _ dans les fetch, coller un catch avec sendNotification -> 'il y a un problem pour joindre le serveur ou autre chose du genre
 _ manque vérif du type de feedback coté serveur !!!!!!! o_O

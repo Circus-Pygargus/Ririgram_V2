@@ -1,5 +1,15 @@
+{{#if isAdmin}}
+<button class="add">Ajouter</button>
+
+{{!-- New infos form --}}
+<div id="new-info-div" class="d-none">
+    {{>new_info}}
+</div>
+{{/if}}
+
 <div>
-    <p>Enregistrez-vous pour profiter de toutes les fonctionnalités et pouvoir remonter les bugs !</p>
     <p>Ce site est en construction et évolue petit à petit. Afin que vous prévenir des changements mis en place depuis votre dernière connexion, un <kbd>!</kbd> coloré apparaîtra, indiquant la présence de nouveauté, suivez-le !</p>
     <p>Pour l'instant, l'affichage est seulement réfléchi pour mobile et n'est d'ailleurs pas encore tout à fait optimisé. La version tout écran viendra plus tard ...</p>
 </div>
+
+

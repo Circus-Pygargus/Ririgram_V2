@@ -65,8 +65,11 @@ router.post('/users/login', async (req, res) => {
             options = defaultColors;
         }
 
-        res.render(`${partialsPath}/navLogged`, (err, html) => {
+        let isAdmin = user.role === 'admin' ? true : false;
+        
+        res.render(`${partialsPath}/navLogged`, { isAdmin }, (err, html) => {
             if (err) {
+                console.log(err)
                 return res.send({
                     error: 'Une erreur est survenue pendant le rendu de la barre de navigation.'
                 })
