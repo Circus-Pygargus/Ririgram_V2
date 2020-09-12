@@ -1,15 +1,12 @@
-{{#if isAdmin}}
-<button id="show-new-info-btn" class="add">Ajouter</button>
-
-{{!-- New infos form --}}
-<div id="new-info-div" class="d-none">
-    {{>new_info}}
-</div>
-{{/if}}
-
-<div>
-    <p>Ce site est en construction et évolue petit à petit. Afin que vous prévenir des changements mis en place depuis votre dernière connexion, un <kbd>!</kbd> coloré apparaîtra, indiquant la présence de nouveauté, suivez-le !</p>
-    <p>Pour l'instant, l'affichage est seulement réfléchi pour mobile et n'est d'ailleurs pas encore tout à fait optimisé. La version tout écran viendra plus tard ...</p>
-</div>
-
-
+{{#each infos}}
+    <div class="info">
+        <div class="header">
+            <div class="version">{{this.version}}</div>
+            <div class="title">{{this.title}}</div>
+            <svg data-id="{{this._id}}" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-down info-show" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M3.204 5L8 10.481 12.796 5H3.204zm-.753.659l4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+            </svg>
+        </div>
+        <div class="content" data-id="{{this._id}}">{{this.message}}</div>
+    </div>
+{{/each}}
