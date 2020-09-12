@@ -522,6 +522,10 @@ modif: meilleur placement de la gamecross et des boutons de jeu
 
 modif : compression du fichier tuto-grille.gif
 
+modif : !! soucis de sécu repéré !! 
+la route /users/list est accéssible à tous avec une méthode style Postman ... il n'y a même pas de auth ...
+donc modif : ajout de la vérif de user logged et surtout user est un admin ;)
+
 
 
 
@@ -532,7 +536,7 @@ modif : compression du fichier tuto-grille.gif
 
 
 PRIORITAIRE :
-_  AJOUTER RIRIGRAM SUR LE PORTFOLIO EN ZONE Projet en cours.
+_  AJOUTER RIRIGRAM SUR LE PORTFOLIO EN ZONE Projet en cours. ???
 Et renommer Ririgram en Ririgram v1
 _ remplir la zone Tutos
 _ le cheat ?
@@ -549,7 +553,7 @@ _ si partie gagnée en jouant avec la croix, à la partie suivante, la croix res
 
 A faire : 
 _ dans dotenv, coller un FIRST_ADMIN_NAME ou ADMIN_NAME pour faire la vérif pour le premier admin et du coup modif du readme pour y coller l'infos après #Launch
-_ Renommer tout ce qui est trash-can... en trash-grid... avant de gérer l'effacement des messages pour pouvoir faire des trash-feedback... (ycompris en nom de fichier)
+_ Renommer tout ce qui est trash-can... en trash-grid... avant de gérer l'effacement des messages pour pouvoir faire des trash-feedback... (y compris en nom de fichier)
 _ pour les infos : ! bien réfléchir au model pour ne pas modif le bdd en prod !
 le model : _id, title(String), info(string)
 l'idée c'est de n'envoyer que les titres et dates des infos, et d'appeller le contenu uniquement si clic sur un bouton

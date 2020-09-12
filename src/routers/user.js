@@ -128,21 +128,24 @@ router.post('/users/logoutall', auth, async (req, res) => {
 
     } catch (e) {
         console.log(e);
-        res.statsu(500).send({ error: e });
+        res.status(500).send({ error: e });
     }
 });
 
 
 // Users List
 // !! A FINIR (rien de fait coté front)
-router.get('/users/list', async (req, res) => {
+router.post('/users/list',auth, async (req, res) => {
     try {
+        const user = req.user;
+        if (user.role !== 'admin') res.status(401).send({ error: 'Seul un admin peut accéder à ceci !'});
+
         const users = await User.find({});
 
         res.send(users);
 
     } catch (e) {
-        res.send(500).send();
+        res.status(500).send();
     }
 });
 
