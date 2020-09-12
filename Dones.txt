@@ -534,7 +534,8 @@ Création du partiel 'new info.hbs' qui contient le formulaire d'ajout d'informa
 
 Création du modèle Info
 
-
+Création fichier src/routers/info.js et de la route /infos/new
+et ajout de message d'erreur dans le model pour les propriétés required
 
 
 

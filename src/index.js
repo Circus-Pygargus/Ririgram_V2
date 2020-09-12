@@ -16,6 +16,7 @@ require('./db/mongoose');
 const userRouter = require('./routers/user');
 const gridRouter = require('./routers/grid');
 const optionsRouter = require('./routers/options');
+const infoRouter = require('./routers/info');
 const feedbackRouter = require('./routers/feedback');
 
 const app = express();
@@ -117,6 +118,7 @@ app.get('', (req, res) => {
 app.use(userRouter);
 app.use(gridRouter);
 app.use(optionsRouter);
+app.use(infoRouter);
 app.use(feedbackRouter);
 
 
