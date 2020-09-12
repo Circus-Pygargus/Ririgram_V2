@@ -526,6 +526,8 @@ modif : !! soucis de sécu repéré !!
 la route /users/list est accéssible à tous avec une méthode style Postman ... il n'y a même pas de auth ...
 donc modif : ajout de la vérif de user logged et surtout user est un admin ;)
 
+modif : léger changement des règles en ajoutant la description du jeu (1er ligne)
+
 
 
 
