@@ -541,6 +541,8 @@ Création du fichier public/js/infos.js
 ajout gestion afficher/cacher le formulaire de nouvelle version (ou info comme on veut)
 ajout d'un bouton d'annulation du formulaire
 
+Modif de la route /infos/new
+
 
 
 
