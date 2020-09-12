@@ -528,6 +528,8 @@ donc modif : ajout de la vérif de user logged et surtout user est un admin ;)
 
 modif : léger changement des règles en ajoutant la description du jeu (1er ligne)
 
+modif de l'introduction dans infos.hbs
+
 
 
 
