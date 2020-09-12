@@ -532,6 +532,10 @@ modif de l'introduction dans infos.hbs
 
 Création du partiel 'new info.hbs' qui contient le formulaire d'ajout d'information de nouvelle version et de son style avec nouveau scss : infos et dans forms.scss
 
+Création du modèle Info
+
+
+
 
 
 
