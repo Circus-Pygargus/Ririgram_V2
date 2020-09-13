@@ -545,6 +545,9 @@ Modif de la route /infos/new
 
 Modif du html concernant l'affichage des infos
 
+Création de la requête /infos/new
+et remodification de la route du même nom
+
 
 
 

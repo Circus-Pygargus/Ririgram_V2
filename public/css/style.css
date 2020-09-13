@@ -561,7 +561,7 @@ form#new-info-form label {
   font-size: x-large;
 }
 
-#infos-body button.add {
+#nav-infos-body button.add {
   width: 50%;
   height: 3rem;
   margin: -1rem auto 1.5rem;
@@ -576,17 +576,17 @@ form#new-info-form label {
   border-radius: 5px;
 }
 
-#infos-body button.add:hover {
+#nav-infos-body button.add:hover {
   border-color: #FF8800;
 }
 
-#infos-body button.add:active {
+#nav-infos-body button.add:active {
   background-color: #FF8800;
   color: #FAFAFA;
   border-color: #FAFAFA;
 }
 
-#infos-body button.add:focus {
+#nav-infos-body button.add:focus {
   outline: none;
 }
 

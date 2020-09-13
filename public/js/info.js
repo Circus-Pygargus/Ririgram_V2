@@ -9,6 +9,8 @@ const watchInfos = () => {
     const newInfoVersionInput = document.querySelector('#new-info-version');
     const newInfoTitleInput = document.querySelector('#new-info-title');
     const newInfoMessageInput = document.querySelector('#new-info-message');
+    // infos place
+    const infosDiv = document.querySelector('#infos');
 
 
     showNewInfoBtn.addEventListener('click', () => {
@@ -16,12 +18,14 @@ const watchInfos = () => {
     });
 
 
-    hideNewInfoBtn.addEventListener('click', () => {
+    hideNewInfoBtn.addEventListener('click', (e) => {
+        // because the btn is inside the form, and it would submit the form even if not a submit type button
+        e.preventDefault();
         newInfoDiv.classList.add('d-none');
     });
 
 
-    newInfoForm.addEventListener('click', (e) => {
+    newInfoForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const token = sessionStorage.getItem('token');
         const data = {
@@ -33,13 +37,17 @@ const watchInfos = () => {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
-                "Content-Type": "application:json",
+                "Content-Type": "application/json",
                 "Authorization": `Bearer ${JSON.parse(token)}`
             }
         })
         .then(response => response.json())
         .then(response => {
-            if (response.error) sendNotification('error', response.error);
+            if (response.error) return sendNotification('error', response.error);
+
+            infosDiv.innerHTML = response.html;
+            newInfoDiv.classList.add('d-none');
+            sendNotification('success', 'Nouvelle info enregistrée !');
         })
     });
 };

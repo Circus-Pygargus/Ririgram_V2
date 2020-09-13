@@ -5,6 +5,7 @@ const path =require('path');
 const Info = require('../models/info');
 
 const auth = require('../middleware/auth');
+const { query } = require('express');
 
 const router = new express.Router();
 
@@ -17,21 +18,24 @@ router.post('/infos/new', auth, async (req, res) => {
         const { version, title, message } = req.body;
         const info = new Info({ version, title, message });
         await info.save();
-        let infos = await Info.find({});
-        // remove message from all infos
-        for (let i = 0, max = infos.length; i < max; i++) {
-            let infoObject = infos[i].toObject();
-            delete infoObject.message;
-            infos[i] = new Info(infoObject);
-        }
-        res.render(`${partialsPath}/infos`, { infos }, (err, html) => {
-            if (err) {
-                return res.send({
-                    error: 'Une erreur est survenue pendant le rendu des infos'
-                });
+        // get infos in reverse updated time order
+        Info.find({}, null, {sort: {updatedAt: -1}}, function(err, infos){
+            if (err) return res.send({error: 'il y a un problème ici !'});
+            // remove message of each info found
+            for (let i = 0, max = infos.length; i < max; i++) {
+                let infoObject = infos[i].toObject();
+                delete infoObject.message;
+                infos[i] = new Info(infoObject);
             }
+            res.render(`${partialsPath}/infos`, { infos }, (err, html) => {
+                if (err) {
+                    return res.send({
+                        error: 'Une erreur est survenue pendant le rendu des infos'
+                    });
+                }
 
-            res.status(201).send({ html });
+                res.status(201).send({ html });
+            });
         });
         
     } catch(e) {
