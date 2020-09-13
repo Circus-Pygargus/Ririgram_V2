@@ -41,6 +41,9 @@ infoSchema.statics.getAllInfosTitles = async (userLastVisit) => {
                     hasNewInfos = true;
                 }
                 else infoObject.notSeen = false;
+                console.log(' ')
+                console.log(infoObject.title)
+                console.log(infoObject._id)
                 // rebuild info
                 docs[i] = new Info(infoObject);
             }
@@ -55,6 +58,18 @@ infoSchema.statics.getAllInfosTitles = async (userLastVisit) => {
         throw new Error(e)
     }
 };
+
+
+// returns the message of one info
+infoSchema.statics.GetOneInfoMessage = async (infoId) => {
+    const info = await mongoose.model('Info').findById(infoId);
+    if (!info) throw new Error('Impossible de trouver cette info !');
+    const message = info.message;
+    if (!message) throw new Error('Le contenu de cette info n\a pas été trouvé !');
+    return message;
+};
+
+
 
 const Info = mongoose.model('Info', infoSchema);
 

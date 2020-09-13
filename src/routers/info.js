@@ -50,6 +50,21 @@ router.post('/infos/new', auth, async (req, res) => {
 });
 
 
+// user wants to see an info message
+router.post('/infos/one', auth, async (req, res) => {
+    try {
+        const infoId = req.body.infoId;
+        if (!infoId) return res.status(401).send({error: 'Impossible d\'afficher un message sans son identifiant ! Merci d\'envoyer un message à ce sujet.'});
+        const message = await Info.GetOneInfoMessage(infoId);
+        res.send({ message });
+    }
+    catch(e) {
+        console.log(e);
+        res.status(500).send({ error: e.message });
+    }
+});
+
+
 
 
 

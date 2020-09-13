@@ -553,7 +553,7 @@ modif du style pour les headers d'info
 Ajout : envoi des titres d'infos lors de la connexion du joueur
 ces infos seront précédées d'un ! sur navigateur si celles-ci ont étées enregistrées depuis la dernière visite du joueur, ainsi que les titre correspondant pour que le joueur soit au courant de la présence de nouveauté
 
-
+Création de la route /infos/one
 
 
 

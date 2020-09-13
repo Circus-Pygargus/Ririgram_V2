@@ -3,21 +3,28 @@ const watchInfos = () => {
     const showNewInfoBtn = document.querySelector('#show-new-info-btn');
     const hideNewInfoBtn = document.querySelector('#hide-new-info-btn');
     const newInfoDiv = document.querySelector('#new-info-div');
+
     // form
     const newInfoForm = document.querySelector('#new-info-form');
     // form content
     const newInfoVersionInput = document.querySelector('#new-info-version');
     const newInfoTitleInput = document.querySelector('#new-info-title');
     const newInfoMessageInput = document.querySelector('#new-info-message');
+
     // infos place
     const infosDiv = document.querySelector('#infos');
+    const infoShowBtns = document.querySelectorAll('.info-show');
+    console.log(infoShowBtns)
 
 
-    showNewInfoBtn.addEventListener('click', () => {
-        newInfoDiv.classList.remove('d-none');
-    });
+    // show new info form
+    if (showNewInfoBtn) {
+        showNewInfoBtn.addEventListener('click', () => {
+            newInfoDiv.classList.remove('d-none');
+        });
+    }
 
-
+    // hide new infos form
     hideNewInfoBtn.addEventListener('click', (e) => {
         // because the btn is inside the form, and it would submit the form even if not a submit typed button
         e.preventDefault();
@@ -25,6 +32,7 @@ const watchInfos = () => {
     });
 
 
+    // new info submit
     newInfoForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const token = sessionStorage.getItem('token');
@@ -50,4 +58,7 @@ const watchInfos = () => {
             sendNotification('success', 'Nouvelle info enregistrée !');
         })
     });
+
+
+    // show a info message
 };
