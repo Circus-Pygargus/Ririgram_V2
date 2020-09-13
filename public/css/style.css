@@ -275,10 +275,23 @@ div.nav-sub-group div.nav-sub-header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
   width: 100%;
   height: 10vh;
   padding: 12px 20%;
   border: 1px solid #0F101B;
+}
+
+div.nav-group div.nav-header.new-things::before,
+div.nav-group div.nav-sub-header.new-things::before,
+div.nav-sub-group div.nav-header.new-things::before,
+div.nav-sub-group div.nav-sub-header.new-things::before {
+  content: '!';
+  position: absolute;
+  bottom: 3.6vh;
+  right: 3rem;
+  font-size: larger;
+  color: #FF8800;
 }
 
 div.nav-group div.nav-header.not-implemented,
@@ -619,11 +632,20 @@ form#new-info-form label {
 .info {
   margin: 1.5rem auto;
   padding: 0.5rem;
-  border: 1px solid white;
+  border: 1px solid #FAFAFA;
 }
 
 .info .header {
   position: relative;
+}
+
+.info .header .version.not-seen::before {
+  content: '!';
+  position: absolute;
+  top: 0;
+  left: -1.5rem;
+  font-size: larger;
+  color: #FF8800;
 }
 
 .info .header .info-show {

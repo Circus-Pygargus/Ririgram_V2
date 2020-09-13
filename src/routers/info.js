@@ -2,6 +2,8 @@ const express = require('express');
 
 const path =require('path');
 
+const moment = require('moment');
+
 const Info = require('../models/info');
 
 const auth = require('../middleware/auth');
@@ -10,6 +12,9 @@ const { query } = require('express');
 const router = new express.Router();
 
 const partialsPath = path.join(__dirname, '../../templates/partials');
+
+
+// List all infos doesn't exist, as all title infos are sent to user at connexion
 
 
 // Admin wants to record a new info
@@ -43,6 +48,9 @@ router.post('/infos/new', auth, async (req, res) => {
         res.status(500).send({ error: e.message });
     }
 });
+
+
+
 
 
 module.exports = router;

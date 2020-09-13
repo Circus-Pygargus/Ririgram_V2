@@ -5,6 +5,7 @@ const express = require('express');
 
 const User = require('../models/user');
 const Options = require('../models/options');
+const Info = require('../models/info');
 
 const auth = require('../middleware/auth');
 
@@ -28,6 +29,7 @@ router.post('/users', async (req, res) => {
         user.visits = 1;
         user.playedGrids = 0;
         user.finishedGrids = 0;
+        user.lastVisit = Date.now();
         // first try to save user (will check before saving)
         await user.save();
         // no caught error, generate a token and save user again
@@ -57,6 +59,8 @@ router.post('/users/login', async (req, res) => {
         // get user and give him a token
         const user = await User.findByCredentials(req.body.email, req.body.password);
         user.visits++;
+        user.lastVisit = user.updatedAt;
+        // will save user at the same time ;)
         const token = await user.generateAuthToken();
 
         // get user options
@@ -66,8 +70,12 @@ router.post('/users/login', async (req, res) => {
         }
 
         let isAdmin = user.role === 'admin' ? true : false;
+
+        // get versions infos
+        const { infos, hasNewInfos } = await Info.getAllInfosTitles(user.lastVisit)
+        console.log('new infos', hasNewInfos)
         
-        res.render(`${partialsPath}/navLogged`, { isAdmin }, (err, html) => {
+        res.render(`${partialsPath}/navLogged`, { isAdmin, infos, hasNewInfos }, (err, html) => {
             if (err) {
                 console.log(err)
                 return res.send({

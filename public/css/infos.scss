@@ -61,12 +61,22 @@
 .info {
     margin: 1.5rem auto;
     padding: 0.5rem;
-    border: 1px solid white;
+    border: 1px solid $color-font;
 
     .header {
-        // display: flex;
-        // justify-content: space-between;
         position: relative;
+
+        .version {
+
+            &.not-seen::before {
+                content: '!';
+                position: absolute;
+                top: 0;
+                left: -1.5rem;
+                font-size: larger;
+                color: $color-primary;
+            }
+        }
 
         .info-show {
             position: absolute;

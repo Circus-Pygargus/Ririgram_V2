@@ -58,6 +58,9 @@ const userSchema = new mongoose.Schema({
     visits: {
         type: Number
     },
+    lastVisit: {
+        type: Date
+    },
     playedGrids: {
         type: Number
     },
@@ -144,7 +147,7 @@ userSchema.methods.generateAuthToken = async function () {
     await user.save();
 
     return token;
-}
+};
 
 
 // Identification of a user
@@ -167,13 +170,12 @@ userSchema.statics.findByCredentials = async (email, password) => {
     }
 
     return user;
-}
+};
 
 
 // Hash the plain text password before saving it
 userSchema.pre('save', async function (next) {
     const user = this;
-
     // can be removed once very first player is registred
     // change Circus with Admin nickname
     if (user.name === 'Circus') user.role = 'admin';
@@ -185,7 +187,7 @@ userSchema.pre('save', async function (next) {
 
     // we need to call the function next() provided by mongoose, so mongoose know that we have done all what we had to do
     next();
-})
+});
 
 
 // Search for a unique property error
@@ -206,7 +208,7 @@ userSchema.post('save', (error, doc, next) => {
         }
     }
     next()
-})
+});
 
 const User = mongoose.model('User', userSchema);
 

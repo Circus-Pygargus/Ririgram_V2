@@ -1,5 +1,5 @@
 const watchInfos = () => {
-    // hide/show the form
+    // hide/show the new info form
     const showNewInfoBtn = document.querySelector('#show-new-info-btn');
     const hideNewInfoBtn = document.querySelector('#hide-new-info-btn');
     const newInfoDiv = document.querySelector('#new-info-div');
@@ -19,7 +19,7 @@ const watchInfos = () => {
 
 
     hideNewInfoBtn.addEventListener('click', (e) => {
-        // because the btn is inside the form, and it would submit the form even if not a submit type button
+        // because the btn is inside the form, and it would submit the form even if not a submit typed button
         e.preventDefault();
         newInfoDiv.classList.add('d-none');
     });
