@@ -19,7 +19,7 @@ router.post('/infos/new', auth, async (req, res) => {
         const info = new Info({ version, title, message });
         await info.save();
         // get infos in reverse updated time order
-        Info.find({}, null, {sort: {updatedAt: -1}}, function(err, infos){
+        Info.find({}, null, {sort: {updatedAt: -1}}, (err, infos) => {
             if (err) return res.send({error: 'il y a un problème ici !'});
             // remove message of each info found
             for (let i = 0, max = infos.length; i < max; i++) {
