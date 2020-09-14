@@ -67,6 +67,7 @@ victoryCloseBtn.addEventListener('click', (event) => {
     
     mainContent.innerHTML = '';
     gameZone.classList.add('d-none');
+    trashCanBtn.classList.add('d-none');
     navContainer.classList.remove('hidden');
     victoryDiv.classList.add('d-none');
 });

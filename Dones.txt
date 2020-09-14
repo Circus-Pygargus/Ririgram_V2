@@ -586,9 +586,9 @@ Résolution de bugs: affichage des messages d'infos sur une seule ligne ! les 'r
 résolution de bug : il manquait un watchInfo() après création d'une nouvelle info
 J'en ai profité pour en mettre un aussi à la création de compte
 
-modif: ajout sur le schémas de modèles des trim manquants sur certaines String
+modif: ajout sur les schémas de modèles des trim manquants sur certaines String
 
-
+Résolution de bug : si clic sur la croix de fermeture dans Victory, effacer la poubelle de grille
 
 
 
