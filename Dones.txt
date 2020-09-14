@@ -590,6 +590,8 @@ modif: ajout sur les schémas de modèles des trim manquants sur certaines Strin
 
 Résolution de bug : si clic sur la croix de fermeture dans Victory, effacer la poubelle de grille
 
+résolution bug : cache/affiche la poubelle de grille si accès à la navbar/retour à la grille
+
 
 
 
