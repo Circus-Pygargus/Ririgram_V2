@@ -13,6 +13,7 @@ const router = new express.Router();
 
 const partialsPath = path.join(__dirname, '../../templates/partials');
 
+const nl2br = require('../utils/nl2br');
 
 // List all infos doesn't exist, as all title infos are sent to user at connexion
 
@@ -20,7 +21,10 @@ const partialsPath = path.join(__dirname, '../../templates/partials');
 // Admin wants to record a new info
 router.post('/infos/new', auth, async (req, res) => {
     try {
-        const { version, title, message } = req.body;
+        const { version, title } = req.body;
+        // replace any /r/n written by textarea by some <br>
+        const message = nl2br(req.body.message, false)
+console.log(message)
         const info = new Info({ version, title, message });
         await info.save();
         // get infos in reverse updated time order

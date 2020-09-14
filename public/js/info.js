@@ -19,7 +19,6 @@ const watchInfos = () => {
 
 
 
-
     // show new info form  __ only for admin
     if (showNewInfoBtn) {
         showNewInfoBtn.addEventListener('click', () => {
@@ -58,10 +57,11 @@ const watchInfos = () => {
             .then(response => response.json())
             .then(response => {
                 if (response.error) return sendNotification('error', response.error);
-
                 infosDiv.innerHTML = response.html;
                 newInfoDiv.classList.add('d-none');
                 sendNotification('success', 'Nouvelle info enregistrée !');
+                // html content has been replaced, watch it
+                watchInfos();
             })
         });
     }

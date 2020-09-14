@@ -96,6 +96,7 @@ const watchNavUserNotLogged = () => {
                     watchNavButtons();
                     // wait for a user logged form submit
                     watchNavUserLoggedForms();
+                    watchInfos();
                     watchForFeedback();
                     watchForAdminAnswer();
                 }

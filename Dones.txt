@@ -565,6 +565,29 @@ modif : ajout du cursor: pointer quand nécessaire
 
 
 
+POUSSE VERS GIT AVEC LE TAG 2020-09-14
+
+contenu du message associé sur le site en prod :
+Ajouts :
+  - maintenant les modifications du site seront affichées ici
+  - possibilité de refuser une grille si vous la trouvez trop dure
+  - favicon pour l'onglet du navigateur
+
+Modification :
+  - du texte des règles du jeu, j'ai également ajouté un gif animé qui vous donne un exemple de remplissage de grille
+
+Correction de bug :
+  - grille trop grande sur grand écran
+_____________________________________________________________________________________________
+
+
+
+Résolution de bugs: affichage des messages d'infos sur une seule ligne ! les 'retour chariot' dans un textarea sont des /r/n, je les remplace maintenant par des <br> à réception dans le routeur.
+résolution de bug : il manquait un watchInfo() après création d'une nouvelle info
+J'en ai profité pour un mettre un aussi à la création de compte
+
+
+
 
 
 

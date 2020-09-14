@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const infoSchema = new mongoose.Schema({
     version: {
         type: String,
@@ -61,7 +62,7 @@ infoSchema.statics.GetOneInfoMessage = async (infoId) => {
     const info = await mongoose.model('Info').findById(infoId);
     if (!info) throw new Error('Impossible de trouver cette info !');
     const message = info.message;
-    if (!message) throw new Error('Le contenu de cette info n\a pas été trouvé !');
+    if (!message) throw new Error('Le contenu de cette info n\'a pas été trouvé !');
     return message;
 };
 
