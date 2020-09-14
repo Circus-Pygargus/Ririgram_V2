@@ -77,11 +77,15 @@
                 color: $color-primary;
             }
         }
-
-        .info-show {
+        // button to display/hide message
+        svg.info-show {
             position: absolute;
             bottom: 0.1rem;
-            right: 0.1rem
+            right: 0.1rem;
+
+            &.up {
+                transform: rotate(0.5turn);
+            }
         }
     }
 }

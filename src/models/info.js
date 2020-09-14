@@ -41,9 +41,6 @@ infoSchema.statics.getAllInfosTitles = async (userLastVisit) => {
                     hasNewInfos = true;
                 }
                 else infoObject.notSeen = false;
-                console.log(' ')
-                console.log(infoObject.title)
-                console.log(infoObject._id)
                 // rebuild info
                 docs[i] = new Info(infoObject);
             }
@@ -51,7 +48,6 @@ infoSchema.statics.getAllInfosTitles = async (userLastVisit) => {
             // fill infos var with modified docs
             infos = docs;
         });
-        console.log('hasNewInfos', hasNewInfos)
         return { infos, hasNewInfos };
     }
     catch(e) {

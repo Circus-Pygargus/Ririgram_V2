@@ -14,7 +14,6 @@ const watchInfos = () => {
     // infos place
     const infosDiv = document.querySelector('#infos');
     const infoShowBtns = document.querySelectorAll('.info-show');
-    console.log(infoShowBtns)
 
 
     // show new info form
@@ -60,5 +59,45 @@ const watchInfos = () => {
     });
 
 
-    // show a info message
+    // show/hide an info message
+    infoShowBtns.forEach(infoshowBtn => {
+        infoshowBtn.addEventListener('click', (e) => {
+            // sometimes e.target is the svg <path>
+            const arrowBtn = e.target.tagName.toUpperCase() === 'SVG' ? e.target : e.target.parentNode;
+            const infoId = arrowBtn.dataset.infoId;
+            // associated message container
+            const messageDiv = document.querySelector(`.info-message[data-info-id="${infoId}"`);
+            // hide message
+            if (arrowBtn.classList.contains('up')) {
+                messageDiv.classList.add('d-none');
+                arrowBtn.classList.remove('up');
+            }
+            // show message
+            else {
+                // Message is missing, request it
+                if (!messageDiv.classList.contains('filled')) {
+                    const data = { "infoId": infoId };
+                    const token = sessionStorage.getItem('token');
+
+                    fetch('/infos/one', {
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        headers: {
+                            "Content-Type": "application/json",
+                            "authorization": `Bearer ${JSON.parse(token)}`
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(response => {
+                        if (response.error) return sendNotification('error', response.error);
+
+                        messageDiv.innerHTML = response.message;
+                    })
+                }                
+                // if message is already there too ;)
+                messageDiv.classList.remove('d-none');
+                arrowBtn.classList.add('up');
+            }
+        });
+    });
 };

@@ -648,10 +648,15 @@ form#new-info-form label {
   color: #FF8800;
 }
 
-.info .header .info-show {
+.info .header svg.info-show {
   position: absolute;
   bottom: 0.1rem;
   right: 0.1rem;
+}
+
+.info .header svg.info-show.up {
+  -webkit-transform: rotate(0.5turn);
+          transform: rotate(0.5turn);
 }
 
 #messages .message {
