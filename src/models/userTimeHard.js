@@ -24,7 +24,8 @@ const userTimeHard = new mongoose.Schema({
         ref: 'User'
     },
     vote: {
-        type: String
+        type: String,
+        trim: true
     }
 },{
     timestamps: true

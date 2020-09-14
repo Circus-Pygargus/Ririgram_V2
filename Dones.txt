@@ -582,9 +582,11 @@ ________________________________________________________________________________
 
 
 
-Résolution de bugs: affichage des messages d'infos sur une seule ligne ! les 'retour chariot' dans un textarea sont des /r/n, je les remplace maintenant par des <br> à réception dans le routeur.
+Résolution de bugs: affichage des messages d'infos sur une seule ligne ! les 'retour chariot' dans un textarea sont des /r/n, je les remplace maintenant par des <br> à réception dans le routeur. problème, le même bug est présent avec le textarea des feedbacks, la réaction à l'enregistrement en bdd semble différent o_O, il ne me renvoie que des &lt;br&gt; non pris en compte par chrome 
 résolution de bug : il manquait un watchInfo() après création d'une nouvelle info
-J'en ai profité pour un mettre un aussi à la création de compte
+J'en ai profité pour en mettre un aussi à la création de compte
+
+modif: ajout sur le schémas de modèles des trim manquants sur certaines String
 
 
 
@@ -631,7 +633,7 @@ _ les bugs
 bug: 
 _ user loggué, victoire, sortie par la croix -> la poubelle reste visible
 vérifier avec toutes les façons de quitter une grille
-_ si partie gagnée en jouant avec la croix, à la partie suivante, la croix reste en allumée mais n'est pas prise en compte ... faire un reset de isUsingCross ou garder la croix et recoller les enlignt de helper sur la première case de la grile
+_ gamecross : si partie gagnée en jouant avec la croix, à la partie suivante, la croix reste en allumée mais n'est pas prise en compte ... faire un reset de isUsingCross ou garder la croix et recoller les enlignt de helper sur la première case de la grile
 
 
 

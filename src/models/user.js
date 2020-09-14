@@ -49,11 +49,13 @@ const userSchema = new mongoose.Schema({
                 return regex.test(value);
             },
             message: 'Seul un admin peut faire ça !'
-        }
+        },
+        trim: true
     },
     // used for ex to know if user is blocked
     status: {
-        type: String
+        type: String,
+        trim: true
     },
     visits: {
         type: Number
@@ -70,7 +72,8 @@ const userSchema = new mongoose.Schema({
     tokens: [{
         token: {
             type: String,
-            required: true
+            required: true,
+            trim: true
         }
     }]
 },{

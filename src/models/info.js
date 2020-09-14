@@ -4,15 +4,18 @@ const mongoose = require('mongoose');
 const infoSchema = new mongoose.Schema({
     version: {
         type: String,
-        required: [true, 'Il manque la version !']
+        required: [true, 'Il manque la version !'],
+        trim: true
     },
     title: {
         type: String,
-        required: [true, 'Il manque le titre !']
+        required: [true, 'Il manque le titre !'],
+        trim: true
     },
     message: {
         type: String,
-        required: [true, 'Il manque le message !']
+        required: [true, 'Il manque le message !'],
+        trim: true
     },
     notSeen: {
         type: Boolean

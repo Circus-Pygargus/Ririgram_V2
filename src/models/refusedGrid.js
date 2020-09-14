@@ -24,11 +24,13 @@ const refusedGridSchema = new mongoose.Schema({
                 return regex.test(value);
             },
             message: 'Le status enregistré pour le mode facile de cette grille n\'est pas répertorié.'
-        }
+        },
+        trim: true
     },
     easyUpdatedAt: {
         // here I don't tell mongoose it's a date as I don't know how to prevent it to fill it automaticaly
-        type: String
+        type: String,
+        trim: true
     },
     hard: {
         type: Boolean,
@@ -42,11 +44,13 @@ const refusedGridSchema = new mongoose.Schema({
                 return regex.test(value);
             },
             message: 'Le status enregistré pour le mode difficile de cette grille n\'est pas répertorié.'
-        }
+        },
+        trim: true
     },
     hardUpdatedAt: {
         // here I don't tell mongoose it's a date as I don't know how to prevent it to fill it automaticaly
-        type: String
+        type: String,
+        trim: true
     }
 }, {
     timestamps: true

@@ -12,11 +12,15 @@ const router = new express.Router();
 
 const partialsPath = path.join(__dirname, '../../templates/partials');
 
+const nl2br = require('../utils/nl2br');
+
 
 // user wants to send a feedback
 router.post('/feedback/new', auth, async (req, res) => {
     try {
-        const { type, device, browser, message } = req.body;
+        const { type, device, browser } = req.body;
+        // replace any /r/n by <br>
+        const message = nl2br(req.body.message, false);
         const user = req.user;
         const feedback = new Feedback({ type, device, browser, message, owner: user.name});
         await feedback.save();

@@ -37,7 +37,8 @@ const feedbackSchema = new mongoose.Schema({
    },
    // used to for ex if this feedback is blocked
    status: {
-       type: String
+       type: String,
+       trim: true
    }
 },{
     timestamps: true
