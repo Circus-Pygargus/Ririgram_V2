@@ -561,14 +561,17 @@ la flèche dans le header de l'info sert de déclencheur, à réception du messa
 
 Gestion effacement des ! annonçants une nouvelle info
 
+modif : ajout du cursor: pointer quand nécessaire
 
 
 
 
 
 
-a faire aussi : améliorer le style des infos ...
 
+a faire aussi : 
+- améliorer le style des infos ...
+- effacer les messages avec la poubelle (renommer tout ce qui est trashcan en trash-msg ou un truc du genre)
 
 
 

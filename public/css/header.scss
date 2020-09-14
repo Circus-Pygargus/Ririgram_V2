@@ -11,6 +11,7 @@ header {
         }
 
         svg#toggle-navbar {
+            cursor: pointer;
             justify-self: left;
             margin-left: 5vw;
 
@@ -23,6 +24,7 @@ header {
             position: relative;
             top: 2.5rem;
             right: 1.5rem;
+            cursor: pointer;
         }
 
         h1 {
@@ -31,6 +33,7 @@ header {
         }
 
         svg.fullscreen-svg {
+            cursor: pointer;
             justify-self: right;
             margin-right: 5vw;
 

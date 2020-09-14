@@ -1,6 +1,7 @@
 #nav-infos-body {
 
     button.add {
+        cursor: pointer;
         width: 50%;
         height: 3rem;
         margin: -1rem auto 1.5rem;
@@ -82,6 +83,7 @@
             position: absolute;
             bottom: 0.1rem;
             right: 0.1rem;
+            cursor: pointer;
 
             &.up {
                 transform: rotate(0.5turn);

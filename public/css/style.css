@@ -145,6 +145,7 @@
   top: 20px;
   left: -3000px;
   z-index: 50;
+  cursor: pointer;
   max-width: 85vw;
   min-height: 5rem;
   padding: 1rem;
@@ -201,6 +202,7 @@ header div#main-title svg {
 }
 
 header div#main-title svg#toggle-navbar {
+  cursor: pointer;
   -ms-grid-column-align: left;
       justify-self: left;
   margin-left: 5vw;
@@ -214,6 +216,7 @@ header div#main-title svg#trash-can-btn {
   position: relative;
   top: 2.5rem;
   right: 1.5rem;
+  cursor: pointer;
 }
 
 header div#main-title h1 {
@@ -224,6 +227,7 @@ header div#main-title h1 {
 }
 
 header div#main-title svg.fullscreen-svg {
+  cursor: pointer;
   -ms-grid-column-align: right;
       justify-self: right;
   margin-right: 5vw;
@@ -276,6 +280,7 @@ div.nav-sub-group div.nav-sub-header {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+  cursor: pointer;
   width: 100%;
   height: 10vh;
   padding: 12px 20%;
@@ -405,6 +410,7 @@ div.nav-body.sub-body {
 
 div.nav-body:not(.has-sub-menu) div.button,
 div.nav-body.sub-body div.button {
+  cursor: pointer;
   width: 50%;
   height: 3rem;
   margin: 1.5rem auto 0;
@@ -510,6 +516,7 @@ form div.form-group textarea {
 }
 
 form button {
+  cursor: pointer;
   width: 50%;
   height: 3rem;
   margin: 0 auto;
@@ -540,13 +547,16 @@ form button.invalid {
   color: #2f303b;
 }
 
-form#feedback-form svg#form-close {
-  font-size: x-large;
-  margin-right: 15vw;
+form#feedback-form select {
+  cursor: pointer;
 }
 
 form#new-info-form label {
   text-align: left;
+}
+
+form#user-logout-form input[type="checkbox"] {
+  cursor: pointer;
 }
 
 #answer-feedback-container {
@@ -568,6 +578,7 @@ form#new-info-form label {
   position: absolute;
   top: 2rem;
   right: 3rem;
+  cursor: pointer;
 }
 
 #answer-feedback-container form .close svg {
@@ -575,6 +586,7 @@ form#new-info-form label {
 }
 
 #nav-infos-body button.add {
+  cursor: pointer;
   width: 50%;
   height: 3rem;
   margin: -1rem auto 1.5rem;
@@ -652,6 +664,7 @@ form#new-info-form label {
   position: absolute;
   bottom: 0.1rem;
   right: 0.1rem;
+  cursor: pointer;
 }
 
 .info .header svg.info-show.up {
@@ -677,6 +690,7 @@ form#new-info-form label {
 }
 
 #messages .message .header .delete {
+  cursor: pointer;
   float: right;
 }
 
@@ -720,6 +734,7 @@ form#new-info-form label {
   position: absolute;
   bottom: 0.1rem;
   right: 0.5rem;
+  cursor: pointer;
 }
 
 #messages .message .answer {
@@ -1144,6 +1159,7 @@ form#new-info-form label {
 }
 
 #trash-can-div button {
+  cursor: pointer;
   width: 16rem;
   max-width: 100%;
   margin: 1.5rem auto 0;

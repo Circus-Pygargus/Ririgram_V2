@@ -16,6 +16,7 @@
             }
 
             .delete {
+                cursor: pointer;
                 float: right;
             }
         }
@@ -62,6 +63,7 @@
                 position: absolute;
                 bottom: 0.1rem;
                 right: 0.5rem;
+                cursor: pointer;
             }
         }
 

@@ -50,6 +50,7 @@ form {
     }
 
     button {
+        cursor: pointer;
         width: 50%;
         height: 3rem;
         margin: 0 auto;
@@ -82,10 +83,9 @@ form {
 
     // for feedback and answer forms
     &#feedback-form {
-        
-        svg#form-close {
-            font-size: x-large;
-            margin-right: 15vw;
+
+        select {
+            cursor: pointer;
         }
     }
 
@@ -94,6 +94,14 @@ form {
 
         label {
             text-align: left;
+        }
+    }
+    
+    // for deconnection section
+    &#user-logout-form {
+
+        input[type="checkbox"] {
+            cursor: pointer;
         }
     }
 
@@ -119,6 +127,7 @@ form {
             position: absolute;
             top: 2rem;
             right: 3rem;
+            cursor: pointer;
 
             svg {        
                 font-size: x-large;
