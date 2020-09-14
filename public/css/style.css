@@ -639,7 +639,7 @@ form#new-info-form label {
   position: relative;
 }
 
-.info .header .version.not-seen::before {
+.info .header .info-version.not-seen::before {
   content: '!';
   position: absolute;
   top: 0;
