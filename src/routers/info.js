@@ -21,6 +21,9 @@ const nl2br = require('../utils/nl2br');
 // Admin wants to record a new info
 router.post('/infos/new', auth, async (req, res) => {
     try {
+        const isAdmin = req.user.role === 'admin' ? true : false;
+        if (!isAdmin) return res.status(401).send({ error: 'Ceci est réservé aux admins !' });
+
         const { version, title } = req.body;
         // replace any /r/n written by textarea by some <br>
         const message = nl2br(req.body.message, false)
@@ -35,7 +38,7 @@ router.post('/infos/new', auth, async (req, res) => {
                 delete infoObject.message;
                 infos[i] = new Info(infoObject);
             }
-            res.render(`${partialsPath}/infos`, { infos }, (err, html) => {
+            res.render(`${partialsPath}/infos`, { infos, isAdmin }, (err, html) => {
                 if (err) {
                     return res.send({
                         error: 'Une erreur est survenue pendant le rendu des infos'

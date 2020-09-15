@@ -614,10 +614,12 @@ ajout afficher/cacher la div de confirmation d'effacement d'info
 Ajout de la requête /infos/delete
 obligé de faire dans public/js/infos.js, une nouvelle watchNewInfos() et d'y exporter tout le code pour les boutons qui se rechargent avec la création, la modification ou l'effacement des infos
 
+Correction bug : après ajou nouvelle info, les bouton poubelle et crayon n'apparaîssent pas
 
 
 
-POUSSE VERS GIT AVEC LE TAG 
+
+POUSSE VERS GIT AVEC LE TAG 2020-09-15
 
 contenu du message associé sur le site en prod :
 Correction de bug :
@@ -626,7 +628,8 @@ Correction de bug :
  - poubelle de grille toujours présente lors d'un retour à la barre de navigation
 
 Ajouts :
-  - possibilité de modifier une info par un admin
+  - possibilité de modifier une info (admin seulement) (bugguée pour l'instant) -> désactivé
+  - possibilté d'effacer une infos (admin seulement)
 _____________________________________________________________________________________________
 
 message à Fred : cette grille devrait sortir un jour ou l'autre si on fait beaucoup de grilles de cette taille ^^
