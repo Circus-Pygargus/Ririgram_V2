@@ -606,6 +606,9 @@ Création de la requête /infos/update/one : bugguée !!! ajoute de multiples <b
     ai tenté d'utiliser br2nl() dans public/js/infos.js
 
 
+Création de la route /info/delete
+
+
 
 
 POUSSE VERS GIT AVEC LE TAG 
@@ -664,6 +667,7 @@ _ les bugs
 
 
 bug: 
+_ pour /infos/delete , retour avec une erreur 500 sans message si l'info à effacer n'existe pas !
 _ juste après enregistrement d'une nouvelle info, si on veut voir une info :
     info.js:196 Uncaught TypeError: Cannot read property 'classList' of null
     at SVGSVGElement.<anonymous> (info.js:196)

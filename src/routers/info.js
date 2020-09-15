@@ -109,6 +109,45 @@ router.post('/infos/update/one', auth, async (req, res) => {
 });
 
 
+// Delete info  _ only for admin
+router.delete('/infos/delete', auth, async (req, res) => {
+    try {
+        const isAdmin = req.user.role === 'admin' ? true : false;
+        if (!isAdmin) return res.status(401).send({ error: 'Ceci est réservé aux admins !' });
+
+        const infoId = req.body.infoId;
+        if (!infoId)  return res.status(401).send({ error: 'Il manque l\'id de l\'info !' });
+
+        const info = await Info.findById(infoId);
+        await info.remove();
+        
+        // get infos in reverse updated time order
+        Info.find({}, null, {sort: {updatedAt: -1}}, (err, infos) => {
+            if (err) return res.send({error: 'il y a un problème ici !'});
+            // remove message of each info found
+            for (let i = 0, max = infos.length; i < max; i++) {
+                let infoObject = infos[i].toObject();
+                delete infoObject.message;
+                infos[i] = new Info(infoObject);
+            }
+            res.render(`${partialsPath}/infos`, { isAdmin, infos }, (err, html) => {
+                if (err) {
+                    return res.send({
+                        error: 'Une erreur est survenue pendant le rendu des infos'
+                    });
+                }
+
+                res.status(201).send({ html });
+            });
+        });
+    }
+    catch(e) {
+        console.log(e);
+        res.status(500).send(e.error);
+    }
+});
+
+
 
 
 
