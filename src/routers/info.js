@@ -69,6 +69,45 @@ router.post('/infos/one', auth, async (req, res) => {
 });
 
 
+// Admin wants to change an info
+router.post('/infos/update/one', auth, async (req, res) => {
+    if (req.user.role !== 'admin') return res.status(401).send({ error: 'Seul un admin peut effectuer cette opération !' });
+
+    try {
+        const { _id, version, title, message } = req.body;
+
+        const info = await Info.findById({ _id });
+        info.version = version;
+        info.title = title;
+        info.message = await nl2br(message, false);
+        await info.save();
+        // get infos in reverse updated time order
+        Info.find({}, null, {sort: {updatedAt: -1}}, (err, infos) => {
+            if (err) return res.send({error: 'il y a un problème ici !'});
+            // remove message of each info found
+            for (let i = 0, max = infos.length; i < max; i++) {
+                let infoObject = infos[i].toObject();
+                delete infoObject.message;
+                infos[i] = new Info(infoObject);
+            }
+            res.render(`${partialsPath}/infos`, { infos }, (err, html) => {
+                if (err) {
+                    return res.send({
+                        error: 'Une erreur est survenue pendant le rendu des infos'
+                    });
+                }
+
+                res.status(201).send({ html });
+            });
+        });
+    } 
+    catch(e) {
+        console.log(e);
+        res.status(500).send(e.error);
+    }
+});
+
+
 
 
 

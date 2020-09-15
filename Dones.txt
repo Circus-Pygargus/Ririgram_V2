@@ -592,11 +592,29 @@ Résolution de bug : si clic sur la croix de fermeture dans Victory, effacer la 
 
 résolution bug : cache/affiche la poubelle de grille si accès à la navbar/retour à la grille
 
+Création de la route /infos/update/one
+
+
+
+
+
+POUSSE VERS GIT AVEC LE TAG 
+
+contenu du message associé sur le site en prod :
+Correction de bug :
+ - affichage du message des infos sur une seule ligne.
+ - bouton d'affichage des contenus d'infos non fonctionnels après création d'une nouvelle info
+ - poubelle de grille toujours présente lors d'un retour à la barre de navigation
+_____________________________________________________________________________________________
+
+message à Fred : cette grille devrait sortir un jour ou l'autre si on fait beaucoup de grilles de cette taille ^^
+
 
 
 
 
 a faire aussi : 
+- manque admin check dans router /infos.new
 - améliorer le style des infos ...
 - effacer les messages avec la poubelle (renommer tout ce qui est trashcan en trash-msg ou un truc du genre)
 
@@ -633,8 +651,7 @@ _ les bugs
 
 
 bug: 
-_ user loggué, victoire, sortie par la croix -> la poubelle reste visible
-vérifier avec toutes les façons de quitter une grille
+_ les infos ne sont pas livrées si création d'utilisateur
 _ gamecross : si partie gagnée en jouant avec la croix, à la partie suivante, la croix reste en allumée mais n'est pas prise en compte ... faire un reset de isUsingCross ou garder la croix et recoller les enlignt de helper sur la première case de la grile
 
 
