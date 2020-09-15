@@ -4,9 +4,9 @@ const watchInfos = () => {
     const hideNewInfoBtn = document.querySelector('#hide-new-info-btn');
     const newInfoDiv = document.querySelector('#new-info-div');
 
-    // form
+    // new info form
     const newInfoForm = document.querySelector('#new-info-form');
-    // form content
+    // new info form content
     const newInfoVersionInput = document.querySelector('#new-info-version');
     const newInfoTitleInput = document.querySelector('#new-info-title');
     const newInfoMessageInput = document.querySelector('#new-info-message');
@@ -14,9 +14,26 @@ const watchInfos = () => {
     // infos place
     const infosDiv = document.querySelector('#infos');
     const infoShowBtns = document.querySelectorAll('.info-show');
+    
+    // hide/show the change info form
+    const showChangeInfoBtns = document.querySelectorAll('.info-pencil');
+    const hideChangeInfoBtn = document.querySelector('#hide-change-info-btn');
+    const changeInfoDiv = document.querySelector('#change-info-div');
+    // change info form
+    const changeInfoForm = document.querySelector('#change-info-form');
+    // change info form content
+    const changeInfoVersionInput = document.querySelector('#change-info-version');
+    const changeInfoTitleInput = document.querySelector('#change-info-title');
+    const changeInfoMessageTextarea = document.querySelector('#change-info-message');
 
 
-
+const br2ln = (str) => {
+    const searchStr = '<br>';
+    const replaceStr = '/r/n';
+    return str.split(searchStr).join(replaceStr);
+    // const breakTag = '/r/n';
+    // return (str + '').replace(/([<br>])/g, '$1' + breakTag + '$2');
+};
 
 
     // show new info form  __ only for admin
@@ -67,6 +84,66 @@ const watchInfos = () => {
     }
 
 
+    // show change info form  __ only for admin
+    if (showChangeInfoBtns) {
+        console.log(showChangeInfoBtns)
+        showChangeInfoBtns.forEach(showChangeInfoBtn => {
+            showChangeInfoBtn.addEventListener('click', (e) => {
+                const infoId = e.target.closest('svg').dataset.infoId;
+                changeInfoForm.dataset.infoId = infoId;
+                changeInfoVersionInput.value = document.querySelector(`div.info-version[data-info-id="${infoId}"]`).innerHTML;
+                changeInfoTitleInput.value = document.querySelector(`div.info-title[data-info-id="${infoId}"]`).innerHTML;
+                changeInfoMessageTextarea.innerHTML = document.querySelector(`div.info-message[data-info-id="${infoId}"]`).innerHTML;
+                changeInfoDiv.classList.remove('d-none');
+            });
+        });
+    }
+
+    // hide new infos form  __ only for admin
+    if (hideChangeInfoBtn) {
+        hideChangeInfoBtn.addEventListener('click', (e) => {
+            // because the btn is inside the form, and it would submit the form even if not a submit typed button
+            e.preventDefault();
+            changeInfoDiv.classList.add('d-none');
+        });
+    }
+
+
+    // change info submit  __ only for admin
+    if (changeInfoForm) {
+        changeInfoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            return sendNotification('error', 'Cette fonctionnalité a été désactivée');
+            const token = sessionStorage.getItem('token');
+            const data = {
+                "_id": changeInfoForm.dataset.infoId,
+                "version": changeInfoVersionInput.value,
+                "title": changeInfoTitleInput.value,
+                "message": changeInfoMessageTextarea.innerHTML
+            };
+            fetch('/infos/update/one', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${JSON.parse(token)}`
+                }
+            })
+            .then(response => response.json())
+            .then(response => {
+                if (response.error) return sendNotification('error', response.error);
+                const cleanedMessage = br2ln(response.html);
+                infosDiv.innerHTML = cleanedMessage;
+                // infosDiv.innerHTML = response.html;
+                changeInfoDiv.classList.add('d-none');
+                sendNotification('success', 'Modification de l\'info enregistrée !');
+                // html content has been replaced, watch it
+                watchInfos();
+            })
+        });
+    }
+
+
     // show/hide an info message
     infoShowBtns.forEach(infoshowBtn => {
         infoshowBtn.addEventListener('click', (e) => {
@@ -74,10 +151,13 @@ const watchInfos = () => {
             // const arrowBtn = e.target.tagName.toUpperCase() === 'SVG' ? e.target : e.target.parentNode;
             const arrowBtn = e.target.closest('svg');
             const infoId = arrowBtn.dataset.infoId;
+            // associated svg for change info
+            const svgChange = document.querySelector(`svg.info-pencil[data-info-id="${infoId}"]`);
             // associated message container
             const messageDiv = document.querySelector(`.info-message[data-info-id="${infoId}"`);
             // hide message
             if (arrowBtn.classList.contains('up')) {
+                svgChange.classList.add('d-none');
                 messageDiv.classList.add('d-none');
                 arrowBtn.classList.remove('up');
             }
@@ -113,6 +193,7 @@ const watchInfos = () => {
                     })
                 }
                 // if message is already there too ;)
+                svgChange.classList.remove('d-none');
                 messageDiv.classList.remove('d-none');
                 arrowBtn.classList.add('up');
             }

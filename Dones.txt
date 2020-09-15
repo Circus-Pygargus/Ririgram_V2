@@ -600,6 +600,11 @@ Ajout d'un svg dans infos.hbs, seulement si admin pour afficher modif info
 
 Ajout du partial 'info change.hbs'
 
+Création de la requête /infos/update/one : bugguée !!! ajoute de multiples <br> pour chaque saut de ligne ... 
+    désactivée coté front dnas /public/js/infos.js par un return sendNotification()
+    coté back par un return res.send('fonctionnalité désactivée');
+    ai tenté d'utiliser br2nl() dans public/js/infos.js
+
 
 
 
@@ -610,6 +615,9 @@ Correction de bug :
  - affichage du message des infos sur une seule ligne.
  - bouton d'affichage des contenus d'infos non fonctionnels après création d'une nouvelle info
  - poubelle de grille toujours présente lors d'un retour à la barre de navigation
+
+Ajouts :
+  - possibilité de modifier une info par un admin
 _____________________________________________________________________________________________
 
 message à Fred : cette grille devrait sortir un jour ou l'autre si on fait beaucoup de grilles de cette taille ^^
@@ -656,6 +664,9 @@ _ les bugs
 
 
 bug: 
+_ juste après enregistrement d'une nouvelle info, si on veut voir une info :
+    info.js:196 Uncaught TypeError: Cannot read property 'classList' of null
+    at SVGSVGElement.<anonymous> (info.js:196)
 _ les infos ne sont pas livrées si création d'utilisateur
 _ gamecross : si partie gagnée en jouant avec la croix, à la partie suivante, la croix reste en allumée mais n'est pas prise en compte ... faire un reset de isUsingCross ou garder la croix et recoller les enlignt de helper sur la première case de la grile
 

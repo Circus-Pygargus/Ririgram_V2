@@ -70,6 +70,7 @@ router.post('/infos/one', auth, async (req, res) => {
 
 // Admin wants to change an info
 router.post('/infos/update/one', auth, async (req, res) => {
+    return res.send('Cette fonctionnalité a été désactivée !!');
     const isAdmin = req.user.role === 'admin' ? true : false;
     if (!isAdmin) return res.status(401).send({ error: 'Seul un admin peut effectuer cette opération !' });
 
