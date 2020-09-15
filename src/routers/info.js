@@ -24,7 +24,6 @@ router.post('/infos/new', auth, async (req, res) => {
         const { version, title } = req.body;
         // replace any /r/n written by textarea by some <br>
         const message = nl2br(req.body.message, false)
-console.log(message)
         const info = new Info({ version, title, message });
         await info.save();
         // get infos in reverse updated time order
@@ -71,7 +70,8 @@ router.post('/infos/one', auth, async (req, res) => {
 
 // Admin wants to change an info
 router.post('/infos/update/one', auth, async (req, res) => {
-    if (req.user.role !== 'admin') return res.status(401).send({ error: 'Seul un admin peut effectuer cette opération !' });
+    const isAdmin = req.user.role === 'admin' ? true : false;
+    if (!isAdmin) return res.status(401).send({ error: 'Seul un admin peut effectuer cette opération !' });
 
     try {
         const { _id, version, title, message } = req.body;
@@ -90,7 +90,7 @@ router.post('/infos/update/one', auth, async (req, res) => {
                 delete infoObject.message;
                 infos[i] = new Info(infoObject);
             }
-            res.render(`${partialsPath}/infos`, { infos }, (err, html) => {
+            res.render(`${partialsPath}/infos`, { isAdmin, infos }, (err, html) => {
                 if (err) {
                     return res.send({
                         error: 'Une erreur est survenue pendant le rendu des infos'

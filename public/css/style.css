@@ -651,6 +651,10 @@ form#user-logout-form input[type="checkbox"] {
   position: relative;
 }
 
+.info .header .info-version {
+  margin-bottom: 0.5rem;
+}
+
 .info .header .info-version.not-seen::before {
   content: '!';
   position: absolute;
@@ -658,6 +662,13 @@ form#user-logout-form input[type="checkbox"] {
   left: -1.5rem;
   font-size: larger;
   color: #FF8800;
+}
+
+.info .header svg.info-pencil {
+  position: absolute;
+  top: 0.1rem;
+  right: 0.1rem;
+  cursor: pointer;
 }
 
 .info .header svg.info-show {
@@ -670,6 +681,10 @@ form#user-logout-form input[type="checkbox"] {
 .info .header svg.info-show.up {
   -webkit-transform: rotate(0.5turn);
           transform: rotate(0.5turn);
+}
+
+.info .info-message {
+  margin-top: 1rem;
 }
 
 #messages .message {

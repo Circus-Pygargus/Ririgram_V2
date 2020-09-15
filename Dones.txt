@@ -596,6 +596,8 @@ Création de la route /infos/update/one
 
 Modif model Info: tri des infos par date de création
 
+Ajout d'un svg dans infos.hbs, seulement si admin pour afficher modif info
+
 
 
 
