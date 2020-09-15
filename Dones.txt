@@ -605,8 +605,14 @@ Création de la requête /infos/update/one : bugguée !!! ajoute de multiples <b
     coté back par un return res.send('fonctionnalité désactivée');
     ai tenté d'utiliser br2nl() dans public/js/infos.js
 
-
 Création de la route /info/delete
+
+Ajout svg poubelle pour chaque info (seulement pour admin)
+Ajout div de confirmation d'effacement d'info
+Ajout de la div de confirmation d'effacement d'info dans 'infos global.hbs'
+ajout afficher/cacher la div de confirmation d'effacement d'info
+Ajout de la requête /infos/delete
+obligé de faire dans public/js/infos.js, une nouvelle watchNewInfos() et d'y exporter tout le code pour les boutons qui se rechargent avec la création, la modification ou l'effacement des infos
 
 
 

@@ -616,7 +616,8 @@ form#user-logout-form input[type="checkbox"] {
 }
 
 #new-info-div,
-#change-info-div {
+#change-info-div,
+#delete-info-div {
   position: fixed;
   z-index: 1;
   top: 0;
@@ -631,18 +632,49 @@ form#user-logout-form input[type="checkbox"] {
 }
 
 #new-info-div.d-none,
-#change-info-div.d-none {
+#change-info-div.d-none,
+#delete-info-div.d-none {
   display: none;
 }
 
 #new-info-div h2,
-#change-info-div h2 {
+#change-info-div h2,
+#delete-info-div h2 {
   margin-bottom: 3rem;
 }
 
 #new-info-div button:last-of-type,
-#change-info-div button:last-of-type {
+#change-info-div button:last-of-type,
+#delete-info-div button:last-of-type {
   margin-top: 1.5rem;
+}
+
+#delete-info-div button {
+  cursor: pointer;
+  width: 50%;
+  height: 3rem;
+  margin: 0 auto;
+  display: block;
+  background-color: #0F101B;
+  color: #FF8800;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 1px solid #FAFAFA;
+  border-radius: 5px;
+}
+
+#delete-info-div button:hover {
+  border-color: #FF8800;
+}
+
+#delete-info-div button:active {
+  background-color: #FF8800;
+  color: #FAFAFA;
+  border-color: #FAFAFA;
+}
+
+#delete-info-div button:focus {
+  outline: none;
 }
 
 .info {
@@ -669,6 +701,13 @@ form#user-logout-form input[type="checkbox"] {
 }
 
 .info .header svg.info-pencil {
+  position: absolute;
+  top: 0.1rem;
+  right: 2rem;
+  cursor: pointer;
+}
+
+.info .header svg.trash-info {
   position: absolute;
   top: 0.1rem;
   right: 0.1rem;
