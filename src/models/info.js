@@ -30,7 +30,7 @@ infoSchema.statics.getAllInfosTitles = async (userLastVisit) => {
     try {
         let infos, hasNewInfos = false;
         
-        await Info.find({}, null, {sort: {updatedAt: -1}}, (err, docs) => {
+        await Info.find({}, null, {sort: {createdAt: -1}}, (err, docs) => {
             if (err) return res.send({error: 'il y a un problème ici !'});
             for (let i = 0, max = docs.length; i < max; i++) {
                 // remove message of each info found

@@ -594,6 +594,7 @@ résolution bug : cache/affiche la poubelle de grille si accès à la navbar/ret
 
 Création de la route /infos/update/one
 
+Modif model Info: tri des infos par date de création
 
 
 
