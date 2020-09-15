@@ -598,6 +598,8 @@ Modif model Info: tri des infos par date de création
 
 Ajout d'un svg dans infos.hbs, seulement si admin pour afficher modif info
 
+Ajout du partial 'info change.hbs'
+
 
 
 
