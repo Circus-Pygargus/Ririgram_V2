@@ -1,5 +1,8 @@
 const express = require('express');
 
+const moment = require('moment');
+require("moment-duration-format");
+
 const Grid = require('../models/grid');
 const UserTimeHard = require('../models/userTimeHard');
 const StartTime = require('../models/startTime');
@@ -41,7 +44,9 @@ router.post('/grid/new', auth, async (req, res) => {
 
         if (foundedGrid) {
             console.log('grille non jouée trouvée !');
-
+            foundedGrid.hardNbTimesPlayed++;
+            await foundedGrid.save();
+            console.log(foundedGrid.hardNbTimesPlayed)
             const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame } = foundedGrid;
             const gridId = foundedGrid._id;
             let startTime = await StartTime.findOne({grid: gridId, owner: user._id});
@@ -99,6 +104,10 @@ const findUnplayedGrid = async (rowsNb, colsNb, userId) => {
     console.log('searching a recorded grid')
     let hasFoundGrid = false;
     let gridsFound = await Grid.find({ rowsNb, colsNb });
+
+    // !! juste pour tester !! ça retourne indéfiniment la première grille
+    // return gridsFound[0];
+
     for (let i = 0, max = gridsFound.length; i < max; i++) {
         const userTimeHard = await UserTimeHard.findOne({ owner: userId, grid: gridsFound[i]._id});
         if (userTimeHard) continue;
@@ -123,11 +132,8 @@ router.post('/grid/check', auth, async (req, res) => {
     try {
         const user = req.user;
         console.log('Vérif de grille')
-        receivedTime = Date.now();
+        const receivedTime = Date.now();
         let isExactGrid = false;
-        let IsGridBestTime = false;
-        let userBestBeaten = false;
-        let isBrandNewGrid = false;
         const { gridId, userSolution, tilesClicked } = req.body;
         const grid = await Grid.findById(gridId);
         if (!grid) throw new Error(`La grille demandée pour vérification par ${user.name} n\'existe pas !`);
@@ -137,22 +143,52 @@ router.post('/grid/check', auth, async (req, res) => {
         }
         else {
             if (tilesClicked < grid.clicksNbForPerfectGame) throw new Error(`Le joueur ${user.name} a fini la grille avec un nombre coups trop petit !`);
-
             const startTime = await StartTime.findOne({ grid: gridId, owner: user._id });
-            if (!startTime) throw new Error(`Le temps de départ pour la grille ${gridId} et le joueur ${user.name} n'existe pas !`);
+            if (!startTime) throw new Error(`Le temps de départ pour la grille ${gridId} et le joueur ${user.name} n'existe pas !`);            
+
+            let isUserFirstTimeFinish = false;
+            let userBestBeaten = false;
+            let gridBestTime = '';
+            let IsGridBestTime = false;
+            let worldRecordOwner = '';
+            let isBrandNewGrid = false;
+
             const gridTime = receivedTime - startTime.time;
+            // give last time for the moment
+            let userBestTime = moment.duration(gridTime).format("H:m's''S");
+            // first time a player finishes this grid
             if (!grid.bestTimeHard) {
                 isBrandNewGrid = true;
                 grid.bestTimeHard = gridTime;
                 IsGridBestTime = true;
+                gridBestTime = moment.duration(gridTime).format("H:m's''S");
             }
+            // it's a world record
             else if (gridTime < grid.bestTimeHard) {
                 grid.bestTimeHard = gridTime;
                 IsGridBestTime = true;
+                gridBestTime = moment.duration(gridTime).format("H:m's''S");
+                worldRecordOwner = user.name;
             }
+            // it's not a wr
+            else {
+                // get wr
+                gridBestTime = moment.duration(grid.bestTimeHard).format("H:m's''S");
+            
+                // find world record owner
+                const bestUserTimeHard = await UserTimeHard.findOne({grid: gridId, bestTime: grid.bestTimeHard});
+                await bestUserTimeHard.populate('owner').execPopulate();
+                worldRecordOwner = bestUserTimeHard.owner.name;
+            }
+            const userGridTime = moment.duration(gridTime).format("H:m's''S");
             grid.hardNbTimesFinished++;
             await grid.save();
 
+            // get the nb of times played/finished (all players)
+            const gridNbTimesPlayed = grid.hardNbTimesPlayed;
+            const gridNbTimesFinished = grid.hardNbTimesFinished;
+
+            // remove this grid as refused gird
             const refusedGrid = await RefusedGrid.findOne({ gridId, userId: user._id, hard: true });
             if (refusedGrid && refusedGrid.easy === false) {
                 const refusedGridId = refusedGrid._id
@@ -166,6 +202,7 @@ router.post('/grid/check', auth, async (req, res) => {
             let recordedResults = await UserTimeHard.findOne({ grid: gridId, owner: user._id });
             if (!recordedResults) {
                 console.log('recorded result not found')
+                isUserFirstTimeFinish = true;
                 recordedResults = new UserTimeHard({ bestTime: gridTime, lastTime: gridTime, userClicksNb: tilesClicked, grid: gridId, owner: user._id });
             }
             else {
@@ -174,6 +211,8 @@ router.post('/grid/check', auth, async (req, res) => {
                     recordedResults.userClicksNb = tilesClicked;
                     userBestBeaten = true;
                 }
+                else  userBestTime = moment.duration(recordedResults.bestTime).format("H:m's''S");
+
                 recordedResults.lastTime = gridTime;
                 recordedResults.grid = gridId;
                 recordedResults.owner = user._id;
@@ -182,9 +221,27 @@ router.post('/grid/check', auth, async (req, res) => {
             await StartTime.findByIdAndDelete(startTime._id);
             user.finishedGrids++;
             await user.save();
+            
+
+            // get the player ranking
+            const allTimesHard = await UserTimeHard.find({ grid: gridId }).sort('bestTime');
+            const nbplayers = allTimesHard.length;
+            let playerPos = 0;
+            for (let i = 0; i < nbplayers; i++) {
+                console.log(allTimesHard[i].owner)
+                if (allTimesHard[i].owner.toString() === user._id.toString()) {
+                    playerPos = i + 1;
+                    console.log('cooool')
+                    break;
+                }
+            }
+            const userRanking = `${playerPos}/${nbplayers}`;
+            // console.log(allTimesHard)
+            console.log(gridTime)
+            console.log(user._id)
 
 
-            res.send({ userWins: true, isBrandNewGrid, clicksNbForPerfectGame: grid.clicksNbForPerfectGame, userBestBeaten, gridTime, IsGridBestTime });
+            res.send({ userWins: true, isBrandNewGrid, isUserFirstTimeFinish, clicksNbForPerfectGame: grid.clicksNbForPerfectGame, userBestTime, userBestBeaten, userGridTime, IsGridBestTime, gridBestTime, worldRecordOwner, userRanking, gridNbTimesPlayed, gridNbTimesFinished });
         }
     } catch (e) {
         console.log(e);

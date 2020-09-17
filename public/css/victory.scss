@@ -16,8 +16,15 @@
 
     svg {        
         position: absolute;
-        font-size: x-large;
         right: 32px;
+        font-size: x-large;
+
+        &.bi-check2 {
+            position: relative;
+            top: 0.6rem;
+            right: 0;
+            font-size: xx-large;
+        }
     }
 
     h2 {
@@ -31,6 +38,17 @@
         &.d-none {
             display: none;
         }
+    }
+    
+    #perfect-game,
+    #personal-best-div.checked,
+    #world-record.checked {
+        margin-top: -0.6rem;
+    }
+
+    #chrono,
+    #times-nb {
+        margin-top: 1rem;
     }
 
     button {

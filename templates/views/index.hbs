@@ -104,17 +104,51 @@
 
         {{!-- Victory message --}}
         <div id="victory" class="d-none">
+            {{!-- both logged and unlogged users --}}
             <svg id="victory-close" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                 <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
                 <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
             </svg>
             <h2>Victoire !</h2>
-            <p>Félicitations ! Tu as fini cette grille en <span id="clicks-nb-done"></span>.</p>
+            {{!-- unlogged user --}}
+            <p id="congrats">Félicitations ! Tu as fini cette grille en <span id="clicks-nb-done"></span>.</p>
             <p id="special-congrats" class="d-none">Et c'est un sans faute !!!</p>
             <p id="too-many-clicks" class='d-none'>Elle est réalisable en <span id="clicks-nb-min"></span>.</p>
             <p id="you-should-register" class="d-none">Ce jeu te plait ? Tu devrais t'enregistrer pour profiter de toutes les fonctionnalités !</p>
-            <button id="victory-play-another">Nouvelle partie</button>
+            {{!-- logged user --}}
+            <div id="player-clicks-nb" class="d-none">Nombre de coups : </div>
+            <div id="perfect-game" class="d-none">
+                Sans faute : 
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                </svg>
+            </div>
+            <div id="clicks-nb-mini" class="d-none">Réalisable en _ coups</div>
+            <div id="chrono" class="d-none">Ton chrono :</div>
+            <div id="personal-best-div" class="d-none">Ton meilleur :&nbsp;
+                <span id="personal-best-span" class="d-none"></span>
+                <svg id="personal-best-check" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                </svg>
+            </div>
+            <div id="world-record" class="d-none">
+                Record du monde :                
+                <svg id="world-record-check" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                </svg>
+                <div id="world-record-unbeaten">
+                    <span id="wr-time"></span> détenu par <span id="wr-owner"></span>
+                </div>
+                <div id="player-position-div">Ton classement : <span id="player-position-span"></span></div>
+            </div>
+            <div id="times-nb" class="d-none">
+                <div>Grille jouée <span id="nb-times-played"></span> fois</div>
+                <div>Grille finie <span id="nb-times-finished"></span> fois</div>
+            </div>
+            {{!-- both logged and unlogged users --}}
+            <button id="victory-play-another">Nouvelle partie</button>            
+            {{!-- logged user --}}
             <button id="victory-choose-grid">Choisir une grille</button>
         </div>
 

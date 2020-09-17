@@ -532,8 +532,8 @@ const sendSolutionToServer = () => {
             failed(response.message);
         }
         else {
-            const { isBrandNewGrid, clicksNbForPerfectGame, userBestBeaten, gridTime, IsGridBestTime } = response
-            victory(isUserLogged, tilesCliksNb, clicksNbForPerfectGame, isBrandNewGrid, userBestBeaten, gridTime, IsGridBestTime);
+            const { isBrandNewGrid, isUserFirstTimeFinish,  clicksNbForPerfectGame, userBestTime, userBestBeaten, userGridTime, IsGridBestTime, gridBestTime, worldRecordOwner, userRanking, gridNbTimesPlayed, gridNbTimesFinished } = response;
+            victory(isUserLogged, tilesCliksNb, clicksNbForPerfectGame, isBrandNewGrid, isUserFirstTimeFinish,  userBestTime, userBestBeaten, userGridTime, IsGridBestTime, gridBestTime, worldRecordOwner, userRanking, gridNbTimesPlayed, gridNbTimesFinished);
         }
     })
     .catch((e) => {

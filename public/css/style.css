@@ -1138,8 +1138,15 @@ form#user-logout-form input[type="checkbox"] {
 
 #victory svg, #failed svg {
   position: absolute;
-  font-size: x-large;
   right: 32px;
+  font-size: x-large;
+}
+
+#victory svg.bi-check2, #failed svg.bi-check2 {
+  position: relative;
+  top: 0.6rem;
+  right: 0;
+  font-size: xx-large;
 }
 
 #victory h2, #failed h2 {
@@ -1153,6 +1160,20 @@ form#user-logout-form input[type="checkbox"] {
 
 #victory p.d-none, #failed p.d-none {
   display: none;
+}
+
+#victory #perfect-game,
+#victory #personal-best-div.checked,
+#victory #world-record.checked, #failed #perfect-game,
+#failed #personal-best-div.checked,
+#failed #world-record.checked {
+  margin-top: -0.6rem;
+}
+
+#victory #chrono,
+#victory #times-nb, #failed #chrono,
+#failed #times-nb {
+  margin-top: 1rem;
 }
 
 #victory button, #failed button {

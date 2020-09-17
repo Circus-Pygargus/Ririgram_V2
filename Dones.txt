@@ -568,6 +568,8 @@ modif : ajout du cursor: pointer quand nécessaire
 POUSSE VERS GIT AVEC LE TAG 2020-09-14
 
 contenu du message associé sur le site en prod :
+titre: Ajout des informations de nouvelle version
+
 Ajouts :
   - maintenant les modifications du site seront affichées ici
   - possibilité de refuser une grille si vous la trouvez trop dure
@@ -614,7 +616,7 @@ ajout afficher/cacher la div de confirmation d'effacement d'info
 Ajout de la requête /infos/delete
 obligé de faire dans public/js/infos.js, une nouvelle watchNewInfos() et d'y exporter tout le code pour les boutons qui se rechargent avec la création, la modification ou l'effacement des infos
 
-Correction bug : après ajou nouvelle info, les bouton poubelle et crayon n'apparaîssent pas
+Correction bug : après ajout nouvelle info, les bouton poubelle et crayon n'apparaîssent pas
 
 
 
@@ -622,7 +624,9 @@ Correction bug : après ajou nouvelle info, les bouton poubelle et crayon n'appa
 POUSSE VERS GIT AVEC LE TAG 2020-09-15
 
 contenu du message associé sur le site en prod :
-Correction de bug :
+titre: Ajout des informations de nouvelle version
+
+Corrections de bug :
  - affichage du message des infos sur une seule ligne.
  - bouton d'affichage des contenus d'infos non fonctionnels après création d'une nouvelle info
  - poubelle de grille toujours présente lors d'un retour à la barre de navigation
@@ -632,10 +636,34 @@ Ajouts :
   - possibilté d'effacer une infos (admin seulement)
 _____________________________________________________________________________________________
 
+
+
+
+grosse amélioration de la div Victoire :
+installation du module npm moment-duration-format
+modif index.hbs dans la div Victoire, ajout structure pour afficher de nombreuses autres infos : chrono du joueur, son meilleur temps, le record du monde, le classement du joueur et les nombre de fois où la grille a été jouée et finie.
+modif du style pour que ce soit un peu plus chouettte
+modif router grid pour traiter et renvoyer les nouvelles données
+modif game-manager pour renvoyer les données reçue en fetch vers victoire()
+modif victoire.js pour traiter le tout
+J'ai fait le CHOIX de gérer toutes ces infos coté front au lieu de faire une vue partielle pour soulager un peu le serveur qui a déjà un gros taf (surtout si bcp de grilles jouées par bcp de joueurs)
+
+
+
+trouver une soluce en prod pour le nbr de grille jouée qui est enregistré sur 1 pour toutes les grilles , remplacer cette valeur par un nbr au moins aussi gros que le nbr de finies
+
+
+
+
+
+
+
 message à Fred : cette grille devrait sortir un jour ou l'autre si on fait beaucoup de grilles de cette taille ^^
 
 
-
+A REFAIRE POUR LA VERSION BETA :
+_ modif du model Grid : faire les ref correctement ?
+ça entraine l'effacement complet en bdd de toutes les données relatives ... mais pas très grave de revenir à zéro pour la beta 
 
 
 a faire aussi : 
@@ -791,12 +819,12 @@ _ Victory :
     |-> Sans faute : Check    (ou perfect game ?)
     ou  Nbr coups mini : 17
 
-    Chrono : 1:25:365
+    Chrono : 1'25''365
     |
     |-> Record du monde : Check
     ou  Record du monde : 1:22:654
         par Duchnock
-        position : 5/16
+        ta position : 5/16
     ou  rien si premier chrono pour cette grille
 
     nbXjouées
