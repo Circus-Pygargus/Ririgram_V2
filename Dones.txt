@@ -648,6 +648,40 @@ modif game-manager pour renvoyer les données reçue en fetch vers victoire()
 modif victoire.js pour traiter le tout
 J'ai fait le CHOIX de gérer toutes ces infos coté front au lieu de faire une vue partielle pour soulager un peu le serveur qui a déjà un gros taf (surtout si bcp de grilles jouées par bcp de joueurs)
 
+ajout de ce code dans grid router /grid/new :
+    console.log(req.body.rowsNb)
+    if (req.body.rowsNb == 11) {
+        console.log('modif en cours')
+        try {
+            const grids = await Grid.find({});        
+            for (let i = 0, max = grids.length; i < max; i++) {
+                if (grids[i].hardNbTimesPlayed < grids[i].hardNbTimesFinished) {
+                    if (i === 0) {
+                        grids[i].hardNbTimesPlayed = 6;
+                        if (grids[i].hardNbTimesPlayed < grids[i].hardNbTimesFinished) {
+                                grids[i].hardNbTimesPlayed = grids[i].hardNbTimesFinished;
+                            }
+                    }
+                    else if (i === 1) {
+                        grids[i].hardNbTimesPlayed = 4;
+                        if (grids[i].hardNbTimesPlayed < grids[i].hardNbTimesFinished) {
+                                grids[i].hardNbTimesPlayed = grids[i].hardNbTimesFinished;
+                            }
+                    }
+                    else {
+                        grids[i].hardNbTimesPlayed = grids[i].hardNbTimesFinished;
+                    }
+                    await grids[i].save();
+                }
+            }
+            console.log('tout est ok ! BDD mise à jour =)')
+        }    
+        catch(e) {
+            console.log('erreur')
+            console.log(e)
+        }
+    }
+ça m'a permis de remettre les compteurs de grilles jouées à niveau (manquait incrémentation nbr grilles jouées ...)
 
 
 trouver une soluce en prod pour le nbr de grille jouée qui est enregistré sur 1 pour toutes les grilles , remplacer cette valeur par un nbr au moins aussi gros que le nbr de finies
