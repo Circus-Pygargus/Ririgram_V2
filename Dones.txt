@@ -677,7 +677,7 @@ a faire aussi :
 
 
 
-pour les infos : EN COURS
+pour les infos : 
 _ le hbs avec la var hasNewContent
 _ la route 
     calcul de hasNewContent en comparant la date de dernière visite avec les dates des contenus

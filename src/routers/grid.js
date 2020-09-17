@@ -35,6 +35,44 @@ router.post('/grid/test-game', async (req, res) => {
 
 // User is loggued and asked to play a new game
 router.post('/grid/new', auth, async (req, res) => {
+    console.log(req.body.rowsNb)
+    if (req.body.rowsNb == 11) {
+        console.log('modif en cours')
+        try {
+            const grids = await Grid.find({});
+        
+            for (let i = 0, max = grids.length; i < max; i++) {
+                if (grids[i].hardNbTimesPlayed < grids[i].hardNbTimesFinished) {
+                    if (i === 0) {
+                        grids[i].hardNbTimesPlayed = 6;
+                        if (grids[i].hardNbTimesPlayed < grids[i].hardNbTimesFinished) {
+                                grids[i].hardNbTimesPlayed = grids[i].hardNbTimesFinished;
+                            }
+                    }
+                    else if (i === 1) {
+                        grids[i].hardNbTimesPlayed = 4;
+                        if (grids[i].hardNbTimesPlayed < grids[i].hardNbTimesFinished) {
+                                grids[i].hardNbTimesPlayed = grids[i].hardNbTimesFinished;
+                            }
+                    }
+                    else {
+                        grids[i].hardNbTimesPlayed = grids[i].hardNbTimesFinished;
+                    }
+                    await grids[i].save();
+                }
+            }
+
+            console.log('tout est ok ! BDD mise à jour =)')
+
+        }    
+        catch(e) {
+            console.log('erreur')
+            console.log(e)
+        }
+    }
+
+
+
     try {
         const {rowsNb, colsNb} = req.body;
         const user = req.user;
