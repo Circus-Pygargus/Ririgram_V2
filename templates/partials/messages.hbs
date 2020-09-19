@@ -4,7 +4,7 @@
 
         {{#each messages}}
         <div class="message">
-            <div class="header">
+            <div class="msg-header">
                 <div class="owner">{{this.owner}}</div>
                 <div class="date">{{this.createdAt}}</div>
                 {{#ifEquals ../user.name this.owner}}
@@ -35,11 +35,11 @@
             </div>
             {{#if this.answer}}
             <div class="answer">
-                <div class="header">
+                <div class="answer-header">
                     <div class="owner">{{this.answerOwner}}</div>
                     <div class="date">{{this.updatedAt}}</div>
                 </div>
-                <div class="msg-answer">{{this.answer}}</div>
+                <div class="answer-msg">{{this.answer}}</div>
             </div>
             {{/if}}
         </div>

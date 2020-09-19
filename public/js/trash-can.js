@@ -1,4 +1,6 @@
-const trashCanBtn = document.querySelector('#trash-can-btn');
+const gridOptionsDiv = document.querySelector('#grid-options');
+
+const trashCanBtn = document.querySelector('#grid-trash-btn');
 
 const trashCanDiv = document.querySelector('#trash-can-div');
 
@@ -34,7 +36,7 @@ trashCanConfirmedBtn.addEventListener('click', (e) => {
         if (!response.message) return sendNotification('error', response.error);
 
         sendNotification('success', response.message);
-        trashCanBtn.classList.add('d-none');
+        gridOptionsDiv.classList.add('d-none');
         trashCanDiv.classList.add('d-none');
         
         document.querySelector('#main-title').classList.remove('in-game');

@@ -246,7 +246,7 @@ const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newCol
     // display the trash can button if user is logged so he can refuse this grid
     if (isUserLogged) {
         // already declared in trash-can.js
-        trashCanBtn.classList.remove('d-none'); 
+        gridOptionsDiv.classList.remove('d-none'); 
     }
 
     // watch any window rezising

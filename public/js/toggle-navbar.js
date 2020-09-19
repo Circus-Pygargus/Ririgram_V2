@@ -14,6 +14,6 @@ toggleNavbarBtn.addEventListener('click', (e) => {
 
         if (document.querySelector('#main-title').classList.contains('in-game')) {
                 gameZone.classList.toggle('d-none');
-                trashCanBtn.classList.toggle('d-none');
+                if (isUserLogged) gridOptionsDiv.classList.toggle('d-none');
         }
 });

@@ -1,6 +1,6 @@
 {{#each infos}}
     <div class="info">
-        <div class="header">
+        <div class="info-header">
             <div data-info-id="{{this._id}}" class="info-version{{#if this.notSeen}} not-seen{{/if}}">{{this.version}}</div>
             <div class="info-title" data-info-id="{{this._id}}">{{this.title}}</div>
             {{#if ../isAdmin}}

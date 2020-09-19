@@ -14,14 +14,14 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    
-    <header>
-        {{>header}}
-    </header>
 
 
     <main>
         <div id="no-js" class="d-none"></div>
+    
+        <div id="main-title">
+            {{>header}}
+        </div>
 
         <div id="nav-div">
             {{#if userLogged}}
@@ -29,7 +29,11 @@
             {{else}}
                 {{>navNotLogged}}
             {{/if}}
-        </div>        
+        </div>
+
+        <div id="grid-options" class="d-none">
+            {{>grid_options}}
+        </div>
 
         <div id="game-zone" class="d-none">
             {{!-- for gameboard or grid list --}}

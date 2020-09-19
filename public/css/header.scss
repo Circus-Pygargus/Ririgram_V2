@@ -1,7 +1,8 @@
-header {
+// div.header {
 
     div#main-title {
         display: flex;
+        flex-direction: row;
         flex-wrap: nowrap;
         margin-top: 7vh;
 
@@ -18,13 +19,6 @@ header {
             &.hidden {
                 opacity: 0;
             }
-        }
-
-        svg#trash-can-btn {
-            position: relative;
-            top: 2.5rem;
-            right: 1.5rem;
-            cursor: pointer;
         }
 
         h1 {
@@ -50,4 +44,4 @@ header {
             margin-bottom: 7vh;
         }
     }
-}
+// }

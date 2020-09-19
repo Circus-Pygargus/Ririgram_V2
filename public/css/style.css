@@ -185,63 +185,60 @@
   text-align: center;
 }
 
-header div#main-title {
+div#main-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   margin-top: 7vh;
 }
 
-header div#main-title svg {
+div#main-title svg {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
   font-size: x-large;
 }
 
-header div#main-title svg#toggle-navbar {
+div#main-title svg#toggle-navbar {
   cursor: pointer;
   -ms-grid-column-align: left;
       justify-self: left;
   margin-left: 5vw;
 }
 
-header div#main-title svg#toggle-navbar.hidden {
+div#main-title svg#toggle-navbar.hidden {
   opacity: 0;
 }
 
-header div#main-title svg#trash-can-btn {
-  position: relative;
-  top: 2.5rem;
-  right: 1.5rem;
-  cursor: pointer;
-}
-
-header div#main-title h1 {
+div#main-title h1 {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   text-align: center;
 }
 
-header div#main-title svg.fullscreen-svg {
+div#main-title svg.fullscreen-svg {
   cursor: pointer;
   -ms-grid-column-align: right;
       justify-self: right;
   margin-right: 5vw;
 }
 
-header div#main-title svg.fullscreen-svg.d-none {
+div#main-title svg.fullscreen-svg.d-none {
   display: none;
 }
 
-header div#main-title svg.fullscreen-svg:active {
+div#main-title svg.fullscreen-svg:active {
   color: #FF8800;
 }
 
-header div#main-title.in-game {
+div#main-title.in-game {
   margin-bottom: 7vh;
 }
 
@@ -683,15 +680,15 @@ form#user-logout-form input[type="checkbox"] {
   border: 1px solid #FAFAFA;
 }
 
-.info .header {
+.info .info-header {
   position: relative;
 }
 
-.info .header .info-version {
+.info .info-header .info-version {
   margin-bottom: 0.5rem;
 }
 
-.info .header .info-version.not-seen::before {
+.info .info-header .info-version.not-seen::before {
   content: '!';
   position: absolute;
   top: 0;
@@ -700,28 +697,28 @@ form#user-logout-form input[type="checkbox"] {
   color: #FF8800;
 }
 
-.info .header svg.info-pencil {
+.info .info-header svg.info-pencil {
   position: absolute;
   top: 0.1rem;
   right: 2rem;
   cursor: pointer;
 }
 
-.info .header svg.trash-info {
+.info .info-header svg.trash-info {
   position: absolute;
   top: 0.1rem;
   right: 0.1rem;
   cursor: pointer;
 }
 
-.info .header svg.info-show {
+.info .info-header svg.info-show {
   position: absolute;
   bottom: 0.1rem;
   right: 0.1rem;
   cursor: pointer;
 }
 
-.info .header svg.info-show.up {
+.info .info-header svg.info-show.up {
   -webkit-transform: rotate(0.5turn);
           transform: rotate(0.5turn);
 }
@@ -735,19 +732,19 @@ form#user-logout-form input[type="checkbox"] {
   margin-top: 2rem;
 }
 
-#messages .message .header {
+#messages .message .msg-header {
   margin-bottom: 0.5rem;
 }
 
-#messages .message .header div {
+#messages .message .msg-header div {
   display: inline-block;
 }
 
-#messages .message .header .date {
+#messages .message .msg-header .date {
   margin-left: 0.6rem;
 }
 
-#messages .message .header .delete {
+#messages .message .msg-header .delete {
   cursor: pointer;
   float: right;
 }
@@ -804,13 +801,24 @@ form#user-logout-form input[type="checkbox"] {
   border-bottom-right-radius: 6px;
 }
 
-#messages .message .answer .header {
+#messages .message .answer .answer-header {
   padding: 0.5rem 0.6rem 0.5rem 0;
   text-align: right;
 }
 
-#messages .message .answer .msg-answer {
+#messages .message .answer .answer-msg {
   margin: 1rem 1.5rem;
+}
+
+#grid-options {
+  position: absolute;
+  top: 9rem;
+  left: 2rem;
+}
+
+#grid-options svg {
+  cursor: pointer;
+  font-size: x-large;
 }
 
 /* variables */

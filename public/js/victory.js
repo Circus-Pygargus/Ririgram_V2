@@ -57,7 +57,7 @@ const victory = (isUserLogged, tilesCliksNb, clicksNbForPerfectGame, isBrandNewG
         // As user is not logged, display this
         youShouldRegister.classList.remove('d-none');
         // and hide that
-        trashCanBtn.classList.remove('d-none'); 
+        // gridOptionsDiv.classList.remove('d-none'); 
     
     }
     // user is logged
@@ -149,7 +149,7 @@ victoryCloseBtn.addEventListener('click', (event) => {
     
     mainContent.innerHTML = '';
     gameZone.classList.add('d-none');
-    trashCanBtn.classList.add('d-none');
+    gridOptionsDiv.classList.add('d-none');
     navContainer.classList.remove('hidden');
     victoryDiv.classList.add('d-none');
 });

@@ -4,7 +4,7 @@
         font-size: 1.2rem;
         margin-top: 2rem;
 
-        .header {
+        .msg-header {
             margin-bottom: 0.5rem;
 
             div {
@@ -75,12 +75,12 @@
             border-bottom-left-radius: 6px;
             border-bottom-right-radius: 6px;
 
-            .header {
+            .answer-header {
                 padding: 0.5rem 0.6rem 0.5rem 0;
                 text-align: right;
             }
 
-            .msg-answer {
+            .answer-msg {
                 margin: 1rem 1.5rem;
             }
         }
