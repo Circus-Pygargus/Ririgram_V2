@@ -1075,9 +1075,9 @@ form#user-logout-form input[type="checkbox"] {
 }
 
 #game-answer-buttons .answer-btns-line #answer-maybe-no::before {
-  content: 'Maybe no';
+  content: 'p-e non';
   top: -17px;
-  left: 3px;
+  left: 7px;
 }
 
 #game-answer-buttons .answer-btns-line #answer-maybe-yes {
@@ -1085,9 +1085,9 @@ form#user-logout-form input[type="checkbox"] {
 }
 
 #game-answer-buttons .answer-btns-line #answer-maybe-yes::before {
-  content: 'Maybe yes';
+  content: 'p-e oui';
   top: -17px;
-  left: 3px;
+  left: 7px;
 }
 
 #game-answer-buttons .answer-btns-line #answer-no {
@@ -1095,7 +1095,7 @@ form#user-logout-form input[type="checkbox"] {
 }
 
 #game-answer-buttons .answer-btns-line #answer-no::before {
-  content: 'No';
+  content: 'Non';
   top: -17px;
   left: 17px;
 }
@@ -1105,7 +1105,7 @@ form#user-logout-form input[type="checkbox"] {
 }
 
 #game-answer-buttons .answer-btns-line #answer-yes::before {
-  content: 'Yes';
+  content: 'Oui';
   top: -17px;
   left: 17px;
 }

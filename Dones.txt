@@ -684,7 +684,29 @@ ajout de ce code dans grid router /grid/new :
 ça m'a permis de remettre les compteurs de grilles jouées à niveau (manquait incrémentation nbr grilles jouées ...)
 
 
-trouver une soluce en prod pour le nbr de grille jouée qui est enregistré sur 1 pour toutes les grilles , remplacer cette valeur par un nbr au moins aussi gros que le nbr de finies
+
+
+POUSSE VERS GIT AVEC LE TAG 2020-09-17
+
+contenu du message associé sur le site en prod :
+titre: Amélioration du message de victoire
+
+Ajouts nombreux dans la fenêtre de victoire :
+  - chrono du joueur
+  - son meilleur chrono si grille rejouée en moins rapide
+  - record du monde
+  - détenteur du record
+  - classement du joueur pour cette grille
+  - nombre de fois où la grille a été jouées et finies par l'ensemble des joueurs
+_____________________________________________________________________________________________
+
+
+
+
+légères modif css : affichage de p-e oui au lieu de may-be yes et les autres
+
+
+
 
 
 
@@ -701,7 +723,6 @@ _ modif du model Grid : faire les ref correctement ?
 
 
 a faire aussi : 
-- manque admin check dans router /infos.new
 - améliorer le style des infos ...
 - effacer les messages avec la poubelle (renommer tout ce qui est trashcan en trash-msg ou un truc du genre)
 
@@ -737,13 +758,16 @@ _ les bugs
 
 
 
+
+
+
 bug: 
 _ pour /infos/delete , retour avec une erreur 500 sans message si l'info à effacer n'existe pas !
 _ juste après enregistrement d'une nouvelle info, si on veut voir une info :
     info.js:196 Uncaught TypeError: Cannot read property 'classList' of null
     at SVGSVGElement.<anonymous> (info.js:196)
 _ les infos ne sont pas livrées si création d'utilisateur
-_ gamecross : si partie gagnée en jouant avec la croix, à la partie suivante, la croix reste en allumée mais n'est pas prise en compte ... faire un reset de isUsingCross ou garder la croix et recoller les enlignt de helper sur la première case de la grile
+_ gamecross : si partie gagnée en jouant avec la croix, à la partie suivante, la croix reste en allumée mais n'est pas prise en compte ... faire un reset de isUsingCross ou garder la croix et recoller les enlignt de helper sur la première case de la grille
 
 
 
@@ -867,7 +891,7 @@ _ Victory :
     un bouton pour avoir toutes les données relatives à cette grille :
         Joueur chrono nbCoups nbXjouées nbXfinies
 _ Améliorer la recherche de nouvelle grille, car l'array contenant les grilles exsistantes peut vite devenir beaucoup trop grosse.
-Lorsque ce sera le cas ne rechercher que les grilles ayant une date postérieure à la dernière jouée. pb : pas envie de tuer la bdd parce que je modifie une nouvelle fois une collection en ajoutant des fields non prévus ... soluce : capter comment on fait ça sans effacer la bddet surtout sur un serveur en prod ! lol je sens que ça va être fun ça !
+Lorsque ce sera le cas ne rechercher que les grilles ayant une date postérieure à la dernière jouée. pb : pas envie de tuer la bdd parce que je modifie une nouvelle fois une collection en ajoutant des fields non prévus ... soluce : capter comment on fait ça sans effacer la bdd et surtout sur un serveur en prod ! lol je sens que ça va être fun ça !
 On pourrait aussi lancer la récup des grilles existantes par pacquets
 
 
