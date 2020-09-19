@@ -205,17 +205,6 @@ div#main-title svg {
   font-size: x-large;
 }
 
-div#main-title svg#toggle-navbar {
-  cursor: pointer;
-  -ms-grid-column-align: left;
-      justify-self: left;
-  margin-left: 5vw;
-}
-
-div#main-title svg#toggle-navbar.hidden {
-  opacity: 0;
-}
-
 div#main-title h1 {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -1337,6 +1326,18 @@ main div#no-js {
 
 main div#no-js.d-none {
   display: none;
+}
+
+main svg#toggle-navbar {
+  position: absolute;
+  top: 6rem;
+  left: 2rem;
+  cursor: pointer;
+  font-size: x-large;
+}
+
+main svg#toggle-navbar.hidden {
+  opacity: 0;
 }
 
 main div#nav-div {

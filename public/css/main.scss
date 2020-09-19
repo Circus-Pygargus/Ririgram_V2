@@ -42,6 +42,18 @@ main {
             display: none;
         }
     }
+
+    svg#toggle-navbar {
+        position: absolute;
+        top: 6rem;
+        left: 2rem;
+        cursor: pointer;
+        font-size: x-large;
+
+        &.hidden {
+            opacity: 0;
+        }
+    }
     
     div#nav-div {
         overflow: auto;

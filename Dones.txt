@@ -707,7 +707,10 @@ légères modif css : affichage de p-e oui au lieu de may-be yes et les autres
 
 Destructuration du header : modif HTML et CSS pour mise en place correcte des boutons reset grid et reset maybe : en plusieurs commits :
 
+création #grid-options
 renommé #trash-can-btn en #grid-trash-btn, déplacé dans #grid-options
+
+Déplacement de svg#toggle-navbar
 
 
 

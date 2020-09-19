@@ -11,15 +11,15 @@
             font-size: x-large;
         }
 
-        svg#toggle-navbar {
-            cursor: pointer;
-            justify-self: left;
-            margin-left: 5vw;
+        // svg#toggle-navbar {
+        //     cursor: pointer;
+        //     justify-self: left;
+        //     margin-left: 5vw;
 
-            &.hidden {
-                opacity: 0;
-            }
-        }
+        //     &.hidden {
+        //         opacity: 0;
+        //     }
+        // }
 
         h1 {
             flex-grow: 1;
