@@ -185,50 +185,42 @@
   text-align: center;
 }
 
-div#main-title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  margin-top: 7vh;
-}
-
-div#main-title svg {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+svg#toggle-navbar,
+svg.fullscreen-svg {
+  position: absolute;
+  top: 3rem;
+  cursor: pointer;
   font-size: x-large;
 }
 
-div#main-title h1 {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  text-align: center;
+svg#toggle-navbar {
+  left: 2rem;
 }
 
-div#main-title svg.fullscreen-svg {
-  cursor: pointer;
-  -ms-grid-column-align: right;
-      justify-self: right;
-  margin-right: 5vw;
+svg#toggle-navbar.hidden {
+  opacity: 0;
 }
 
-div#main-title svg.fullscreen-svg.d-none {
+svg.fullscreen-svg {
+  right: 2rem;
+}
+
+svg.fullscreen-svg.d-none {
   display: none;
 }
 
-div#main-title svg.fullscreen-svg:active {
+svg.fullscreen-svg:active {
   color: #FF8800;
 }
 
-div#main-title.in-game {
-  margin-bottom: 7vh;
+div#main-title {
+  position: absolute;
+  top: 2.6rem;
+  width: 100vw;
+}
+
+div#main-title h1 {
+  text-align: center;
 }
 
 nav.user-not-logged,
@@ -801,7 +793,7 @@ form#user-logout-form input[type="checkbox"] {
 
 #grid-options {
   position: absolute;
-  top: 9rem;
+  top: 7rem;
   left: 2rem;
 }
 
@@ -1291,7 +1283,6 @@ html {
 }
 
 body {
-  padding: 0 2vw;
   background-color: #0F101B;
   color: #FAFAFA;
 }
@@ -1307,6 +1298,10 @@ body {
             flex-direction: column;
     height: 100vh;
   }
+}
+
+main {
+  padding-top: 7rem;
 }
 
 @media screen and (max-width: 450px) {
@@ -1326,18 +1321,6 @@ main div#no-js {
 
 main div#no-js.d-none {
   display: none;
-}
-
-main svg#toggle-navbar {
-  position: absolute;
-  top: 6rem;
-  left: 2rem;
-  cursor: pointer;
-  font-size: x-large;
-}
-
-main svg#toggle-navbar.hidden {
-  opacity: 0;
 }
 
 main div#nav-div {

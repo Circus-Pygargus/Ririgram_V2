@@ -35,13 +35,15 @@ const closeFullscreen = () => {
 };
 
 goFullscreenBtn.addEventListener('click', (e) => {
-    e.target.classList.add('d-none');
+    // .closest('svg') because we can click on one child (path)
+    e.target.closest('svg').classList.add('d-none');
     exitFullscreenBtn.classList.remove('d-none');
     openFullscreen();
 });
 
 exitFullscreenBtn.addEventListener('click', (e) => {
-    e.target.classList.add('d-none');
+    // .closest('svg') because we can click on one child (path)
+    e.target.closest('svg').classList.add('d-none');
     goFullscreenBtn.classList.remove('d-none');
     closeFullscreen();
 });

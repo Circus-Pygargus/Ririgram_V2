@@ -1,15 +1,45 @@
-// div.header {
+    svg#toggle-navbar,
+    svg.fullscreen-svg {
+        position: absolute;
+        top: 3rem;
+        cursor: pointer;
+        font-size: x-large;
+    }
+
+    svg#toggle-navbar {
+        left: 2rem;
+
+        &.hidden {
+            opacity: 0;
+        }
+    }
+
+    svg.fullscreen-svg {
+        right: 2rem;
+
+        &.d-none {
+            display: none;
+        }
+
+        &:active {
+            color: $color-primary;
+        }
+
+    }
 
     div#main-title {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        margin-top: 7vh;
+        position: absolute;
+        top: 2.6rem;
+        width: 100vw;
+        // display: flex;
+        // flex-direction: row;
+        // flex-wrap: nowrap;
+        // margin-top: 7vh;
 
-        svg {
-            align-self: center;
-            font-size: x-large;
-        }
+        // svg {
+        //     align-self: center;
+        //     font-size: x-large;
+        // }
 
         // svg#toggle-navbar {
         //     cursor: pointer;
@@ -22,26 +52,41 @@
         // }
 
         h1 {
-            flex-grow: 1;
+            // flex-grow: 1;
             text-align: center;
         }
 
-        svg.fullscreen-svg {
-            cursor: pointer;
-            justify-self: right;
-            margin-right: 5vw;
+        // svg.fullscreen-svg {
+        //     cursor: pointer;
+        //     justify-self: right;
+        //     margin-right: 5vw;
 
-            &.d-none {
-                display: none;
-            }
+        //     &.d-none {
+        //         display: none;
+        //     }
 
-            &:active {
-                color: $color-primary;
-            }
-        }
+        //     &:active {
+        //         color: $color-primary;
+        //     }
+        // }
 
-        &.in-game {
-            margin-bottom: 7vh;
-        }
+        // &.in-game {
+        //     margin-bottom: 7vh;
+        // }
     }
+
+    // svg.fullscreen-svg {
+    //     cursor: pointer;
+    //     justify-self: right;
+    //     margin-right: 5vw;
+
+    //     &.d-none {
+    //         display: none;
+    //     }
+
+    //     &:active {
+    //         color: $color-primary;
+    //     }
+    // }
+
 // }

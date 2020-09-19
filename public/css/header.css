@@ -1,33 +1,43 @@
-header {
-  margin-top: 7vh;
+svg#toggle-navbar {
+  position: absolute;
+  top: 6rem;
+  left: 2rem;
+  cursor: pointer;
+  font-size: x-large;
 }
 
-header div.main-title {
+svg#toggle-navbar.hidden {
+  opacity: 0;
+}
+
+div#main-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
+  margin-top: 7vh;
 }
 
-header div.main-title h1 {
+div#main-title svg {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: x-large;
+}
+
+div#main-title h1 {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   text-align: center;
 }
 
-header div.main-title svg.fullscreen-svg {
-  -ms-grid-column-align: right;
-      justify-self: right;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  margin-right: 5vw;
-  font-size: x-large;
-}
-
-header div.main-title svg.fullscreen-svg.d-none {
-  display: none;
+div#main-title.in-game {
+  margin-bottom: 7vh;
 }
 /*# sourceMappingURL=header.css.map */

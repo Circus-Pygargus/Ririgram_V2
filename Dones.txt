@@ -712,6 +712,8 @@ renommé #trash-can-btn en #grid-trash-btn, déplacé dans #grid-options
 
 Déplacement de svg#toggle-navbar
 
+Déplacement de #go-fullscreen et #exit-fullscreen
+
 
 
 
