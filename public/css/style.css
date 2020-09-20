@@ -1211,6 +1211,10 @@ form#user-logout-form input[type="checkbox"] {
   display: none;
 }
 
+#victory button.not-implemented, #failed button.not-implemented {
+  color: grey;
+}
+
 #grid-trash-div {
   position: absolute;
   z-index: 1;

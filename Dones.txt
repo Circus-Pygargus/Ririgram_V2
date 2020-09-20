@@ -719,6 +719,8 @@ Ajout des boutons #reset-grid-btn et #maybe-reset-btn, mise en place de leur act
 Modification de classe des notifications: de success, info et error vers notif-success, notif-info et notif-error
 ajout d'une bordure à la notification
 
+ajout classe not-implemented au bouton choisir grille de Victory
+
 
 
 

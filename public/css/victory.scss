@@ -83,5 +83,10 @@
         &.d-none {
             display: none;
         }
+
+        // !! juste pendant le développement
+        &.not-implemented {
+            color: grey;
+        }
     }
 }
