@@ -8,6 +8,7 @@
 
     svg#toggle-navbar {
         left: 2rem;
+        z-index: 1;
 
         &.hidden {
             opacity: 0;

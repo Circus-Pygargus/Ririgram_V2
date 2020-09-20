@@ -195,6 +195,7 @@ svg.fullscreen-svg {
 
 svg#toggle-navbar {
   left: 2rem;
+  z-index: 1;
 }
 
 svg#toggle-navbar.hidden {
@@ -793,13 +794,23 @@ form#user-logout-form input[type="checkbox"] {
 
 #grid-options {
   position: absolute;
-  top: 7rem;
+  top: 6rem;
   left: 2rem;
 }
 
 #grid-options svg {
+  display: block;
   cursor: pointer;
   font-size: x-large;
+  margin-bottom: 1rem;
+}
+
+#grid-options svg#reset-grid-btn {
+  color: var(--color-answer-yes);
+}
+
+#grid-options svg#maybe-reset-btn {
+  color: var(--color-answer-maybe-yes);
 }
 
 /* variables */
@@ -1199,7 +1210,7 @@ form#user-logout-form input[type="checkbox"] {
   display: none;
 }
 
-#trash-can-div {
+#grid-trash-div {
   position: absolute;
   z-index: 1;
   top: 0;
@@ -1213,20 +1224,20 @@ form#user-logout-form input[type="checkbox"] {
   background-color: #0F101B;
 }
 
-#trash-can-div h2 {
+#grid-trash-div h2 {
   margin-top: 12px;
   margin-bottom: 48px;
 }
 
-#trash-can-div p {
+#grid-trash-div p {
   margin-bottom: 32px;
 }
 
-#trash-can-div p.d-none {
+#grid-trash-div p.d-none {
   display: none;
 }
 
-#trash-can-div button {
+#grid-trash-div button {
   cursor: pointer;
   width: 16rem;
   max-width: 100%;
@@ -1243,21 +1254,21 @@ form#user-logout-form input[type="checkbox"] {
   border-radius: 5px;
 }
 
-#trash-can-div button:hover {
+#grid-trash-div button:hover {
   border-color: #FF8800;
 }
 
-#trash-can-div button:active {
+#grid-trash-div button:active {
   background-color: #FF8800;
   color: #FAFAFA;
   border-color: #FAFAFA;
 }
 
-#trash-can-div button:focus {
+#grid-trash-div button:focus {
   outline: none;
 }
 
-#trash-can-div button.d-none {
+#grid-trash-div button.d-none {
   display: none;
 }
 

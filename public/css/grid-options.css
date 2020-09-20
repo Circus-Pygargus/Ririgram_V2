@@ -1,11 +1,21 @@
 #grid-options {
   position: absolute;
-  top: 7rem;
+  top: 6rem;
   left: 2rem;
 }
 
 #grid-options svg {
+  display: block;
   cursor: pointer;
   font-size: x-large;
+  margin-bottom: 1rem;
+}
+
+#grid-options svg#reset-grid-btn {
+  color: var(--color-answer-yes);
+}
+
+#grid-options svg#maybe-reset-btn {
+  color: var(--color-answer-maybe-yes);
 }
 /*# sourceMappingURL=grid-options.css.map */
