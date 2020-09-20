@@ -22,7 +22,7 @@ const sendNotification = (status, message) => {
         }
     }
     // build visual and animation, type will change background color
-    notifDiv.classList.add('notification', status);
+    notifDiv.classList.add('notification', `notif-${status}`);
 
     // Include the message
     const notifText = document.createElement('p');

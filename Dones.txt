@@ -716,6 +716,9 @@ Déplacement de #go-fullscreen et #exit-fullscreen
 
 Ajout des boutons #reset-grid-btn et #maybe-reset-btn, mise en place de leur actions (remise à zéro du contenu de la grille et effacement des maybe)
 
+Modification de classe des notifications: de success, info et error vers notif-success, notif-info et notif-error
+ajout d'une bordure à la notification
+
 
 
 

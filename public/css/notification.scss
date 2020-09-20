@@ -90,6 +90,7 @@
     font-size: larger;
     animation-name: showNotification;
     animation-duration: var(--notif-duration);
+    border: 1px solid $color-font;
 
     // Pause animation
     &.paused {
@@ -103,15 +104,15 @@
     }
 
     // Change color according to status
-    &.success {
+    &.notif-success {
         background-color: var(--color-notif-success);
     }
 
-    &.info {
+    &.notif-info {
         background-color: var(--color-notif-info);
     }
 
-    &.error {
+    &.notif-error {
         background-color: var(--color-notif-error);
     }
 

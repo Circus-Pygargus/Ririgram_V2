@@ -154,6 +154,7 @@
           animation-name: showNotification;
   -webkit-animation-duration: var(--notif-duration);
           animation-duration: var(--notif-duration);
+  border: 1px solid var(--color-font);
 }
 
 .notification.paused {
@@ -168,15 +169,15 @@
           animation-duration: 1s;
 }
 
-.notification.success {
+.notification.notif-success {
   background-color: var(--color-notif-success);
 }
 
-.notification.info {
+.notification.notif-info {
   background-color: var(--color-notif-info);
 }
 
-.notification.error {
+.notification.notif-error {
   background-color: var(--color-notif-error);
 }
 
