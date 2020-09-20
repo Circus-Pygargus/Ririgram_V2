@@ -724,6 +724,21 @@ ajout classe not-implemented au bouton choisir grille de Victory
 
 
 
+POUSSE VERS GIT AVEC LE TAG 2020-09-20
+
+contenu du message associé sur le site en prod :
+titre: Ajout de boutons reset
+
+Ajouts :
+  - un bouton orange pour remettre la grille à zéro. Situé sous la poubelle de grille, il efface toutes les réponses données aux cases de la grille.
+  - un bouton jaune pour effacer les peut-être, son rôle est de redonner la couleur d'origine aux cases cochées avec 'peut-être oui' ou 'peut-être non' sans modifier les cases cochées 'oui' ou 'non'
+
+Attention, un clic sur ces boutons n'est pas comptabilisé comme un coup, cependant le nombre de coups pour cette grille n'est pas remis à zéro.
+_____________________________________________________________________________________________
+
+
+
+
 
 
 
