@@ -740,6 +740,10 @@ ________________________________________________________________________________
 
 modif: width: 100% au lieu de 100vw pour h1 sinon, ascenseur horizontal
 
+Création de la branche 'responsive'
+
+mise en place style ingame pour landscape phone
+
 
 
 

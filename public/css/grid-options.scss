@@ -2,6 +2,7 @@
     position: absolute;
     top: 6rem;
     left: 2rem;
+    z-index: 1;
 
     svg {
         display: block;
@@ -15,6 +16,20 @@
 
         &#maybe-reset-btn {
             color: var(--color-answer-maybe-yes);
+        }
+    }
+}
+
+@include landscapephone {
+
+    #grid-options {
+        
+        svg {
+            display: inline-block;
+
+            &:not(:first-of-type) {
+                margin-left: 2rem;
+            }
         }
     }
 }

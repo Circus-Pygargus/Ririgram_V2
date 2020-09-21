@@ -158,7 +158,10 @@
     display:flex;
     flex-wrap: wrap;
     align-content: space-around;
+    position: absolute;
+    top: 0;
     height: 100%;
+    padding-top: 7rem;
 
     &.d-none {
         display: none;
@@ -278,6 +281,27 @@
             margin-right: 15vw;
         }
     }
+}
 
 
+@include landscapephone {
+
+    #game-zone {
+        width: 100%;
+        padding-top: 0;
+    }
+
+    #gameboard-div {
+        order: 2;
+    }
+
+    #game-cross {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+
+    #game-answer-buttons {
+        order: 3;
+        margin-bottom: 5rem;
+    }
 }

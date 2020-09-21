@@ -2,6 +2,7 @@
   position: absolute;
   top: 6rem;
   left: 2rem;
+  z-index: 1;
 }
 
 #grid-options svg {

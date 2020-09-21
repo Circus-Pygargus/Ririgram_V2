@@ -2,6 +2,7 @@
     svg.fullscreen-svg {
         position: absolute;
         top: 3rem;
+        z-index: 1;
         cursor: pointer;
         font-size: x-large;
     }
@@ -91,3 +92,14 @@
     // }
 
 // }
+
+@include landscapephone {
+
+    div#main-title {
+
+        &.in-game {
+            width: auto;
+            margin-left: 5rem;
+        }
+    }
+}

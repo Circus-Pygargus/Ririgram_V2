@@ -1,0 +1,30 @@
+@mixin landscapephone {
+    // @media screen and (min-width: 568px) {
+    @media screen and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: 577px) and (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        @content;
+    }
+}
+
+@mixin xldesktop {
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+        @content;
+    }
+}
+
+@mixin xxldesktop {
+    @media screen and (min-width: 1200px) {
+        @content;
+    }
+}

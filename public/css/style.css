@@ -190,6 +190,7 @@ svg#toggle-navbar,
 svg.fullscreen-svg {
   position: absolute;
   top: 3rem;
+  z-index: 1;
   cursor: pointer;
   font-size: x-large;
 }
@@ -223,6 +224,13 @@ div#main-title {
 
 div#main-title h1 {
   text-align: center;
+}
+
+@media screen and (orientation: landscape) {
+  div#main-title.in-game {
+    width: auto;
+    margin-left: 5rem;
+  }
 }
 
 nav.user-not-logged,
@@ -797,6 +805,7 @@ form#user-logout-form input[type="checkbox"] {
   position: absolute;
   top: 6rem;
   left: 2rem;
+  z-index: 1;
 }
 
 #grid-options svg {
@@ -812,6 +821,15 @@ form#user-logout-form input[type="checkbox"] {
 
 #grid-options svg#maybe-reset-btn {
   color: var(--color-answer-maybe-yes);
+}
+
+@media screen and (orientation: landscape) {
+  #grid-options svg {
+    display: inline-block;
+  }
+  #grid-options svg:not(:first-of-type) {
+    margin-left: 2rem;
+  }
 }
 
 /* variables */
@@ -999,7 +1017,10 @@ form#user-logout-form input[type="checkbox"] {
       flex-wrap: wrap;
   -ms-flex-line-pack: distribute;
       align-content: space-around;
+  position: absolute;
+  top: 0;
   height: 100%;
+  padding-top: 7rem;
 }
 
 #game-zone.d-none {
@@ -1118,6 +1139,30 @@ form#user-logout-form input[type="checkbox"] {
 .erase-btns div.erase-btn svg {
   font-size: x-large;
   margin-right: 15vw;
+}
+
+@media screen and (orientation: landscape) {
+  #game-zone {
+    width: 100%;
+    padding-top: 0;
+  }
+  #gameboard-div {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+  #game-cross {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    margin-bottom: 2rem;
+  }
+  #game-answer-buttons {
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+    margin-bottom: 5rem;
+  }
 }
 
 #victory, #failed {
@@ -1303,31 +1348,6 @@ body {
   color: #FAFAFA;
 }
 
-@media screen and (max-width: 450px) {
-  body {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    height: 100vh;
-  }
-}
-
-main {
-  padding-top: 7rem;
-}
-
-@media screen and (max-width: 450px) {
-  main {
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
-  }
-}
-
 main div#no-js {
   display: block;
   text-align: center;
@@ -1341,6 +1361,7 @@ main div#no-js.d-none {
 
 main div#nav-div {
   overflow: auto;
+  padding-top: 7rem;
 }
 
 main div#nav-div.hidden {
