@@ -738,6 +738,10 @@ ________________________________________________________________________________
 
 
 
+modif: width: 100% au lieu de 100vw pour h1 sinon, ascenseur horizontal
+
+
+
 
 
 

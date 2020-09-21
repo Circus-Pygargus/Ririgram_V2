@@ -218,7 +218,7 @@ svg.fullscreen-svg:active {
 div#main-title {
   position: absolute;
   top: 2.6rem;
-  width: 100vw;
+  width: 100%;
 }
 
 div#main-title h1 {
