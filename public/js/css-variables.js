@@ -12,9 +12,11 @@ const setCssGridSize = (rowsNb, colsNb, maxRowHelpers, maxColHelpers) => {
     const gameboardPos = gameboardDiv.offsetTop;
 
     const spaceX =  window.innerWidth;
-    const spaceY = window.innerHeight - gameboardPos;
+    // not anymore as gameboardPos is negative sincework on responsive
+    // const spaceY = window.innerHeight - gameboardPos;
+    const spaceY = window.innerHeight;
 
     const gameboardWidth = (spaceX < spaceY ? (0.95 * spaceX) + 'px' : (0.95 * spaceY) + 'px');
-
+    
     root.style.setProperty('--gameboard-width', gameboardWidth);
 };
