@@ -41,7 +41,7 @@ const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newCol
     clicksNbForPerfectGame = NewClicksNbForPerfectGame;
     gridId = newGridId;
 
-    isUsingCross = false;
+    // isUsingCross = false;
     isClickingChoiceBtn = false;
     leftBtnCurChoice = 'yes';
     selectedRow = 0;
@@ -240,6 +240,14 @@ const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newCol
     // Compute and set some css variables
     setCssGridSize(rowsNb, colsNb, maxRowHelpers, maxColHelpers);
 
+    // As it's anew game, be sure things are ready
+    if (isUsingCross) {
+        document.querySelector('.tile[data-rowid="0"][data-colid="0"]').classList.add('selected');
+    }
+    else {
+        selectChoiceBtn(document.querySelector('#answer-yes'));
+    }
+
     // react when user directly act on a tile
     watchGridActions();
 
@@ -335,17 +343,18 @@ const watchGameButtons = () => {
         });
     });
     // }  
+};
 
-    const selectChoiceBtn = (btn) => {
-        // Show we've chosen a color for next tile
-        answerBtns.forEach((elem) => {
-            elem.classList.remove('current-choice');
-        });
-        btn.classList.add('current-choice');
 
-        // associate this anwser to mouse left button
-        leftBtnCurChoice = btn.dataset.response;
-    };
+const selectChoiceBtn = (btn) => {
+    // Show we've chosen a color for next tile
+    answerBtns.forEach((elem) => {
+        elem.classList.remove('current-choice');
+    });
+    btn.classList.add('current-choice');
+
+    // associate this anwser to mouse left button
+    leftBtnCurChoice = btn.dataset.response;
 };
 
 
@@ -411,10 +420,10 @@ const watchCrossButtons = () => {
                     answerBtn.classList.remove('current-choice');
                 });
                 // select the first tile of the grid and enlight it
-                document.querySelector('.tile[data-rowid="0"][data-colid="0"').classList.add('selected');
+                document.querySelector('.tile[data-rowid="0"][data-colid="0"]').classList.add('selected');
                 // Enlight corresponding headers
-                document.querySelector('.col-head-div[data-colid="0"').classList.add('enlighted');
-                document.querySelector('.row-head-div[data-rowid="0"').classList.add('enlighted');
+                document.querySelector('.col-head-div[data-colid="0"]').classList.add('enlighted');
+                document.querySelector('.row-head-div[data-rowid="0"]').classList.add('enlighted');
                 selectedRow = 0;
                 lastSelectedRow = 0;
                 selectedCol = 0;

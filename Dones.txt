@@ -746,6 +746,9 @@ mise en place style ingame pour landscape phone
 
 modif du calcul de gameboardWidth dans css-variables.js
 
+Correction bug : 
+    maintenant après un partie avec la croix, cette dernière reste sélectionnée pour la partie suivante.
+    maintenant après une fin de partie sans gamecross et dernière sélection avec maybe-yes, pour la partie suivante le bouton yes s'auto-sélectionne et surtout s'affiche comme sélectionné
 
 
 
@@ -755,7 +758,8 @@ modif du calcul de gameboardWidth dans css-variables.js
 
 
 
-message à Fred : cette grille devrait sortir un jour ou l'autre si on fait beaucoup de grilles de cette taille ^^
+
+
 
 
 A REFAIRE POUR LA VERSION BETA :
