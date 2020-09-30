@@ -505,6 +505,9 @@ const tileSolutionChangeUsingCross = (tile) => {
     }
 
     // ?? isCrossClicking ???
+    
+    // fill up the corresponding row and col tiles with 'no' response if row or col solution is the same as helpers
+    if (leftBtnCurChoice === 'yes') autoFill(tile.dataset.rowid, tile.dataset.colid);
 };
 
 

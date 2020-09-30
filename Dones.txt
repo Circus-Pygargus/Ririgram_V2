@@ -752,6 +752,8 @@ Correction bug :
 
 Ajout de remplissage automatique de cases 'non' si les cases 'oui' d'une ligne ou d'une colonne correspondent aux helpers
 
+Ajout remplissage automatique idem mais avec utilisation de la croix
+
 
 
 
