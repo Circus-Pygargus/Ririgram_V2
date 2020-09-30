@@ -747,8 +747,10 @@ mise en place style ingame pour landscape phone
 modif du calcul de gameboardWidth dans css-variables.js
 
 Correction bug : 
-    maintenant après un partie avec la croix, cette dernière reste sélectionnée pour la partie suivante.
+    maintenant après une partie avec la croix, cette dernière reste sélectionnée pour la partie suivante.
     maintenant après une fin de partie sans gamecross et dernière sélection avec maybe-yes, pour la partie suivante le bouton yes s'auto-sélectionne et surtout s'affiche comme sélectionné
+
+Ajout de remplissage automatique de cases 'non' si les cases 'oui' d'une ligne ou d'une colonne correspondent aux helpers
 
 
 
@@ -769,7 +771,6 @@ _ modif du model Grid : faire les ref correctement ?
 
 a faire aussi : 
 - améliorer le style des infos ...
-- effacer les messages avec la poubelle (renommer tout ce qui est trashcan en trash-msg ou un truc du genre)
 
 
 
@@ -812,13 +813,11 @@ _ juste après enregistrement d'une nouvelle info, si on veut voir une info :
     info.js:196 Uncaught TypeError: Cannot read property 'classList' of null
     at SVGSVGElement.<anonymous> (info.js:196)
 _ les infos ne sont pas livrées si création d'utilisateur
-_ gamecross : si partie gagnée en jouant avec la croix, à la partie suivante, la croix reste en allumée mais n'est pas prise en compte ... faire un reset de isUsingCross ou garder la croix et recoller les enlignt de helper sur la première case de la grille
 
 
 
 A faire : 
 _ dans dotenv, coller un FIRST_ADMIN_NAME ou ADMIN_NAME pour faire la vérif pour le premier admin et du coup modif du readme pour y coller l'infos après #Launch
-_ Renommer tout ce qui est trash-can... en trash-grid... avant de gérer l'effacement des messages pour pouvoir faire des trash-feedback... (y compris en nom de fichier)
 _ pour les infos : ! bien réfléchir au model pour ne pas modif le bdd en prod !
 le model : _id, version(String), title(String), info(string)
 l'idée c'est de n'envoyer que les titres et dates des infos, et d'appeller le contenu uniquement si clic sur un bouton
@@ -833,8 +832,6 @@ _ Ajouter  models :
         _id, gridId
 
 _ bouger la croix et les boutons de jeu
-_ Ajouter un bouton reload la grille (qui juste efface les choix du joueur mais garde le nombre de coups effectué)
-_ ajouter un bouton retire les maybe
 
 
 
@@ -887,8 +884,7 @@ users during dev :
 
 
 todos :
-_ ! dans le retour de route/grid/check, si grille réussie ajouter hardNbTimesPlayed et hardNbTimesFinished en plus de record du monde oui/non
-_ dans le liste des grilles, coller une croix dans le colonne déjà jouée par  le joueur si mise à la poubelle (la croix pourrait être jaune, orange, rouge (noir pour forever ?) selon le nombre d'essais refaits en passant par cette page)
+_ dans la liste des grilles, coller une croix dans le colonne déjà jouée par  le joueur si mise à la poubelle (la croix pourrait être jaune, orange, rouge (noir pour forever ?) selon le nombre d'essais refaits en passant par cette page)
 _  BDD : 
     - User : utiliser la propriété  status (par ex pour bloquer si faute extrèmement grave)
     - Feedback :  utiliser propriété status (boquer ce message -abus grave-) 
@@ -908,8 +904,7 @@ _ ajouter retour vérif création new user, qd name existe on a pas le mesage d'
 _ ajouter si login, vérif token car on ne devrait pas avoir accès au form de login une fois loggué -> avertissement pour pratique étrange ? -> ban ip, email  pour un temps -> ban ip, email pour toujours ?
 _ gràce au token, faire un se souvenir de moi ? 
     au moins coller une date d'expiration sur les tokens
-_ ajouter un rôle dans la bdd User, je vais pas faire un isAdmin, mais plutôt un role='admin' ça permettra de ne pas faire tomber la base de données pour ajout d'un éventuel rôle plus tard ;)
-_ ajouter dans nav-not- logged : mot de passe oublié avec envoi mail de confirmation
+_ ajouter dans nav-not-logged : mot de passe oublié avec envoi mail de confirmation
 _ ajouter gestion des erreurs form login (et les autres)
 
 

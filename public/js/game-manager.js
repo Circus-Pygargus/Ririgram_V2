@@ -215,6 +215,9 @@ const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newCol
         else {
             quicklyCheckAllHelpers();
         }
+
+        // fill up the corresponding row and col tiles with 'no' response if row or col solution is the same as helpers
+        if (currentChoice === 'yes') autoFill(tile.dataset.rowid, tile.dataset.colid);
     };
 
 
