@@ -6,7 +6,7 @@
  */
 const sendNotification = (status, message) => {
 
-    let notifDuration = 7000;
+    let notifDuration = 5000;
 
     const mainDiv = document.querySelector('main');
     // Create the notification

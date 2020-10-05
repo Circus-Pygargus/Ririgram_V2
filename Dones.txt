@@ -754,6 +754,10 @@ Ajout de remplissage automatique de cases 'non' si les cases 'oui' d'une ligne o
 
 Ajout remplissage automatique idem mais avec utilisation de la croix
 
+Ajout du scanning de code proposé par Github : CodeQl Analysis
+
+Modif : Réduction du temps des notifications à 5 secondes
+
 
 
 
