@@ -152,11 +152,10 @@ router.post('/users/list',auth, async (req, res) => {
         if (user.role !== 'admin') res.status(401).send({ error: 'Seul un admin peut accéder à ceci !'});
 
         const users = await User.find({});
-
         res.send(users);
 
     } catch (e) {
-        res.status(500).send();
+        res.status(500).send(e);
     }
 });
 

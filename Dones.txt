@@ -780,6 +780,10 @@ ________________________________________________________________________________
 
 
 
+restriction des données du joueur envoyées par le serveur j'ai viré : email et _v
+
+
+
 
 
 
@@ -935,7 +939,17 @@ _ ajouter dans nav-not-logged : mot de passe oublié avec envoi mail de confirma
 _ ajouter gestion des erreurs form login (et les autres)
 
 
-idées: 
+idées:
+_ Faire un salon d'attente pour pouvoir rejoindre une partie multijoueur
+    les joueurs reçoivent la même grille
+    un indicateur leur donne leur nombre de coups et celui du ou des autres joueurs
+    mettre en place un système de points style 
+        2 points pour un sans faute
+        1 point pour le meilleur chrono
+        bonus si écart le temps énorme (-100%, -50% ..)
+    renvoyer l'historique des coups des autres joueurs pour comparaisont de méthode de jeu pourraît être cool
+    possibilité également d'afficher la grille de l'adversaire pendant la partie ??
+
 _ Victory : 
     au lieu de faire des phrases, faire quelque chose comme ça ? :
 
