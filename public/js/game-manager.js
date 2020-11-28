@@ -50,6 +50,7 @@ const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newCol
     lastSelectedCol = 0;
     isRemovingChoiceUsingCross = false;
     tilesCliksNb = 0;
+    gridHistoric = [];
     
     // user is removing his choice color on several tiles
     let isRemovingChoice = false;
@@ -187,10 +188,12 @@ const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newCol
         if (isRemovingChoice && tile.dataset.solution !== currentChoice) return;
         // user is removing his choice on several tiles
         if (isRemovingChoice && tile.dataset.solution === currentChoice) {
+            gridHistoricAddOne(tile.dataset.rowid, tile.dataset.colid, tile.dataset.solution, 'default');
             tile.dataset.solution = 'default';
         }
         // user wants to remove current choice
         else if (tile.dataset.solution === currentChoice) {
+            gridHistoricAddOne(tile.dataset.rowid, tile.dataset.colid, tile.dataset.solution, 'default');
             tile.dataset.solution = 'default';
             isRemovingChoice = true;
         }
@@ -202,6 +205,7 @@ const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newCol
                 tilesCliksNb++;
             }
 
+            gridHistoricAddOne(tile.dataset.rowid, tile.dataset.colid, tile.dataset.solution, currentChoice);
             tile.dataset.solution = currentChoice;
         }
 
@@ -481,6 +485,7 @@ const watchCrossButtons = () => {
 const tileSolutionChangeUsingCross = (tile) => {
 
     if (tile.dataset.solution === leftBtnCurChoice && isRemovingChoiceUsingCross) {
+        gridHistoricAddOne(tile.dataset.rowid, tile.dataset.colid, tile.dataset.solution, 'default');
         tile.dataset.solution = 'default';
         return;
     }
@@ -488,6 +493,7 @@ const tileSolutionChangeUsingCross = (tile) => {
 
     if (tile.dataset.solution === leftBtnCurChoice && !isRemovingChoiceUsingCross) return;
 
+    gridHistoricAddOne(tile.dataset.rowid, tile.dataset.colid, tile.dataset.solution, leftBtnCurChoice);
     tile.dataset.solution = leftBtnCurChoice;
     
     if (leftBtnCurChoice !== 'no' && leftBtnCurChoice !== 'maybe-no') {
