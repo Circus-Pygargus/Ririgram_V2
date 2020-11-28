@@ -789,6 +789,7 @@ ajout enregistrement coup du joueur dans l'historique de la partie
 
 ajout enregistrement modification grille par auto fill des cases non dans l'historique de la partie
 
+ajout des boutons d'historique de la partie en cours
 
 
 
@@ -855,6 +856,7 @@ _ les infos ne sont pas livrées si création d'utilisateur
 
 
 A faire : 
+_ remise à zéro historique avec le bouton d'effacement complet de la grille ?
 _ ajouter le bouton d'effacement de grille en mode non conecté
 _ dans dotenv, coller un FIRST_ADMIN_NAME ou ADMIN_NAME pour faire la vérif pour le premier admin et du coup modif du readme pour y coller l'infos après #Launch
 _ pour les infos : ! bien réfléchir au model pour ne pas modif le bdd en prod !

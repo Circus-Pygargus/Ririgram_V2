@@ -205,6 +205,20 @@
         display: none;
     }
 
+    #grid-historic-btns {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 24px;
+
+        #grid-historic-backward {
+            margin-left: 8px;
+        }
+
+        #grid-historic-forward {
+            margin-right: 20px;
+        }
+    }
+
     .answer-btns-line {
         margin-top: 12px;
 
