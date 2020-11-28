@@ -782,6 +782,13 @@ ________________________________________________________________________________
 
 restriction des données du joueur envoyées par le serveur j'ai viré : email et _v
 
+je crois avoir trouvé une méthode cool pour gérer l'historique :
+un tableau des coups, chacun est un objet contenant : row, column, old data, new data :
+
+ajout enregistrement coup du joueur dans l'historique de la partie
+
+ajout enregistrement modification grille par auto fill des cases non dans l'historique de la partie
+
 
 
 
@@ -848,6 +855,7 @@ _ les infos ne sont pas livrées si création d'utilisateur
 
 
 A faire : 
+_ ajouter le bouton d'effacement de grille en mode non conecté
 _ dans dotenv, coller un FIRST_ADMIN_NAME ou ADMIN_NAME pour faire la vérif pour le premier admin et du coup modif du readme pour y coller l'infos après #Launch
 _ pour les infos : ! bien réfléchir au model pour ne pas modif le bdd en prod !
 le model : _id, version(String), title(String), info(string)

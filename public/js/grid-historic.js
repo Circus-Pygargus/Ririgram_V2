@@ -9,3 +9,9 @@ const gridHistoricAddOne = (rowPos, colPos, oldData, newData, arrayPos=-1) => {
         gridHistoric.push({ rowPos, colPos, oldData, newData });
     }
 };
+
+// Auto-fill added some 'no' tiles
+const gridHistoricAddMany = (changedTiles) => {
+    gridHistoric.push(changedTiles);
+    console.log(gridHistoric)
+}

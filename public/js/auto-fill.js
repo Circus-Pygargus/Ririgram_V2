@@ -11,6 +11,9 @@ const autoFill = (rowId, colId) => {
 
     const userRowSolution = [];
     const userColSolution = [];
+
+    // used to store changed tiles and send them all to grid historic
+    let changedTiles = [];
     
     // Let's check row tiles
     // will be increased if tile is selected
@@ -34,7 +37,11 @@ const autoFill = (rowId, colId) => {
     // we need to Json and stringify arrays to compare them
     if (JSON.stringify(userRowSolution) === JSON.stringify(rowHelpers)) {
         rowTiles.forEach(rowTile => {
-            if (rowTile.dataset.solution === 'default') rowTile.dataset.solution = 'no';
+            if (rowTile.dataset.solution === 'default') {
+                rowTile.dataset.solution = 'no';
+                // store tile position for grid historic
+                changedTiles.push({rowPos: rowTile.dataset.rowid, colPos: rowTile.dataset.colid});
+            }
         })
     }
 
@@ -58,7 +65,14 @@ const autoFill = (rowId, colId) => {
     // we need to Json and stringify arrays to compare them
     if (JSON.stringify(userColSolution) === JSON.stringify(colHelpers)) {
         colTiles.forEach(colTile => {
-            if (colTile.dataset.solution === 'default') colTile.dataset.solution = 'no';
+            if (colTile.dataset.solution === 'default') {
+                colTile.dataset.solution = 'no';
+                // store tile position for grid historic
+                changedTiles.push({rowPos: colTile.dataset.rowid, colPos: colTile.dataset.colid});
+            }
         })
     }
+
+    // store changed tiles into grid historic
+    if (changedTiles.length) gridHistoricAddMany(changedTiles);
 }
