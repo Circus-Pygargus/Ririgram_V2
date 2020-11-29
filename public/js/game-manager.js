@@ -51,6 +51,7 @@ const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newCol
     isRemovingChoiceUsingCross = false;
     tilesCliksNb = 0;
     gridHistoric = [];
+    gridHistoricIndex = -1;
     
     // user is removing his choice color on several tiles
     let isRemovingChoice = false;

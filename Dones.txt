@@ -791,6 +791,8 @@ ajout enregistrement modification grille par auto fill des cases non dans l'hist
 
 ajout des boutons d'historique de la partie en cours
 
+ajout gestion action bouton historic backward
+
 
 
 
