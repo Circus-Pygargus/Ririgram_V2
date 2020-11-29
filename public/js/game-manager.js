@@ -231,6 +231,9 @@ const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newCol
     /* Everything is declared, let's go */
 
 
+    // hide grid historic backward button
+    gridHistoricBackwardBtn.classList.add('d-none');
+
     // Build grid html
     buildGameBoardContent(rowsNb, colsNb, rowsHelpers, colsHelpers);
 

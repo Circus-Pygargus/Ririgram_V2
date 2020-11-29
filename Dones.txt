@@ -793,10 +793,16 @@ ajout des boutons d'historique de la partie en cours
 
 ajout gestion action bouton historic backward
 
+ajout gestion action bouton historic forward
 
 
 
 
+
+a vérifier !!! 
+_ il est possible que lors du clic sur les grid historic buttons, le clic soit pris en compte sur le <path> aulieu de <svg>.
+    dans ce cas, l'action ne serait pas prise en compte ... 
+    vérifier via la console si erreur de présence de dataset-rowid ou dataset colid
 
 
 
