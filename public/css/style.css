@@ -823,6 +823,26 @@ form#user-logout-form input[type="checkbox"] {
   color: var(--color-answer-maybe-yes);
 }
 
+#grid-options svg.red {
+  color: red;
+}
+
+#grid-options svg.orange {
+  color: #FF8800;
+}
+
+#grid-options svg.yellow {
+  color: yellow;
+}
+
+#grid-options svg.green {
+  color: green;
+}
+
+#grid-options svg.blue {
+  color: blue;
+}
+
 @media screen and (orientation: landscape) {
   #grid-options svg {
     display: inline-block;
@@ -1025,6 +1045,21 @@ form#user-logout-form input[type="checkbox"] {
 
 #game-zone.d-none {
   display: none;
+}
+
+#game-zone #grid-light-infos-div {
+  position: absolute;
+  top: 200px;
+  left: 100px;
+  background-color: #0F101B;
+  color: #FAFAFA;
+  font-size: larger;
+  padding: 15px;
+  border: 1px solid #FAFAFA;
+}
+
+#game-zone #grid-light-infos-div p {
+  line-height: 1.5em;
 }
 
 #game-cross {

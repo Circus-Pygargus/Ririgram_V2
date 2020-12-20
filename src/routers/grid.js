@@ -39,20 +39,23 @@ router.post('/grid/new', auth, async (req, res) => {
     try {
         const {rowsNb, colsNb} = req.body;
         const user = req.user;
-        let nbTimesPlayed = 0;
-        let nbTimesFinished = 0;
+        let gridNbTimesPlayed = 0;
+        let gridNbTimesFinished = 0;
+        let gridNbPlayersFinished = 0;
+        let gridNbPlayersTrashed = 0;
         await forceSquareGrid(rowsNb, colsNb);
         
         let foundedGrid = await findUnplayedGrid(rowsNb, colsNb, user._id);
 
         if (foundedGrid) {
             console.log('grille non jouée trouvée !');
-            nbTimesPlayed = foundedGrid.hardNbTimesPlayed;
-            nbTimesFinished = foundedGrid.hardNbTimesFinished;
-            console.log(nbTimesPlayed, nbTimesFinished);
+            gridNbTimesPlayed = foundedGrid.hardNbTimesPlayed;
+            gridNbTimesFinished = foundedGrid.hardNbTimesFinished;
+            gridNbPlayersFinished = await UserTimeHard.countDocuments({ grid: foundedGrid });
+            gridNbPlayersTrashed = await RefusedGrid.countDocuments({ gridId: foundedGrid.gridId, hard: true});
+            
             foundedGrid.hardNbTimesPlayed++;
             await foundedGrid.save();
-            console.log(foundedGrid.hardNbTimesPlayed)
             const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame } = foundedGrid;
             const gridId = foundedGrid._id;
             let startTime = await StartTime.findOne({grid: gridId, owner: user._id});
@@ -66,7 +69,7 @@ router.post('/grid/new', auth, async (req, res) => {
             }
 
             await startTime.save();
-            res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId, nbTimesPlayed, nbTimesFinished });
+            res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId, gridNbTimesPlayed, gridNbTimesFinished, gridNbPlayersFinished, gridNbPlayersTrashed });
 
         } 
         else {
@@ -96,7 +99,7 @@ router.post('/grid/new', auth, async (req, res) => {
         //     startTime.time = Date.now();
         // }
             await startTime.save();
-            res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId, nbTimesPlayed, nbTimesFinished });
+            res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId, gridNbTimesPlayed, gridNbTimesFinished, gridNbPlayersFinished, gridNbPlayersTrashed });
         }
 
     } catch (e) {

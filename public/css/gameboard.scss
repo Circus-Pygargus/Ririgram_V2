@@ -166,6 +166,21 @@
     &.d-none {
         display: none;
     }
+
+    #grid-light-infos-div {
+        position: absolute;
+        top: 200px;
+        left: 100px;
+        background-color: #0F101B;
+        color: #FAFAFA;
+        font-size: larger;
+        padding: 15px;
+        border: 1px solid #FAFAFA;
+
+        p {
+            line-height: 1.5em;
+        }
+    }
 }
 #game-cross {
     display: inline-block;

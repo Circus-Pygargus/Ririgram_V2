@@ -814,6 +814,15 @@ il servira à afficher quelques infos concernant la grille
 
 récupérations nbTimesPlayed et nbTimesFinished lors d'une demande de grille et envoi vers le front
 
+ajout récup gridNbPlayersFinished et gridNbPlayersTrashed idem ci-dessus
+gestion de ces 4 nouvelles variables par nav-logged.js, game-manager.js et pour finir par grid-light-infos.js
+ajout de #grid-light-infos-btn et de ##grid-light-infos-div
+    le premier pour ouvrir le deuxième et y afficher quelques infos
+ajout css pour les deux éléments
+ajout couleur du bouton différente selon le rapport grilles finies / grille jouées
+= Ajout front pour infos de grille light
+
+
 
 
 

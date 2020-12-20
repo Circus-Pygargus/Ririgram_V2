@@ -148,7 +148,7 @@ const newGrid = (rowsNb, colsNb) => {
     .then((response) => {
         if (response.error) sendNotification('error', response.error);
         
-        const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId } = response;
+        const { rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId, gridNbTimesPlayed, gridNbTimesFinished, gridNbPlayersFinished, gridNbPlayersTrashed } = response;
         // cleanNavbar() est dans navbars.js
         cleanNavbar();
         // toggleNavbarBtn et navContainer proviennent de toggle-navbar.js
@@ -157,7 +157,7 @@ const newGrid = (rowsNb, colsNb) => {
         // move title
         document.querySelector('#main-title').classList.add('in-game');
         // build the gameboard, launch the game and manage it (true because user is logged, and '' because we don't know the grid solution)
-        gameManager(rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, true, '', clicksNbForPerfectGame, gridId);
+        gameManager(rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, true, '', clicksNbForPerfectGame, gridId, gridNbTimesPlayed, gridNbTimesFinished, gridNbPlayersFinished, gridNbPlayersTrashed);
     })
     .catch((e)=> {
         console.log(e);

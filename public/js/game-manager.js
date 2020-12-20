@@ -30,8 +30,7 @@ let tiles = [];
 let gridId;
 
 
-const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newColsHelpers, maxColHelpers, isUserLoggedToPlay, newGridSolution = '', NewClicksNbForPerfectGame = 0, newGridId) => {
-
+const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newColsHelpers, maxColHelpers, isUserLoggedToPlay, newGridSolution = '', NewClicksNbForPerfectGame = 0, newGridId, gridNbTimesPlayed = null, gridNbTimesFinished = null, gridNbPlayersFinished, gridNbPlayersTrashed) => {
     rowsNb = newRowsNb;
     colsNb = newColsNb;
     rowsHelpers = newRowsHelpers;
@@ -231,6 +230,10 @@ const gameManager = (newRowsNb, newColsNb, newRowsHelpers, maxRowHelpers, newCol
     /* Everything is declared, let's go */
 
 
+    // build grid light infos content
+    gridLightInfosDiv.classList.add('d-none');
+    gridLightInfos(gridNbTimesPlayed, gridNbTimesFinished, gridNbPlayersFinished, gridNbPlayersTrashed);
+    
     // hide grid historic backward button
     gridHistoricBackwardBtn.classList.add('d-none');
 
