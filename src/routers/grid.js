@@ -250,6 +250,7 @@ router.post('/grid/check', auth, async (req, res) => {
     }
 });
 
+// User is logged and do think the grid he's playing is too hard
 router.post('/grid/trashcan', auth, async (req, res) => {
     try {
         const userId = req.user._id;
@@ -276,6 +277,20 @@ router.post('/grid/trashcan', auth, async (req, res) => {
         res.status(500).send({ error: 'Quelque chose s\'est mal déroulé pendant l\'exclusion de cette grille.' });
     }
 });
+
+// User is logged and wants all infos about a grid (can be called from grid list or from Victory window)
+// router.post('/grid/infos/one', auth, async (req, res) => {
+//     try {
+//         const { gridId } = req.body;
+//         const user = req.user;
+//         const grid = await Grid.findById(gridId);
+//         if (!grid) throw new Error(`La grille demandée pour infos par ${user.name} n\'existe pas !`);
+//         // const grid = await grid.get
+//         console.log(grid);
+//     } catch (e) {
+//         console.log(e);
+//     }
+// });
 
 
 module.exports = router;

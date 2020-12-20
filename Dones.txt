@@ -798,6 +798,30 @@ ajout gestion action bouton historic forward
 
 
 
+POUSSE VERS GIT AVEC LE TAG 2020-11-29
+
+contenu du message associé sur le site en prod :
+titre: Ajout historique de la grille en cours
+
+Ajouts :
+  - deux nouveaux boutons permettent de se déplacer dans l'historique des coups de la partie.
+  Leur utilisation ne modifie pas le nombre de coups effectués.
+_____________________________________________________________________________________________
+
+
+ajout d'un bouton sgv (?) dans le partial grid_options.hbs
+il servira à afficher quelques infos concernant la grille
+
+
+
+
+TODO :
+_ création de la route pour affichage infos light d'une grille
+            DEBUTE ET MIS EN COMMENTAIRES
+
+
+
+
 
 a vérifier !!! 
 _ il est possible que lors du clic sur les grid historic buttons, le clic soit pris en compte sur le <path> aulieu de <svg>.
@@ -863,9 +887,25 @@ _ les infos ne sont pas livrées si création d'utilisateur
 
 
 
-A faire : 
+A faire :
+_ ajouter un indicateur de difficulté de la grille (calculé selon nbr de fois finie / nbr de fois jouée)
+    soit un petit rond de couleur, soit la roue crantée qui prend une des couleurs
+    à revoir :
+        rouge :     0   -> 20% finie
+        orange :    21% -> 50%
+        jaune :     51% -> 75%
+        vert :      76% -> 100%
+_ faire une section de création de grille pour les grilles spéciales
+    on choisit la taille de la grille,
+    on la dessine,
+    on peut modifier la taille de la grille ++/-- row/colid
+    on l'enregistre en donnant une date de distribution et le public visé (par rôle ou pseudo)
+_ ajouter des numéros aux grilles
+    mais les numéroter par catégorie (triées par taille),
+    trouver un endroit pour afficher ce numéro (soit visible soit inclus dans une pop-up récap -accessible via un i-)
+_ ajouter le rôle 'alpha-testeur'
 _ remise à zéro historique avec le bouton d'effacement complet de la grille ?
-_ ajouter le bouton d'effacement de grille en mode non conecté
+_ ajouter le bouton d'effacement de grille en mode non conecté, ou plutôt de refus de grille
 _ dans dotenv, coller un FIRST_ADMIN_NAME ou ADMIN_NAME pour faire la vérif pour le premier admin et du coup modif du readme pour y coller l'infos après #Launch
 _ pour les infos : ! bien réfléchir au model pour ne pas modif le bdd en prod !
 le model : _id, version(String), title(String), info(string)
