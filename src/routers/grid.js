@@ -39,12 +39,17 @@ router.post('/grid/new', auth, async (req, res) => {
     try {
         const {rowsNb, colsNb} = req.body;
         const user = req.user;
+        let nbTimesPlayed = 0;
+        let nbTimesFinished = 0;
         await forceSquareGrid(rowsNb, colsNb);
         
         let foundedGrid = await findUnplayedGrid(rowsNb, colsNb, user._id);
 
         if (foundedGrid) {
             console.log('grille non jouée trouvée !');
+            nbTimesPlayed = foundedGrid.hardNbTimesPlayed;
+            nbTimesFinished = foundedGrid.hardNbTimesFinished;
+            console.log(nbTimesPlayed, nbTimesFinished);
             foundedGrid.hardNbTimesPlayed++;
             await foundedGrid.save();
             console.log(foundedGrid.hardNbTimesPlayed)
@@ -61,7 +66,7 @@ router.post('/grid/new', auth, async (req, res) => {
             }
 
             await startTime.save();
-            res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId });
+            res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId, nbTimesPlayed, nbTimesFinished });
 
         } 
         else {
@@ -91,7 +96,7 @@ router.post('/grid/new', auth, async (req, res) => {
         //     startTime.time = Date.now();
         // }
             await startTime.save();
-            res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId });
+            res.send({rowsNb, colsNb, rowsHelpers, maxRowHelpers, colsHelpers, maxColHelpers, clicksNbForPerfectGame, gridId, nbTimesPlayed, nbTimesFinished });
         }
 
     } catch (e) {

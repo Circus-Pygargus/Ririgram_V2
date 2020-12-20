@@ -812,6 +812,8 @@ ________________________________________________________________________________
 ajout d'un bouton sgv (?) dans le partial grid_options.hbs
 il servira à afficher quelques infos concernant la grille
 
+récupérations nbTimesPlayed et nbTimesFinished lors d'une demande de grille et envoi vers le front
+
 
 
 
