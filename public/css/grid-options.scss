@@ -4,6 +4,10 @@
     left: 2rem;
     z-index: 1;
 
+    &.d-none {
+        display: none;
+    }
+
     svg {
         display: block;
         cursor: pointer;
@@ -37,6 +41,17 @@
         &.blue {
             color: blue;
         }
+    }
+}
+
+@include phoneportrait {
+
+    #grid-options {
+        display: flex;
+        justify-content: space-between;
+        top: 48px;
+        left: 90px;
+        width: 50%;
     }
 }
 

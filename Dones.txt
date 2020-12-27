@@ -822,6 +822,9 @@ ajout css pour les deux éléments
 ajout couleur du bouton différente selon le rapport grilles finies / grille jouées
 = Ajout front pour infos de grille light
 
+il n'y a pas assez de place pour afficher toutes les icônes d'options de grille verticalement sur phone, donc on cache le titre et on colle la barre à la place
+= place la barre d'option au lieu du titre sur telephone
+
 
 
 

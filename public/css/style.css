@@ -233,6 +233,12 @@ div#main-title h1 {
   }
 }
 
+@media screen and (max-width: 576px) {
+  div#main-title.in-game {
+    display: none;
+  }
+}
+
 nav.user-not-logged,
 nav.user-logged {
   display: -webkit-box;
@@ -808,6 +814,10 @@ form#user-logout-form input[type="checkbox"] {
   z-index: 1;
 }
 
+#grid-options.d-none {
+  display: none;
+}
+
 #grid-options svg {
   display: block;
   cursor: pointer;
@@ -841,6 +851,20 @@ form#user-logout-form input[type="checkbox"] {
 
 #grid-options svg.blue {
   color: blue;
+}
+
+@media screen and (max-width: 576px) {
+  #grid-options {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    top: 48px;
+    left: 90px;
+    width: 50%;
+  }
 }
 
 @media screen and (orientation: landscape) {
