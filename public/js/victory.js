@@ -30,6 +30,7 @@ const timesNb = document.querySelector('#times-nb');
 const nbTimesPlayed = document.querySelector('#nb-times-played');
 const nbTimesFinished = document.querySelector('#nb-times-finished');
 
+const victoryGetGridInfos = document.querySelector('#victory-get-grid-infos');
 const victoryChooseGridBtn = document.querySelector('#victory-choose-grid');
 console.log(playerClicksNb)
 
@@ -152,6 +153,30 @@ victoryCloseBtn.addEventListener('click', (event) => {
     gridOptionsDiv.classList.add('d-none');
     navContainer.classList.remove('hidden');
     victoryDiv.classList.add('d-none');
+});
+
+victoryGetGridInfos.addEventListener('click', (event) => {
+    const data = {
+        "gridId": gridId
+    };
+    const token = sessionStorage.getItem('token');
+    fetch('/grid/infos/one', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${JSON.parse(token)}`
+        }
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((response) => {
+        console.log(response);
+    })
+    .catch((e) => {
+        console.log(e);        
+    });
 });
 
 

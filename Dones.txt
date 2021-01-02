@@ -827,13 +827,16 @@ il n'y a pas assez de place pour afficher toutes les icônes d'options de grille
 
 création et gestion coté back de la route /grid/infos/one pour affichage des infos complètes d'une grille
 
+ajout demande d'affichage des infos complètes d'une grille depuis Victory
+
 
 
 
 
 TODO :
-_ création de la route pour affichage infos light d'une grille
-            DEBUTE ET MIS EN COMMENTAIRES
+_  gestion de la partie des infos envoyées (relatif au limit(10) dans routers/grid.js /grid/infos/one)
+    infos dans une vidéos du cours nodejs
+    voir pour ajouter les infos du joueur s'il ne fait pas partie des 10 ? pas sûr ...
 
 
 
