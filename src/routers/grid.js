@@ -11,6 +11,7 @@ const RefusedGrid = require('../models/refusedGrid');
 const auth = require('../middleware/auth');
 const computeGridSolution = require('../utils/compute-grid-solution');
 const computeHelpers = require('../utils/compute-helpers');
+const User = require('../models/user');
 
 const router = new express.Router();
 
@@ -287,18 +288,49 @@ router.post('/grid/trashcan', auth, async (req, res) => {
 });
 
 // User is logged and wants all infos about a grid (can be called from grid list or from Victory window)
-// router.post('/grid/infos/one', auth, async (req, res) => {
-//     try {
-//         const { gridId } = req.body;
-//         const user = req.user;
-//         const grid = await Grid.findById(gridId);
-//         if (!grid) throw new Error(`La grille demandée pour infos par ${user.name} n\'existe pas !`);
-//         // const grid = await grid.get
-//         console.log(grid);
-//     } catch (e) {
-//         console.log(e);
-//     }
-// });
+router.post('/grid/infos/one', auth, async (req, res) => {
+    try {
+        const { gridId } = req.body;
+        const user = req.user;
+        const gridAllInfos = {};
+
+        // used while dev to catch 1st played grid id (5f5a035fa6a70810dbe47c0d)
+        // const toto = await Grid.find({}).sort({createdAt: 'asc'});
+        // return res.send({toto});
+
+        // grid ID partie refusée : 5ff07983217ec10e3573e899
+
+        // grille jouée et refusée : 5ff08036ff16a80ed3d01634
+
+        const grid = await Grid.findById(gridId);
+        if (!grid) throw new Error(`La grille demandée pour infos par ${user.name} n\'existe pas !`);
+
+        // TODO gestion de la partie des infos envoyées (relatif au limit(10))
+        // TODO infos dans une vidéos du cours nodejs
+        // TODO voir pour ajouter les infos du joueur s'il ne fait pas partie des 10 ? pas sûr ...
+        const hardTimes = await UserTimeHard.find({ grid: grid._id }).limit(10).populate({path: 'owner', select: 'name'});
+
+        const refusedNb = await RefusedGrid.countDocuments({ gridId: grid.id });
+        gridAllInfos.grid = {
+            id: grid._id,
+            clicksNbForPerfectGame: grid.clicksNbForPerfectGame,
+            creator: grid.creator,
+            easyNbTimesPlayed: grid.easyNbTimesPlayed,
+            easyNbTimesFinished: grid.easyNbTimesFinished,
+            hardNbTimesPlayed: grid.hardNbTimesPlayed,
+            hardNbTimesFinished: grid.hardNbTimesFinished,
+            refusedNb: refusedNb,
+            createdAt: grid.createdAt
+        };  
+        gridAllInfos.hardTimes = hardTimes;
+        // gridAllInfos.refused = refused;
+
+        // console.log(grid, gridAllInfos);
+        res.status(200).send({gridAllInfos});
+    } catch (e) {
+        console.log(e);
+    }
+});
 
 
 module.exports = router;
