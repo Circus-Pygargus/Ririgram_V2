@@ -157,6 +157,18 @@
             <button class="failed-close">Continuer</button>
         </div>
 
+        {{!-- One grid infos --}}
+        <div id="grid-infos" class="d-none">
+            <svg id="grid-infos-close" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+                <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+            </svg>
+            <div id="grid-infos-content">
+                {{!-- Here will be included the partial vue grid-infos.hbs when asked --}}
+            </div>
+        </div>
+
     </main>
 
     <script src="/js/css-variables.js"></script>
@@ -170,6 +182,7 @@
     <script src="/js/nav-logged.js"></script>
     <script src="/js/grid-options.js"></script>
     <script src="/js/grid-light-infos.js"></script>
+    <script src="/js/grid-infos.js"></script>
     <script src="/js/auto-fill.js"></script>
     <script src="/js/game-manager.js"></script>
     <script src="/js/victory.js"></script>

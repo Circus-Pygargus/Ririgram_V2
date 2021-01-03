@@ -1,5 +1,8 @@
 const express = require('express');
 
+const hbs = require('hbs');
+const path = require('path');
+
 const moment = require('moment');
 require("moment-duration-format");
 
@@ -7,13 +10,15 @@ const Grid = require('../models/grid');
 const UserTimeHard = require('../models/userTimeHard');
 const StartTime = require('../models/startTime');
 const RefusedGrid = require('../models/refusedGrid');
+const User = require('../models/user');
 
 const auth = require('../middleware/auth');
 const computeGridSolution = require('../utils/compute-grid-solution');
 const computeHelpers = require('../utils/compute-helpers');
-const User = require('../models/user');
 
 const router = new express.Router();
+
+const partialsPath = path.join(__dirname, '../../templates/partials');
 
 
 // User is not logged and wants to test the game
@@ -309,8 +314,12 @@ router.post('/grid/infos/one', auth, async (req, res) => {
         // TODO infos dans une vidéos du cours nodejs
         // TODO voir pour ajouter les infos du joueur s'il ne fait pas partie des 10 ? pas sûr ...
         const hardTimes = await UserTimeHard.find({ grid: grid._id }).limit(10).populate({path: 'owner', select: 'name'});
+        // TODO ne récupérer que les refused pour les useId correspondants
+        const refused = await RefusedGrid.find({gridId: grid.id});
 
+        // just the nb of players who refused this grid
         const refusedNb = await RefusedGrid.countDocuments({ gridId: grid.id });
+
         gridAllInfos.grid = {
             id: grid._id,
             clicksNbForPerfectGame: grid.clicksNbForPerfectGame,
@@ -321,12 +330,45 @@ router.post('/grid/infos/one', auth, async (req, res) => {
             hardNbTimesFinished: grid.hardNbTimesFinished,
             refusedNb: refusedNb,
             createdAt: grid.createdAt
-        };  
-        gridAllInfos.hardTimes = hardTimes;
-        // gridAllInfos.refused = refused;
-
-        // console.log(grid, gridAllInfos);
-        res.status(200).send({gridAllInfos});
+        };
+        gridAllInfos.hardTimes = [];
+        for (let i = 0, max = hardTimes.length; i < max; i++) {
+            gridAllInfos.hardTimes[i] = {
+                player: hardTimes[i].owner.name,
+                time: moment.duration(hardTimes[i].bestTime).format("H:m's''S"),
+                clicksNb: hardTimes[i].userClicksNb,
+                refusedNb: 0
+            }
+            refused.forEach(refus => {
+                let refusNb;
+                if (refus.userId.toString() === hardTimes[i].owner._id.toString() && refus.hard) {
+                    switch (refus.hardStatus) {
+                        case ('once'):
+                            refusNb = 1;
+                            break;
+                        case ('confirmed'):
+                            refusNb = 2;
+                            break;
+                        case ('definitive'):
+                            refusNb = 3;
+                            break;
+                        case ('forever'):
+                            refusNb = 4;
+                            break;
+                    }
+                    gridAllInfos.hardTimes[i].refusedNb = refusNb;
+                }
+            });
+        }
+        res.render(`${partialsPath}/grid_infos`, { gridAllInfos }, (err, html) => {
+            if (err) {
+                console.log(err);
+                return res.send({
+                    error: 'Une erreur est survenue pendant le rendu des infos.'
+                });
+            }
+            res.status(200).send({ html });
+        });
     } catch (e) {
         console.log(e);
     }

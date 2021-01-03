@@ -829,6 +829,15 @@ création et gestion coté back de la route /grid/infos/one pour affichage des i
 
 ajout demande d'affichage des infos complètes d'une grille depuis Victory
 
+création d'une div d'affichage pour les infos
+création grid-infos.scss
+création de la vue partielle 'grid infos.hbs'
+envoi depuis le back end de la vue hydratée par les infos de la grille
+affichage de la réponse du serveur
+= ajout gestion reponse à la route /grid/infos/one par une vue partielle
+
+
+
 
 
 

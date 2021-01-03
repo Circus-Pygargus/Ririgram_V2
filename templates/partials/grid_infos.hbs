@@ -1,0 +1,22 @@
+<h2>Infos grille</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Joueur</th>
+            <th>Meilleur chrono</th>
+            <th>Nbr coups</th>
+            <th>Nbr rejet</th>
+        </tr>
+    </thead>
+    <tbody>        
+        {{#each gridAllInfos.hardTimes}}
+            <tr>
+                <td>{{this.player}}</td>
+                <td>{{this.time}}</td>
+                <td>{{this.clicksNb}}</td>
+                <td>{{this.refusedNb}}</td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>

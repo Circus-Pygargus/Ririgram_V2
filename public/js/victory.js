@@ -172,10 +172,11 @@ victoryGetGridInfos.addEventListener('click', (event) => {
         return response.json();
     })
     .then((response) => {
-        console.log(response);
+        document.querySelector('#grid-infos-content').innerHTML = response.html;
+        document.querySelector('#grid-infos').classList.remove('d-none');
     })
     .catch((e) => {
-        console.log(e);        
+        console.log(e);
     });
 });
 
